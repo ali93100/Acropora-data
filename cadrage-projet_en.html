@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Scoping - Acropora Data</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+    <link rel="stylesheet" href="animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .intro-dark{background:linear-gradient(160deg,#081e23 0%,#0d3d47 45%,#1a5d6a 100%);padding:7rem 0 8rem;position:relative;overflow:hidden}
+        .intro-dark::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(129,171,179,.08) 0%,transparent 70%);top:-150px;right:-100px;animation:orbFloat 14s ease-in-out infinite}
+        @keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-30px,25px) scale(1.1)}}
+        .intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;position:relative;z-index:1}
+        .intro-label{display:inline-block;color:#81abb3;font-size:.78rem;font-weight:800;letter-spacing:.25em;text-transform:uppercase;border:1px solid rgba(129,171,179,.3);border-radius:50px;padding:.4rem 1.2rem;margin-bottom:1.5rem}
+        .intro-title{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;color:#fff;line-height:1.15;margin-bottom:1.5rem}
+        .intro-title span{color:#f3756e}
+        .intro-text{color:rgba(255,255,255,.7);font-size:1rem;line-height:1.85;margin-bottom:1rem}
+        .stat-cards{display:flex;flex-direction:column;gap:1.4rem}
+        .stat-card{background:rgba(255,255,255,.05);border:1px solid rgba(129,171,179,.15);border-radius:16px;padding:1.6rem 2rem;display:flex;align-items:center;gap:1.4rem;transition:all .4s ease}
+        .stat-card:hover{background:rgba(255,255,255,.09);transform:translateX(8px)}
+        .stat-icon{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,rgba(26,93,106,.3),rgba(129,171,179,.2));display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+        .stat-body strong{display:block;color:#fff;font-size:1.4rem;font-weight:900;line-height:1;margin-bottom:.25rem}
+        .stat-body span{color:rgba(255,255,255,.55);font-size:.82rem}
+        .section-tag{display:inline-block;color:var(--primary-color);font-size:.78rem;font-weight:800;letter-spacing:.25em;text-transform:uppercase;border:1px solid rgba(26,93,106,.2);border-radius:50px;padding:.4rem 1.2rem;background:rgba(26,93,106,.05);margin-bottom:1.2rem}
+        .timeline-wrap{position:relative;margin-top:4rem}
+        .timeline-track{height:3px;background:linear-gradient(90deg,#1a5d6a,#f3756e);border-radius:50px;margin-bottom:2rem}
+        .timeline-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem}
+        .t-step{text-align:center}
+        .t-dot{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#1a5d6a,#4a9fa8);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.1rem;font-weight:900;color:#fff;box-shadow:0 6px 18px rgba(26,93,106,.2);transition:all .35s ease}
+        .t-step:hover .t-dot{transform:scale(1.12);box-shadow:0 10px 28px rgba(26,93,106,.3)}
+        .t-step h4{font-size:.85rem;font-weight:800;color:var(--primary-color);margin-bottom:.3rem}
+        .t-step p{font-size:.75rem;color:var(--text-medium);line-height:1.55}
+        .deliverables-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem;margin-top:3.5rem}
+        .deliverable-card{background:#fff;border:1px solid rgba(26,93,106,.08);border-top:4px solid #1a5d6a;border-radius:0 0 18px 18px;padding:2rem;transition:all .35s ease}
+        .deliverable-card:hover{border-top-color:#f3756e;transform:translateY(-5px);box-shadow:0 16px 36px rgba(26,93,106,.1)}
+        .del-icon{font-size:1.6rem;margin-bottom:1rem;display:block}
+        .deliverable-card h4{font-size:.95rem;font-weight:800;color:var(--primary-color);margin-bottom:.6rem}
+        .deliverable-card p{font-size:.82rem;color:var(--text-medium);line-height:1.7}
+        .dark-green{background:linear-gradient(160deg,#0d3d47 0%,#1a5d6a 60%,#1e6d7e 100%)}
+        .dark-green .section-tag{color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.07)}
+        .dark-green h2{color:#fff}
+        .dark-green .section-line{background:linear-gradient(90deg,rgba(255,255,255,.4),transparent)}
+        .alert-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;margin-top:3.5rem}
+        .alert-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:2rem;backdrop-filter:blur(8px);transition:all .35s ease}
+        .alert-card:hover{background:rgba(255,255,255,.1);transform:translateY(-5px)}
+        .alert-num{font-size:2.4rem;font-weight:900;color:#f3756e;display:block;margin-bottom:.6rem;line-height:1}
+        .alert-card h4{font-size:.95rem;font-weight:800;color:#fff;margin-bottom:.5rem}
+        .alert-card p{font-size:.8rem;color:rgba(255,255,255,.65);line-height:1.7}
+        .domains-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:3.5rem}
+        .domain-tile{background:var(--subtle-gray);border-radius:14px;padding:1.4rem;display:flex;align-items:center;gap:1rem;transition:all .3s ease}
+        .domain-tile:hover{background:#fff;box-shadow:0 10px 24px rgba(26,93,106,.08);transform:translateX(4px)}
+        .dt-icon{font-size:1.4rem;width:44px;height:44px;background:linear-gradient(135deg,rgba(26,93,106,.1),rgba(129,171,179,.08));border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .domain-tile span{font-size:.85rem;font-weight:700;color:var(--primary-color)}
+        .final-cta{background:linear-gradient(160deg,#081e23 0%,#0d3d47 50%,#1a5d6a 100%);padding:7rem 0;text-align:center;position:relative;overflow:hidden}
+        .final-cta h2{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;color:#f3756e;margin-bottom:1rem;position:relative;z-index:1}
+        .final-cta p{color:rgba(255,255,255,.7);margin-bottom:2.5rem;position:relative;z-index:1}
+        .cta-btns{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+        .btn-cta-primary{background:#f3756e;color:#fff !important;padding:1rem 2.4rem;border-radius:50px;text-decoration:none;font-weight:700;transition:all .35s ease;box-shadow:0 10px 28px rgba(243,117,110,.35)}
+        .btn-cta-primary:hover{transform:translateY(-3px) scale(1.04)}
+        .btn-cta-ghost{background:transparent;color:rgba(255,255,255,.85) !important;padding:1rem 2.4rem;border-radius:50px;text-decoration:none;font-weight:700;border:1.5px solid rgba(255,255,255,.3);transition:all .35s ease}
+        .btn-cta-ghost:hover{background:rgba(255,255,255,.1);transform:translateY(-3px)}
+        @media(max-width:1100px){.timeline-steps{grid-template-columns:repeat(3,1fr)}.domains-grid{grid-template-columns:repeat(2,1fr)}}
+        @media(max-width:900px){.intro-grid{grid-template-columns:1fr;gap:3rem}.deliverables-grid{grid-template-columns:1fr}.alert-cards{grid-template-columns:1fr}}
+    </style>
+</head>
+<body>
+<div class="parallax-coral"><div class="coral-shape"></div><div class="coral-shape"></div><div class="coral-shape"></div><div class="coral-shape"></div></div>
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo-container"><a href="index_en.html"><img src="acropora-logo-transparent.png" alt="Acropora Data" class="logo"></a></div>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="javascript:void(0)" class="nav-link" style="cursor:default;">Company</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-4"><div class="mega-col"><div class="mega-col-title">About</div><a href="presentation_en.html"><span class="link-text"><strong>Who we are</strong><span>Our story and vision</span></span></a></div><div class="mega-col"><div class="mega-col-title">Approach</div><a href="approche-donnees_en.html"><span class="link-text"><strong>Our data approach</strong><span>Methodology & framework</span></span></a></div><div class="mega-col"><div class="mega-col-title">People</div><a href="equipe_en.html"><span class="link-text"><strong>Team</strong><span>Our data experts</span></span></a></div><div class="mega-col"><div class="mega-col-title">Commitment</div><a href="ethique_en.html"><span class="link-text"><strong>Ethics & values</strong><span>Our founding principles</span></span></a></div></div></div></li>
+            <li class="nav-item"><a href="javascript:void(0)" class="nav-link active" style="cursor:default;">Solutions & Expertise</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-4"><div class="mega-col"><div class="mega-col-title">MDM</div><a href="mdm_en.html"><span class="link-text"><strong>MDM & Integration</strong><span>Repositories & pipelines</span></span></a><a href="ai-foundations_en.html"><span class="link-text"><strong>AI Foundations</strong><span>AI-ready data landscapes</span></span></a></div><div class="mega-col"><div class="mega-col-title">Quality Assurance</div><a href="migration-mdm_en.html"><span class="link-text"><strong>Test Strategy</strong><span>Seamless transitions</span></span></a><a href="tests-validation_en.html"><span class="link-text"><strong>Test Automation</strong><span>Quality & compliance</span></span></a></div><div class="mega-col"><div class="mega-col-title">Analytics</div><a href="bi-analytique_en.html"><span class="link-text"><strong>BI & Analytics</strong><span>Insights & reporting</span></span></a></div><div class="mega-col"><div class="mega-col-title">Audit</div><a href="cadrage-projet_en.html"><span class="link-text"><strong>Project Scoping</strong><span>Structuring your initiatives</span></span></a></div></div></div></li>
+            <li class="nav-item"><a href="javascript:void(0)" class="nav-link" style="cursor:default;">Partners</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-5"><div class="mega-col"><div class="mega-col-title">Technology</div><a href="partenaires-technologiques_en.html"><span class="link-text"><strong>Technology Partners</strong><span>Informatica, Snowflake, Azure…</span></span></a></div><div class="mega-col"><div class="mega-col-title">Business</div><a href="partenaires-commerciaux_en.html"><span class="link-text"><strong>Business Partners</strong><span>Alliances & business synergies</span></span></a></div></div></div></li>
+            
+            <li class="nav-item"><a href="javascript:void(0)" class="nav-link cta-nav" style="cursor:default;">Contact</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-5"><div class="mega-col"><div class="mega-col-title">Join us</div><a href="carrieres_en.html"><span class="link-text"><strong>Careers</strong><span>Openings & applications</span></span></a></div><div class="mega-col"><div class="mega-col-title">Partnership</div><a href="devenir-partenaire_en.html"><span class="link-text"><strong>Become a Partner</strong><span>Join the ecosystem</span></span></a></div></div></div></li>
+            <li class="nav-item"><a href="cadrage-projet.html" class="lang-switch-btn" title="Passer en Français">FR</a></li>
+        </ul>
+        <button class="menu-toggle" onclick="document.querySelector('.nav-menu').classList.toggle('active')"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+<section class="page-hero" data-hero-anim="scoping"><div class="container"><h1 class="page-title">Project Scoping</h1><p class="page-subtitle">Building the right foundations for data excellence</p></div></section>
+
+<section class="intro-dark"><div class="container"><div class="intro-grid">
+    <div class="reveal reveal-left">
+        <span class="intro-label">STRUCTURED METHODOLOGY</span>
+        <h2 class="intro-title">From ambition<br><span>to executable roadmap</span></h2>
+        <p class="intro-text">A data project without solid scoping is like a construction site without a blueprint. At Acropora Data, every engagement begins with a rigorous scoping phase that defines the actual perimeter, risks, and expected outcomes.</p>
+        <p class="intro-text">Our scoping methodology reduces the risk of budget overruns by 3× and compresses the time between kickoff and first delivery by an average of 40%.</p>
+    </div>
+    <div class="stat-cards reveal reveal-right">
+        <div class="stat-card"><div class="stat-icon">📉</div><div class="stat-body"><strong>3×</strong><span>Fewer budget overruns with proper scoping</span></div></div>
+        <div class="stat-card"><div class="stat-icon">⚡</div><div class="stat-body"><strong>4–6 wks</strong><span>Average scoping phase duration</span></div></div>
+        <div class="stat-card"><div class="stat-icon">🎯</div><div class="stat-body"><strong>98%</strong><span>Client satisfaction rate after scoping</span></div></div>
+    </div>
+</div></div></section>
+
+<section class="page-section" style="background:#fff"><div class="container">
+    <div class="section-header reveal reveal-up"><span class="section-tag">OUR 5-STEP PROCESS</span><div class="section-line"></div><h2>A structured path to clarity</h2></div>
+    <div class="timeline-wrap reveal reveal-up">
+        <div class="timeline-track"></div>
+        <div class="timeline-steps">
+            <div class="t-step">
+                <div class="t-dot">01</div>
+                <h4>Discovery Audit</h4>
+                <p>360° inventory of your existing data landscape, tools, and processes.</p>
+            </div>
+            <div class="t-step">
+                <div class="t-dot">02</div>
+                <h4>Data Mapping</h4>
+                <p>Identification and documentation of all critical data flows and master data domains.</p>
+            </div>
+            <div class="t-step">
+                <div class="t-dot">03</div>
+                <h4>Scope Definition</h4>
+                <p>Precise perimeter for the project: included, excluded, phased — no ambiguity.</p>
+            </div>
+            <div class="t-step">
+                <div class="t-dot">04</div>
+                <h4>Roadmap</h4>
+                <p>Sequenced delivery plan with milestones, KPIs, resource requirements, and budget.</p>
+            </div>
+            <div class="t-step">
+                <div class="t-dot">05</div>
+                <h4>Stakeholder Validation</h4>
+                <p>Formal sign-off process with all stakeholders before implementation begins.</p>
+            </div>
+        </div>
+    </div>
+</div></section>
+
+<section class="page-section" style="background:var(--subtle-gray)"><div class="container">
+    <div class="section-header reveal reveal-up"><span class="section-tag">KEY DELIVERABLES</span><div class="section-line"></div><h2>Concrete outputs from every scoping engagement</h2></div>
+    <div class="deliverables-grid">
+        <div class="deliverable-card reveal reveal-up" style="transition-delay:0ms">
+            <span class="del-icon">🗺️</span>
+            <h4>Data Cartography Document</h4>
+            <p>A complete map of your data landscape — systems, flows, ownership, quality levels, and interdependencies. The foundation for all subsequent decisions.</p>
+        </div>
+        <div class="deliverable-card reveal reveal-up" style="transition-delay:100ms">
+            <span class="del-icon">📋</span>
+            <h4>Prioritized Project Charter</h4>
+            <p>A structured charter defining objectives, success criteria, constraints, assumptions, and a prioritized backlog of initiatives.</p>
+        </div>
+        <div class="deliverable-card reveal reveal-up" style="transition-delay:200ms">
+            <span class="del-icon">🛣️</span>
+            <h4>Executive Roadmap</h4>
+            <p>A sequenced, budgeted delivery roadmap with clear phases, go/no-go gates, and business value milestones for executive stakeholders.</p>
+        </div>
+        <div class="deliverable-card reveal reveal-up" style="transition-delay:300ms">
+            <span class="del-icon">⚠️</span>
+            <h4>Risk & Dependency Register</h4>
+            <p>An exhaustive register of technical, organizational, and regulatory risks with mitigation plans and dependency mapping across initiatives.</p>
+        </div>
+    </div>
+</div></section>
+
+<section class="page-section dark-green"><div class="container">
+    <div class="section-header reveal reveal-up"><span class="section-tag">WHY SCOPING MATTERS</span><div class="section-line"></div><h2>The numbers that justify investing in scoping</h2></div>
+    <div class="alert-cards">
+        <div class="alert-card reveal reveal-up" style="transition-delay:0ms">
+            <span class="alert-num">70%</span>
+            <h4>of data projects exceed budget</h4>
+            <p>Industry studies consistently show that 7 in 10 data projects overrun their budget — almost always due to poor initial scoping and unclear requirements.</p>
+        </div>
+        <div class="alert-card reveal reveal-up" style="transition-delay:150ms">
+            <span class="alert-num">40%</span>
+            <h4>faster time-to-value</h4>
+            <p>Organizations that invest in proper scoping reach their first measurable business outcome 40% faster than those who jump straight into implementation.</p>
+        </div>
+        <div class="alert-card reveal reveal-up" style="transition-delay:300ms">
+            <span class="alert-num">Day 1</span>
+            <h4>ROI visibility</h4>
+            <p>Our scoping engagements end with a business case that makes the expected ROI visible from day one — enabling confident investment decisions.</p>
+        </div>
+    </div>
+</div></section>
+
+<section class="page-section" style="background:#fff"><div class="container">
+    <div class="section-header reveal reveal-up"><span class="section-tag">DOMAINS WE COVER</span><div class="section-line"></div><h2>Scoping expertise across the full data landscape</h2></div>
+    <div class="domains-grid">
+        <div class="domain-tile reveal reveal-up" style="transition-delay:0ms"><div class="dt-icon">🗄️</div><span>Master Data Management</span></div>
+        <div class="domain-tile reveal reveal-up" style="transition-delay:60ms"><div class="dt-icon">🏛️</div><span>Data Governance</span></div>
+        <div class="domain-tile reveal reveal-up" style="transition-delay:120ms"><div class="dt-icon">📊</div><span>BI & Analytics</span></div>
+        <div class="domain-tile reveal reveal-up" style="transition-delay:180ms"><div class="dt-icon">☁️</div><span>Cloud Migration</span></div>
+        <div class="domain-tile reveal reveal-up" style="transition-delay:240ms"><div class="dt-icon">🔗</div><span>Data Integration</span></div>
+        <div class="domain-tile reveal reveal-up" style="transition-delay:300ms"><div class="dt-icon">🤖</div><span>AI Foundations</span></div>
+    </div>
+</div></section>
+
+<section class="final-cta"><div class="container">
+    <h2>Start with solid foundations</h2>
+    <p>A well-scoped project is a project that delivers — let's build yours together</p>
+    <div class="cta-btns">
+        <a href="contact_en.html" class="btn-cta-primary">Request a scoping session</a>
+        <a href="mdm_en.html" class="btn-cta-ghost">Explore our MDM expertise</a>
+    </div>
+</div></section>
+
+<footer class="footer"><div class="container"><div class="footer-content">
+    <div class="footer-section"><img src="acropora-logo-transparent.png" alt="Acropora Data" class="footer-logo"><p>Leader in Master Data Management</p></div>
+    <div class="footer-section"><h4>Company</h4><ul><li><a href="presentation_en.html">About us</a></li><li><a href="equipe_en.html">Team</a></li><li><a href="ethique_en.html">Ethics & values</a></li></ul></div>
+    <div class="footer-section"><h4>Solutions</h4><ul><li><a href="mdm_en.html">MDM & integration</a></li><li><a href="bi-analytique_en.html">BI & Analytics</a></li><li><a href="solutions-sur-mesure_en.html">Custom solutions</a></li></ul></div>
+    <div class="footer-section"><h4>Resources</h4><ul><li><a href="blog_en.html">Blog & Articles</a></li><li><a href="contact_en.html">Contact</a></li></ul></div>
+</div><div class="footer-bottom"><p>&copy; 2025 Acropora Data. All rights reserved.</p></div></div></footer>
+<script src="script.js"></script><script src="scroll-animations.js"></script><script src="pages.js"></script>
+<script src="hero-animations.js"></script>
+</body>
+</html>

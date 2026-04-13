@@ -1,0 +1,783 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MDM & Intégration - Acropora Data</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .mdm-highlights {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: -3rem;
+            margin-bottom: 5rem;
+            position: relative;
+            z-index: 10;
+        }
+        .highlight-card {
+            background: #fff; padding: 2.5rem 2rem; border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(26,93,106,.08); text-align: center;
+            border: 2px solid transparent; transition: all .3s;
+        }
+        .highlight-card:hover { transform: translateY(-8px); box-shadow: 0 16px 40px rgba(26,93,106,.14); border-color: var(--accent-color); }
+        .highlight-card h3 { font-size: 1.25rem; color: var(--primary-color); font-weight: 700; margin: 0; }
+        
+        .glowing-phrase {
+            text-align: center; font-size: 1.8rem; line-height: 1.4;
+            max-width: 900px; margin: 0 auto 2rem; font-weight: 700;
+            color: var(--primary-color); animation: text-glow 2.5s infinite alternate;
+        }
+        @keyframes text-glow {
+            from { text-shadow: 0 0 2px rgba(74, 159, 168, 0.1); }
+            to { text-shadow: 0 0 15px rgba(74, 159, 168, 0.6), 0 0 30px rgba(74, 159, 168, 0.3); }
+        }
+        .mdm-infographic { text-align: center; margin-bottom: 5rem; }
+        .mdm-infographic img { 
+            max-width: 100%; height: auto; 
+            background: transparent !important; 
+            border: none !important; 
+            box-shadow: none !important; 
+        }
+        .mdm-intro-text {
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto 4rem;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #81abb3;
+        }
+        .mdm-cta-container {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 4rem;
+        }
+        .btn-mdm-primary {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+        .btn-mdm-primary:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+        .btn-mdm-secondary {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        .btn-mdm-secondary:hover {
+            background: var(--subtle-gray);
+            transform: translateY(-3px);
+        }
+
+        .final-cta-section {
+            padding-top: 3rem;
+            padding-bottom: 4rem;
+            margin-top: 2rem;
+        }
+        .final-cta-box {
+            position: relative;
+            max-width: 940px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            background: rgba(255,255,255,0.96);
+            border-radius: 30px;
+            box-shadow: 0 25px 60px rgba(15,97,112,0.12);
+            overflow: hidden;
+        }
+        .final-cta-box::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top left, rgba(129,171,179,0.16), transparent 32%), radial-gradient(circle at bottom right, rgba(243,117,110,0.14), transparent 30%);
+            pointer-events: none;
+        }
+        .final-cta-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1.05;
+            color: #0f6170;
+            margin: 0 0 1rem;
+            font-weight: 800;
+            text-align: center;
+            animation: final-cta-glow 3s ease-in-out infinite alternate;
+            position: relative;
+            z-index: 1;
+        }
+        .final-cta-text {
+            font-size: 1.1rem;
+            color: #0f6170;
+            line-height: 1.8;
+            max-width: 760px;
+            margin: 0 auto 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .final-cta-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        .final-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 210px;
+            padding: 1rem 1.9rem;
+            border-radius: 999px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .final-cta-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 60%);
+            transform: translate(-50%, -50%) scale(0.2);
+            opacity: 0;
+            transition: transform .4s ease, opacity .4s ease;
+        }
+        .final-cta-btn:hover::after {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+        .final-cta-primary {
+            background: linear-gradient(135deg, #0f6170, #81abb3);
+            color: #fff;
+            box-shadow: 0 18px 40px rgba(15,97,112,0.18);
+        }
+        .final-cta-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 22px 50px rgba(15,97,112,0.28);
+        }
+        .final-cta-secondary {
+            background: rgba(15,97,112,0.08);
+            color: #0f6170;
+            border: 2px solid rgba(15,97,112,0.18);
+        }
+        .final-cta-secondary:hover {
+            background: rgba(15,97,112,0.16);
+            transform: translateY(-4px);
+            box-shadow: 0 18px 40px rgba(15,97,112,0.12);
+        }
+        @keyframes final-cta-glow {
+            from { text-shadow: 0 0 8px rgba(129,171,179,0.2); }
+            to { text-shadow: 0 0 24px rgba(129,171,179,0.35); }
+        }
+
+        /* ── STYLES CHALLENGE (Format Home Expertise) ─────────── */
+        .challenge-section { padding: 7rem 0; background: var(--white); text-align: center; }
+        .challenge-tag { color: var(--accent-color); font-weight: 800; letter-spacing: 0.15em; font-size: 0.9rem; margin-bottom: 1rem; display: block; }
+        .home-divider { width: 70px; height: 4px; background: linear-gradient(90deg, var(--primary-color), var(--accent-color)); border-radius: 2px; margin: 0 auto 1.5rem; }
+        .home-section-title { font-size: clamp(2rem,3.5vw,3rem); font-weight: 800; color: var(--primary-color); margin-bottom: .75rem; }
+        .home-section-subtitle { color: var(--text-medium); font-size: 1.1rem; max-width: 700px; margin: 0 auto 4rem; }
+        
+        .key-expertise-grid {
+            display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 3rem;
+        }
+        .key-exp-item {
+            flex: 0 1 240px; aspect-ratio: 1; border-radius: 50%; background: #fff;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; padding: 2rem; transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: default; position: relative; border: 1px solid rgba(26, 93, 106, 0.1);
+            box-shadow: 0 10px 30px rgba(26, 93, 106, 0.04);
+        }
+        .key-exp-item:hover {
+            transform: scale(1.05); background: var(--primary-color); border: 5px solid #f3756e;
+            box-shadow: 0 0 25px rgba(243, 117, 110, 0.6), 0 20px 50px rgba(26, 93, 106, 0.15);
+        }
+        .key-exp-item h3 {
+            font-size: 1.1rem; color: var(--primary-color); font-weight: 700; transition: all 0.4s; margin: 0; line-height: 1.3;
+        }
+        .key-exp-item p {
+            font-size: 0.85rem; color: rgba(255, 255, 255, 0.9); position: absolute; padding: 0 1.5rem;
+            opacity: 0; transform: translateY(20px); transition: all 0.4s; margin: 0;
+        }
+        .key-exp-item:hover h3 { opacity: 0; transform: translateY(-20px); }
+        .key-exp-item:hover p { opacity: 1; transform: translateY(0); }
+
+        .radiating-impact {
+            text-align: center;
+            font-size: clamp(2.2rem, 6vw, 3.5rem);
+            font-weight: 800;
+            max-width: 1100px;
+            margin: 6rem auto;
+            line-height: 1.2;
+            animation: impact-glow 3s infinite alternate;
+        }
+        @keyframes impact-glow {
+            from { color: var(--primary-color); text-shadow: 0 0 10px rgba(26, 93, 106, 0.1); }
+            to { color: #f3756e; text-shadow: 0 0 25px rgba(243, 117, 110, 0.6), 0 0 50px rgba(243, 117, 110, 0.3); }
+        }
+
+        .design-intro {
+            text-align: center; font-size: 1.8rem; font-weight: 700;
+            color: var(--primary-color); margin: 0.5rem auto 3rem;
+        }
+        .design-circles-area {
+            position: relative; width: 100%; height: 450px; margin-bottom: 4rem;
+        }
+        .design-circle {
+            width: 260px; height: 260px; border-radius: 50%; border: 2px solid #81abb3;
+            background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(5px);
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; padding: 2.5rem; color: var(--primary-color);
+            font-weight: 700; font-size: 1.1rem; position: absolute;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            animation: designFloat 12s infinite ease-in-out;
+            box-shadow: 0 15px 35px rgba(26, 93, 106, 0.08);
+        }
+        .design-circle:hover { transform: scale(1.1); z-index: 20; background: #fff; border-color: var(--accent-color); box-shadow: 0 0 25px rgba(74, 159, 168, 0.6), 0 0 50px rgba(74, 159, 168, 0.3); }
+        .dc-1 { left: 5%; top: 50px; animation-duration: 11s; }
+        .dc-2 { left: 38%; top: 150px; animation-duration: 13s; animation-delay: -2s; }
+        .dc-3 { right: 5%; top: 50px; animation-duration: 10s; animation-delay: -4s; }
+
+        @keyframes designFloat {
+            0%, 100% { margin-top: 0; margin-left: 0; }
+            33% { margin-top: -25px; margin-left: 15px; }
+            66% { margin-top: 25px; margin-left: -20px; }
+        }
+
+        /* Logique de transition pour les éléments reveal */
+        .reveal { opacity: 0; transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-up { transform: translateY(40px); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .design-conclusion {
+            text-align: center; font-size: clamp(1.4rem, 3vw, 1.8rem); font-weight: 700;
+            color: #81abb3; max-width: 900px; margin: 0 auto 6rem;
+            line-height: 1.4; transition: all 2s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0; transform: translateY(30px); filter: blur(15px);
+        }
+        .design-conclusion.active { 
+            opacity: 1; transform: translateY(0); filter: blur(0);
+            animation: final-glow 4s infinite alternate;
+        }
+        @keyframes final-glow {
+            from { text-shadow: 0 0 5px rgba(129, 171, 179, 0.2); }
+            to { text-shadow: 0 0 15px rgba(129, 171, 179, 0.5); }
+        }
+
+        .key-message-highlight {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 30px;
+            text-align: center;
+            max-width: 1100px;
+            margin: 4rem auto;
+            box-shadow: 0 25px 50px rgba(26, 93, 106, 0.2);
+        }
+        .key-message-highlight h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.3; margin: 0; }
+
+        /* ── STYLES CE QUE NOUS FAISONS (Format sur mesure) ────── */
+        .sur-mesure-wrap { display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: flex-start; margin-top: 2rem; }
+        .sur-mesure-text h2 { font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 800; color: var(--primary-color); margin-bottom: 1rem; line-height: 1.2; text-align: left; }
+        .sur-mesure-text p { color: #81abb3; margin-bottom: 2rem; font-size: 1.05rem; line-height: 1.8; text-align: left; }
+        .sur-mesure-visual {
+            background: linear-gradient(135deg, #0d3d47, #1a5d6a);
+            border-radius: 24px; padding: 2.5rem;
+            display: flex; flex-direction: column; gap: 1rem;
+            position: relative; overflow: hidden;
+        }
+        .sm-node {
+            background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
+            border-radius: 14px; padding: 1rem 1.2rem;
+            display: flex; align-items: center; gap: 1rem;
+            transition: all .3s; cursor: default;
+        }
+        .sm-node:hover { background: rgba(255,255,255,.15); transform: translateX(8px); }
+        .sm-node-icon { font-size: 1.5rem; flex-shrink: 0; }
+        .sm-node-text strong { display: block; color: #fff; font-size: .95rem; font-weight: 700; margin-bottom: 2px; }
+        .sm-node-text span { font-size: .8rem; color: rgba(255,255,255,.7); line-height: 1.4; display: block; text-align: left; }
+        .sm-connector { width: 2px; height: 15px; background: linear-gradient(to bottom, rgba(127,196,201,.4), rgba(127,196,201,.1)); margin-left: 2rem; }
+
+        /* Styles additionnels pour 6 étapes */
+        .approche-step.s5 { border-top-color: #a2d2d6; z-index: 1; }
+        .approche-step.s6 { border-top-color: #c5e4e7; z-index: 0; }
+
+        .approach-section { background: var(--white); padding: 2rem 0 2rem; }
+
+        /* ── ANIMATION OCÉANIQUE DES LOGOS ─────────────────────── */
+        .ocean-partners-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .floating-partner {
+            position: absolute;
+            width: 115px;
+            opacity: 0.9;
+            filter: drop-shadow(0 8px 20px rgba(26, 93, 106, 0.15));
+            transition: all 0.5s ease;
+        }
+        @keyframes oceanFloat {
+            0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            33% { transform: translate(30px, -50px) rotate(4deg) scale(1.05); }
+            66% { transform: translate(-20px, 20px) rotate(-3deg) scale(0.95); }
+            100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+        }
+        .fp-1 { top: 55%; left: 42%; animation: oceanFloat 18s infinite ease-in-out; }
+        .fp-2 { top: 60%; right: 30%; animation: oceanFloat 22s infinite ease-in-out -2s; }
+        .fp-3 { top: 60%; left: 5%; animation: oceanFloat 20s infinite ease-in-out -5s; }
+        .fp-4 { bottom: 15%; right: 8%; animation: oceanFloat 25s infinite ease-in-out -8s; }
+        .fp-5 { bottom: 10%; left: 20%; animation: oceanFloat 19s infinite ease-in-out -3s; }
+        .fp-6 { bottom: 5%; right: 25%; animation: oceanFloat 21s infinite ease-in-out -6s; }
+
+        @media (max-width: 768px) {
+            .floating-partner { width: 65px; opacity: 0.5; }
+        }
+
+        /* ── HOVER EFFECTS USE CASES ─────────────────────────── */
+        .benefit-item { transition: all 0.3s ease !important; border: 2px solid transparent !important; }
+        .benefit-item:hover {
+            background: white !important;
+            border-color: #f3756e !important;
+            transform: translateY(-5px) !important;
+            justify-content: center !important;
+        }
+        .benefit-hover-text {
+            display: none;
+            color: #f3756e;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+        .benefit-item:hover .benefit-content-default { display: none; }
+        .benefit-item:hover .benefit-hover-text { display: block; }
+
+        .cap-conclusion {
+            text-align: center;
+            margin-top: 4rem;
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .mdm-highlights { grid-template-columns: 1fr; margin-top: 2rem; }
+            .glowing-phrase { font-size: 1.4rem; }
+            .mdm-cta-container { flex-direction: column; align-items: center; }
+            .design-circles-area { height: auto; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+            .design-circle { position: static; width: 220px; height: 220px; animation: none; }
+            .design-conclusion { margin-top: 2rem; }
+            .sur-mesure-wrap { grid-template-columns: 1fr; gap: 3rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="parallax-coral"><div class="coral-shape"></div><div class="coral-shape"></div><div class="coral-shape"></div><div class="coral-shape"></div></div>
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo-container">
+            <a href="index.html"><img src="acropora-logo-transparent.png" alt="Acropora Data" class="logo"></a>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link" style="cursor: default;">Présentation</a>
+                <div class="mega-menu">
+                    <div class="mega-menu-inner mega-menu-4">
+                        <div class="mega-col"><div class="mega-col-title">L'entreprise</div><a href="presentation.html"><span class="link-text"><strong>Qui sommes-nous ?</strong><span>Notre histoire et vision</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Méthode</div><a href="approche-donnees.html"><span class="link-text"><strong>Notre approche données</strong><span>Méthodologie & framework</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Personnes</div><a href="equipe.html"><span class="link-text"><strong>Équipe</strong><span>Nos experts data</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Engagement</div><a href="ethique.html"><span class="link-text"><strong>Éthique & valeurs</strong><span>Nos principes fondateurs</span></span></a></div>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link active" style="cursor: default;">Solutions & Expertise</a>
+                <div class="mega-menu">
+                    <div class="mega-menu-inner mega-menu-4">
+                        <div class="mega-col"><div class="mega-col-title">MDM</div><a href="mdm.html"><span class="link-text"><strong>MDM & Intégration</strong><span>Référentiels & pipelines</span></span></a><a href="ai-foundations.html"><span class="link-text"><strong>Fondations IA</strong><span>Données prêtes pour l'IA</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Assurance Qualité</div><a href="migration-mdm.html"><span class="link-text"><strong>Stratégie de Tests</strong><span>Transition sans interruption</span></span></a><a href="tests-validation.html"><span class="link-text"><strong>Automatisation de Tests</strong><span>Qualité & conformité</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Analytics</div><a href="bi-analytique.html"><span class="link-text"><strong>BI & Analytique</strong><span>Insights et reporting</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Audit</div><a href="cadrage-projet.html"><span class="link-text"><strong>Cadrage de projet</strong><span>Structurer vos initiatives</span></span></a></div>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link" style="cursor: default;">Partenaires</a>
+                <div class="mega-menu">
+                    <div class="mega-menu-inner mega-menu-5">
+                        <div class="mega-col">
+                            <div class="mega-col-title">Technologie</div>
+                            <a href="partenaires-technologiques.html"><span class="link-text"><strong>Partenaires technologiques</strong><span>Informatica, Snowflake, Azure…</span></span></a>
+                        </div>
+                        <div class="mega-col">
+                            <div class="mega-col-title">Business</div>
+                            <a href="partenaires-commerciaux.html"><span class="link-text"><strong>Partenaires commerciaux</strong><span>Alliances et synergies business</span></span></a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link cta-nav" style="cursor: default;">Contact</a>
+                <div class="mega-menu">
+                    <div class="mega-menu-inner mega-menu-5">
+                        <div class="mega-col"><div class="mega-col-title">Rejoindre</div><a href="carrieres.html"><span class="link-text"><strong>Carrières</strong><span>Offres & candidatures</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Partenariat</div><a href="devenir-partenaire.html"><span class="link-text"><strong>Devenir partenaire</strong><span>Rejoindre l'écosystème</span></span></a></div>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="mdm_en.html" class="lang-switch-btn" title="Switch to English">EN</a>
+            </li>
+        </ul>
+        <button class="menu-toggle" onclick="document.querySelector('.nav-menu').classList.toggle('active')"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+<section class="page-hero" data-hero-anim="mdm">
+    <div class="container">
+        <h1 class="page-title">MDM & Intégration</h1>
+        <p class="page-subtitle">Gestion des données de référence — hub unique & synchronisé</p>
+    </div>
+</section>
+
+<section class="page-section" style="padding-top: 0; padding-bottom: 2rem;">
+    <div class="container">
+        <div class="mdm-highlights">
+            <div class="highlight-card"><h3>Maîtrisez vos données</h3></div>
+            <div class="highlight-card"><h3>Connectez vos systèmes</h3></div>
+            <div class="highlight-card"><h3>Pilotez votre activité</h3></div>
+        </div>
+
+        <div class="glowing-phrase">
+            Vos données n'ont de valeur que si elles sont cohérentes, gouvernées et partagées au sein de votre écosystème.
+        </div>
+
+        <div class="mdm-intro-text">
+            <p>Chez ACROPORA DATA, nous aidons les organisations à concevoir, mettre en œuvre et industrialiser des architectures de Master Data Management et d'Intégration de Données qui soutiennent les opérations critiques de l'entreprise.</p>
+            <p style="margin-top: 1.5rem;">Des référentiels de base aux flux de données à l'échelle de l'entreprise, nous garantissons que vos données sont fiables, synchronisées et exploitables.</p>
+        </div>
+
+        <div class="mdm-infographic reveal reveal-up">
+            <img src="MDM-integration.fr.png" alt="Stratégie MDM & Intégration">
+        </div>
+
+        <div class="mdm-cta-container reveal reveal-up">
+            <a href="contact.html" class="btn btn-mdm-primary">Parler à un expert</a>
+            <a href="approche-donnees.html" class="btn btn-mdm-secondary">Découvrir notre approche</a>
+        </div>
+
+        <!-- SECTION LE DÉFI -->
+        <div class="challenge-section reveal reveal-up">
+            <span class="challenge-tag">LE DÉFI</span>
+            <div class="home-divider"></div>
+            <h2 class="home-section-title">Pourquoi les projets MDM & intégration échouent</h2>
+            <p class="home-section-subtitle" style="color: #81abb3;">De nombreuses organisations sont confrontées à des paysages de données fragmentés :</p>
+            
+            <div class="key-expertise-grid">
+                <div class="key-exp-item fade-in">
+                    <h3>Systèmes fragmentés</h3>
+                    <p>Plusieurs systèmes gérant les mâmes données (ERP, outils, legacy)</p>
+                </div>
+                <div class="key-exp-item fade-in" style="transition-delay: 100ms;">
+                    <h3>Règles incohérentes</h3>
+                    <p>Définitions et règles métier incohérentes selon les départements</p>
+                </div>
+                <div class="key-exp-item fade-in" style="transition-delay: 200ms;">
+                    <h3>Processus manuels</h3>
+                    <p>Processus manuels (Excel, flux d'e-mails…) ralentissant l'activité</p>
+                </div>
+                <div class="key-exp-item fade-in" style="transition-delay: 300ms;">
+                    <h3>Désynchronisation</h3>
+                    <p>Manque de synchronisation fiable entre les systèmes cœurs</p>
+                </div>
+                <div class="key-exp-item fade-in" style="transition-delay: 400ms;">
+                    <h3>Mauvaise qualité</h3>
+                    <p>Doublons de données et mauvaise qualité empâchant des décisions fiables</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="radiating-impact reveal reveal-up">
+            "Sans un MDM et une intégration solides, vos données deviennent un fardeau plutôt qu'un atout"
+        </div>
+
+        <!-- SECTION NOTRE VISION -->
+        <div class="challenge-section reveal reveal-up" style="padding-top: 0; padding-bottom: 0; margin-top: 2rem;">
+            <span class="challenge-tag">NOTRE VISION</span>
+            <div class="home-divider"></div>
+            <h2 class="home-section-title">D'un paysage fragmenté à un écosystème de données unifié</h2>
+            <p class="mdm-intro-text" style="color: #81abb3; margin-top: 2rem; margin-bottom: 0 !important;">
+                Nous imaginons un monde où les données circulent de manière fluide au sein de l'entreprise, gouvernées par des règles claires et délivrées avec une confiance absolue. Notre mission est de combler le fossé entre complexité technique et agilité métier, en créant les fondations fiables dont votre organisation a besoin pour prospérer à l'ère de l'IA.
+            </p>
+        </div>
+
+        <!-- SECTION DESIGN -->
+        <div class="reveal reveal-up">
+            <h2 class="design-intro">Chez ACROPORA, nous concevons :</h2>
+            <div class="design-circles-area">
+                <div class="design-circle dc-1">Référentiels centraux (produits, fournisseurs, clients…)</div>
+                <div class="design-circle dc-2">Modèles de gouvernance clairs</div>
+                <div class="design-circle dc-3">Flux d'intégration fiables entre les systèmes</div>
+            </div>
+            <div class="design-conclusion reveal">
+                ...afin que chaque système consomme la mâme donnée de confiance.
+            </div>
+        </div>
+
+        <div class="key-message-highlight reveal reveal-up">
+            <h2>"Une source unique de vérité ne suffit pas.<br>Vous avez besoin d'un écosystème de données de confiance."</h2>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION CE QUE NOUS FAISONS -->
+<section class="page-section gray-bg reveal reveal-up" style="padding-top: 2rem; padding-bottom: 2rem;">
+    <div class="container">
+        <div class="sur-mesure-wrap">
+            <div class="sur-mesure-text">
+                <span class="challenge-tag">CE QUE NOUS FAISONS</span>
+                <div class="home-divider" style="margin: 1rem 0 1.5rem;"></div>
+                <h2>Capacités MDM & Intégration de bout en bout</h2>
+                <p>Chez ACROPORA DATA, nous bâtissons des socles de données résilients qui propulsent la croissance de votre entreprise. Notre approche dépasse la simple intégration technique : nous concevons des écosystèmes où l'information est précise, gouvernée et immédiatement exploitable.</p>
+                <p>De la définition de modèles de données maîtres complexes à l'automatisation des cycles de tests de bout en bout, nous comblons le fossé entre les silos techniques et les opérations stratégiques de nos clients internationaux.</p>
+            </div>
+            <div class="sur-mesure-visual">
+                <div class="sm-node">
+                    <span class="sm-node-icon"></span>
+                    <div class="sm-node-text">
+                        <strong>Master Data Management</strong>
+                        <span>Design de modèles • Mise en œuvre de référentiels (Produit, Fournisseur, Client…) • Workflows • Gouvernance • EBX/Semarchy/Reltio</span>
+                    </div>
+                </div>
+                <div class="sm-connector"></div>
+                <div class="sm-node">
+                    <span class="sm-node-icon"></span>
+                    <div class="sm-node-text">
+                        <strong>Intégration de données</strong>
+                        <span>Design de flux • Architectures API/ETL • Synchronisation ERP/MDM • Transformation et mapping • Temps réel & batch</span>
+                    </div>
+                </div>
+                <div class="sm-connector"></div>
+                <div class="sm-node">
+                    <span class="sm-node-icon"></span>
+                    <div class="sm-node-text">
+                        <strong>Qualité des données</strong>
+                        <span>Définition de règles métier • Contrôles & validation • Monitoring et alertes • Processus de remédiation</span>
+                    </div>
+                </div>
+                <div class="sm-connector"></div>
+                <div class="sm-node">
+                    <span class="sm-node-icon"></span>
+                    <div class="sm-node-text">
+                        <strong>Automatisation de Tests</strong>
+                        <span>Tests de flux de bout en bout • Non-régression référentiels • Automatisation (UiPath) • Validation scénarios métier</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cap-conclusion reveal reveal-up">
+            Nous garantissons que vos données fonctionnent en conditions réelles.
+        </div>
+    </div>
+</section>
+
+<!-- SECTION NOTRE APPROCHE -->
+<section class="approach-section reveal reveal-up">
+    <div class="container">
+        <div class="section-header">
+            <span class="challenge-tag">NOTRE APPROCHE</span>
+            <div class="home-divider" style="margin: 1rem auto 1.5rem;"></div>
+            <h2 class="home-section-title">Une méthodologie pragmatique et orientée métier</h2>
+        </div>
+
+        <div class="approche-flow" style="margin-top: 4rem;">
+            <div class="approche-step s1">
+                <div class="approche-step-num">1</div>
+                <h3>Comprendre votre écosystème</h3>
+                <p>Systèmes, flux, points de douleur, parties prenantes</p>
+            </div>
+            <div class="approche-step s2">
+                <div class="approche-step-num">2</div>
+                <h3>Définir l'architecture cible</h3>
+                <p>MDM + intégration + gouvernance</p>
+            </div>
+            <div class="approche-step s3">
+                <div class="approche-step-num">3</div>
+                <h3>Concevoir les processus métier</h3>
+                <p>Création, modification, validation</p>
+            </div>
+            <div class="approche-step s4">
+                <div class="approche-step-num">4</div>
+                <h3>Implémenter et intégrer</h3>
+                <p>Outils, flux, synchronisation</p>
+            </div>
+            <div class="approche-step s5">
+                <div class="approche-step-num">5</div>
+                <h3>Sécuriser par les tests</h3>
+                <p>Validation de bout en bout</p>
+            </div>
+            <div class="approche-step s6">
+                <div class="approche-step-num">6</div>
+                <h3>Industrialiser</h3>
+                <p>Monitoring, gouvernance, amélioration continue</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION USE CASES -->
+<section class="page-section reveal reveal-up" style="padding-top: 2rem; padding-bottom: 1rem;">
+    <div class="container">
+        <div class="section-header">
+            <span class="challenge-tag">USE CASES</span>
+            <div class="home-divider" style="margin: 1rem auto 1.5rem;"></div>
+            <h2 class="home-section-title">Cas d'usage métier concrets</h2>
+        </div>
+        <div class="benefits-grid" style="margin-top: 2rem; grid-template-columns: repeat(2, 1fr); max-width: 850px; margin-left: auto; margin-right: auto; gap: 1.5rem;">
+            <div class="benefit-item fade-in" style="flex-direction: column; align-items: flex-start; text-align: left; padding: 1rem 1.5rem; min-height: 110px;">
+                <div class="benefit-content-default">
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem; font-size: 1.15rem; font-weight: 700;">Gestion des données Supply Chain</h3>
+                    <p style="font-size: 0.95rem; color: var(--text-medium); margin: 0; line-height: 1.6;">Référentiels produits • Données fournisseurs • Données logistiques</p>
+                </div>
+                <div class="benefit-hover-text">Improve operations and reduce errors</div>
+            </div>
+            <div class="benefit-item fade-in" style="flex-direction: column; align-items: flex-start; text-align: left; padding: 1rem 1.5rem; min-height: 110px;">
+                <div class="benefit-content-default">
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem; font-size: 1.15rem; font-weight: 700;">Synchronisation ERP</h3>
+                    <p style="font-size: 0.95rem; color: var(--text-medium); margin: 0; line-height: 1.6;">MDM ↔ SAP / ERP • Cohérence des données entre systèmes</p>
+                </div>
+                <div class="benefit-hover-text">Eliminate duplication and inconsistencies</div>
+            </div>
+            <div class="benefit-item fade-in" style="flex-direction: column; align-items: flex-start; text-align: left; padding: 1rem 1.5rem; min-height: 110px;">
+                <div class="benefit-content-default">
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem; font-size: 1.15rem; font-weight: 700;">Gestion du cycle de vie produit (PLM)</h3>
+                    <p style="font-size: 0.95rem; color: var(--text-medium); margin: 0; line-height: 1.6;">Création, mises à jour, fin de vie • Workflows multi-équipes</p>
+                </div>
+                <div class="benefit-hover-text">Gain visibility and control</div>
+            </div>
+            <div class="benefit-item fade-in" style="flex-direction: column; align-items: flex-start; text-align: left; padding: 1rem 1.5rem; min-height: 110px;">
+                <div class="benefit-content-default">
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem; font-size: 1.15rem; font-weight: 700;">Migration & Transformation de données</h3>
+                    <p style="font-size: 0.95rem; color: var(--text-medium); margin: 0; line-height: 1.6;">Legacy vers MDM moderne (EBX 5 → 6, etc.) • Nettoyage et restructuration</p>
+                </div>
+                <div class="benefit-hover-text">Secure critical transitions</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION TECHNOLOGIES -->
+<section class="page-section alt-bg reveal reveal-up" style="padding-top: 6rem; padding-bottom: 12rem; position: relative; min-height: 600px; overflow: hidden;">
+    <div class="ocean-partners-bg" style="z-index: 0;">
+        <img src="reltio.png" class="floating-partner fp-1" alt="Reltio">
+        <img src="semarchy.png" class="floating-partner fp-2" alt="Semarchy">
+        <img src="tibco-ebx.png" class="floating-partner fp-3" alt="TIBCO EBX">
+        <img src="sap-ecosystems.png" class="floating-partner fp-4" alt="SAP">
+        <img src="ui-path.png" class="floating-partner fp-5" alt="UiPath">
+        <img src="talend.png" class="floating-partner fp-6" alt="Talend">
+    </div>
+    <div class="container" style="position: relative; z-index: 1;">
+        <div class="section-header">
+            <span class="challenge-tag">TECHNOLOGIES</span>
+            <div class="home-divider" style="margin: 1rem auto 1.5rem;"></div>
+            <h2 class="home-section-title">Outils & écosystèmes maîtrisés</h2>
+        </div>
+    </div>
+</section>
+
+<!-- NEW SECTION: WHY ACROPORA -->
+<section class="page-section" style="margin-top: -4rem;">
+    <div class="container">
+        <div class="section-header">
+            <span class="challenge-tag">POURQUOI ACROPORA</span>
+            <div class="home-divider" style="margin: 1rem auto 1.5rem;"></div>
+            <h2 class="home-section-title">Une approche différente du MDM & de l'intégration</h2>
+        </div>
+        <div class="why-acropora-content">
+            <div class="why-acropora-img-wrapper reveal reveal-left">
+                <img src="DSC_0741.JPG" alt="Pourquoi Acropora Data">
+            </div>
+            <div class="why-acropora-text-content reveal reveal-right">
+                <p style="color: #81abb3;">Chez Acropora Data, nous ne nous contentons pas d'implémenter des outils ; nous apportons un mélange unique d'expertise approfondie et une mentalité orientée vers le métier à chaque projet MDM et d'intégration.</p>
+                <ul>
+                    <li><strong>Expertise MDM approfondie :</strong> Expérience réelle sur des référentiels complexes (SNCF, supply chain, etc.)</li>
+                    <li><strong>Approche axée sur la QA :</strong> Nous ne nous contentons pas de livrer – nous sécurisons, garantissant la qualité et la fiabilité des données dès le jour un.</li>
+                    <li><strong>Compréhension métier :</strong> Nous alignons les stratégies de données avec vos véritables processus opérationnels et objectifs stratégiques.</li>
+                    <li><strong>Modèle de livraison agile :</strong> Basé à l'île Maurice, bilingue, exécution de haute qualité avec des avantages concurrentiels.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION FINAL CTA -->
+<section class="page-section final-cta-section reveal reveal-up" style="margin-top: -3rem; padding-top: 1rem; padding-bottom: 3rem;">
+    <div class="container">
+        <div class="final-cta-box">
+            <h2 class="final-cta-title">Prât à structurer et connecter vos données ?</h2>
+            <p class="final-cta-text">Concevons une architecture de données qui soutient vos opérations, réduit les risques et prépare votre avenir.</p>
+            <div class="final-cta-actions">
+                <a href="contact.html" class="final-cta-btn final-cta-primary">Réserver une réunion</a>
+                <a href="contact.html" class="final-cta-btn final-cta-secondary">Parlez à nos experts</a>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <img src="acropora-logo-transparent.png" alt="Acropora Data" class="footer-logo">
+                <p>Leader en Master Data Management</p>
+                <p style="margin-top:1rem;font-size:.85rem;opacity:.7">Transformez vos données en actifs stratégiques</p>
+            </div>
+            <div class="footer-section">
+                <h4>Présentation</h4>
+                <ul>
+                    <li><a href="presentation.html">Qui sommes-nous ?</a></li>
+                    <li><a href="approche-donnees.html">Notre approche données</a></li>
+                    <li><a href="equipe.html">Équipe</a></li>
+                    <li><a href="ethique.html">Éthique & valeurs</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Solutions & Expertise</h4>
+                <ul>
+                    <li><a href="mdm.html">MDM & intégration</a></li>
+                    <li><a href="bi-analytique.html">BI & Analytique</a></li>
+                    <li><a href="tests-validation.html">Automatisation de Tests</a></li>
+                    <li><a href="solutions-sur-mesure.html">Solutions sur mesure</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Ressources</h4>
+                <ul>
+                    <li><a href="blog.html">Blog & Articles</a></li>
+                    <li><a href="etudes-de-cas.html">Études de cas</a></li>
+                    <li><a href="academie.html">Acropora Academy</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Acropora Data. Tous droits réservés.</p>
+        </div>
+    </div>
+</footer>
+<script src="script.js"></script>
+<script src="scroll-animations.js"></script>
+<script src="pages.js"></script>
+<script src="hero-animations.js"></script>
+</body>
+</html>

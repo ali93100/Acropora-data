@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Data Approach - Acropora Data</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .approche-detail-popover { display: none !important; }
+    </style>
+</head>
+<body>
+<div class="parallax-coral"><div class="coral-shape"></div><div class="coral-shape"></div><div class="coral-shape"></div><div class="coral-shape"></div></div>
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo-container">
+            <a href="index_en.html"><img src="acropora-logo-transparent.png" alt="Acropora Data" class="logo"></a>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link active" style="cursor: default;">About Us</a>
+                <div class="mega-menu">
+                    <div class="mega-menu-inner mega-menu-4">
+                        <div class="mega-col"><div class="mega-col-title">The Company</div><a href="presentation_en.html"><span class="link-text"><strong>Overview</strong><span>Our history and vision</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Method</div><a href="approche-donnees_en.html"><span class="link-text"><strong>Our Data Approach</strong><span>Methodology & framework</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">People</div><a href="equipe_en.html"><span class="link-text"><strong>Team</strong><span>Our data experts</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Commitment</div><a href="ethique_en.html"><span class="link-text"><strong>Ethics & Values</strong><span>Our founding principles</span></span></a></div>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link" style="cursor: default;">Solutions & Expertise</a>
+                <div class="mega-menu">
+                    <div class="mega-menu-inner mega-menu-4">
+                        <div class="mega-col"><div class="mega-col-title">MDM</div><a href="mdm_en.html"><span class="link-text"><strong>MDM & Integration</strong><span>Repositories & pipelines</span></span></a><a href="ai-foundations_en.html"><span class="link-text"><strong>AI Foundations</strong><span>AI-ready data landscapes</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Migration</div><a href="migration-mdm_en.html"><span class="link-text"><strong>Test Strategy</strong><span>Seamless transition</span></span></a><a href="tests-validation_en.html"><span class="link-text"><strong>Automation Testing</strong><span>Quality & compliance</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Analytics</div><a href="bi-analytique_en.html"><span class="link-text"><strong>BI & Analytics</strong><span>Insights and reporting</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Audit</div><a href="cadrage-projet_en.html"><span class="link-text"><strong>Project Scoping</strong><span>Structuring your initiatives</span></span></a></div>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link" style="cursor: default;">Partners</a>
+                <div class="mega-menu">
+                    <div class="mega-menu-inner mega-menu-5">
+                        <div class="mega-col">
+                            <div class="mega-col-title">Technology</div>
+                            <a href="partenaires-technologiques_en.html"><span class="link-text"><strong>Technology Partners</strong><span>Informatica, Snowflake, Azure…</span></span></a>
+                        </div>
+                        <div class="mega-col">
+                            <div class="mega-col-title">Business</div>
+                            <a href="partenaires-commerciaux_en.html"><span class="link-text"><strong>Business Partners</strong><span>Business alliances and synergies</span></span></a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link cta-nav" style="cursor: default;">Contact</a>
+                <div class="mega-menu">
+                    <div class="mega-menu-inner mega-menu-5">
+                        <div class="mega-col"><div class="mega-col-title">Join Us</div><a href="carrieres_en.html"><span class="link-text"><strong>Careers</strong><span>Jobs & applications</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Partnership</div><a href="devenir-partenaire_en.html"><span class="link-text"><strong>Become a partner</strong><span>Join the ecosystem</span></span></a></div>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="approche-donnees.html" class="lang-switch-btn" title="Switch to French">FR</a>
+            </li>
+        </ul>
+        <button class="menu-toggle" onclick="document.querySelector('.nav-menu').classList.toggle('active')"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+<section class="page-hero" data-hero-anim="data-approach">
+    <div class="container">
+        <h1 class="page-title">Our Data Approach</h1>
+        <p class="page-subtitle">Proven methodology — from diagnosis to value</p>
+    </div>
+</section>
+<section class="page-section">
+  <div class="container">
+    <div class="section-header reveal reveal-up">
+        <h2>Our Methodology</h2>
+        <div class="section-line"></div>
+    </div>
+    <p class="section-intro reveal reveal-up">A 4-step methodology proven on 200+ projects — from initial diagnosis to measured ROI</p>
+    
+    <div class="approche-flow">
+        <div class="approche-step s1 reveal reveal-up">
+            <div class="approche-step-num">1</div>
+            <h3>Audit & Diagnosis</h3>
+            <p>Mapping your data, identifying gaps and opportunities for improvement</p>
+            
+            <!-- Interactive detail on hover -->
+            <div class="approche-detail-popover">
+                <div class="popover-intro">Audit & Diagnosis: Shedding light on your data assets</div>
+                <p class="popover-desc">Before transforming your data, you must first understand it. Our audit offers a clear and objective vision of your current situation: where your data is, how it flows, and above all, what concrete opportunities are available to you.</p>
+                
+                <div class="popover-schema">
+                    <div class="schema-box">
+                        <h4>AUDIT</h4>
+                        <span class="sub">Complete mapping</span>
+                        <ul>
+                            <li>Where is your data?</li>
+                            <li>How does it flow?</li>
+                            <li>What volumes are managed?</li>
+                        </ul>
+                    </div>
+                    <div class="schema-arrow">→</div>
+                    <div class="schema-box">
+<h4>ANALYSIS</h4>
+                        <span class="sub">Gap identification</span>
+                        <ul>
+                            <li>Which duplicates?</li>
+                            <li>Actual quality level?</li>
+                            <li>GDPR compliant?</li>
+                        </ul>
+                    </div>
+                    <div class="schema-arrow">→</div>
+                    <div class="schema-box">
+                        <h4>ACTION PLAN</h4>
+                        <span class="sub">Custom recommendations</span>
+                        <ul>
+                            <li>Quick wins</li>
+                            <li>12-month roadmap</li>
+                            <li>Budget & prioritization</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="popover-details">
+                    <div class="detail-item"><h5>AUDIT - Mapping</h5><p>We start by capturing your data reality: sources, flows, volumes. No jargon, just a clear map of your landscape.</p></div>
+                    <div class="detail-item"><h5>ANALYSIS - Bottlenecks</h5><p>We pinpoint friction points: duplicates, obsolete data, GDPR risks. Every identified gap is a measurable opportunity.</p></div>
+                    <div class="detail-item"><h5>ACTION PLAN - Roadmap</h5><p>No more shelf-ware reports. A concrete plan with quick wins, prioritized 12-month roadmap, and realistic budget.</p></div>
+                </div>
+
+                <div class="popover-conclusion">
+                    Concrete result: In 2 to 4 weeks, you get a 360° view of your data and an operational action plan for your teams.
+                </div>
+            </div>
+        </div>
+        <div class="approche-step s2 reveal reveal-up delay-150">
+            <div class="approche-step-num">2</div>
+            <h3>Architecture</h3>
+            <p>Designing the MDM repository tailored to your challenges and technical environment</p>
+
+            <!-- Interactive detail on hover (Architecture) -->
+            <div class="approche-detail-popover">
+                <div class="popover-intro">Architecture: Building solid foundations for your MDM</div>
+                <p class="popover-desc">An effective MDM repository doesn't come off-the-shelf. It must align with your business processes, integrate with your existing infrastructure, and grow with you. Our approach: design an architecture that meets today's challenges without locking you into tomorrow's constraints.</p>
+                
+                <div class="popover-schema">
+                    <div class="schema-box">
+                        <h4>🏗️ DESIGN</h4>
+                        <span class="sub">Repository Design</span>
+                        <ul>
+                            <li>Which data to master?</li>
+                            <li>Which governance model?</li>
+                            <li>Which technical stack?</li>
+                        </ul>
+                    </div>
+                    <div class="schema-arrow">→</div>
+                    <div class="schema-box">
+                        <h4>🔧 ADAPTATION</h4>
+                        <span class="sub">Ecosystem Integration</span>
+                        <ul>
+                            <li>Connection to existing IS?</li>
+                            <li>Cloud/On-premise strategy?</li>
+                            <li>Security & GDPR?</li>
+                        </ul>
+                    </div>
+                    <div class="schema-arrow">→</div>
+                    <div class="schema-box">
+                        <h4>📐 VALIDATION</h4>
+                        <span class="sub">Operational Technical Plan</span>
+                        <ul>
+                            <li>Documented architecture</li>
+                            <li>Specs for development</li>
+                            <li>Scalability & evolution</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="popover-details">
+                    <div class="detail-item"><h5>🏗️ DESIGN - Custom-made</h5><p>We define the scope (customers, products...) and choose the relevant stack (Informatica, custom, cloud native) based on your constraints.</p></div>
+                    <div class="detail-item"><h5>🔧 ADAPTATION - Connectivity</h5><p>Designing links with your ERP/CRM. We decide between real-time or batch flows and integrate security from day one.</p></div>
+                    <div class="detail-item"><h5>📐 VALIDATION - Blueprints</h5><p>We deliver clear, actionable diagrams for your devs. An MDM designed to evolve without needing a complete overhaul every 3 years.</p></div>
+                </div>
+
+                <div class="popover-conclusion">
+                    Concrete result: A documented MDM architecture, validated by your experts, and ready for implementation with a clear cost view.
+                </div>
+            </div>
+        </div>
+        <div class="approche-step s3 reveal reveal-up delay-300">
+            <div class="approche-step-num">3</div>
+            <h3>Implementation</h3>
+            <p>Agile deployment in sprints, integration with your systems, and continuous testing</p>
+
+            <!-- Interactive detail on hover (Implementation) -->
+            <div class="approche-detail-popover">
+                <div class="popover-intro">Implementation: We build with you, not for you</div>
+                <p class="popover-desc">No more 18-month development black holes. We work in agile mode: short sprints, concrete deliverables every 2-3 weeks, and your validation at each stage. You drive the progress, we manage the technical complexity.</p>
+                
+                <div class="popover-schema">
+                    <div class="schema-box">
+                        <h4>DEPLOYMENT</h4>
+                        <span class="sub">Sprint-based construction</span>
+                        <ul>
+                            <li>Deliveries every 2-3 weeks</li>
+                            <li>Validation at every stage</li>
+                            <li>Real-time adjustments</li>
+                        </ul>
+                    </div>
+                    <div class="schema-arrow">→</div>
+                    <div class="schema-box">
+                        <h4>INTEGRATION</h4>
+                        <span class="sub">Ecosystem connection</span>
+                        <ul>
+                            <li>ERP, CRM, BI connection</li>
+                            <li>Auto & monitored flows</li>
+                            <li>Zero-downtime migration</li>
+                        </ul>
+                    </div>
+                    <div class="schema-arrow">→</div>
+                    <div class="schema-box">
+                        <h4>TESTING</h4>
+                        <span class="sub">Continuous validation</span>
+                        <ul>
+                            <li>Testing before production</li>
+                            <li>Business compliance check</li>
+                            <li>Continuous bug fixing</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="popover-details">
+                    <div class="detail-item"><h5>DEPLOYMENT - Sprint by sprint</h5><p>Each iteration delivers a functional block you can test immediately. We pivot at the next sprint if your priorities change.</p></div>
+                    <div class="detail-item"><h5>INTEGRATION - Seamless</h5><p>We automate and secure flows to your current tools. Migration is gradual, without impacting your live production environment.</p></div>
+                    <div class="detail-item"><h5>TESTING - Guaranteed Quality</h5><p>A bug detected in sprint 3 is fixed in 48h. We validate everything with key users before global deployment.</p></div>
+                </div>
+
+                <div class="popover-conclusion">
+                    Concrete result: An operational MDM deployed progressively. Your teams are trained as we go for full autonomy from Day 1.
+                </div>
+            </div>
+        </div>
+        <div class="approche-step s4 reveal reveal-up delay-450">
+            <div class="approche-step-num">4</div>
+            <h3>Measurement & ROI</h3>
+            <p>Quality KPIs, ROI reporting, continuous improvement, and skill development</p>
+
+            <!-- Interactive detail on hover (Measurement & ROI) -->
+            <div class="approche-detail-popover">
+                <div class="popover-intro">Measurement & ROI: Turning data into business value</div>
+                <p class="popover-desc">Implementation is just the start. We don't just deliver a tool: we measure the real impact on your business. Every euro invested in your MDM must pay off.</p>
+                
+                <div class="popover-schema">
+                    <div class="schema-box">
+                        <h4>REPORTING</h4>
+                        <span class="sub">Performance Tracking</span>
+                        <ul>
+                            <li>Real-time quality dashboards</li>
+                            <li>Anomaly automated alerts</li>
+                            <li>Executive ROI reporting</li>
+                        </ul>
+                    </div>
+                    <div class="schema-arrow">→</div>
+                    <div class="schema-box">
+                        <h4>IMPROVEMENT</h4>
+                        <span class="sub">Maintenance & Evolution</span>
+                        <ul>
+                            <li>Autonomous teams</li>
+                            <li>Model fine-tuning</li>
+                            <li>Long-term expert support</li>
+                        </ul>
+                    </div>
+                    <div class="schema-arrow">→</div>
+                    <div class="schema-box">
+                        <h4>ROI CALCULATION</h4>
+                        <span class="sub">Concrete Gains</span>
+                        <ul>
+                            <li>Reduced operational costs</li>
+                            <li>Faster Time-to-Market</li>
+                            <li>Data asset valuation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="popover-details">
+                    <div class="detail-item"><h5>REPORTING - Visibility</h5><p>No more flying blind. Our indicators prove the project's daily value to your business units.</p></div>
+                    <div class="detail-item"><h5>EVOLUTION - Sustainability</h5><p>Skill transfer is in our DNA. We train your teams for total operational autonomy.</p></div>
+                    <div class="detail-item"><h5>ROI - Validation</h5><p>We co-calculate real gains (time, budget, productivity). Our success is your financial achievement.</p></div>
+                </div>
+
+                <div class="popover-conclusion">
+                    Concrete result: A virtuous cycle of quality data that boosts productivity and guarantees a sustainable ROI.
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<!-- AGILE METHOD -->
+<section class="page-section agile-section">
+    <div class="container">
+        <div class="section-header reveal reveal-up">
+            <h2>Agile Method</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="agile-text-lighthouse reveal-text-lighthouse">
+            <span>Acropora's Agile approach is built on transparency, adaptation, and continuous delivery.</span>
+            <span>We transform technical complexity into actionable steps that your business units can easily understand.</span>
+            <span>Your MDM project evolves with your real needs, guaranteeing visible ROI from the very first sprints.</span>
+        </div>
+
+        <div class="agile-interactive-wrapper" id="agileWrapper">
+          <div class="agile-grid">
+
+            <!-- Left steps -->
+            <div class="agile-steps-col agile-left">
+              <div class="ag-card" style="--d:0.05s">
+                <div class="ag-card-top">
+                  <span class="ag-num">01</span>
+                  <div class="ag-title-wrap"><h4>Plan</h4><div class="ag-bar"></div></div>
+                </div>
+                <p class="ag-desc">Defining objectives and prioritizing tasks for the next cycle.</p>
+              </div>
+              <div class="ag-card" style="--d:0.15s">
+                <div class="ag-card-top">
+                  <span class="ag-num">02</span>
+                  <div class="ag-title-wrap"><h4>Design</h4><div class="ag-bar"></div></div>
+                </div>
+                <p class="ag-desc">Custom technical architecture and functional design of the solution.</p>
+              </div>
+              <div class="ag-card" style="--d:0.25s">
+                <div class="ag-card-top">
+                  <span class="ag-num">03</span>
+                  <div class="ag-title-wrap"><h4>Launch</h4><div class="ag-bar"></div></div>
+                </div>
+                <p class="ag-desc">Environment initialization and preparation of data flows.</p>
+              </div>
+              <div class="ag-card" style="--d:0.35s">
+                <div class="ag-card-top">
+                  <span class="ag-num">04</span>
+                  <div class="ag-title-wrap"><h4>Develop</h4><div class="ag-bar"></div></div>
+                </div>
+                <p class="ag-desc">Iterative construction of features and specialized connectors.</p>
+              </div>
+            </div>
+
+            <!-- Center image -->
+            <div class="agile-center-col">
+              <div class="agile-img-wrap">
+                <div class="agile-glow-ring r1"></div>
+                <div class="agile-glow-ring r2"></div>
+                <img src="Methode-Agile-en.png" alt="Agile Cycle Diagram">
+              </div>
+            </div>
+
+            <!-- Right steps -->
+            <div class="agile-steps-col agile-right">
+              <div class="ag-card" style="--d:0.05s">
+                <div class="ag-card-top">
+                  <span class="ag-num">05</span>
+                  <div class="ag-title-wrap"><h4>Test</h4><div class="ag-bar"></div></div>
+                </div>
+                <p class="ag-desc">Continuous validation of quality, security, and business compliance.</p>
+              </div>
+              <div class="ag-card" style="--d:0.15s">
+                <div class="ag-card-top">
+                  <span class="ag-num">06</span>
+                  <div class="ag-title-wrap"><h4>Deploy</h4><div class="ag-bar"></div></div>
+                </div>
+                <p class="ag-desc">Secure production release of the validated software block.</p>
+              </div>
+              <div class="ag-card" style="--d:0.25s">
+                <div class="ag-card-top">
+                  <span class="ag-num">07</span>
+                  <div class="ag-title-wrap"><h4>Review</h4><div class="ag-bar"></div></div>
+                </div>
+                <p class="ag-desc">Result analysis and immediate integration of user feedback.</p>
+              </div>
+              <div class="ag-card" style="--d:0.35s">
+                <div class="ag-card-top">
+                  <span class="ag-num">08</span>
+                  <div class="ag-title-wrap"><h4>Sprint</h4><div class="ag-bar"></div></div>
+                </div>
+                <p class="ag-desc">Short 2–3 week cycle delivering concrete, measurable value.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <script>
+        (function(){
+          var w = document.getElementById('agileWrapper');
+          if(!w) return;
+          var obs = new IntersectionObserver(function(entries){
+            entries.forEach(function(e){
+              if(e.isIntersecting){ w.classList.add('ag-visible'); obs.disconnect(); }
+            });
+          }, { threshold: 0.15 });
+          obs.observe(w);
+        })();
+        </script>
+    </div>
+</section>
+
+<section class="page-section alt-bg">
+  <div class="container">
+    <div class="section-header fade-in"><h2>What sets us apart</h2><div class="section-line"></div></div>
+    <div class="approach-benefits">
+      <div class="benefits-grid">
+      <div class="benefit-item fade-in"><p>Business use case oriented approach</p></div>
+      <div class="benefit-item fade-in"><p>Modular and scalable architecture</p></div>
+      <div class="benefit-item fade-in"><p>Systematic data quality measurement</p></div>
+      <div class="benefit-item fade-in"><p>Native cloud & on-premise integration</p></div>
+      <div class="benefit-item fade-in"><p>Transparent and documented governance</p></div>
+      <div class="benefit-item fade-in"><p>Agile delivery via value sprints</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="page-cta">
+    <div class="container">
+        <h2>Ready to go further?</h2>
+        <p>Contact us today</p>
+        <a href="contact_en.html" class="btn btn-primary">Contact Us</a>
+    </div>
+</section>
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <img src="acropora-logo-transparent.png" alt="Acropora Data" class="footer-logo">
+                <p>Leader in Master Data Management</p>
+                <p style="margin-top:1rem;font-size:.85rem;opacity:.7">Turn your data into strategic assets</p>
+            </div>
+            <div class="footer-section">
+                <h4>About Us</h4>
+                <ul>
+                    <li><a href="presentation_en.html">Overview</a></li>
+                    <li><a href="approche-donnees_en.html">Our Data Approach</a></li>
+                    <li><a href="equipe_en.html">Team</a></li>
+                    <li><a href="ethique_en.html">Ethics & Values</a></li>
+                </ul>
+            </div>
+            <!-- Footer sections identical to English base -->
+            <div class="footer-section"><h4>Solutions</h4><ul><li><a href="mdm_en.html">MDM</a></li><li><a href="bi-analytique_en.html">BI</a></li><li><a href="tests-validation_en.html">Testing</a></li><li><a href="solutions-sur-mesure_en.html">Custom</a></li></ul></div><div class="footer-section"><h4>Resources</h4><ul><li><a href="blog_en.html">Blog</a></li><li><a href="etudes-de-cas_en.html">Case Studies</a></li><li><a href="academie_en.html">Academy</a></li><li><a href="contact_en.html">Contact</a></li></ul></div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Acropora Data. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+<script src="script.js"></script>
+<script src="pages.js"></script>
+<script src="scroll-animations.js"></script>
+<script src="hero-animations.js"></script>
+</body>
+</html>
+

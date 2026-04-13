@@ -1,0 +1,130 @@
+/* ======================
+   Scroll Animations
+   ====================== */
+
+:root {
+    /* Easing inspiré de terminal-industries pour un effet "luxe" */
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --anim-duration: 0.8s;
+}
+
+/* Base class for reveal animations */
+.reveal {
+    opacity: 0;
+    will-change: opacity, transform;
+    transition: opacity var(--anim-duration) var(--ease-out-expo), 
+                transform var(--anim-duration) var(--ease-out-expo);
+}
+
+/* 1. Fade Up (Cartes Solutions & Hub) */
+.reveal-up {
+    transform: translateY(60px);
+}
+
+.reveal-up.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 2. Slide Left (Titres) */
+.reveal-left {
+    transform: translateX(-40px);
+}
+
+.reveal-left.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* 3. Scale Up (Cartes spécifiques) */
+.reveal-scale {
+    transform: scale(0.9);
+}
+
+.reveal-scale.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Effet de zoom à l'apparition */
+.reveal-zoom-in {
+    transform: scale(0.5);
+}
+
+.reveal-zoom-in.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* 4. Timeline Animation */
+.timeline-item {
+    opacity: 0;
+    transition: opacity var(--anim-duration) var(--ease-out-expo), 
+                transform var(--anim-duration) var(--ease-out-expo);
+}
+
+.timeline-item:nth-child(odd) {
+    transform: translateX(-50px);
+}
+
+.timeline-item:nth-child(even) {
+    transform: translateX(50px);
+}
+
+.timeline-item.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Lift Effect on Hover for Hub Cards (Releaf style) */
+.hub-card {
+    transition: transform 0.4s var(--ease-out-expo), 
+                box-shadow 0.4s var(--ease-out-expo), 
+                border-color 0.3s !important;
+}
+
+.hub-card:hover {
+    transform: translateY(-12px) !important;
+    box-shadow: 0 20px 40px rgba(26, 93, 106, 0.15) !important;
+}
+
+/* Stagger Delays Utilities */
+.delay-150 { transition-delay: 150ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-450 { transition-delay: 450ms; }
+.delay-600 { transition-delay: 600ms; }
+
+/* Split Text Character Animation Base */
+.char-reveal {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Dazzling light / Shine effect */
+.reveal-shine::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 80%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+    transform: skewX(-25deg);
+    transition: left 1.2s var(--ease-out-expo);
+    z-index: 1;
+}
+
+.reveal-shine.active {
+    opacity: 1;
+}
+
+.reveal-shine.active::before {
+    left: 150%;
+}
+
+/* Sécurité : Tout élément actif doit être visible */
+.reveal.active {
+    opacity: 1;
+}

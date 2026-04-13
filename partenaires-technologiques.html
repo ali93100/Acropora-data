@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partenaires Technologiques - Acropora Data</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+    <link rel="stylesheet" href="animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .intro-dark{background:linear-gradient(160deg,#081e23 0%,#0d3d47 45%,#1a5d6a 100%);padding:7rem 0 8rem;position:relative;overflow:hidden}
+        .intro-dark::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(129,171,179,.08) 0%,transparent 70%);top:-150px;right:-100px;animation:orbFloat 14s ease-in-out infinite}
+        @keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-30px,25px) scale(1.1)}}
+        .intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;position:relative;z-index:1}
+        .intro-label{display:inline-block;color:#81abb3;font-size:.78rem;font-weight:800;letter-spacing:.25em;text-transform:uppercase;border:1px solid rgba(129,171,179,.3);border-radius:50px;padding:.4rem 1.2rem;margin-bottom:1.5rem}
+        .intro-title{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;color:#fff;line-height:1.15;margin-bottom:1.5rem}
+        .intro-title span{color:#f3756e}
+        .intro-text{color:rgba(255,255,255,.7);font-size:1rem;line-height:1.85;margin-bottom:1rem}
+        .stat-cards{display:flex;flex-direction:column;gap:1.4rem}
+        .stat-card{background:rgba(255,255,255,.05);border:1px solid rgba(129,171,179,.15);border-radius:16px;padding:1.6rem 2rem;display:flex;align-items:center;gap:1.4rem;transition:all .4s ease}
+        .stat-card:hover{background:rgba(255,255,255,.09);transform:translateX(8px)}
+        .stat-icon{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,rgba(26,93,106,.3),rgba(129,171,179,.2));display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+        .stat-body strong{display:block;color:#fff;font-size:1.4rem;font-weight:900;line-height:1;margin-bottom:.25rem}
+        .stat-body span{color:rgba(255,255,255,.55);font-size:.82rem}
+        .section-tag{display:inline-block;color:var(--primary-color);font-size:.78rem;font-weight:800;letter-spacing:.25em;text-transform:uppercase;border:1px solid rgba(26,93,106,.2);border-radius:50px;padding:.4rem 1.2rem;background:rgba(26,93,106,.05);margin-bottom:1.2rem}
+        .partners-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;margin-top:3.5rem}
+        .partner-card{background:#fff;border:1px solid rgba(26,93,106,.08);border-radius:18px;padding:2rem 1.6rem;transition:all .4s cubic-bezier(.16,1,.3,1);cursor:default;position:relative;overflow:hidden}
+        .partner-card::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,#1a5d6a,#f3756e);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+        .partner-card:hover::after{transform:scaleX(1)}
+        .partner-card:hover{transform:translateY(-6px);box-shadow:0 20px 45px rgba(26,93,106,.12)}
+        .p-logo{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:.9rem;font-weight:900;color:#fff;margin-bottom:1.2rem;background:linear-gradient(135deg,#1a5d6a,#4a9fa8)}
+        .p-cat{display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:#f3756e;background:rgba(243,117,110,.08);padding:.2rem .7rem;border-radius:20px;margin-bottom:.6rem}
+        .p-name{font-size:1rem;font-weight:800;color:var(--primary-color);margin-bottom:.5rem}
+        .p-text{font-size:.8rem;color:var(--text-medium);line-height:1.65}
+        .dark-green{background:linear-gradient(160deg,#0d3d47 0%,#1a5d6a 60%,#1e6d7e 100%)}
+        .dark-green .section-tag{color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.07)}
+        .dark-green h2{color:#fff}
+        .dark-green .section-line{background:linear-gradient(90deg,rgba(255,255,255,.4),transparent)}
+        .tiers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;margin-top:3.5rem}
+        .tier-card{border-radius:20px;padding:2.2rem 2rem;backdrop-filter:blur(8px);transition:all .4s ease;position:relative;overflow:hidden}
+        .tier-card.partner{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)}
+        .tier-card.expert{background:rgba(129,171,179,.1);border:1px solid rgba(129,171,179,.25)}
+        .tier-card.strategic{background:rgba(243,117,110,.1);border:2px solid rgba(243,117,110,.3)}
+        .tier-card:hover{transform:translateY(-5px)}
+        .tier-badge{display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;padding:.3rem 1rem;border-radius:20px;margin-bottom:1rem}
+        .partner .tier-badge{background:rgba(255,255,255,.1);color:rgba(255,255,255,.6)}
+        .expert .tier-badge{background:rgba(129,171,179,.2);color:#81abb3}
+        .strategic .tier-badge{background:rgba(243,117,110,.2);color:#f3a49f}
+        .tier-title{font-size:1.2rem;font-weight:900;color:#fff;margin-bottom:1rem}
+        .tier-list{list-style:none;padding:0;margin:0}
+        .tier-list li{font-size:.83rem;color:rgba(255,255,255,.7);padding:.35rem 0;display:flex;gap:.6rem;align-items:flex-start}
+        .teaser-section{background:var(--subtle-gray);text-align:center;padding:5rem 0}
+        .teaser-section h3{font-size:1.6rem;font-weight:900;color:var(--primary-color);margin-bottom:1rem}
+        .teaser-section p{color:var(--text-medium);max-width:600px;margin:0 auto 2rem;line-height:1.8}
+        .final-cta{background:linear-gradient(160deg,#081e23 0%,#0d3d47 50%,#1a5d6a 100%);padding:7rem 0;text-align:center;position:relative;overflow:hidden}
+        .final-cta h2{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;color:#f3756e;margin-bottom:1rem;position:relative;z-index:1}
+        .final-cta p{color:rgba(255,255,255,.7);margin-bottom:2.5rem;position:relative;z-index:1}
+        .cta-btns{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+        .btn-cta-primary{background:#f3756e;color:#fff !important;padding:1rem 2.4rem;border-radius:50px;text-decoration:none;font-weight:700;transition:all .35s ease;box-shadow:0 10px 28px rgba(243,117,110,.35)}
+        .btn-cta-primary:hover{transform:translateY(-3px) scale(1.04)}
+        .btn-cta-ghost{background:transparent;color:rgba(255,255,255,.85) !important;padding:1rem 2.4rem;border-radius:50px;text-decoration:none;font-weight:700;border:1.5px solid rgba(255,255,255,.3);transition:all .35s ease}
+        .btn-cta-ghost:hover{background:rgba(255,255,255,.1);transform:translateY(-3px)}
+        @media(max-width:1100px){.partners-grid{grid-template-columns:repeat(2,1fr)}}
+        @media(max-width:900px){.intro-grid{grid-template-columns:1fr;gap:3rem}.tiers-grid{grid-template-columns:1fr}}
+    </style>
+</head>
+<body>
+<div class="parallax-coral"><div class="coral-shape"></div><div class="coral-shape"></div><div class="coral-shape"></div><div class="coral-shape"></div></div>
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo-container"><a href="index.html"><img src="acropora-logo-transparent.png" alt="Acropora Data" class="logo"></a></div>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="javascript:void(0)" class="nav-link" style="cursor:default;">Présentation</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-4"><div class="mega-col"><div class="mega-col-title">L'entreprise</div><a href="presentation.html"><span class="link-text"><strong>Qui sommes-nous ?</strong><span>Notre histoire et vision</span></span></a></div><div class="mega-col"><div class="mega-col-title">Méthode</div><a href="approche-donnees.html"><span class="link-text"><strong>Notre approche données</strong><span>Méthodologie & framework</span></span></a></div><div class="mega-col"><div class="mega-col-title">Personnes</div><a href="equipe.html"><span class="link-text"><strong>Équipe</strong><span>Nos experts data</span></span></a></div><div class="mega-col"><div class="mega-col-title">Engagement</div><a href="ethique.html"><span class="link-text"><strong>Éthique & valeurs</strong><span>Nos principes fondateurs</span></span></a></div></div></div></li>
+            <li class="nav-item"><a href="javascript:void(0)" class="nav-link" style="cursor:default;">Solutions & Expertise</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-4"><div class="mega-col"><div class="mega-col-title">MDM</div><a href="mdm.html"><span class="link-text"><strong>MDM & Intégration</strong><span>Référentiels & pipelines</span></span></a><a href="ai-foundations.html"><span class="link-text"><strong>Fondations IA</strong><span>Données prêtes pour l'IA</span></span></a></div><div class="mega-col"><div class="mega-col-title">Assurance Qualité</div><a href="migration-mdm.html"><span class="link-text"><strong>Stratégie de Tests</strong><span>Transition sans interruption</span></span></a><a href="tests-validation.html"><span class="link-text"><strong>Automatisation de Tests</strong><span>Qualité & conformité</span></span></a></div><div class="mega-col"><div class="mega-col-title">Analytics</div><a href="bi-analytique.html"><span class="link-text"><strong>BI & Analytique</strong><span>Insights et reporting</span></span></a></div><div class="mega-col"><div class="mega-col-title">Audit</div><a href="cadrage-projet.html"><span class="link-text"><strong>Cadrage de projet</strong><span>Structurer vos initiatives</span></span></a></div></div></div></li>
+            <li class="nav-item"><a href="javascript:void(0)" class="nav-link active" style="cursor:default;">Partenaires</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-5"><div class="mega-col"><div class="mega-col-title">Technologie</div><a href="partenaires-technologiques.html"><span class="link-text"><strong>Partenaires technologiques</strong><span>Informatica, Snowflake, Azure…</span></span></a></div><div class="mega-col"><div class="mega-col-title">Business</div><a href="partenaires-commerciaux.html"><span class="link-text"><strong>Partenaires commerciaux</strong><span>Alliances et synergies business</span></span></a></div></div></div></li>
+            
+            <li class="nav-item"><a href="javascript:void(0)" class="nav-link cta-nav" style="cursor:default;">Contact</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-5"><div class="mega-col"><div class="mega-col-title">Rejoindre</div><a href="carrieres.html"><span class="link-text"><strong>Carrières</strong><span>Offres & candidatures</span></span></a></div><div class="mega-col"><div class="mega-col-title">Partenariat</div><a href="devenir-partenaire.html"><span class="link-text"><strong>Devenir partenaire</strong><span>Rejoindre l'écosystème</span></span></a></div></div></div></li>
+            <li class="nav-item"><a href="partenaires-technologiques_en.html" class="lang-switch-btn" title="Switch to English">EN</a></li>
+        </ul>
+        <button class="menu-toggle" onclick="document.querySelector('.nav-menu').classList.toggle('active')"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+<section class="page-hero" data-hero-anim="tech-partners"><div class="container"><h1 class="page-title">Partenaires Technologiques</h1><p class="page-subtitle">Des alliances au service de votre excellence data</p></div></section>
+
+<section class="intro-dark"><div class="container"><div class="intro-grid">
+    <div class="reveal reveal-left">
+        <span class="intro-label">ÉCOSYSTÈME TECHNOLOGIQUE</span>
+        <h2 class="intro-title">Un écosystème<br><span>de référence</span></h2>
+        <p class="intro-text">Acropora Data a soigneusement sélectionné ses partenaires technologiques pour offrir à ses clients les meilleures solutions du marché, intégrées avec expertise et supportées dans la durée.</p>
+        <p class="intro-text">Chaque partenariat est le fruit d'une certification approfondie, d'une expérience terrain et d'une conviction partagée : la technologie ne vaut que par l'expertise qui l'accompagne.</p>
+    </div>
+    <div class="stat-cards reveal reveal-right">
+        <div class="stat-card"><div class="stat-icon">🤝</div><div class="stat-body"><strong>8+</strong><span>Partenaires certifiés</span></div></div>
+        <div class="stat-card"><div class="stat-icon">🏅</div><div class="stat-body"><strong>15+</strong><span>Certifications actives</span></div></div>
+        <div class="stat-card"><div class="stat-icon">📈</div><div class="stat-body"><strong>200+</strong><span>Projets réalisés avec nos partenaires</span></div></div>
+    </div>
+</div></div></section>
+
+<section class="page-section" style="background:#fff"><div class="container">
+    <div class="section-header reveal reveal-up"><span class="section-tag">NOS PARTENAIRES</span><div class="section-line"></div><h2>Des solutions de classe mondiale</h2></div>
+    <div class="partners-grid">
+        <div class="partner-card reveal reveal-up" style="transition-delay:0ms"><div class="p-logo">EBX</div><span class="p-cat">MDM Platform</span><div class="p-name">TIBCO EBX</div><p class="p-text">Solution MDM leader pour la gestion de référentiels de données complexes — produit, client, fournisseur, localisation.</p></div>
+        <div class="partner-card reveal reveal-up" style="transition-delay:80ms"><div class="p-logo" style="background:linear-gradient(135deg,#e06f3a,#f0963b)">INF</div><span class="p-cat">Data Integration</span><div class="p-name">Informatica</div><p class="p-text">Plateforme de gouvernance et d'intégration de données de classe mondiale — référence du marché MDM.</p></div>
+        <div class="partner-card reveal reveal-up" style="transition-delay:160ms"><div class="p-logo" style="background:linear-gradient(135deg,#29b5e8,#16829a)">❄️</div><span class="p-cat">Cloud Data</span><div class="p-name">Snowflake</div><p class="p-text">Entrepôt de données cloud pour l'analyse à grande échelle — performance et élasticité sans compromis.</p></div>
+        <div class="partner-card reveal reveal-up" style="transition-delay:240ms"><div class="p-logo" style="background:linear-gradient(135deg,#0078d4,#004e8c)">Az</div><span class="p-cat">Cloud Platform</span><div class="p-name">Microsoft Azure</div><p class="p-text">Plateforme cloud hybride pour l'infrastructure et les services data — intégration native avec les outils Microsoft.</p></div>
+        <div class="partner-card reveal reveal-up" style="transition-delay:320ms"><div class="p-logo" style="background:linear-gradient(135deg,#6d4c9e,#9b59b6)">SEM</div><span class="p-cat">MDM/DQ</span><div class="p-name">Semarchy</div><p class="p-text">Solution MDM agile et orientée qualité — déploiement rapide pour PME et grandes entreprises.</p></div>
+        <div class="partner-card reveal reveal-up" style="transition-delay:400ms"><div class="p-logo" style="background:linear-gradient(135deg,#2d9cdb,#1a7bbf)">REL</div><span class="p-cat">MDM Cloud</span><div class="p-name">Reltio</div><p class="p-text">Plateforme MDM cloud-native pour la gestion des données maîtres en temps réel avec graph data.</p></div>
+        <div class="partner-card reveal reveal-up" style="transition-delay:480ms"><div class="p-logo" style="background:linear-gradient(135deg,#0faaff,#006ea6)">SAP</div><span class="p-cat">ERP/MDM</span><div class="p-name">SAP</div><p class="p-text">Intégration SAP et gestion des données maîtres dans les environnements ERP complexes — S/4HANA inclus.</p></div>
+        <div class="partner-card reveal reveal-up" style="transition-delay:560ms"><div class="p-logo" style="background:linear-gradient(135deg,#ff6d00,#e65100)">TAL</div><span class="p-cat">ETL/Integration</span><div class="p-name">Talend</div><p class="p-text">Solution open source pour l'intégration et la transformation de données — connecteurs universels et orchestration.</p></div>
+    </div>
+</div></section>
+
+<section class="page-section dark-green"><div class="container">
+    <div class="section-header reveal reveal-up"><span class="section-tag">NIVEAUX DE PARTENARIAT</span><div class="section-line"></div><h2>Notre engagement par niveau</h2></div>
+    <div class="tiers-grid">
+        <div class="tier-card partner reveal reveal-up" style="transition-delay:0ms">
+            <span class="tier-badge">Partner</span>
+            <div class="tier-title">Partenaire</div>
+            <ul class="tier-list">
+                <li>✅ Certification de base obtenue</li>
+                <li>✅ Intégration standard maîtrisée</li>
+                <li>✅ Support technique disponible</li>
+                <li>✅ Formation équipe validée</li>
+            </ul>
+        </div>
+        <div class="tier-card expert reveal reveal-up" style="transition-delay:150ms">
+            <span class="tier-badge">Expert Partner</span>
+            <div class="tier-title">Partenaire Expert</div>
+            <ul class="tier-list">
+                <li>✅ Certification avancée multi-modules</li>
+                <li>✅ 10+ projets livrés ensemble</li>
+                <li>✅ Accès aux roadmaps produit</li>
+                <li>✅ Support prioritaire éditeur</li>
+                <li>✅ Co-développement de solutions</li>
+            </ul>
+        </div>
+        <div class="tier-card strategic reveal reveal-up" style="transition-delay:300ms">
+            <span class="tier-badge">Strategic Partner ★</span>
+            <div class="tier-title">Partenaire Stratégique</div>
+            <ul class="tier-list">
+                <li>✅ Alliance commerciale formalisée</li>
+                <li>✅ Go-to-market conjoint</li>
+                <li>✅ Accès beta produit</li>
+                <li>✅ Co-marketing et co-vente</li>
+                <li>✅ Engagement long terme contractualisé</li>
+            </ul>
+        </div>
+    </div>
+</div></section>
+
+<section class="teaser-section reveal reveal-up">
+    <div class="container">
+        <h3>Vous souhaitez rejoindre notre écosystème ?</h3>
+        <p>Acropora Data est ouvert aux nouvelles alliances technologiques. Si votre solution est complémentaire à notre expertise MDM, parlons-en.</p>
+        <a href="devenir-partenaire.html" class="btn-cta-primary" style="background:#f3756e;color:#fff !important;padding:1rem 2.4rem;border-radius:50px;text-decoration:none;font-weight:700;display:inline-block;transition:all .35s ease;box-shadow:0 10px 28px rgba(243,117,110,.35)">Devenir partenaire</a>
+    </div>
+</section>
+
+<section class="final-cta"><div class="container">
+    <h2>La bonne technologie, entre les bonnes mains</h2>
+    <p>Contactez-nous pour discuter de la meilleure combinaison technologique pour votre projet</p>
+    <div class="cta-btns">
+        <a href="contact.html" class="btn-cta-primary">Parler à un expert</a>
+        <a href="mdm.html" class="btn-cta-ghost">Explorer nos solutions MDM</a>
+    </div>
+</div></section>
+
+<footer class="footer"><div class="container"><div class="footer-content">
+    <div class="footer-section"><img src="acropora-logo-transparent.png" alt="Acropora Data" class="footer-logo"><p>Leader en Master Data Management</p></div>
+    <div class="footer-section"><h4>Qui sommes-nous ?</h4><ul><li><a href="presentation.html">Présentation</a></li><li><a href="equipe.html">Équipe</a></li><li><a href="ethique.html">Éthique & valeurs</a></li></ul></div>
+    <div class="footer-section"><h4>Solutions & Expertise</h4><ul><li><a href="mdm.html">MDM & intégration</a></li><li><a href="bi-analytique.html">BI & Analytique</a></li><li><a href="solutions-sur-mesure.html">Solutions sur mesure</a></li></ul></div>
+    <div class="footer-section"><h4>Ressources</h4><ul><li><a href="blog.html">Blog & Articles</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+</div><div class="footer-bottom"><p>&copy; 2025 Acropora Data. Tous droits réservés.</p></div></div></footer>
+<script src="script.js"></script><script src="scroll-animations.js"></script><script src="pages.js"></script>
+<script src="hero-animations.js"></script>
+</body>
+</html>

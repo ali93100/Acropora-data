@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrières - Acropora Data</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+    <link rel="stylesheet" href="animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ── INTRO SECTION ── */
+        .careers-intro {
+            background: #fff;
+            padding: 7rem 0 8rem;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(26,93,106,.08);
+        }
+        .careers-intro-inner {
+            position: relative; z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .careers-intro-text h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 900; color: var(--primary-color);
+            line-height: 1.1; margin-bottom: 1.8rem;
+        }
+        .careers-intro-text h2 span { color: #f3756e; }
+        .careers-intro-text p {
+            color: var(--text-medium);
+            font-size: 1rem; line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        .careers-intro-cta {
+            display: flex; gap: 1.2rem; flex-wrap: wrap;
+            margin-top: 2.5rem;
+        }
+        .btn-intro-primary {
+            background: #f3756e; color: #fff !important;
+            padding: 1rem 2.2rem; border-radius: 50px;
+            text-decoration: none; font-weight: 700; font-size: .95rem;
+            transition: all .35s ease;
+            box-shadow: 0 10px 28px rgba(243,117,110,.35);
+            display: inline-block;
+        }
+        .btn-intro-primary:hover {
+            transform: translateY(-3px) scale(1.04);
+            box-shadow: 0 16px 40px rgba(243,117,110,.5);
+        }
+        .btn-intro-ghost {
+            background: transparent; color: var(--primary-color) !important;
+            padding: 1rem 2.2rem; border-radius: 50px;
+            text-decoration: none; font-weight: 700; font-size: .95rem;
+            border: 1.5px solid rgba(26,93,106,.35);
+            transition: all .35s ease; display: inline-block;
+        }
+        .btn-intro-ghost:hover {
+            background: rgba(26,93,106,.05);
+            border-color: rgba(26,93,106,.6);
+            transform: translateY(-3px);
+        }
+        .careers-intro-stats {
+            display: flex; flex-direction: column; gap: 1.8rem;
+        }
+        .ci-stat {
+            background: var(--subtle-gray);
+            border: 1px solid rgba(26,93,106,.1);
+            border-radius: 18px;
+            padding: 1.8rem 2.2rem;
+            display: flex; align-items: center; gap: 1.5rem;
+            transition: all .4s ease;
+            cursor: default;
+        }
+        .ci-stat:hover {
+            background: #eef5f7;
+            border-color: rgba(26,93,106,.22);
+            transform: translateX(8px);
+        }
+        .ci-stat-icon {
+            width: 48px; height: 48px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(26,93,106,.12), rgba(26,93,106,.2));
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem; flex-shrink: 0;
+        }
+        .ci-stat-body strong {
+            display: block; color: var(--primary-color);
+            font-size: 1.3rem; font-weight: 800; line-height: 1;
+            margin-bottom: .3rem;
+        }
+        .ci-stat-body span {
+            color: var(--text-medium); font-size: .85rem;
+        }
+
+        /* ── WHY JOIN ── */
+        .why-join-section {
+            background: linear-gradient(160deg, #0d3d47 0%, #1a5d6a 60%, #1e6d7e 100%);
+        }
+        .why-join-section .section-header .jobs-section-tag {
+            color: rgba(255,255,255,.7);
+            border-color: rgba(255,255,255,.2);
+            background: rgba(255,255,255,.07);
+        }
+        .why-join-section .jobs-divider {
+            background: linear-gradient(90deg, rgba(255,255,255,.5), #f3756e);
+        }
+        .why-join-section .jobs-section-title { color: #fff; }
+        .perks-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.4rem;
+            margin-top: 3.5rem;
+        }
+        .perk-card {
+            background: rgba(255,255,255,.07);
+            border: 1px solid rgba(255,255,255,.12);
+            border-radius: 18px;
+            padding: 2rem 1.6rem;
+            text-align: center;
+            cursor: default;
+            transition: all .4s cubic-bezier(.16,1,.3,1);
+            position: relative; overflow: hidden;
+            backdrop-filter: blur(6px);
+        }
+        .perk-card::after {
+            content: '';
+            position: absolute; bottom: 0; left: 0;
+            width: 100%; height: 3px;
+            background: linear-gradient(90deg, rgba(255,255,255,.5), #f3756e);
+            transform: scaleX(0); transform-origin: left;
+            transition: transform .5s cubic-bezier(.16,1,.3,1);
+        }
+        .perk-card:hover::after { transform: scaleX(1); }
+        .perk-card:hover {
+            transform: translateY(-7px);
+            background: rgba(255,255,255,.12);
+            border-color: rgba(255,255,255,.22);
+            box-shadow: 0 20px 45px rgba(0,0,0,.15);
+        }
+        .perk-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+        .perk-card h3 {
+            font-size: .95rem; font-weight: 800;
+            color: #fff; margin-bottom: .5rem;
+        }
+        .perk-card p { font-size: .82rem; color: rgba(255,255,255,.65); line-height: 1.6; margin: 0; }
+
+        /* ── JOB OFFERS SECTION ── */
+        .jobs-section-tag {
+            display: inline-block;
+            color: var(--primary-color);
+            font-size: .8rem; font-weight: 800;
+            letter-spacing: .25em; text-transform: uppercase;
+            padding: .5rem 1.5rem;
+            border: 1px solid rgba(26,93,106,.2);
+            border-radius: 50px;
+            background: rgba(26,93,106,.05);
+            margin-bottom: 1.5rem;
+        }
+        .jobs-divider {
+            width: 55px; height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), #f3756e);
+            border-radius: 2px; margin: 0 auto 1.5rem;
+        }
+        .jobs-section-title {
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            font-weight: 900; color: var(--primary-color);
+            line-height: 1.15;
+        }
+        .jobs-list {
+            display: flex; flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 3.5rem;
+            max-width: 900px; margin-left: auto; margin-right: auto;
+        }
+
+        /* ── JOB ACCORDION CARD ── */
+        .job-card {
+            background: #fff;
+            border: 1.5px solid rgba(26,93,106,.1);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: box-shadow .35s ease, border-color .35s ease;
+        }
+        .job-card.open {
+            border-color: rgba(26,93,106,.25);
+            box-shadow: 0 20px 55px rgba(26,93,106,.1);
+        }
+        .job-card-header {
+            display: flex;
+            align-items: center;
+            gap: 1.8rem;
+            padding: 1.8rem 2.2rem;
+            cursor: pointer;
+            user-select: none;
+            transition: background .25s ease;
+        }
+        .job-card:not(.open) .job-card-header:hover { background: rgba(26,93,106,.025); }
+        .job-card.open .job-card-header { background: rgba(26,93,106,.03); }
+        .job-num {
+            font-size: 2rem; font-weight: 900;
+            color: rgba(26,93,106,.15);
+            line-height: 1; flex-shrink: 0;
+            min-width: 3rem; text-align: center;
+            transition: color .3s;
+        }
+        .job-card.open .job-num,
+        .job-card-header:hover .job-num { color: #f3756e; }
+        .job-header-meta { flex: 1; }
+        .job-tags {
+            display: flex; flex-wrap: wrap; gap: .5rem;
+            margin-bottom: .6rem;
+        }
+        .job-tag {
+            font-size: .72rem; font-weight: 700;
+            padding: .25rem .85rem; border-radius: 50px;
+            letter-spacing: .05em;
+        }
+        .job-tag-type {
+            background: rgba(26,93,106,.08);
+            color: var(--primary-color);
+        }
+        .job-tag-level {
+            background: rgba(129,171,179,.15);
+            color: #1a5d6a;
+        }
+        .job-tag-loc {
+            background: rgba(243,117,110,.1);
+            color: #c45b55;
+        }
+        .job-card-title {
+            font-size: 1.15rem; font-weight: 800;
+            color: var(--primary-color);
+            margin: 0; line-height: 1.25;
+        }
+        .job-expand-btn {
+            width: 38px; height: 38px;
+            border-radius: 50%;
+            background: rgba(26,93,106,.07);
+            border: none; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+            transition: all .35s cubic-bezier(.16,1,.3,1);
+            color: var(--primary-color); font-size: 1.1rem;
+        }
+        .job-card.open .job-expand-btn {
+            transform: rotate(45deg);
+            background: #f3756e; color: #fff;
+        }
+
+        /* Accordion body */
+        .job-card-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .55s cubic-bezier(.16,1,.3,1);
+        }
+        .job-card-body-inner {
+            padding: 0 2.2rem 2.5rem;
+            border-top: 1px solid rgba(26,93,106,.08);
+            padding-top: 2rem;
+        }
+
+        /* Body content */
+        .job-intro {
+            font-size: .97rem; color: var(--text-medium);
+            line-height: 1.8; margin-bottom: 1.8rem;
+        }
+        .job-benefits {
+            background: linear-gradient(135deg, rgba(26,93,106,.04), rgba(129,171,179,.06));
+            border-left: 4px solid #81abb3;
+            border-radius: 0 12px 12px 0;
+            padding: 1.4rem 1.8rem;
+            margin-bottom: 1.8rem;
+        }
+        .job-benefits h4 {
+            font-size: .8rem; font-weight: 800;
+            color: #81abb3; letter-spacing: .18em;
+            text-transform: uppercase; margin-bottom: 1rem;
+        }
+        .job-benefits ul { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
+        .job-benefits li {
+            font-size: .9rem; color: var(--text-medium);
+            padding-left: 1.6rem; position: relative; line-height: 1.5;
+        }
+        .job-benefits li::before {
+            content: '✔'; position: absolute; left: 0;
+            color: var(--primary-color); font-size: .8rem;
+        }
+        .job-skills h4, .job-qualif h4 {
+            font-size: .8rem; font-weight: 800;
+            color: var(--primary-color); letter-spacing: .18em;
+            text-transform: uppercase; margin-bottom: .9rem;
+        }
+        .job-skills ul, .job-qualif ul {
+            list-style: none; display: flex; flex-direction: column; gap: .5rem;
+            margin-bottom: 1.6rem;
+        }
+        .job-skills li, .job-qualif li {
+            font-size: .9rem; color: var(--text-medium);
+            padding-left: 1.4rem; position: relative; line-height: 1.5;
+        }
+        .job-skills li::before {
+            content: '●'; position: absolute; left: 0;
+            color: #81abb3; font-size: .5rem; top: .55rem;
+        }
+        .job-qualif li::before {
+            content: '◆'; position: absolute; left: 0;
+            color: #f3756e; font-size: .5rem; top: .55rem;
+        }
+        .job-questions {
+            background: rgba(26,93,106,.04);
+            border-radius: 12px;
+            padding: 1.2rem 1.6rem;
+            margin-bottom: 1.8rem;
+        }
+        .job-questions p {
+            font-size: .9rem; color: var(--primary-color);
+            font-weight: 600; margin-bottom: .4rem; line-height: 1.5;
+        }
+        .job-questions p::before { content: '? '; color: #f3756e; }
+
+        /* Upload Form */
+        .job-apply-form {
+            border-top: 1px solid rgba(26,93,106,.1);
+            padding-top: 1.8rem;
+            margin-top: 1.8rem;
+        }
+        .job-apply-form h4 {
+            font-size: .82rem; font-weight: 800;
+            color: var(--primary-color); letter-spacing: .18em;
+            text-transform: uppercase; margin-bottom: 1.4rem;
+        }
+        .upload-fields {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 1.2rem; margin-bottom: 1.4rem;
+        }
+        .upload-zone {
+            border: 2px dashed rgba(26,93,106,.2);
+            border-radius: 14px;
+            padding: 1.6rem 1.2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all .3s ease;
+            position: relative;
+            background: rgba(26,93,106,.02);
+        }
+        .upload-zone:hover {
+            border-color: var(--primary-color);
+            background: rgba(26,93,106,.05);
+        }
+        .upload-zone.has-file {
+            border-color: #4a9fa8;
+            background: rgba(74,159,168,.06);
+            border-style: solid;
+        }
+        .upload-zone input[type="file"] {
+            position: absolute; inset: 0;
+            opacity: 0; cursor: pointer; width: 100%; height: 100%;
+        }
+        .upload-icon { font-size: 1.8rem; display: block; margin-bottom: .6rem; }
+        .upload-zone label {
+            display: block; pointer-events: none;
+        }
+        .upload-label-title {
+            font-size: .85rem; font-weight: 700;
+            color: var(--primary-color); display: block; margin-bottom: .2rem;
+        }
+        .upload-label-hint {
+            font-size: .75rem; color: var(--text-light); display: block;
+        }
+        .upload-filename {
+            font-size: .78rem; color: #4a9fa8;
+            font-weight: 600; margin-top: .4rem;
+            display: none;
+        }
+        .upload-zone.has-file .upload-filename { display: block; }
+        .upload-zone.has-file .upload-icon::after { content: ' ✓'; font-size: .9rem; color: #4a9fa8; }
+
+        .btn-apply-submit {
+            display: inline-flex; align-items: center; gap: .7rem;
+            background: var(--primary-color);
+            color: #fff !important;
+            padding: 1rem 2.5rem; border-radius: 50px;
+            text-decoration: none; font-weight: 700; font-size: .95rem;
+            transition: all .35s cubic-bezier(.16,1,.3,1);
+            border: none; cursor: pointer;
+            box-shadow: 0 8px 24px rgba(26,93,106,.25);
+        }
+        .btn-apply-submit:hover {
+            background: #f3756e;
+            transform: translateY(-3px);
+            box-shadow: 0 14px 36px rgba(243,117,110,.4);
+        }
+        .btn-apply-submit svg {
+            width: 16px; height: 16px; fill: currentColor;
+        }
+
+        /* ── SPONTANEOUS APPLICATION ── */
+        .spontaneous-section {
+            background: linear-gradient(135deg, rgba(26,93,106,.04), rgba(129,171,179,.07));
+            border: 1px solid rgba(26,93,106,.1);
+            border-radius: 24px;
+            padding: 3.5rem;
+            max-width: 900px; margin: 4rem auto 0;
+            display: flex; align-items: center; gap: 3rem;
+        }
+        .spontaneous-text { flex: 1; }
+        .spontaneous-text h3 {
+            font-size: 1.3rem; font-weight: 800;
+            color: var(--primary-color); margin-bottom: .8rem;
+        }
+        .spontaneous-text p {
+            font-size: .95rem; color: var(--text-medium);
+            line-height: 1.7; margin: 0;
+        }
+        .spontaneous-upload {
+            flex-shrink: 0;
+            display: flex; flex-direction: column; gap: 1rem;
+            min-width: 200px;
+        }
+        .btn-spont {
+            display: flex; align-items: center; justify-content: center; gap: .6rem;
+            padding: .95rem 1.8rem; border-radius: 50px;
+            font-weight: 700; font-size: .9rem;
+            transition: all .3s ease; cursor: pointer;
+            text-decoration: none; border: none;
+        }
+        .btn-spont-primary {
+            background: var(--primary-color); color: #fff !important;
+            box-shadow: 0 6px 20px rgba(26,93,106,.2);
+            position: relative; overflow: hidden;
+        }
+        .btn-spont-primary input[type="file"] {
+            position: absolute; inset: 0;
+            opacity: 0; cursor: pointer; width: 100%; height: 100%;
+        }
+        .btn-spont-primary:hover { background: #1a6e80; transform: translateY(-2px); }
+        .btn-spont-outline {
+            background: transparent; color: var(--primary-color) !important;
+            border: 1.5px solid rgba(26,93,106,.3);
+        }
+        .btn-spont-outline:hover {
+            border-color: var(--primary-color);
+            background: rgba(26,93,106,.05);
+            transform: translateY(-2px);
+        }
+
+        /* Animation entry */
+        .job-card { opacity: 0; transform: translateY(30px); transition: opacity .7s ease, transform .7s ease, box-shadow .35s ease, border-color .35s ease; }
+        .job-card.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) {
+            .careers-intro-inner { grid-template-columns: 1fr; gap: 3rem; }
+            .perks-grid { grid-template-columns: repeat(2,1fr); }
+            .upload-fields { grid-template-columns: 1fr; }
+            .spontaneous-section { flex-direction: column; padding: 2.5rem; }
+        }
+        @media (max-width: 560px) {
+            .perks-grid { grid-template-columns: 1fr; }
+            .job-card-header { gap: 1rem; padding: 1.4rem; }
+        }
+
+        /* ── NAV NO-WRAP FIX ── */
+        @media (min-width: 769px) {
+            .nav-menu { flex-wrap: nowrap !important; overflow: visible !important; }
+            .nav-link { white-space: nowrap !important; font-size: .82rem !important; padding: .5rem .75rem !important; }
+            .nav-link.cta-nav { padding: .5rem 1.1rem !important; }
+        }
+    </style>
+</head>
+<body>
+<div class="parallax-coral"><div class="coral-shape"></div><div class="coral-shape"></div><div class="coral-shape"></div><div class="coral-shape"></div></div>
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo-container">
+            <a href="index.html"><img src="acropora-logo-transparent.png" alt="Acropora Data" class="logo"></a>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link" style="cursor: default;">Présentation</a>
+                <div class="mega-menu">
+                    <div class="mega-menu-inner mega-menu-4">
+                        <div class="mega-col"><div class="mega-col-title">L'entreprise</div><a href="presentation.html"><span class="link-text"><strong>Qui sommes-nous ?</strong><span>Notre histoire et vision</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Méthode</div><a href="approche-donnees.html"><span class="link-text"><strong>Notre approche données</strong><span>Méthodologie & framework</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Personnes</div><a href="equipe.html"><span class="link-text"><strong>Équipe</strong><span>Nos experts data</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Engagement</div><a href="ethique.html"><span class="link-text"><strong>Éthique & valeurs</strong><span>Nos principes fondateurs</span></span></a></div>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link" style="cursor: default;">Solutions & Expertise</a>
+                <div class="mega-menu">
+                    <div class="mega-menu-inner mega-menu-4">
+                        <div class="mega-col"><div class="mega-col-title">MDM</div><a href="mdm.html"><span class="link-text"><strong>MDM & Intégration</strong><span>Référentiels & pipelines</span></span></a><a href="ai-foundations.html"><span class="link-text"><strong>Fondations IA</strong><span>Données prêtes pour l'IA</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Assurance Qualité</div><a href="migration-mdm.html"><span class="link-text"><strong>Stratégie de Tests</strong><span>Transition sans interruption</span></span></a><a href="tests-validation.html"><span class="link-text"><strong>Automatisation de Tests</strong><span>Qualité & conformité</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Analytics</div><a href="bi-analytique.html"><span class="link-text"><strong>BI & Analytique</strong><span>Insights et reporting</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Audit</div><a href="cadrage-projet.html"><span class="link-text"><strong>Cadrage de projet</strong><span>Structurer vos initiatives</span></span></a></div>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link" style="cursor: default;">Partenaires</a>
+                <div class="mega-menu">
+                    <div class="mega-menu-inner mega-menu-5">
+                        <div class="mega-col"><div class="mega-col-title">Technologie</div><a href="partenaires-technologiques.html"><span class="link-text"><strong>Partenaires technologiques</strong><span>Informatica, Snowflake, Azure…</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Business</div><a href="partenaires-commerciaux.html"><span class="link-text"><strong>Partenaires commerciaux</strong><span>Alliances et synergies business</span></span></a></div>
+                    </div>
+                </div>
+            </li>
+            
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link cta-nav active" style="cursor: default;">Contact</a>
+                <div class="mega-menu">
+                    <div class="mega-menu-inner mega-menu-5">
+                        <div class="mega-col"><div class="mega-col-title">Rejoindre</div><a href="carrieres.html"><span class="link-text"><strong>Carrières</strong><span>Offres & candidatures</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Partenariat</div><a href="devenir-partenaire.html"><span class="link-text"><strong>Devenir partenaire</strong><span>Rejoindre l'écosystème</span></span></a></div>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="carrieres_en.html" class="lang-switch-btn" title="Switch to English">EN</a>
+            </li>
+        </ul>
+        <button class="menu-toggle" onclick="document.querySelector('.nav-menu').classList.toggle('active')"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="page-hero" data-hero-anim="careers">
+    <div class="container">
+        <h1 class="page-title">Carrières</h1>
+        <p class="page-subtitle">Rejoignez une équipe d'experts passionnés par la data</p>
+    </div>
+</section>
+
+<!-- INTRO -->
+<section class="careers-intro">
+    <div class="container">
+        <div class="careers-intro-inner">
+            <div class="careers-intro-text reveal reveal-left">
+                <h2>Construire plus que des solutions data —<br><span>façonner l'avenir de la donnée.</span></h2>
+                <p>Chez Acropora Data, nous réunissons des experts passionnés en Master Data Management, Analytics et Quality Engineering pour résoudre des défis complexes et délivrer des résultats à haute valeur ajoutée pour nos clients.</p>
+                <p>Notre culture repose sur la collaboration, l'apprentissage continu et l'excellence. Que vous soyez un professionnel expérimenté ou un talent émergent, vous trouverez des opportunités pour grandir, prendre des responsabilités et travailler sur des projets impactants dans des secteurs variés.</p>
+                <div class="careers-intro-cta">
+                    <a href="#offres" class="btn-intro-primary">→ Voir les offres</a>
+                    <a href="#candidature-spontanee" class="btn-intro-ghost">Candidature spontanée</a>
+                </div>
+            </div>
+            <div class="careers-intro-stats reveal reveal-right">
+                <div class="ci-stat">
+                    <div class="ci-stat-icon">🌍</div>
+                    <div class="ci-stat-body">
+                        <strong>8 pays</strong>
+                        <span>Présence internationale</span>
+                    </div>
+                </div>
+                <div class="ci-stat">
+                    <div class="ci-stat-icon">👥</div>
+                    <div class="ci-stat-body">
+                        <strong>120+ experts</strong>
+                        <span>Une communauté data soudée</span>
+                    </div>
+                </div>
+                <div class="ci-stat">
+                    <div class="ci-stat-icon">📈</div>
+                    <div class="ci-stat-body">
+                        <strong>200+ projets</strong>
+                        <span>Livrés avec succès</span>
+                    </div>
+                </div>
+                <div class="ci-stat">
+                    <div class="ci-stat-icon">🎓</div>
+                    <div class="ci-stat-body">
+                        <strong>Formation continue</strong>
+                        <span>Acropora Academy + certifications</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- POURQUOI NOUS REJOINDRE -->
+<section class="page-section why-join-section">
+    <div class="container">
+        <div class="section-header reveal reveal-up">
+            <span class="jobs-section-tag">POURQUOI ACROPORA</span>
+            <div class="jobs-divider"></div>
+            <h2 class="jobs-section-title">Intégrer ACROPORA DATA, c'est :</h2>
+        </div>
+        <div class="perks-grid">
+            <div class="perk-card reveal reveal-up" style="transition-delay:0ms">
+                <span class="perk-icon">🚀</span>
+                <h3>Vision à long terme</h3>
+                <p>S'inscrire dans une stratégie d'entreprise ambitieuse et durable</p>
+            </div>
+            <div class="perk-card reveal reveal-up" style="transition-delay:120ms">
+                <span class="perk-icon">🎓</span>
+                <h3>Formation & expertise</h3>
+                <p>Bénéficier de formations et de l'expertise de toute l'équipe</p>
+            </div>
+            <div class="perk-card reveal reveal-up" style="transition-delay:240ms">
+                <span class="perk-icon">🗄️</span>
+                <h3>Expert Data Management</h3>
+                <p>Devenir un expert reconnu du data management et de l'IA</p>
+            </div>
+            <div class="perk-card reveal reveal-up" style="transition-delay:360ms">
+                <span class="perk-icon">🌐</span>
+                <h3>Contexte international</h3>
+                <p>Évoluer sur des projets à l'échelle internationale dans des secteurs variés</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- OFFRES D'EMPLOI -->
+<section class="page-section" id="offres">
+    <div class="container">
+        <div class="section-header reveal reveal-up">
+            <span class="jobs-section-tag">POSTES OUVERTS</span>
+            <div class="jobs-divider"></div>
+            <h2 class="jobs-section-title">Nos offres d'emploi</h2>
+        </div>
+
+        <div class="jobs-list">
+
+            <!-- OFFRE 1 — JAVA DEV -->
+            <div class="job-card" data-index="0">
+                <div class="job-card-header" onclick="toggleJob(this)">
+                    <span class="job-num">01</span>
+                    <div class="job-header-meta">
+                        <div class="job-tags">
+                            <span class="job-tag job-tag-type">CDI</span>
+                            <span class="job-tag job-tag-level">3+ ans d'expérience</span>
+                            <span class="job-tag job-loc">Maurice</span>
+                        </div>
+                        <h3 class="job-card-title">Développeur Java</h3>
+                    </div>
+                    <button class="job-expand-btn" aria-label="Ouvrir l'offre">+</button>
+                </div>
+                <div class="job-card-body">
+                    <div class="job-card-body-inner">
+                        <p class="job-intro">La DATA est au centre de toutes les préoccupations. La gouvernance des données est devenue vitale pour toutes les organisations. Notre cellule de data management interne s'agrandit afin de répondre à ce fort besoin. Nous recherchons un développeur Java avec au moins 3 ans d'expérience.</p>
+
+                        <div class="job-benefits">
+                            <h4>Ce que vous gagnez en nous rejoignant</h4>
+                            <ul>
+                                <li>S'inscrire dans une vision et stratégie à long terme</li>
+                                <li>Bénéficier de formations et de l'expertise de toute l'équipe</li>
+                                <li>Devenir un expert du data management</li>
+                                <li>Évoluer dans un contexte international</li>
+                                <li>Travailler au sein d'une entreprise aux valeurs fortes</li>
+                            </ul>
+                        </div>
+
+                        <div class="job-questions">
+                            <p>Vous êtes passionné(e) par le développement Java ?</p>
+                            <p>Vous êtes intéressé(e) par le monde de la DATA et de l'IA ?</p>
+                            <p>Vous souhaitez intégrer des équipes projets à l'échelle internationale ?</p>
+                        </div>
+
+                        <div class="job-skills">
+                            <h4>Compétences recherchées</h4>
+                            <ul>
+                                <li>Volonté de contribuer à un environnement axé sur le travail d'équipe</li>
+                                <li>Capacité à travailler de manière créative et analytique pour la résolution des problèmes</li>
+                                <li>Désir de travailler dans un environnement de systèmes d'information</li>
+                                <li>Bonnes compétences en communication (écrite et orale)</li>
+                            </ul>
+                        </div>
+
+                        <div class="job-qualif">
+                            <h4>Qualifications</h4>
+                            <ul>
+                                <li>BSC Computer Science / Software Engineer / Information Systems ou autres qualifications dans le domaine IT</li>
+                            </ul>
+                        </div>
+
+                        <div class="job-apply-form">
+                            <h4>Postuler pour ce poste</h4>
+                            <div class="upload-fields">
+                                <div class="upload-zone" id="cv-zone-1">
+                                    <input type="file" accept=".pdf,.doc,.docx" onchange="handleUpload(this,'cv-zone-1')" aria-label="Télécharger votre CV">
+                                    <span class="upload-icon">📄</span>
+                                    <label>
+                                        <span class="upload-label-title">Votre CV</span>
+                                        <span class="upload-label-hint">PDF, DOC — max 5 Mo</span>
+                                    </label>
+                                    <span class="upload-filename"></span>
+                                </div>
+                                <div class="upload-zone" id="lm-zone-1">
+                                    <input type="file" accept=".pdf,.doc,.docx" onchange="handleUpload(this,'lm-zone-1')" aria-label="Télécharger votre lettre de motivation">
+                                    <span class="upload-icon">✉️</span>
+                                    <label>
+                                        <span class="upload-label-title">Lettre de motivation</span>
+                                        <span class="upload-label-hint">PDF, DOC — max 5 Mo</span>
+                                    </label>
+                                    <span class="upload-filename"></span>
+                                </div>
+                            </div>
+                            <button class="btn-apply-submit" onclick="submitApplication('Développeur Java')">
+                                <svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg>
+                                Envoyer ma candidature
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OFFRE 2 — NEW GRADUATES -->
+            <div class="job-card" data-index="1">
+                <div class="job-card-header" onclick="toggleJob(this)">
+                    <span class="job-num">02</span>
+                    <div class="job-header-meta">
+                        <div class="job-tags">
+                            <span class="job-tag job-tag-type">CDI</span>
+                            <span class="job-tag job-tag-level">New Graduate</span>
+                            <span class="job-tag job-loc">Maurice</span>
+                        </div>
+                        <h3 class="job-card-title">IT New Graduate — Java</h3>
+                    </div>
+                    <button class="job-expand-btn" aria-label="Ouvrir l'offre">+</button>
+                </div>
+                <div class="job-card-body">
+                    <div class="job-card-body-inner">
+                        <p class="job-intro">Acropora Data recherche des jeunes diplômés passionnés par la technologie Java pour rejoindre notre équipe data management. Une opportunité unique de démarrer votre carrière dans un environnement international et innovant spécialisé en Master Data Management.</p>
+
+                        <div class="job-benefits">
+                            <h4>Ce que vous gagnez en nous rejoignant</h4>
+                            <ul>
+                                <li>S'inscrire dans une vision et stratégie à long terme</li>
+                                <li>Bénéficier de formations et de l'expertise de toute l'équipe</li>
+                                <li>Devenir un expert du data management</li>
+                                <li>Évoluer dans un contexte international</li>
+                                <li>Travailler au sein d'une entreprise aux valeurs fortes</li>
+                            </ul>
+                        </div>
+
+                        <div class="job-questions">
+                            <p>Vous êtes intéressé(e) par le monde de la DATA et de l'IA ?</p>
+                            <p>Vous souhaitez intégrer des équipes projets à l'échelle internationale ?</p>
+                        </div>
+
+                        <div class="job-skills">
+                            <h4>Compétences recherchées</h4>
+                            <ul>
+                                <li>Volonté de contribuer à un environnement axé sur le travail d'équipe</li>
+                                <li>Capacité à travailler de manière créative et analytique pour la résolution des problèmes</li>
+                                <li>Désir de travailler dans un environnement de systèmes d'information</li>
+                                <li>Bonnes compétences en communication en français (écrite et orale)</li>
+                            </ul>
+                        </div>
+
+                        <div class="job-qualif">
+                            <h4>Qualifications</h4>
+                            <ul>
+                                <li>BSC Computer Science / Software Engineer / Information Systems ou autres qualifications dans le domaine IT</li>
+                            </ul>
+                        </div>
+
+                        <div class="job-apply-form">
+                            <h4>Postuler pour ce poste</h4>
+                            <div class="upload-fields">
+                                <div class="upload-zone" id="cv-zone-2">
+                                    <input type="file" accept=".pdf,.doc,.docx" onchange="handleUpload(this,'cv-zone-2')" aria-label="Télécharger votre CV">
+                                    <span class="upload-icon">📄</span>
+                                    <label>
+                                        <span class="upload-label-title">Votre CV</span>
+                                        <span class="upload-label-hint">PDF, DOC — max 5 Mo</span>
+                                    </label>
+                                    <span class="upload-filename"></span>
+                                </div>
+                                <div class="upload-zone" id="lm-zone-2">
+                                    <input type="file" accept=".pdf,.doc,.docx" onchange="handleUpload(this,'lm-zone-2')" aria-label="Télécharger votre lettre de motivation">
+                                    <span class="upload-icon">✉️</span>
+                                    <label>
+                                        <span class="upload-label-title">Lettre de motivation</span>
+                                        <span class="upload-label-hint">PDF, DOC — max 5 Mo</span>
+                                    </label>
+                                    <span class="upload-filename"></span>
+                                </div>
+                            </div>
+                            <button class="btn-apply-submit" onclick="submitApplication('IT New Graduate')">
+                                <svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg>
+                                Envoyer ma candidature
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- CANDIDATURE SPONTANÉE -->
+        <div class="spontaneous-section reveal reveal-up" id="candidature-spontanee">
+            <div class="spontaneous-text">
+                <h3>Candidature spontanée</h3>
+                <p>Votre profil ne correspond pas exactement à nos offres actuelles ? Envoyez-nous votre CV et dites-nous comment vous pouvez contribuer à Acropora Data. Nous étudions toutes les candidatures.</p>
+            </div>
+            <div class="spontaneous-upload">
+                <label class="btn-spont btn-spont-primary">
+                    <input type="file" accept=".pdf,.doc,.docx" onchange="handleSpontUpload(this)" aria-label="Envoyer votre CV spontané">
+                    📄 Envoyer mon CV
+                </label>
+                <a href="contact.html" class="btn-spont btn-spont-outline">✉️ Nous contacter</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <img src="acropora-logo-transparent.png" alt="Acropora Data" class="footer-logo">
+                <p>Leader en Master Data Management</p>
+                <p style="margin-top:1rem;font-size:.85rem;opacity:.7">Transformez vos données en actifs stratégiques</p>
+            </div>
+            <div class="footer-section">
+                <h4>Qui sommes-nous ?</h4>
+                <ul>
+                    <li><a href="presentation.html">Présentation</a></li>
+                    <li><a href="approche-donnees.html">Notre approche données</a></li>
+                    <li><a href="equipe.html">Équipe</a></li>
+                    <li><a href="ethique.html">Éthique & valeurs</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Solutions & Expertise</h4>
+                <ul>
+                    <li><a href="mdm.html">MDM & intégration</a></li>
+                    <li><a href="bi-analytique.html">BI & Analytique</a></li>
+                    <li><a href="tests-validation.html">Automatisation de Tests</a></li>
+                    <li><a href="solutions-sur-mesure.html">Solutions sur mesure</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Ressources</h4>
+                <ul>
+                    <li><a href="blog.html">Blog & Articles</a></li>
+                    <li><a href="etudes-de-cas.html">Études de cas</a></li>
+                    <li><a href="academie.html">Acropora Academy</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Acropora Data. Tous droits réservés.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+<script src="scroll-animations.js"></script>
+<script src="pages.js"></script>
+<script>
+    /* ── Accordion ── */
+    function toggleJob(header) {
+        const card = header.closest('.job-card');
+        const body = card.querySelector('.job-card-body');
+        const isOpen = card.classList.contains('open');
+
+        // Close all
+        document.querySelectorAll('.job-card.open').forEach(c => {
+            c.classList.remove('open');
+            c.querySelector('.job-card-body').style.maxHeight = '0';
+        });
+
+        if (!isOpen) {
+            card.classList.add('open');
+            body.style.maxHeight = body.scrollHeight + 'px';
+            setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
+        }
+    }
+
+    /* ── File upload feedback ── */
+    function handleUpload(input, zoneId) {
+        const zone = document.getElementById(zoneId);
+        const nameEl = zone.querySelector('.upload-filename');
+        if (input.files && input.files[0]) {
+            zone.classList.add('has-file');
+            nameEl.textContent = input.files[0].name;
+        }
+    }
+
+    function handleSpontUpload(input) {
+        if (input.files && input.files[0]) {
+            const btn = input.closest('.btn-spont-primary');
+            btn.innerHTML = '✅ ' + input.files[0].name + '<input type="file" accept=".pdf,.doc,.docx" onchange="handleSpontUpload(this)">';
+        }
+    }
+
+    /* ── Submit feedback ── */
+    function submitApplication(poste) {
+        alert('Merci pour votre candidature au poste "' + poste + '" !\nNous vous contacterons dans les plus brefs délais.');
+    }
+
+    /* ── Scroll-reveal for job cards ── */
+    const cards = document.querySelectorAll('.job-card');
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                const delay = parseInt(e.target.dataset.index || 0) * 150;
+                setTimeout(() => e.target.classList.add('visible'), delay);
+                obs.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    cards.forEach(c => obs.observe(c));
+</script>
+<script src="hero-animations.js"></script>
+</body>
+</html>

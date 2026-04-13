@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acropora Data — Leader en Master Data Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+/* ═══════════════════════════════════════════════════════
+   HOME-ONLY STYLES
+═══════════════════════════════════════════════════════ */
+
+/* ── HERO ──────────────────────────────────────────────── */
+.home-hero {
+    position: relative; height: 100vh; min-height: 700px;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(145deg, #0d3d47 0%, #1a5d6a 45%, #2e7d8e 75%, #4a9fa8 100%);
+}
+
+.hero-slider { position: absolute; inset: 0; z-index: 0; }
+.hero-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.5s ease-in-out; overflow: hidden; }
+.hero-slide.active { opacity: 1; }
+.hero-slide video, .hero-slide img {
+    width: 100%; height: 100%; object-fit: cover;
+    position: absolute; top: 0; left: 0;
+}
+
+.hero-arrow {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    width: 50px; height: 50px;
+    border: 1px solid rgba(255,255,255,0.3); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; cursor: pointer; z-index: 20;
+    background: rgba(0,0,0,0.1); backdrop-filter: blur(4px);
+    transition: all .3s; opacity: 0.4; padding: 0;
+}
+.hero-arrow:hover { opacity: 1; background: rgba(255,255,255,0.1); border-color: #fff; }
+.hero-prev { left: 2rem; }
+.hero-next { right: 2rem; }
+.hero-arrow svg { width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Deep parallax layers */
+.hero-layer { position: absolute; inset: 0; will-change: transform; }
+
+.hero-layer-1 {
+    background:
+        radial-gradient(ellipse 800px 600px at 80% 30%, rgba(127,196,201,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 600px 400px at 15% 70%, rgba(74,159,168,0.15) 0%, transparent 60%);
+}
+.hero-layer-2 {
+    background-image: radial-gradient(2px 2px at 10% 20%, rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(2px 2px at 30% 60%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 50% 40%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 70% 80%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(2px 2px at 90% 15%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 25% 85%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(2px 2px at 60% 10%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 85% 55%, rgba(255,255,255,0.4) 0%, transparent 100%);
+    animation: stardrift 30s linear infinite;
+}
+@keyframes stardrift {
+    0% { background-position: 0 0; }
+    100% { background-position: 200px 200px; }
+}
+
+/* Organic coral shapes */
+.hero-coral-bg {
+    position: absolute; inset: 0; overflow: hidden; pointer-events: none;
+}
+.hero-blob {
+    position: absolute; border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    opacity: 0.07; background: var(--light-color);
+    animation: morphblob 18s ease-in-out infinite;
+}
+.hero-blob:nth-child(1) { width: 600px; height: 500px; top: -10%; right: -5%; animation-duration: 20s; }
+.hero-blob:nth-child(2) { width: 400px; height: 350px; bottom: -5%; left: -3%; animation-duration: 25s; animation-delay: -8s; border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+.hero-blob:nth-child(3) { width: 300px; height: 280px; top: 50%; right: 20%; animation-duration: 15s; animation-delay: -12s; opacity: 0.05; }
+@keyframes morphblob {
+    0%,100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; transform: translate(0,0) rotate(0deg); }
+    25% { border-radius: 70% 30% 50% 50% / 30% 60% 40% 70%; transform: translate(20px,-15px) rotate(5deg); }
+    50% { border-radius: 30% 70% 40% 60% / 70% 40% 60% 30%; transform: translate(-10px,20px) rotate(-3deg); }
+    75% { border-radius: 60% 40% 60% 40% / 50% 70% 30% 50%; transform: translate(15px,5px) rotate(8deg); }
+}
+
+/* Grid overlay subtle */
+.hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+        linear-gradient(rgba(127,196,201,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(127,196,201,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
+}
+
+.hero-content-home {
+    position: relative; z-index: 10;
+    text-align: center; color: #fff;
+    max-width: 960px; padding: 2rem;
+    animation: heroIn 1.1s cubic-bezier(0.16,1,0.3,1) forwards;
+    opacity: 0;
+}
+@keyframes heroIn {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-badge {
+    display: inline-flex; align-items: center; gap: .6rem;
+    background: rgba(255,255,255,0.02); backdrop-filter: blur(1px);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: .5rem 1.3rem; border-radius: 50px;
+    font-size: .8rem; font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase; color: rgba(255, 255, 255, 0.55);
+    margin-bottom: 2rem;
+    animation: heroIn 1.1s .15s cubic-bezier(0.16,1,0.3,1) both;
+}
+.hero-badge::before { content: '◉'; color: #7fc4c9; animation: pulse-dot 2s infinite; }
+@keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+.hero-title-home {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 800; line-height: 1.1;
+    margin-bottom: 1.5rem; color: rgba(255, 255, 255, 0.55);
+    text-shadow: none;
+    animation: heroIn 1.1s .25s cubic-bezier(0.16,1,0.3,1) both;
+}
+.hero-title-home span { color: rgba(255, 255, 255, 0.55); }
+
+.hero-sub-home {
+    font-size: clamp(1rem, 3vw, 1.2rem); font-weight: 300;
+    color: rgba(255, 255, 255, 0.55); margin-bottom: 3rem; max-width: 680px; margin-left: auto; margin-right: auto;
+    animation: heroIn 1.1s .4s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+.hero-actions {
+    display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap;
+}
+
+.hero-content-home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 45vh; /* descendre le contenu presque en bas */
+}
+
+
+.btn-hero-primary {
+    display: inline-flex; align-items: center; gap: .6rem;
+    background: #fff; color: var(--primary-color);
+    padding: .9rem 2.2rem; border-radius: 50px;
+    font-weight: 700; font-size: .95rem; text-decoration: none;
+    transition: all .3s; box-shadow: 0 8px 30px rgba(0,0,0,.2);
+}
+.btn-hero-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(0,0,0,.3); }
+
+.btn-hero-secondary {
+    display: inline-flex; align-items: center; gap: .6rem;
+    background: rgba(255,255,255,.1); color: #fff;
+    padding: .9rem 2.2rem; border-radius: 50px;
+    font-weight: 600; font-size: .95rem; text-decoration: none;
+    border: 1.5px solid rgba(255,255,255,.35); transition: all .3s;
+    backdrop-filter: blur(6px);
+}
+.btn-hero-secondary:hover { background: rgba(255,255,255,.2); transform: translateY(-3px); }
+
+.hero-scroll {
+    position: absolute; bottom: 2.5rem; left: 50%;
+    transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: .5rem;
+    color: rgba(255,255,255,.5); font-size: .75rem; letter-spacing: .1em; text-transform: uppercase;
+    animation: float-scroll 2.5s ease-in-out infinite;
+}
+.hero-scroll-bar { width: 2px; height: 40px; background: linear-gradient(to bottom, rgba(255,255,255,.5), transparent); border-radius: 2px; }
+@keyframes float-scroll { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
+
+/* floating numbers ambiance */
+.hero-floaters { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.floater {
+    position: absolute;
+    font-size: clamp(.7rem,1.2vw,1.1rem);
+    font-weight: 800; color: rgba(127,196,201,0.25);
+    animation: floatUp linear infinite;
+    white-space: nowrap;
+}
+@keyframes floatUp {
+    from { transform: translateY(100vh) rotate(-10deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    to   { transform: translateY(-20vh) rotate(10deg); opacity: 0; }
+}
+
+/* ── SECTION GENERAL ───────────────────────────────────── */
+.home-section { padding: 7rem 0; position: relative; }
+.home-section.dark-bg { background: #0f2e36; color: #fff; }
+.home-section.teal-bg { background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); color: #fff; }
+.home-section.gray-bg { background: var(--subtle-gray); }
+
+.home-section-title {
+    font-size: clamp(2rem,3.5vw,3rem); font-weight: 800;
+    color: var(--primary-color); margin-bottom: .75rem; text-align: center;
+}
+.home-section-title.light { color: #fff; }
+.home-section-subtitle { text-align: center; color: var(--text-medium); font-size: 1.1rem; max-width: 700px; margin: 0 auto 4rem; }
+.home-section-subtitle.light { color: rgba(255,255,255,.85); }
+.home-divider { width: 70px; height: 4px; background: linear-gradient(90deg, var(--primary-color), var(--accent-color)); border-radius: 2px; margin: 0 auto 1.5rem; }
+.home-divider.light { background: rgba(255,255,255,.5); }
+
+/* ── VIDEO SECTION ─────────────────────────────────────── */
+.video-section { background: #0a2830; padding: 5rem 0; }
+.video-wrapper {
+    max-width: 960px; margin: 0 auto;
+    border-radius: 24px; overflow: hidden;
+    box-shadow: 0 40px 100px rgba(0,0,0,.5);
+    position: relative;
+}
+.video-placeholder {
+    width: 100%; aspect-ratio: 16/9;
+    background: linear-gradient(135deg, #0d3d47, #1a5d6a);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 1.5rem; cursor: pointer; position: relative; overflow: hidden;
+}
+.video-placeholder::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+        radial-gradient(circle at 30% 50%, rgba(127,196,201,.15) 0%, transparent 60%),
+        radial-gradient(circle at 75% 30%, rgba(74,159,168,.12) 0%, transparent 50%);
+}
+.video-play-btn {
+    width: 90px; height: 90px; border-radius: 50%;
+    background: rgba(255,255,255,.15); border: 3px solid rgba(255,255,255,.4);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.5rem; color: #fff; cursor: pointer;
+    transition: all .3s; backdrop-filter: blur(8px);
+    position: relative; z-index: 1;
+}
+.video-play-btn:hover { background: rgba(255,255,255,.25); transform: scale(1.1); }
+.video-play-btn::after { content: '▶'; display: block; margin-left: 5px; }
+.video-label { color: rgba(255,255,255,.7); font-size: .9rem; font-weight: 500; z-index: 1; }
+.video-badge-container { display: flex; gap: 1rem; z-index: 1; }
+.video-badge { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); padding: .4rem 1rem; border-radius: 20px; color: rgba(255,255,255,.8); font-size: .75rem; font-weight: 600; }
+
+/* ── SOLUTIONS BRIEF ───────────────────────────────────── */
+.sol-brief-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+.sol-brief-card {
+    background: #fff; border-radius: 20px;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 4px 20px rgba(26,93,106,.08);
+    flex: 0 1 calc(33.333% - 1.5rem);
+    min-width: 280px;
+    border: 2px solid transparent;
+    transition: all .3s; text-decoration: none; color: inherit;
+    display: block; position: relative; overflow: hidden;
+}
+.sol-brief-card::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 4px; background: #f3756e;
+    transform: scaleY(0); transform-origin: top; transition: transform .3s;
+}
+.sol-brief-card:hover { transform: translateY(-8px); box-shadow: 0 16px 40px rgba(26,93,106,.16); border-color: var(--accent-color); }
+.sol-brief-card:hover::before { transform: scaleY(1); }
+.sol-brief-icon { font-size: 2.5rem; margin-bottom: 1.2rem; display: block; }
+.sol-brief-card h3 { font-size: 1.2rem; color: var(--primary-color); font-weight: 700; margin-bottom: .7rem; }
+.sol-brief-card p { font-size: .9rem; color: var(--text-medium); line-height: 1.6; }
+.sol-brief-arrow { margin-top: 1.5rem; display: inline-flex; align-items: center; gap: .4rem; color: var(--accent-color); font-weight: 700; font-size: .85rem; transition: gap .3s; }
+.sol-brief-card:hover .sol-brief-arrow { gap: .8rem; }
+
+/* ── KEY FIGURES ─────────────────────────────────────── */
+.key-figures-wrap {
+    display: flex; align-items: stretch; gap: 5rem; margin-top: 3rem;
+}
+.kf-image-container {
+    flex: 1; position: relative; border-radius: 20px;
+}
+.kf-image-container::before {
+    content: ''; position: absolute; inset: -8px;
+    border: 3px solid #f3756e; border-radius: 28px;
+    box-shadow: 0 0 20px rgba(243, 117, 110, 0.4);
+    animation: kf-glow 2.5s infinite alternate;
+}
+@keyframes kf-glow {
+    from { box-shadow: 0 0 5px rgba(243, 117, 110, 0.3); border-color: rgba(243, 117, 110, 0.5); }
+    to { box-shadow: 0 0 25px rgba(243, 117, 110, 0.8); border-color: rgba(243, 117, 110, 1); }
+}
+.kf-image-container img {
+    width: 100%; height: 100%; object-fit: cover;
+    border-radius: 20px; position: relative; z-index: 1;
+}
+.kf-content { flex: 1.2; display: flex; flex-direction: column; justify-content: center; text-align: left; }
+.kf-title { font-size: 2.2rem; font-weight: 800; color: var(--primary-color); margin-bottom: 1.5rem; }
+.kf-list { list-style: none; padding: 0; margin-bottom: 2rem; }
+.kf-list li { 
+    font-size: 1.1rem; font-weight: 600; color: var(--text-dark); 
+    margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.8rem;
+}
+.kf-list li::before { content: '•'; color: #f3756e; font-size: 1.5rem; line-height: 1; }
+.kf-subtitle { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); margin-bottom: 1rem; }
+.kf-success-list { font-size: 1.05rem; color: var(--text-medium); line-height: 1.8; }
+
+/* ── KEY EXPERTISE ───────────────────────────────────── */
+.key-expertise-grid {
+    display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 3rem;
+}
+.key-exp-item {
+    flex: 0 1 240px; aspect-ratio: 1; border-radius: 50%; background: #fff;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 2rem; transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: default; position: relative; border: 1px solid rgba(26, 93, 106, 0.1);
+    box-shadow: 0 10px 30px rgba(26, 93, 106, 0.04);
+}
+.key-exp-item:hover {
+    transform: scale(1.05); background: var(--primary-color); border: 5px solid #f3756e;
+    box-shadow: 0 0 25px rgba(243, 117, 110, 0.6), 0 20px 50px rgba(26, 93, 106, 0.15);
+}
+.key-exp-item h3 {
+    font-size: 1.1rem; color: var(--primary-color); font-weight: 700; transition: all 0.4s; margin: 0; line-height: 1.3;
+}
+.key-exp-item p {
+    font-size: 0.85rem; color: rgba(255, 255, 255, 0.9); position: absolute; padding: 0 1.5rem;
+    opacity: 0; transform: translateY(20px); transition: all 0.4s; margin: 0;
+}
+.key-exp-item:hover h3 { opacity: 0; transform: translateY(-20px); }
+.key-exp-item:hover p { opacity: 1; transform: translateY(0); }
+
+/* ── WHY ACROPORA DIAGRAM ───────────────────────────────── */
+.why-diagram-container { max-width: 1100px; margin: 4rem auto; position: relative; display: flex; flex-direction: column; align-items: center; }
+.why-badge-pill { 
+    background: #f3756e; color: #fff; padding: 0.8rem 2.5rem; border-radius: 40px; 
+    font-weight: 700; font-size: 1.6rem; z-index: 10; margin-bottom: -2.5rem;
+    box-shadow: 0 4px 15px rgba(243, 117, 110, 0.2);
+}
+.why-circles-area { position: relative; width: 100%; height: 520px; }
+.why-circle { 
+    width: 280px; height: 280px; border-radius: 50%; border: 1px solid #f3756e; 
+    background: rgba(255,255,255,0.5); backdrop-filter: blur(4px); display: flex; 
+    align-items: center; justify-content: center; text-align: center; padding: 2rem; 
+    color: #f3756e; font-weight: 700; font-size: 1.1rem; position: absolute; text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: bubbleFloat 8s infinite ease-in-out;
+}
+.why-circle:hover { transform: scale(1.08); z-index: 20; background: #fff; box-shadow: 0 15px 35px rgba(243, 117, 110, 0.15); }
+.c-left   { left: 5%; top: 120px; animation-duration: 9s; animation-delay: 0s; }
+.c-top    { left: 28%; top: 0; animation-duration: 7s; animation-delay: -2s; }
+.c-bottom { left: 42%; top: 220px; animation-duration: 10s; animation-delay: -4s; }
+.c-right  { right: 5%; top: 60px; animation-duration: 8s; animation-delay: -1s; }
+.why-footer-text { 
+    margin-top: 3rem; text-align: center; color: #f3756e; font-size: 1.15rem; 
+    max-width: 850px; font-weight: 600; line-height: 1.6; padding: 0 1rem;
+}
+@keyframes bubbleFloat {
+    0%, 100% { margin-top: 0; margin-left: 0; }
+    33% { margin-top: -15px; margin-left: 10px; }
+    66% { margin-top: -25px; margin-left: -10px; }
+}
+@media (max-width: 900px) {
+    .why-circles-area { height: auto; display: flex; flex-direction: column; gap: 1.5rem; align-items: center; padding-top: 4rem; }
+    .why-circle { position: static; width: 260px; height: 260px; animation: none; }
+    .why-badge-pill { font-size: 1.3rem; }
+}
+
+@keyframes sparkle-in {
+    0% { opacity: 0; transform: translateY(50px); filter: brightness(3) blur(10px); }
+    60% { opacity: 1; filter: brightness(1.5) blur(5px); }
+    100% { opacity: 1; transform: translateY(0); filter: brightness(1) blur(0); }
+}
+.scintillant.active { animation: sparkle-in 1.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+/* ── SECTION ÉQUIPE ─────────────────────────────────────── */
+.section-team-full { padding: 2rem 0 6rem; overflow: hidden; }
+.team-3d-container { 
+    width: 100%; max-width: 1400px; margin: 0 auto; padding: 0 2rem;
+}
+.team-3d-frame {
+    width: 100%; border: 8px solid #f3756e; border-radius: 20px;
+    position: relative; overflow: hidden; transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0; transform: translateY(30px);
+    animation: kf-glow 2.5s infinite alternate;
+}
+.team-3d-frame.active { opacity: 1; transform: translateY(0); }
+.team-3d-frame img { width: 100%; height: auto; display: block; border-radius: 12px; }
+
+/* ── EFFET SCINTILLANT BOUTON ────────────────────────────── */
+.btn-sparkle { position: relative; overflow: hidden; }
+.btn-sparkle::after {
+    content: ''; position: absolute; top: -50%; left: -150%; width: 100%; height: 200%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+    transform: rotate(25deg);
+}
+.btn-sparkle:hover::after {
+    left: 150%;
+    transition: left 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-sparkle:hover { box-shadow: 0 0 20px rgba(243, 117, 110, 0.4), 0 14px 40px rgba(0,0,0,0.3) !important; }
+
+/* ── APPROCHE DONNÉES ──────────────────────────────────── */
+.approche-flow {
+    display: flex; align-items: stretch; gap: 0;
+    margin-top: 3rem; position: relative;
+}
+.approche-step {
+    flex: 1; background: #fff;
+    padding: 2.5rem 1.8rem; position: relative;
+    border-top: 4px solid transparent;
+    transition: all .3s;
+    clip-path: polygon(0 0, 90% 0, 100% 50%, 90% 100%, 0 100%);
+    margin-right: -25px;
+}
+.approche-step:last-child { clip-path: none; margin-right: 0; }
+.approche-step.s1 { border-top-color: #1a5d6a; z-index: 4; }
+.approche-step.s2 { border-top-color: #2e7085; z-index: 3; }
+.approche-step.s3 { border-top-color: #4a9fa8; z-index: 2; }
+.approche-step.s4 { border-top-color: #7fc4c9; z-index: 1; }
+.approche-step:hover { transform: translateY(-6px) scale(1.02); z-index: 10; clip-path: none; margin-right: 0; }
+.approche-step-num {
+    width: 48px; height: 48px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: #fff; font-weight: 800; font-size: 1.3rem;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.2rem;
+    transition: all 0.5s ease;
+}
+.approche-step-num.lighthouse {
+    background: #fff;
+    color: var(--primary-color);
+    box-shadow: 0 0 25px rgba(127,196,201,0.8);
+    transform: scale(1.2);
+    border: 2px solid var(--accent-color);
+}
+.approche-step h3 { font-size: 1.05rem; color: var(--primary-color); font-weight: 700; margin-bottom: .7rem; }
+.approche-step p { font-size: .85rem; color: var(--text-medium); line-height: 1.6; }
+.approche-step-icon { font-size: 2rem; margin-bottom: .8rem; display: block; }
+
+/* ── SOLUTIONS SUR MESURE ──────────────────────────────── */
+.sur-mesure-wrap {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+}
+.sur-mesure-text {}
+.sur-mesure-text h2 { font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 800; color: var(--primary-color); margin-bottom: 1rem; line-height: 1.2; }
+.sur-mesure-text p { color: var(--text-medium); margin-bottom: 2rem; font-size: 1.05rem; line-height: 1.8; }
+.sur-mesure-steps { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2.5rem; }
+.sur-mesure-step { display: flex; gap: 1rem; align-items: flex-start; }
+.sur-mesure-step-icon { width: 44px; height: 44px; background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.1rem; flex-shrink: 0; }
+.sur-mesure-step-text h4 { font-weight: 700; color: var(--primary-color); margin-bottom: .2rem; }
+.sur-mesure-step-text p { color: var(--text-medium); font-size: .9rem; margin: 0; }
+.sur-mesure-visual {
+    background: linear-gradient(135deg, #0d3d47, #1a5d6a);
+    border-radius: 24px; padding: 3rem;
+    display: flex; flex-direction: column; gap: 1.5rem;
+    position: relative; overflow: hidden;
+}
+.sur-mesure-visual::before {
+    content: ''; position: absolute; top: -30%; right: -20%;
+    width: 300px; height: 300px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(127,196,201,.15), transparent 70%);
+}
+.sm-node {
+    background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
+    border-radius: 14px; padding: 1.2rem 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+    transition: all .3s; cursor: default;
+}
+.sm-node:hover { background: rgba(255,255,255,.15); transform: translateX(8px); }
+.sm-node-icon { font-size: 1.8rem; }
+.sm-node-text strong { display: block; color: #fff; font-size: .9rem; font-weight: 700; }
+.sm-node-text span { font-size: .78rem; color: rgba(255,255,255,.55); }
+.sm-connector { width: 2px; height: 20px; background: linear-gradient(to bottom, rgba(127,196,201,.4), rgba(127,196,201,.1)); margin-left: 2.2rem; }
+
+/* ── ACROPOST ──────────────────────────────────────────── */
+.blog-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem; margin-top: 1rem;
+}
+.blog-card {
+    background: #fff; border-radius: 20px; overflow: hidden;
+    box-shadow: 0 4px 20px rgba(26,93,106,.07);
+    transition: all .3s; text-decoration: none; color: inherit; display: block;
+}
+.blog-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(26,93,106,.15); }
+.blog-card-header {
+    height: 160px; background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    display: flex; align-items: center; justify-content: center; font-size: 3rem; position: relative;
+    overflow: hidden;
+}
+.blog-card-header::after {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at 70% 30%, rgba(255,255,255,.12) 0%, transparent 60%);
+}
+.blog-card-body { padding: 1.8rem; }
+.blog-tag { display: inline-block; background: var(--subtle-gray); color: var(--primary-color); padding: .3rem .8rem; border-radius: 12px; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; margin-bottom: .8rem; }
+.blog-card-body h3 { font-size: 1.05rem; color: var(--primary-color); font-weight: 700; margin-bottom: .7rem; line-height: 1.4; }
+.blog-card-body p { font-size: .85rem; color: var(--text-medium); line-height: 1.6; }
+.blog-read-more { display: inline-flex; align-items: center; gap: .3rem; color: var(--accent-color); font-weight: 700; font-size: .8rem; margin-top: 1rem; }
+
+/* ── CONTACT CTA ───────────────────────────────────────── */
+.home-contact-cta {
+    background: linear-gradient(145deg, #0d3d47 0%, #1a5d6a 50%, #4a9fa8 100%);
+    padding: 8rem 0; text-align: center; position: relative; overflow: hidden;
+}
+.home-contact-cta::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+        radial-gradient(ellipse 700px 500px at 20% 50%, rgba(127,196,201,.12) 0%, transparent 60%),
+        radial-gradient(ellipse 500px 400px at 80% 70%, rgba(74,159,168,.1) 0%, transparent 60%);
+    animation: pulse 8s ease-in-out infinite;
+}
+.home-contact-cta h2 { font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 800; color: #fff; margin-bottom: 1rem; position: relative; z-index: 1; }
+.home-contact-cta p { font-size: 1.2rem; color: rgba(255,255,255,.8); margin-bottom: 3rem; position: relative; z-index: 1; }
+.home-cta-actions { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
+
+/* ── RESPONSIVE ────────────────────────────────────────── */
+@media (max-width: 1024px) {
+    .approche-flow { flex-direction: column; gap: 1rem; }
+    .approche-step { clip-path: none; margin-right: 0; }
+    .sur-mesure-wrap { grid-template-columns: 1fr; gap: 3rem; }
+}
+@media (max-width: 768px) {
+    .hero-title-home { font-size: 2.5rem; }
+    .hero-sub-home { font-size: 1rem; }
+    .hero-title-home { white-space: normal; text-align: center; }
+    .sol-brief-card { flex: 0 1 100%; }
+    .temoignages-grid { grid-template-columns: 1fr; }
+    .key-figures-wrap { flex-direction: column; gap: 3rem; }
+}
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo-container">
+            <a href="index.html"><img src="acropora-logo-transparent.png" alt="Acropora Data" class="logo"></a>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link" style="cursor: default;">Présentation</a>
+                <div class="mega-menu">
+                    <div class="mega-menu-inner mega-menu-4">
+                        <div class="mega-col"><div class="mega-col-title">L'entreprise</div><a href="presentation.html"><span class="link-text"><strong>Qui sommes-nous ?</strong><span>Notre histoire et vision</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Méthode</div><a href="approche-donnees.html"><span class="link-text"><strong>Notre approche données</strong><span>Méthodologie & framework</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Personnes</div><a href="equipe.html"><span class="link-text"><strong>Équipe</strong><span>Nos experts data</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Engagement</div><a href="ethique.html"><span class="link-text"><strong>Éthique & valeurs</strong><span>Nos principes fondateurs</span></span></a></div>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link" style="cursor: default;">Solutions & Expertise</a>
+                <div class="mega-menu">
+                    <div class="mega-menu-inner mega-menu-4">
+                        <div class="mega-col"><div class="mega-col-title">MDM</div><a href="mdm.html"><span class="link-text"><strong>MDM & Intégration</strong><span>Référentiels & pipelines</span></span></a><a href="ai-foundations.html"><span class="link-text"><strong>Fondations IA</strong><span>Données prêtes pour l'IA</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Assurance Qualité</div><a href="migration-mdm.html"><span class="link-text"><strong>Stratégie de Tests</strong><span>Transition sans interruption</span></span></a><a href="tests-validation.html"><span class="link-text"><strong>Automatisation de Tests</strong><span>Qualité & conformité</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Analytics</div><a href="bi-analytique.html"><span class="link-text"><strong>BI & Analytique</strong><span>Insights et reporting</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Audit</div><a href="cadrage-projet.html"><span class="link-text"><strong>Cadrage de projet</strong><span>Structurer vos initiatives</span></span></a></div>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link" style="cursor: default;">Partenaires</a>
+                <div class="mega-menu">
+                    <div class="mega-menu-inner mega-menu-5">
+                        <div class="mega-col">
+                            <div class="mega-col-title">Technologie</div>
+                            <a href="partenaires-technologiques.html"><span class="link-text"><strong>Partenaires technologiques</strong><span>Informatica, Snowflake, Azure…</span></span></a>
+                        </div>
+                        <div class="mega-col">
+                            <div class="mega-col-title">Business</div>
+                            <a href="partenaires-commerciaux.html"><span class="link-text"><strong>Partenaires commerciaux</strong><span>Alliances et synergies business</span></span></a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link cta-nav" style="cursor: default;">Contact</a>
+                <div class="mega-menu">
+                    <div class="mega-menu-inner mega-menu-5">
+                        <div class="mega-col"><div class="mega-col-title">Rejoindre</div><a href="carrieres.html"><span class="link-text"><strong>Carrières</strong><span>Offres & candidatures</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Partenariat</div><a href="devenir-partenaire.html"><span class="link-text"><strong>Devenir partenaire</strong><span>Rejoindre l'écosystème</span></span></a></div>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="index_en.html" class="lang-switch-btn" title="Switch to English">EN</a>
+            </li>
+        </ul>
+        <button class="menu-toggle" onclick="document.querySelector('.nav-menu').classList.toggle('active')"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<!-- ═══════ HERO ═══════════════════════════════════════ -->
+<section class="home-hero" id="hero">
+    <div class="hero-slider">
+        <div class="hero-slide active">
+            <video src="scene 3A new.mp4" autoplay muted playsinline></video>
+        </div>
+        <div class="hero-slide">
+            <img src="DSC_1660.JPG" alt="Acropora Hero">
+        </div>
+    </div>
+    <button class="hero-arrow hero-prev" aria-label="Précédent"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <button class="hero-arrow hero-next" aria-label="Suivant"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+    <div class="hero-layer hero-layer-1" data-parallax="0.3"></div>
+    <div class="hero-layer hero-layer-2" data-parallax="0.15"></div>
+    <div class="hero-coral-bg">
+        <div class="hero-blob"></div>
+        <div class="hero-blob"></div>
+        <div class="hero-blob"></div>
+    </div>
+    <div class="hero-floaters" id="floaters"></div>
+
+    <div class="hero-content-home">
+        <div class="hero-actions">
+            <a href="contact.html" class="btn-hero-secondary">Parler à un expert</a>
+        </div>
+        <h1 class="hero-title-home">Transformez vos données en<br><span>socles de confiance pour l'IA</span></h1>
+    </div>
+
+    <div class="hero-scroll">
+        <div class="hero-scroll-bar"></div>
+        <span>Scroll</span>
+    </div>
+</section>
+
+<!-- ═══════ SOLUTIONS BRIEF ════════════════════════════ -->
+<section class="home-section gray-bg">
+    <div class="container">
+        <div class="home-divider"></div>
+        <h2 class="home-section-title">Solutions & Expertise</h2>
+        <p class="home-section-subtitle">Une couverture complète du cycle de vie de vos données de référence — du cadrage au ROI mesuré</p>
+        <div class="sol-brief-grid">
+            <a href="mdm.html" class="sol-brief-card fade-in" style="transition-delay: 0ms;">
+                <h3>Data Management</h3>
+                <p>Centralisation et fiabilisation de vos référentiels pour une donnée unique et de qualité.</p>
+            </a>
+            <a href="mdm.html" class="sol-brief-card fade-in" style="transition-delay: 100ms;">
+                <h3>Data Integration</h3>
+                <p>Connectez et harmonisez vos sources de données hétérogènes pour une vue unifiée.</p>
+            </a>
+            <a href="ai-foundations.html" class="sol-brief-card fade-in" style="transition-delay: 200ms;">
+                <h3>Data & AI Foundations</h3>
+                <p>Construisez des bases de données solides et fiables, essentielles à vos initiatives IA.</p>
+            </a>
+            <a href="tests-validation.html" class="sol-brief-card fade-in" style="transition-delay: 300ms;">
+                <h3>Test Automation</h3>
+                <p>Automatisez la validation de vos données et processus pour garantir qualité et conformité.</p>
+            </a>
+            <a href="bi-analytique.html" class="sol-brief-card fade-in" style="transition-delay: 400ms;">
+                <h3>Business Intelligence</h3>
+                <p>Tableaux de bord interactifs pour piloter votre performance et éclairer vos décisions.</p>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════ NOS EXPERTISES CLÉS ════════════════════════ -->
+<section class="home-section">
+    <div class="container">
+        <div class="home-divider"></div>
+        <h2 class="home-section-title">Nos expertises clés</h2>
+        <p class="home-section-subtitle">Des piliers fondamentaux pour structurer et valoriser votre patrimoine data</p>
+        <div class="key-expertise-grid">
+            <div class="key-exp-item fade-in">
+                <h3>Master Data Management</h3>
+                <p>Centralisez vos actifs pour une vision 360° et une donnée unique.</p>
+            </div>
+            <div class="key-exp-item fade-in" style="transition-delay: 100ms;">
+                <h3>Data Quality</h3>
+                <p>Fiabilisez vos décisions par une donnée saine, précise et complète.</p>
+            </div>
+            <div class="key-exp-item fade-in" style="transition-delay: 200ms;">
+                <h3>Data Governance</h3>
+                <p>Valorisez vos données par un cadre de rôles et de processus agile.</p>
+            </div>
+            <div class="key-exp-item fade-in" style="transition-delay: 300ms;">
+                <h3>AI-ready Data</h3>
+                <p>Préparez le futur avec des socles de données structurés pour l'IA.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════ QUELQUES CHIFFRES ══════════════════════════ -->
+<section class="home-section gray-bg">
+    <div class="container">
+        <div class="key-figures-wrap">
+            <div class="kf-image-container fade-in-left">
+                <img src="DSC_0849.JPG" alt="Acropora Data en chiffres">
+            </div>
+            <div class="kf-content">
+                <h2 class="kf-title fade-in">ACROPORA DATA en quelques chiffres</h2>
+                <ul class="kf-list">
+                    <li class="fade-in" style="transition-delay: 100ms;">+ 11 ans d'expertise en MDM</li>
+                    <li class="fade-in" style="transition-delay: 200ms;">+ 18 ans dans la Data</li>
+                    <li class="fade-in" style="transition-delay: 300ms;">+ de 30 référentiels en production</li>
+                    <li class="fade-in" style="transition-delay: 400ms;">+ de 15 projets d'impléméntation MDM</li>
+                    <li class="fade-in" style="transition-delay: 500ms;">+ de 15 consultants spécialisés MDM</li>
+                </ul>
+                <h3 class="kf-subtitle fade-in">Nos succès</h3>
+                <div class="kf-success-list fade-in">
+                    Implémentation de projets Master Data<br>
+                    Projets de Data Catalog<br>
+                    Cadrage de projets MDM<br>
+                    Mise en place de gouvernance de données
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════ POURQUOI ACROPORA ? ════════════════════════ -->
+<section class="home-section" style="background: #81abb3; padding-bottom: 2rem;">
+    <div class="container">
+        <div class="home-divider"></div>
+        <h2 class="home-section-title">Pourquoi Acropora ?</h2>
+        <div class="why-diagram-container scintillant">
+            <div class="why-badge-pill">Nos atouts</div>
+            <div class="why-circles-area">
+                <a href="mdm.html" class="why-circle c-left">Expertise en Data Management</a>
+                <a href="solutions-sur-mesure.html" class="why-circle c-top">Agilité et Flexibilité</a>
+                <a href="presentation.html#hub-maurice" class="why-circle c-bottom">Localisation Stratégique et Tarifs Compétitifs</a>
+                <a href="migration-mdm.html" class="why-circle c-right">Méthodologie de Tests</a>
+            </div>
+            <p class="why-footer-text">Notre approche garantit que chaque aspect du processus de gestion des données est rigoureusement validé, offrant des résultats de qualité supérieure à nos clients.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════ SECTION ÉQUIPE ══════════════════════════════ -->
+<section class="section-team-full">
+    <div class="container">
+        <div class="home-divider"></div>
+        <h2 class="home-section-title">Notre Équipe</h2>
+    </div>
+    <div class="team-3d-container">
+        <div class="team-3d-frame reveal-3d">
+            <img src="DSC_1811.jpg" alt="L'équipe Acropora Data">
+        </div>
+    </div>
+    <div class="container" style="text-align: center; margin-top: 3rem;">
+        <a href="carrieres.html" class="btn-hero-primary btn-sparkle fade-in">Rejoindre l'aventure →</a>
+    </div>
+</section>
+
+<!-- ═══════ CONTACT CTA ═════════════════════════════════ -->
+<section class="home-contact-cta">
+    <div class="container">
+        <h2>Prêt à structurer vos données ?</h2>
+        <p>Nos experts vous répondent sous 24h — Paris, Bruxelles, Genève</p>
+        <div class="home-cta-actions">
+            <a href="contact.html" class="btn-hero-primary">Parler à un expert</a>
+            <a href="etudes-de-cas.html" class="btn-hero-secondary">Voir nos succès clients</a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <img src="acropora-logo-transparent.png" alt="Acropora Data" class="footer-logo">
+                <p>Leader en Master Data Management</p>
+                <p style="margin-top:1rem;font-size:.85rem;opacity:.7">Transformez vos données en actifs stratégiques</p>
+            </div>
+            <div class="footer-section">
+                <h4>Présentation</h4>
+                <ul>
+                    <li><a href="presentation.html">Qui sommes-nous ?</a></li>
+                    <li><a href="approche-donnees.html">Notre approche données</a></li>
+                    <li><a href="equipe.html">Équipe</a></li>
+                    <li><a href="ethique.html">Éthique & valeurs</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Solutions & Expertise</h4>
+                <ul>
+                    <li><a href="mdm.html">MDM & intégration</a></li>
+                    <li><a href="bi-analytique.html">BI & Analytique</a></li>
+                    <li><a href="tests-validation.html">Automatisation de Tests</a></li>
+                    <li><a href="solutions-sur-mesure.html">Solutions sur mesure</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Ressources</h4>
+                <ul>
+                    <li><a href="blog.html">Blog & Articles</a></li>
+                    <li><a href="etudes-de-cas.html">Études de cas</a></li>
+                    <li><a href="academie.html">Acropora Academy</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Acropora Data. Tous droits réservés.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+// ── PARALLAX HERO ─────────────────────────────────────
+window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    document.querySelectorAll('[data-parallax]').forEach(el => {
+        const speed = parseFloat(el.dataset.parallax);
+        el.style.transform = `translateY(${y * speed}px)`;
+    });
+});
+
+// ── HERO SLIDER ───────────────────────────────────────
+const slides = document.querySelectorAll('.hero-slide');
+const prevBtn = document.querySelector('.hero-prev');
+const nextBtn = document.querySelector('.hero-next');
+let curSlide = 0;
+let slideTimer;
+
+function goToSlide(n) {
+    slides[curSlide].classList.remove('active');
+    const prevVid = slides[curSlide].querySelector('video');
+    if(prevVid) { prevVid.pause(); prevVid.currentTime = 0; }
+    
+    curSlide = (n + slides.length) % slides.length;
+    slides[curSlide].classList.add('active');
+    
+    clearTimeout(slideTimer);
+    const vid = slides[curSlide].querySelector('video');
+    if(vid) {
+        vid.currentTime = 0;
+        vid.play();
+        vid.onended = () => goToSlide(curSlide + 1);
+    } else {
+        slideTimer = setTimeout(() => goToSlide(curSlide + 1), 5000);
+    }
+}
+
+if(prevBtn) prevBtn.onclick = () => goToSlide(curSlide - 1);
+if(nextBtn) nextBtn.onclick = () => goToSlide(curSlide + 1);
+
+// Initialize first video listener if needed
+const firstVid = slides[0].querySelector('video');
+if(firstVid) firstVid.onended = () => goToSlide(curSlide + 1);
+
+// ── FLOATING DATA PARTICLES ────────────────────────────
+const floaterEl = document.getElementById('floaters');
+const words = ['MDM','DATA','BI','ETL','SQL','KPI','ROI','CDI','PIM','ELT','DQ','API','RGPD'];
+function spawnFloater() {
+    if (!floaterEl) return;
+    const el = document.createElement('div');
+    el.className = 'floater';
+    el.textContent = words[Math.floor(Math.random() * words.length)];
+    el.style.left = Math.random() * 95 + '%';
+    el.style.animationDuration = (12 + Math.random() * 18) + 's';
+    el.style.animationDelay = (Math.random() * 5) + 's';
+    el.style.fontSize = (0.6 + Math.random() * 0.6) + 'rem';
+    floaterEl.appendChild(el);
+    setTimeout(() => el.remove(), 35000);
+}
+for (let i = 0; i < 15; i++) setTimeout(spawnFloater, i * 700);
+setInterval(spawnFloater, 2000);
+
+// ── FADE IN ON SCROLL ──────────────────────────────────
+const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            e.target.style.opacity = '1';
+            e.target.style.transform = 'translate(0,0)';
+        }
+    });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+document.querySelectorAll('.fade-in').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(28px)';
+    el.style.transition = 'opacity 0.75s ease-out, transform 0.75s ease-out';
+    obs.observe(el);
+});
+
+document.querySelectorAll('.scintillant').forEach(el => {
+    el.style.opacity = '0';
+    const scintillantObs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) e.target.classList.add('active');
+        });
+    }, { threshold: 0.2 });
+    scintillantObs.observe(el);
+});
+
+document.querySelectorAll('.reveal-3d').forEach(el => {
+    const obs3d = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) e.target.classList.add('active');
+        });
+    }, { threshold: 0.2 });
+    obs3d.observe(el);
+});
+
+document.querySelectorAll('.fade-in-left').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateX(-40px)';
+    el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+    obs.observe(el);
+});
+
+// ── COUNTER ANIMATION ──────────────────────────────────
+const counterObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (!e.isIntersecting || e.target._counted) return;
+        e.target._counted = true;
+        const num = e.target.querySelector('.hub-num, h3');
+        if (!num) return;
+        const raw = num.textContent.replace(/[^0-9.]/g,'');
+        const target = parseFloat(raw);
+        if (!target) return;
+        const suffix = num.textContent.replace(/[0-9.]/g,'');
+        let cur = 0;
+        const dur = 1600; const step = 16;
+        const timer = setInterval(() => {
+            cur += target / (dur / step);
+            if (cur >= target) { cur = target; clearInterval(timer); }
+            num.textContent = (Number.isInteger(target) ? Math.floor(cur) : cur.toFixed(1)) + suffix;
+        }, step);
+    });
+}, { threshold: 0.6 });
+document.querySelectorAll('.hub-stat, .stat').forEach(el => counterObs.observe(el));
+
+// ── LIGHTHOUSE EFFECT (Approche Données) ───────────────
+const approcheContainer = document.querySelector('.approche-flow');
+if (approcheContainer) {
+    const nums = approcheContainer.querySelectorAll('.approche-step-num');
+    let activeIdx = 0;
+    let intervalId = null;
+
+    const startLighthouse = () => {
+        if (!intervalId) {
+            // Activation immédiate du premier
+            nums.forEach(n => n.classList.remove('lighthouse'));
+            nums[activeIdx].classList.add('lighthouse');
+            activeIdx = (activeIdx + 1) % nums.length;
+
+            intervalId = setInterval(() => {
+                nums.forEach(n => n.classList.remove('lighthouse'));
+                nums[activeIdx].classList.add('lighthouse');
+                activeIdx = (activeIdx + 1) % nums.length;
+            }, 1500);
+        }
+    };
+
+    const stopLighthouse = () => {
+        if (intervalId) { clearInterval(intervalId); intervalId = null; }
+        nums.forEach(n => n.classList.remove('lighthouse'));
+        activeIdx = 0;
+    };
+
+    const obs = new IntersectionObserver(e => e.forEach(entry => entry.isIntersecting ? startLighthouse() : stopLighthouse()), { threshold: 0.4 });
+    obs.observe(approcheContainer);
+}
+</script>
+</body>
+</html>

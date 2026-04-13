@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fondations IA - Acropora Data</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+    <link rel="stylesheet" href="animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .ai-intro-cinematic {
+            background: linear-gradient(180deg, #0d3d47 0%, #1a5d6a 100%);
+            padding: 10rem 0;
+            text-align: center;
+            perspective: 1200px;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        .ai-crawl-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .ai-crawl-title {
+            color: #81abb3;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: rotateX(25deg) translateY(100px) translateZ(-100px);
+            animation: aiCrawlIn 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .ai-crawl-text {
+            color: #fff;
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            font-weight: 500;
+            line-height: 1.6;
+            opacity: 0;
+            transform: rotateX(25deg) translateY(150px) translateZ(-150px);
+            animation: aiCrawlIn 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+        }
+        .ai-crawl-text strong {
+            color: #81abb3;
+            font-weight: 800;
+        }
+        @keyframes aiCrawlIn {
+            to {
+                opacity: 1;
+                transform: rotateX(15deg) translateY(0) translateZ(0);
+            }
+        }
+        .ai-highlight {
+            text-shadow: 0 0 20px rgba(129, 171, 179, 0.5);
+        }
+        .ai-crawl-actions {
+            margin-top: 5rem;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            opacity: 0;
+            transform: rotateX(25deg) translateY(150px) translateZ(-150px);
+            animation: aiCrawlIn 1.5s cubic-bezier(0.16, 1, 0.3, 1) 1s forwards;
+        }
+        .btn-ai-cinematic {
+            background: #81abb3;
+            color: white !important;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            display: inline-block;
+            box-shadow: 0 10px 30px rgba(129, 171, 179, 0.3);
+        }
+        .btn-ai-cinematic:hover {
+            transform: scale(1.1);
+            background: #fff;
+            color: #1a5d6a !important;
+            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.4);
+        }
+        .ai-problem-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 5rem;
+            align-items: center;
+            margin-top: 4rem;
+        }
+        .ai-scroll-container {
+            height: 480px;
+            overflow-y: auto;
+            padding: 2rem 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            scrollbar-width: thin;
+            scrollbar-color: #81abb3 transparent;
+            mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+            -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+        }
+        .ai-scroll-container::-webkit-scrollbar { width: 6px; }
+        .ai-scroll-container::-webkit-scrollbar-thumb { background: #81abb3; border-radius: 10px; }
+        
+        .ai-problem-card {
+            width: 300px;
+            height: 180px; /* Taille réduite */
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-left: 5px solid #81abb3; /* Accent sur le côté pour plus de modernité */
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.05rem;
+            box-shadow: 0 15px 35px rgba(26, 93, 106, 0.08);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            flex-shrink: 0;
+            margin: 0 auto;
+            animation: cardEntrance 0.8s ease-out both;
+        }
+        .ai-problem-card:hover {
+            border-left-color: #f3756e;
+            background: #fff;
+            transform: scale(1.05) translateX(10px);
+            box-shadow: 0 20px 40px rgba(26, 93, 106, 0.15);
+        }
+        .ai-problem-card:nth-child(1) { animation-delay: 0.1s; }
+        .ai-problem-card:nth-child(2) { animation-delay: 0.3s; }
+        .ai-problem-card:nth-child(3) { animation-delay: 0.5s; }
+        .ai-problem-card:nth-child(4) { animation-delay: 0.7s; }
+        .ai-problem-card:nth-child(5) { animation-delay: 0.9s; }
+
+        @keyframes cardEntrance {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .ai-impact-statement {
+            font-size: clamp(1.8rem, 3vw, 2.6rem);
+            font-weight: 800;
+            color: var(--primary-color);
+            line-height: 1.2;
+            border-left: 8px solid #f3756e;
+            padding-left: 2.5rem;
+        }
+        @media (max-width: 768px) {
+            .ai-crawl-actions { flex-direction: column; align-items: center; gap: 1.5rem; }
+            .ai-problem-layout { grid-template-columns: 1fr; gap: 3rem; }
+            .ai-impact-statement { order: -1; padding-left: 1.5rem; }
+        }
+        /* Styles pour la section "Bridge the Gap" */
+        .key-expertise-grid {
+            display: flex !important; justify-content: center !important; gap: 2rem !important; flex-wrap: wrap !important; margin-top: 3rem !important;
+        }
+        .key-exp-item {
+            flex: 0 1 240px !important; aspect-ratio: 1 !important; border-radius: 50% !important; background: #fff !important;
+            display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important;
+            text-align: center !important; padding: 2rem !important; transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            cursor: default !important; position: relative !important; border: 1px solid rgba(26, 93, 106, 0.1) !important;
+            box-shadow: 0 10px 30px rgba(26, 93, 106, 0.04) !important; overflow: hidden !important;
+        }
+        .key-exp-item:hover {
+            transform: scale(1.05) !important; background: var(--primary-color) !important; border: 5px solid #f3756e !important;
+            box-shadow: 0 0 25px rgba(243, 117, 110, 0.6), 0 20px 50px rgba(26, 93, 106, 0.15) !important;
+        }
+        .key-exp-item h3 {
+            font-size: 1.1rem !important; color: var(--primary-color) !important; font-weight: 700 !important; transition: all 0.4s !important; margin: 0 !important; line-height: 1.3 !important;
+        }
+        .key-exp-item p {
+            font-size: 0.85rem !important; color: rgba(255, 255, 255, 0.9) !important; position: absolute !important; padding: 0 1.5rem !important;
+            opacity: 0 !important; transform: translateY(20px) !important; transition: all 0.4s !important; margin: 0 !important;
+        }
+        .key-exp-item:hover h3 { opacity: 0 !important; transform: translateY(-20px) !important; }
+        .key-exp-item:hover p { opacity: 1 !important; transform: translateY(0) !important; }
+
+        /* Animation exceptionnelle du message final */
+        .ai-final-scoping {
+            background: var(--white);
+            padding: 8rem 0 12rem;
+            text-align: center;
+            overflow: hidden;
+        }
+        .ai-final-highlight {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .ai-final-highlight .line-small {
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            color: #81abb3;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+        }
+        .ai-final-highlight .line-big {
+            font-size: clamp(2.2rem, 6vw, 4.5rem);
+            color: var(--primary-color);
+            font-weight: 900;
+            line-height: 1.1;
+            text-transform: uppercase;
+            opacity: 0;
+            filter: blur(20px);
+            transform: scale(0.85);
+            letter-spacing: 0.3em;
+            transition: all 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s;
+        }
+        .reveal-final.active .line-small {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+        .reveal-final.active .line-big {
+            opacity: 1 !important;
+            filter: blur(0) !important;
+            transform: scale(1) !important;
+            letter-spacing: -0.02em !important;
+        }
+
+        /* ===== SECTION WHAT WE DO ===== */
+        .wwd-section {
+            background: linear-gradient(160deg, #081e23 0%, #0d3d47 40%, #1a5d6a 100%);
+            padding: 8rem 0 9rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .wwd-section::before {
+            content: '';
+            position: absolute;
+            width: 700px;
+            height: 700px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(129, 171, 179, 0.07) 0%, transparent 70%);
+            top: -200px;
+            right: -150px;
+            animation: wwdOrb 14s ease-in-out infinite;
+            pointer-events: none;
+        }
+        .wwd-section::after {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(243, 117, 110, 0.05) 0%, transparent 70%);
+            bottom: -100px;
+            left: -100px;
+            animation: wwdOrb 18s ease-in-out infinite reverse;
+            pointer-events: none;
+        }
+        @keyframes wwdOrb {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50%       { transform: translate(-40px, 30px) scale(1.1); }
+        }
+
+        /* Header */
+        .wwd-header {
+            text-align: center;
+            margin-bottom: 5rem;
+            position: relative;
+            z-index: 1;
+        }
+        .wwd-tag {
+            display: inline-block;
+            color: #81abb3;
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            padding: 0.55rem 1.6rem;
+            border: 1px solid rgba(129, 171, 179, 0.35);
+            border-radius: 50px;
+            background: rgba(129, 171, 179, 0.08);
+            margin-bottom: 1.8rem;
+        }
+        .wwd-divider {
+            width: 55px;
+            height: 3px;
+            background: linear-gradient(90deg, #81abb3, #f3756e);
+            border-radius: 2px;
+            margin: 0 auto 1.8rem;
+        }
+        .wwd-title {
+            font-size: clamp(1.9rem, 4vw, 3rem);
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.15;
+        }
+
+        /* Grid */
+        .wwd-pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.8rem;
+            max-width: 980px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Pillar card */
+        .wwd-pillar {
+            position: relative;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(129, 171, 179, 0.15);
+            border-radius: 20px;
+            padding: 2.8rem 2.5rem 2.5rem 3rem;
+            overflow: hidden;
+            cursor: default;
+        }
+        /* Reveal base (override transitions after active for hover) */
+        .wwd-pillar.active {
+            transition:
+                opacity 0.8s var(--ease-out-expo),
+                transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                background 0.4s ease,
+                border-color 0.4s ease,
+                box-shadow 0.4s ease !important;
+        }
+        /* Left accent bar */
+        .wwd-pillar::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #81abb3 0%, #f3756e 100%);
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 20px 0 0 20px;
+            z-index: 2;
+        }
+        .wwd-pillar:hover::before { transform: scaleY(1); }
+        .wwd-pillar:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(129, 171, 179, 0.3);
+            transform: translateY(-7px) !important;
+            box-shadow: 0 28px 65px rgba(0, 0, 0, 0.35);
+        }
+
+        /* Ghost number */
+        .wwd-pillar-num {
+            position: absolute;
+            top: 1rem; right: 1.5rem;
+            font-size: 5rem;
+            font-weight: 900;
+            color: rgba(129, 171, 179, 0.09);
+            line-height: 1;
+            transition: color 0.4s ease;
+            user-select: none;
+            pointer-events: none;
+        }
+        .wwd-pillar:hover .wwd-pillar-num { color: rgba(129, 171, 179, 0.18); }
+
+        /* Title & description */
+        .wwd-pillar-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 0.85rem;
+            padding-right: 4.5rem;
+            line-height: 1.3;
+        }
+        .wwd-pillar-desc {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.93rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* Sub-list (pillar 4) */
+        .wwd-sub-list {
+            list-style: none;
+            margin-top: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        .wwd-sub-list li {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            padding-left: 1.6rem;
+            position: relative;
+            opacity: 0;
+            transform: translateX(-12px);
+            transition: opacity 0.45s ease, transform 0.45s ease, color 0.3s;
+        }
+        .wwd-sub-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #f3756e;
+            font-size: 0.82rem;
+        }
+        /* Stagger sub-list on reveal */
+        .wwd-pillar.active .wwd-sub-list li               { opacity: 1; transform: translateX(0); }
+        .wwd-pillar.active .wwd-sub-list li:nth-child(1)  { transition-delay: 0.55s; }
+        .wwd-pillar.active .wwd-sub-list li:nth-child(2)  { transition-delay: 0.7s;  }
+        .wwd-pillar.active .wwd-sub-list li:nth-child(3)  { transition-delay: 0.85s; }
+        .wwd-pillar.active .wwd-sub-list li:nth-child(4)  { transition-delay: 1.0s;  }
+        .wwd-pillar:hover .wwd-sub-list li { color: rgba(255, 255, 255, 0.85); }
+
+        /* Featured card (pillar 4) */
+        .wwd-pillar--featured {
+            border-color: rgba(243, 117, 110, 0.18);
+            background: rgba(243, 117, 110, 0.03);
+        }
+        .wwd-pillar--featured .wwd-pillar-num { color: rgba(243, 117, 110, 0.09); }
+        .wwd-pillar--featured:hover .wwd-pillar-num { color: rgba(243, 117, 110, 0.2); }
+        .wwd-pillar--featured:hover {
+            border-color: rgba(243, 117, 110, 0.35);
+            background: rgba(243, 117, 110, 0.07);
+        }
+        .wwd-pillar--featured::before {
+            background: linear-gradient(180deg, #f3756e 0%, #81abb3 100%);
+        }
+
+        @media (max-width: 768px) {
+            .wwd-pillars-grid { grid-template-columns: 1fr; gap: 1.4rem; }
+            .wwd-pillar-num   { font-size: 3.8rem; }
+            .wwd-pillar       { padding: 2.2rem 1.8rem 2rem 2.2rem; }
+        }
+
+        /* ===== SECTION 4 — OUR APPROACH ===== */
+        .approach-main-title {
+            font-size: clamp(1.9rem, 4vw, 3rem);
+            font-weight: 900;
+            color: var(--primary-color);
+            line-height: 1.15;
+        }
+        .approach-quote {
+            text-align: center;
+            max-width: 680px;
+            margin: 3.5rem auto 5rem;
+        }
+        .approach-quote p {
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1.4;
+        }
+        .approach-quote p em {
+            color: #f3756e;
+            font-style: normal;
+            font-weight: 900;
+        }
+        .approach-flow-wrapper {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .approach-flow-line {
+            position: absolute;
+            top: 27px;
+            left: calc(12.5% + 28px);
+            right: calc(12.5% + 28px);
+            height: 2px;
+            background: linear-gradient(90deg, #81abb3, #f3756e, #81abb3);
+            background-size: 200% 100%;
+            animation: flowLineAnim 3s linear infinite;
+            z-index: 0;
+            border-radius: 2px;
+        }
+        @keyframes flowLineAnim {
+            0%   { background-position: 200% center; }
+            100% { background-position: -200% center; }
+        }
+        .approach-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        .approach-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            cursor: default;
+        }
+        .approach-step-bubble {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: #fff;
+            font-size: 1.25rem;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.6rem;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 8px 24px rgba(26, 93, 106, 0.25);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .approach-step:hover .approach-step-bubble {
+            background: #f3756e;
+            transform: scale(1.2) translateY(-5px);
+            box-shadow: 0 16px 36px rgba(243, 117, 110, 0.45);
+        }
+        .approach-step h3 {
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+            transition: color 0.3s;
+        }
+        .approach-step:hover h3 { color: #f3756e; }
+        .approach-step p {
+            font-size: 0.88rem;
+            color: var(--text-medium);
+            line-height: 1.6;
+            margin: 0;
+        }
+        .approach-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.7rem;
+            margin: 4.5rem auto 0;
+            background: linear-gradient(135deg, rgba(26, 93, 106, 0.05), rgba(243, 117, 110, 0.05));
+            border: 1px solid rgba(26, 93, 106, 0.12);
+            border-radius: 50px;
+            padding: 1rem 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.05rem;
+            width: fit-content;
+            transition: all 0.35s ease;
+            cursor: default;
+        }
+        .approach-badge:hover {
+            background: linear-gradient(135deg, rgba(26, 93, 106, 0.09), rgba(243, 117, 110, 0.09));
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(26, 93, 106, 0.08);
+        }
+        .approach-badge-arrow { color: #f3756e; font-size: 1.15rem; font-weight: 900; }
+
+        /* ===== SECTION 5 — USE CASES ===== */
+        .usecases-section { background: var(--subtle-gray); }
+        .usecases-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            justify-content: center;
+            margin-top: 4rem;
+        }
+        .usecase-tile {
+            background: #fff;
+            border: 1px solid rgba(26, 93, 106, 0.08);
+            border-radius: 16px;
+            padding: 2rem 2rem;
+            flex: 1 1 170px;
+            max-width: 200px;
+            text-align: center;
+            cursor: default;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .usecase-tile::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(145deg, var(--primary-color) 0%, #1a6e7e 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .usecase-tile:hover::before { opacity: 1; }
+        .usecase-tile:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 24px 55px rgba(26, 93, 106, 0.2);
+            border-color: transparent;
+        }
+        .usecase-icon {
+            font-size: 2.2rem;
+            display: block;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s ease;
+        }
+        .usecase-tile:hover .usecase-icon { transform: scale(1.2) rotate(-5deg); }
+        .usecase-label {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            position: relative;
+            z-index: 1;
+            transition: color 0.3s ease;
+            line-height: 1.3;
+        }
+        .usecase-tile:hover .usecase-label { color: #fff; }
+
+        /* ===== SECTION 6 — WHY ACROPORA ===== */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.8rem;
+            max-width: 900px;
+            margin: 4rem auto 0;
+        }
+        .why-card {
+            background: #fff;
+            border: 1px solid rgba(26, 93, 106, 0.07);
+            border-radius: 20px;
+            padding: 2.5rem 2.8rem;
+            display: flex;
+            gap: 1.8rem;
+            align-items: flex-start;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: default;
+            position: relative;
+            overflow: hidden;
+        }
+        .why-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 100%; height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), #f3756e);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .why-card:hover::after { transform: scaleX(1); }
+        .why-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(26, 93, 106, 0.1);
+            border-color: rgba(26, 93, 106, 0.12);
+        }
+        .why-icon {
+            width: 52px; height: 52px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(26, 93, 106, 0.08), rgba(129, 171, 179, 0.12));
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; flex-shrink: 0;
+            transition: all 0.4s ease;
+        }
+        .why-card:hover .why-icon {
+            background: linear-gradient(135deg, var(--primary-color), #4a9fa8);
+            transform: scale(1.1) rotate(5deg);
+        }
+        .why-content h3 {
+            font-size: 1.05rem; font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 0.45rem; line-height: 1.25;
+        }
+        .why-content p {
+            font-size: 0.9rem; color: var(--text-medium);
+            line-height: 1.65; margin: 0;
+        }
+
+        /* ===== SECTION 7 — FINAL CTA ===== */
+        .ai-cta-section {
+            background: linear-gradient(160deg, #081e23 0%, #0d3d47 50%, #1a5d6a 100%);
+            padding: 9rem 0 10rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .ai-cta-section::before {
+            content: '';
+            position: absolute;
+            width: 800px; height: 800px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(129, 171, 179, 0.09) 0%, transparent 70%);
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            animation: ctaOrb 12s ease-in-out infinite;
+            pointer-events: none;
+        }
+        @keyframes ctaOrb {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50%       { transform: translate(-50%, -50%) scale(1.2); }
+        }
+        .ai-cta-inner { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+        .ai-cta-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900; color: #fff;
+            line-height: 1.1; margin-bottom: 2rem;
+        }
+        .ai-cta-title span { color: #f3756e; }
+        .ai-cta-text {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: rgba(255, 255, 255, 0.65);
+            line-height: 1.75; margin: 0 auto 3.5rem;
+            max-width: 580px;
+        }
+        .ai-cta-buttons { display: flex; gap: 1.4rem; justify-content: center; flex-wrap: wrap; }
+        .btn-cta-primary {
+            background: #f3756e; color: #fff !important;
+            padding: 1.1rem 2.8rem; border-radius: 50px;
+            text-decoration: none; font-weight: 700; font-size: 1rem;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 30px rgba(243, 117, 110, 0.38); display: inline-block;
+        }
+        .btn-cta-primary:hover {
+            transform: translateY(-4px) scale(1.04);
+            box-shadow: 0 18px 45px rgba(243, 117, 110, 0.55);
+        }
+        .btn-cta-outline {
+            background: transparent; color: rgba(255,255,255,0.9) !important;
+            padding: 1.1rem 2.8rem; border-radius: 50px;
+            text-decoration: none; font-weight: 700; font-size: 1rem;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1.5px solid rgba(255,255,255,0.3); display: inline-block;
+        }
+        .btn-cta-outline:hover {
+            background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.65);
+            transform: translateY(-4px); color: #fff !important;
+        }
+
+        @media (max-width: 768px) {
+            .approach-flow-line  { display: none; }
+            .approach-steps      { grid-template-columns: 1fr 1fr; gap: 2rem 1.5rem; }
+            .why-grid            { grid-template-columns: 1fr; }
+            .usecase-tile        { flex: 1 1 140px; max-width: unset; }
+        }
+        @media (max-width: 480px) {
+            .approach-steps { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo-container">
+            <a href="index.html"><img src="acropora-logo-transparent.png" alt="Acropora Data" class="logo"></a>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link" style="cursor: default;">Présentation</a>
+                <div class="mega-menu">
+                    <div class="mega-menu-inner mega-menu-4">
+                        <div class="mega-col"><div class="mega-col-title">L'entreprise</div><a href="presentation.html"><span class="link-text"><strong>Qui sommes-nous ?</strong><span>Notre histoire et vision</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Méthode</div><a href="approche-donnees.html"><span class="link-text"><strong>Notre approche données</strong><span>Méthodologie & framework</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Personnes</div><a href="equipe.html"><span class="link-text"><strong>Équipe</strong><span>Nos experts data</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Engagement</div><a href="ethique.html"><span class="link-text"><strong>Éthique & valeurs</strong><span>Nos principes fondateurs</span></span></a></div>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link active" style="cursor: default;">Solutions & Expertise</a>
+                <div class="mega-menu">
+                    <div class="mega-menu-inner mega-menu-4">
+                        <div class="mega-col"><div class="mega-col-title">MDM</div><a href="mdm.html"><span class="link-text"><strong>MDM & Intégration</strong><span>Référentiels & pipelines</span></span></a><a href="ai-foundations.html"><span class="link-text"><strong>Fondations IA</strong><span>Données prêtes pour l'IA</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Assurance Qualité</div><a href="migration-mdm.html"><span class="link-text"><strong>Stratégie de Tests</strong><span>Transition sans interruption</span></span></a><a href="tests-validation.html"><span class="link-text"><strong>Automatisation de Tests</strong><span>Qualité & conformité</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Analytics</div><a href="bi-analytique.html"><span class="link-text"><strong>BI & Analytique</strong><span>Insights et reporting</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Audit</div><a href="cadrage-projet.html"><span class="link-text"><strong>Cadrage de projet</strong><span>Structurer vos initiatives</span></span></a></div>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link" style="cursor: default;">Partenaires</a>
+                <div class="mega-menu">
+                    <div class="mega-menu-inner mega-menu-5">
+                        <div class="mega-col">
+                            <div class="mega-col-title">Technologie</div>
+                            <a href="partenaires-technologiques.html"><span class="link-text"><strong>Partenaires technologiques</strong><span>Informatica, Snowflake, Azure…</span></span></a>
+                        </div>
+                        <div class="mega-col">
+                            <div class="mega-col-title">Business</div>
+                            <a href="partenaires-commerciaux.html"><span class="link-text"><strong>Partenaires commerciaux</strong><span>Alliances et synergies business</span></span></a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link cta-nav" style="cursor: default;">Contact</a>
+                <div class="mega-menu">
+                    <div class="mega-menu-inner mega-menu-5">
+                        <div class="mega-col"><div class="mega-col-title">Rejoindre</div><a href="carrieres.html"><span class="link-text"><strong>Carrières</strong><span>Offres & candidatures</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Partenariat</div><a href="devenir-partenaire.html"><span class="link-text"><strong>Devenir partenaire</strong><span>Rejoindre l'écosystème</span></span></a></div>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="ai-foundations_en.html" class="lang-switch-btn" title="Switch to English">EN</a>
+            </li>
+        </ul>
+        <button class="menu-toggle" onclick="document.querySelector('.nav-menu').classList.toggle('active')"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<section class="ai-intro-cinematic page-hero" data-hero-anim="ai">
+    <div class="container">
+        <div class="ai-crawl-container">
+            <h1 class="ai-crawl-title ai-highlight">L'IA n'échoue pas à cause des algorithmes. <br>Elle échoue à cause des données.</h1>
+            <div class="ai-crawl-text">
+                <p>La plupart des initiatives d'IA n'atteignent jamais la production — non pas à cause de la technologie, mais parce que les données sous-jacentes ne sont pas fiables, sont fragmentées ou non gouvernées.</p>
+                <br>
+                <p>Chez <strong>ACROPORA DATA</strong>, nous aidons les organisations à construire des <strong>socles de données fiables, gouvernés et réutilisables</strong> qui rendent les initiatives d'IA véritablement opérationnelles — et pas seulement expérimentales.</p>
+            </div>
+            <div class="ai-crawl-actions">
+                <a href="contact.html" class="btn-ai-cinematic">→ Parler à un expert</a>
+                <a href="approche-donnees.html" class="btn-ai-cinematic">→ Découvrir notre approche</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION THE REAL PROBLEM -->
+<section class="page-section reveal reveal-up" style="padding-bottom: 2rem;">
+    <div class="container">
+        <div class="section-header">
+            <span class="challenge-tag">LE VÉRITABLE PROBLÈME</span>
+            <div class="home-divider"></div>
+            <h2 class="home-section-title">Pourquoi la plupart des projets d'IA échouent</h2>
+        </div>
+
+        <div class="ai-problem-layout">
+            <div class="ai-scroll-container">
+                <div class="ai-problem-card">Données incohérentes entre les systèmes</div>
+                <div class="ai-problem-card">Absence de responsabilité ou de gouvernance claire</div>
+                <div class="ai-problem-card">Mauvaise qualité des données et valeurs manquantes</div>
+                <div class="ai-problem-card">Jeux de données non structurés pour la réutilisation</div>
+                <div class="ai-problem-card">Règles métier non formalisées</div>
+            </div>
+            <div class="ai-sticky-text">
+                <p class="ai-impact-statement">Derrière chaque initiative d'IA qui échoue, la cause profonde est presque toujours la même : <span style="color:#f3756e">les données ne sont pas prêtes.</span></p>
+            </div>
+        </div>
+        <div class="reveal reveal-up" style="text-align: center; margin-top: 5rem; font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 800; color: #81abb3; max-width: 900px; margin-left: auto; margin-right: auto; line-height: 1.3;">
+            "L'IA n'est puissante qu'à travers les données sur lesquelles elle repose."
+        </div>
+    </div>
+</section>
+
+<section class="ai-foundation-visual-section reveal reveal-up">
+    <div class="container">
+        <img src="ai-foundation.png" alt="AI Foundations" class="ai-foundation-img">
+    </div>
+</section>
+
+<!-- SECTION OUR VISION -->
+<section class="page-section reveal reveal-up" style="padding-top: 2rem;">
+    <div class="container">
+        <div class="section-header">
+            <span class="challenge-tag">NOTRE VISION</span>
+            <div class="home-divider"></div>
+            <h2 class="home-section-title">De la gestion des données à l'activation de l'IA</h2>
+        </div>
+
+        <div class="reveal reveal-left" style="margin-top: 4rem; font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; color: #1a5d6a; line-height: 1.4; max-width: 900px; border-left: 6px solid #f3756e; padding-left: 2rem;">
+            "L'IA n'est pas une capacité autonome. C'est l'extension naturelle d'un socle de données mature."
+        </div>
+    </div>
+</section>
+
+<!-- SECTION BRIDGE THE GAP -->
+<section class="page-section reveal reveal-up" style="padding-top: 2rem;">
+    <div class="container">
+        <div class="section-header">
+            <div class="home-divider"></div>
+            <h2 class="home-section-title">Chez ACROPORA, nous comblons le fossé entre :</h2>
+        </div>
+
+        <div class="key-expertise-grid">
+            <div class="key-exp-item">
+                <h3>Gouvernance des Données</h3>
+                <p>Définir les règles et responsabilités pour une donnée fiable.</p>
+            </div>
+            <div class="key-exp-item">
+                <h3>Master Data Management</h3>
+                <p>Centraliser et unifier vos données de référence critiques.</p>
+            </div>
+            <div class="key-exp-item">
+                <h3>Qualité des Données</h3>
+                <p>Assurer la précision, la complétude et la cohérence de vos données.</p>
+            </div>
+            <div class="key-exp-item">
+                <h3>Intégration des Données</h3>
+                <p>Connecter et harmoniser vos sources de données hétérogènes.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION WHAT WE DO -->
+<section class="wwd-section">
+    <div class="container">
+        <div class="wwd-header reveal reveal-up">
+            <span class="wwd-tag">WHAT WE DO</span>
+            <div class="wwd-divider"></div>
+            <h2 class="wwd-title">Construire des fondations de données prêtes pour l'IA</h2>
+        </div>
+
+        <div class="wwd-pillars-grid">
+            <!-- Pilier 1 -->
+            <div class="wwd-pillar reveal reveal-up" style="transition-delay: 100ms;">
+                <span class="wwd-pillar-num">01</span>
+                <h3 class="wwd-pillar-title">Préparation des données</h3>
+                <p class="wwd-pillar-desc">Nous structurons, nettoyons et enrichissons vos données pour les rendre utilisables dans vos cas d'usage IA.</p>
+            </div>
+            <!-- Pilier 2 -->
+            <div class="wwd-pillar reveal reveal-up" style="transition-delay: 250ms;">
+                <span class="wwd-pillar-num">02</span>
+                <h3 class="wwd-pillar-title">Gouvernance des données</h3>
+                <p class="wwd-pillar-desc">Nous définissons les responsabilités, les processus et les règles pour garantir la cohérence et le contrôle des données.</p>
+            </div>
+            <!-- Pilier 3 -->
+            <div class="wwd-pillar reveal reveal-up" style="transition-delay: 400ms;">
+                <span class="wwd-pillar-num">03</span>
+                <h3 class="wwd-pillar-title">Qualité des données</h3>
+                <p class="wwd-pillar-desc">Nous mettons en place des mécanismes de monitoring, de validation et de remédiation.</p>
+            </div>
+            <!-- Pilier 4 -->
+            <div class="wwd-pillar wwd-pillar--featured reveal reveal-up" style="transition-delay: 550ms;">
+                <span class="wwd-pillar-num">04</span>
+                <h3 class="wwd-pillar-title">Gestion du cycle de vie des datasets</h3>
+                <p class="wwd-pillar-desc">Nous industrialisons les datasets :</p>
+                <ul class="wwd-sub-list">
+                    <li>Création</li>
+                    <li>Validation</li>
+                    <li>Versioning</li>
+                    <li>Amélioration continue</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 4 — NOTRE APPROCHE -->
+<section class="approach-section page-section">
+    <div class="container">
+        <div class="wwd-header reveal reveal-up">
+            <span class="wwd-tag">NOTRE APPROCHE</span>
+            <div class="wwd-divider"></div>
+            <h2 class="approach-main-title">Une approche pragmatique et orientée métier</h2>
+        </div>
+        <div class="approach-quote reveal reveal-up">
+            <p>Nous ne partons pas de l'IA.</p>
+            <p>Nous partons de <em>votre réalité data.</em></p>
+        </div>
+        <div class="approach-flow-wrapper">
+            <div class="approach-flow-line"></div>
+            <div class="approach-steps">
+                <div class="approach-step reveal reveal-up" style="transition-delay:0ms">
+                    <div class="approach-step-bubble">1</div>
+                    <div class="approach-step-body">
+                        <h3>Identifier</h3>
+                        <p>Les domaines critiques — produits, fournisseurs, clients…</p>
+                    </div>
+                </div>
+                <div class="approach-step reveal reveal-up" style="transition-delay:150ms">
+                    <div class="approach-step-bubble">2</div>
+                    <div class="approach-step-body">
+                        <h3>Structurer & Gouverner</h3>
+                        <p>Ces jeux de données</p>
+                    </div>
+                </div>
+                <div class="approach-step reveal reveal-up" style="transition-delay:300ms">
+                    <div class="approach-step-bubble">3</div>
+                    <div class="approach-step-body">
+                        <h3>Améliorer la qualité</h3>
+                        <p>Et la fiabilité des données</p>
+                    </div>
+                </div>
+                <div class="approach-step reveal reveal-up" style="transition-delay:450ms">
+                    <div class="approach-step-bubble">4</div>
+                    <div class="approach-step-body">
+                        <h3>Préparer pour l'IA</h3>
+                        <p>Des cas d'usage IA opérationnels</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="approach-badge reveal reveal-up">
+            <span class="approach-badge-arrow">→</span>
+            Toujours aligné sur la valeur métier.
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 5 — CAS D'USAGE -->
+<section class="usecases-section page-section">
+    <div class="container">
+        <div class="wwd-header reveal reveal-up">
+            <span class="wwd-tag">CAS D'USAGE</span>
+            <div class="wwd-divider"></div>
+            <h2 class="approach-main-title">Là où les données prêtes pour l'IA créent de la valeur</h2>
+        </div>
+        <div class="usecases-grid">
+            <div class="usecase-tile reveal reveal-up" style="transition-delay:0ms">
+                <span class="usecase-icon">🚚</span>
+                <span class="usecase-label">Optimisation de la supply chain</span>
+            </div>
+            <div class="usecase-tile reveal reveal-up" style="transition-delay:120ms">
+                <span class="usecase-icon">📦</span>
+                <span class="usecase-label">Enrichissement des données produits</span>
+            </div>
+            <div class="usecase-tile reveal reveal-up" style="transition-delay:240ms">
+                <span class="usecase-icon">👤</span>
+                <span class="usecase-label">Intelligence client</span>
+            </div>
+            <div class="usecase-tile reveal reveal-up" style="transition-delay:360ms">
+                <span class="usecase-icon">📈</span>
+                <span class="usecase-label">Analytics prédictive</span>
+            </div>
+            <div class="usecase-tile reveal reveal-up" style="transition-delay:480ms">
+                <span class="usecase-icon">⚙️</span>
+                <span class="usecase-label">Opérations pilotées par la donnée</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 6 — POURQUOI ACROPORA -->
+<section class="page-section">
+    <div class="container">
+        <div class="wwd-header reveal reveal-up">
+            <span class="wwd-tag">POURQUOI ACROPORA</span>
+            <div class="wwd-divider"></div>
+            <h2 class="approach-main-title">Un positionnement unique à l'intersection de la Data & de la Qualité</h2>
+        </div>
+        <div class="why-grid">
+            <div class="why-card reveal reveal-up" style="transition-delay:0ms">
+                <div class="why-icon">🛡️</div>
+                <div class="why-content">
+                    <h3>Approche QA-first</h3>
+                    <p>Nous sécurisons vos données avant de les exposer à l'IA.</p>
+                </div>
+            </div>
+            <div class="why-card reveal reveal-up" style="transition-delay:150ms">
+                <div class="why-icon">🗄️</div>
+                <div class="why-content">
+                    <h3>Expertise MDM solide</h3>
+                    <p>Nous structurons les données métier clés — produits, fournisseurs, référentiels.</p>
+                </div>
+            </div>
+            <div class="why-card reveal reveal-up" style="transition-delay:300ms">
+                <div class="why-icon">🔗</div>
+                <div class="why-content">
+                    <h3>Vision bout en bout</h3>
+                    <p>De la gouvernance à l'intégration en passant par les tests.</p>
+                </div>
+            </div>
+            <div class="why-card reveal reveal-up" style="transition-delay:450ms">
+                <div class="why-icon">🌍</div>
+                <div class="why-content">
+                    <h3>Modèle de livraison Maurice</h3>
+                    <p>Équipes agiles, bilingues, hautement qualifiées et compétitives.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 7 — CTA FINAL -->
+<section class="ai-cta-section">
+    <div class="container">
+        <div class="ai-cta-inner reveal reveal-up">
+            <h2 class="ai-cta-title">Prêt à rendre vos données <span>prêtes pour l'IA ?</span></h2>
+            <p class="ai-cta-text">Évaluons ensemble vos fondations de données actuelles et identifions le chemin le plus rapide vers des cas d'usage IA fiables.</p>
+            <div class="ai-cta-buttons">
+                <a href="contact.html" class="btn-cta-primary">→ Prendre rendez-vous</a>
+                <a href="contact.html" class="btn-cta-outline">→ Contacter notre équipe</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <img src="acropora-logo-transparent.png" alt="Acropora Data" class="footer-logo">
+                <p>Leader en Master Data Management</p>
+            </div>
+            <div class="footer-section">
+                <h4>Solutions</h4>
+                <ul>
+                    <li><a href="mdm.html">MDM & Intégration</a></li>
+                    <li><a href="bi-analytique.html">BI & Analytique</a></li>
+                    <li><a href="ai-foundations.html">Fondations IA</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Entreprise</h4>
+                <ul>
+                    <li><a href="presentation.html">Qui sommes-nous ?</a></li>
+                    <li><a href="carrieres.html">Carrières</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Acropora Data. Tous droits réservés.</p>
+        </div>
+    </div>
+</footer>
+<script src="script.js"></script>
+<script src="scroll-animations.js"></script>
+<script src="pages.js"></script>
+<script src="hero-animations.js"></script>
+</body>
+</html>

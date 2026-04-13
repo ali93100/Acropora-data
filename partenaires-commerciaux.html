@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partenaires Commerciaux - Acropora Data</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+    <link rel="stylesheet" href="animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .intro-dark{background:linear-gradient(160deg,#081e23 0%,#0d3d47 45%,#1a5d6a 100%);padding:7rem 0 8rem;position:relative;overflow:hidden}
+        .intro-dark::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(129,171,179,.08) 0%,transparent 70%);top:-150px;right:-100px;animation:orbFloat 14s ease-in-out infinite}
+        @keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-30px,25px) scale(1.1)}}
+        .intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;position:relative;z-index:1}
+        .intro-label{display:inline-block;color:#81abb3;font-size:.78rem;font-weight:800;letter-spacing:.25em;text-transform:uppercase;border:1px solid rgba(129,171,179,.3);border-radius:50px;padding:.4rem 1.2rem;margin-bottom:1.5rem}
+        .intro-title{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;color:#fff;line-height:1.15;margin-bottom:1.5rem}
+        .intro-title span{color:#f3756e}
+        .intro-text{color:rgba(255,255,255,.7);font-size:1rem;line-height:1.85;margin-bottom:1rem}
+        .stat-cards{display:flex;flex-direction:column;gap:1.4rem}
+        .stat-card{background:rgba(255,255,255,.05);border:1px solid rgba(129,171,179,.15);border-radius:16px;padding:1.6rem 2rem;display:flex;align-items:center;gap:1.4rem;transition:all .4s ease}
+        .stat-card:hover{background:rgba(255,255,255,.09);transform:translateX(8px)}
+        .stat-icon{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,rgba(26,93,106,.3),rgba(129,171,179,.2));display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+        .stat-body strong{display:block;color:#fff;font-size:1.4rem;font-weight:900;line-height:1;margin-bottom:.25rem}
+        .stat-body span{color:rgba(255,255,255,.55);font-size:.82rem}
+        .section-tag{display:inline-block;color:var(--primary-color);font-size:.78rem;font-weight:800;letter-spacing:.25em;text-transform:uppercase;border:1px solid rgba(26,93,106,.2);border-radius:50px;padding:.4rem 1.2rem;background:rgba(26,93,106,.05);margin-bottom:1.2rem}
+        .partners-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;margin-top:3.5rem}
+        .partner-card{background:#fff;border:1px solid rgba(26,93,106,.08);border-radius:18px;padding:2.2rem 1.8rem;transition:all .4s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden}
+        .partner-card::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,#1a5d6a,#f3756e);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+        .partner-card:hover::after{transform:scaleX(1)}
+        .partner-card:hover{transform:translateY(-6px);box-shadow:0 20px 45px rgba(26,93,106,.12)}
+        .pc-icon{font-size:2.2rem;margin-bottom:1.2rem;display:block}
+        .pc-type{display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:#f3756e;background:rgba(243,117,110,.08);padding:.2rem .7rem;border-radius:20px;margin-bottom:.8rem}
+        .pc-name{font-size:1.05rem;font-weight:800;color:var(--primary-color);margin-bottom:.6rem}
+        .pc-text{font-size:.82rem;color:var(--text-medium);line-height:1.7}
+        .pc-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem}
+        .pc-tag{font-size:.68rem;font-weight:700;color:var(--primary-color);background:rgba(26,93,106,.06);border:1px solid rgba(26,93,106,.12);padding:.2rem .6rem;border-radius:20px}
+        .benefits-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.6rem;margin-top:3.5rem}
+        .benefit-item{display:flex;gap:1.4rem;align-items:flex-start;padding:1.8rem;background:var(--subtle-gray);border-radius:16px;transition:all .35s ease}
+        .benefit-item:hover{background:#fff;box-shadow:0 12px 30px rgba(26,93,106,.08);transform:translateY(-4px)}
+        .benefit-num{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#1a5d6a,#4a9fa8);color:#fff;font-size:1.1rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .benefit-body h4{font-size:.95rem;font-weight:800;color:var(--primary-color);margin-bottom:.4rem}
+        .benefit-body p{font-size:.82rem;color:var(--text-medium);line-height:1.65;margin:0}
+        .dark-green{background:linear-gradient(160deg,#0d3d47 0%,#1a5d6a 60%,#1e6d7e 100%)}
+        .dark-green .section-tag{color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.07)}
+        .dark-green h2{color:#fff}
+        .dark-green .section-line{background:linear-gradient(90deg,rgba(255,255,255,.4),transparent)}
+        .process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.6rem;margin-top:3.5rem;position:relative}
+        .process-steps::before{content:'';position:absolute;top:40px;left:calc(12.5% + 20px);right:calc(12.5% + 20px);height:2px;background:linear-gradient(90deg,#81abb3,#f3756e,#81abb3);background-size:200% 100%;animation:flowAnim 3s linear infinite;z-index:0}
+        @keyframes flowAnim{0%{background-position:200% center}100%{background-position:-200% center}}
+        .proc-step{text-align:center;position:relative;z-index:1}
+        .proc-circle{width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.08);border:2px solid rgba(129,171,179,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;font-size:1.6rem;transition:all .35s ease}
+        .proc-step:hover .proc-circle{background:rgba(243,117,110,.15);border-color:rgba(243,117,110,.4);transform:scale(1.1)}
+        .proc-step h4{font-size:.88rem;font-weight:800;color:#fff;margin-bottom:.4rem}
+        .proc-step p{font-size:.75rem;color:rgba(255,255,255,.6);line-height:1.6}
+        .sectors-band{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-top:3rem}
+        .sector-pill{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:50px;padding:.6rem 1.4rem;color:rgba(255,255,255,.8);font-size:.82rem;font-weight:600;backdrop-filter:blur(8px);transition:all .3s ease}
+        .sector-pill:hover{background:rgba(243,117,110,.15);border-color:rgba(243,117,110,.3);color:#f3a49f;transform:translateY(-2px)}
+        .final-cta{background:linear-gradient(160deg,#081e23 0%,#0d3d47 50%,#1a5d6a 100%);padding:7rem 0;text-align:center;position:relative;overflow:hidden}
+        .final-cta h2{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;color:#f3756e;margin-bottom:1rem;position:relative;z-index:1}
+        .final-cta p{color:rgba(255,255,255,.7);margin-bottom:2.5rem;position:relative;z-index:1}
+        .cta-btns{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+        .btn-cta-primary{background:#f3756e;color:#fff !important;padding:1rem 2.4rem;border-radius:50px;text-decoration:none;font-weight:700;transition:all .35s ease;box-shadow:0 10px 28px rgba(243,117,110,.35)}
+        .btn-cta-primary:hover{transform:translateY(-3px) scale(1.04)}
+        .btn-cta-ghost{background:transparent;color:rgba(255,255,255,.85) !important;padding:1rem 2.4rem;border-radius:50px;text-decoration:none;font-weight:700;border:1.5px solid rgba(255,255,255,.3);transition:all .35s ease}
+        .btn-cta-ghost:hover{background:rgba(255,255,255,.1);transform:translateY(-3px)}
+        @media(max-width:1100px){.partners-grid{grid-template-columns:repeat(2,1fr)}.process-steps{grid-template-columns:repeat(2,1fr)}.process-steps::before{display:none}}
+        @media(max-width:900px){.intro-grid{grid-template-columns:1fr;gap:3rem}.benefits-grid{grid-template-columns:1fr}}
+    </style>
+</head>
+<body>
+<div class="parallax-coral"><div class="coral-shape"></div><div class="coral-shape"></div><div class="coral-shape"></div><div class="coral-shape"></div></div>
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo-container"><a href="index.html"><img src="acropora-logo-transparent.png" alt="Acropora Data" class="logo"></a></div>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="javascript:void(0)" class="nav-link" style="cursor:default;">Présentation</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-4"><div class="mega-col"><div class="mega-col-title">L'entreprise</div><a href="presentation.html"><span class="link-text"><strong>Qui sommes-nous ?</strong><span>Notre histoire et vision</span></span></a></div><div class="mega-col"><div class="mega-col-title">Méthode</div><a href="approche-donnees.html"><span class="link-text"><strong>Notre approche données</strong><span>Méthodologie & framework</span></span></a></div><div class="mega-col"><div class="mega-col-title">Personnes</div><a href="equipe.html"><span class="link-text"><strong>Équipe</strong><span>Nos experts data</span></span></a></div><div class="mega-col"><div class="mega-col-title">Engagement</div><a href="ethique.html"><span class="link-text"><strong>Éthique & valeurs</strong><span>Nos principes fondateurs</span></span></a></div></div></div></li>
+            <li class="nav-item"><a href="javascript:void(0)" class="nav-link" style="cursor:default;">Solutions & Expertise</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-4"><div class="mega-col"><div class="mega-col-title">MDM</div><a href="mdm.html"><span class="link-text"><strong>MDM & Intégration</strong><span>Référentiels & pipelines</span></span></a><a href="ai-foundations.html"><span class="link-text"><strong>Fondations IA</strong><span>Données prêtes pour l'IA</span></span></a></div><div class="mega-col"><div class="mega-col-title">Assurance Qualité</div><a href="migration-mdm.html"><span class="link-text"><strong>Stratégie de Tests</strong><span>Transition sans interruption</span></span></a><a href="tests-validation.html"><span class="link-text"><strong>Automatisation de Tests</strong><span>Qualité & conformité</span></span></a></div><div class="mega-col"><div class="mega-col-title">Analytics</div><a href="bi-analytique.html"><span class="link-text"><strong>BI & Analytique</strong><span>Insights et reporting</span></span></a></div><div class="mega-col"><div class="mega-col-title">Audit</div><a href="cadrage-projet.html"><span class="link-text"><strong>Cadrage de projet</strong><span>Structurer vos initiatives</span></span></a></div></div></div></li>
+            <li class="nav-item"><a href="javascript:void(0)" class="nav-link active" style="cursor:default;">Partenaires</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-5"><div class="mega-col"><div class="mega-col-title">Technologie</div><a href="partenaires-technologiques.html"><span class="link-text"><strong>Partenaires technologiques</strong><span>Informatica, Snowflake, Azure…</span></span></a></div><div class="mega-col"><div class="mega-col-title">Business</div><a href="partenaires-commerciaux.html"><span class="link-text"><strong>Partenaires commerciaux</strong><span>Alliances et synergies business</span></span></a></div></div></div></li>
+            
+            <li class="nav-item"><a href="javascript:void(0)" class="nav-link cta-nav" style="cursor:default;">Contact</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-5"><div class="mega-col"><div class="mega-col-title">Rejoindre</div><a href="carrieres.html"><span class="link-text"><strong>Carrières</strong><span>Offres & candidatures</span></span></a></div><div class="mega-col"><div class="mega-col-title">Partenariat</div><a href="devenir-partenaire.html"><span class="link-text"><strong>Devenir partenaire</strong><span>Rejoindre l'écosystème</span></span></a></div></div></div></li>
+            <li class="nav-item"><a href="partenaires-commerciaux_en.html" class="lang-switch-btn" title="Switch to English">EN</a></li>
+        </ul>
+        <button class="menu-toggle" onclick="document.querySelector('.nav-menu').classList.toggle('active')"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+<section class="page-hero" data-hero-anim="biz-partners"><div class="container"><h1 class="page-title">Partenaires Commerciaux</h1><p class="page-subtitle">Des alliances stratégiques pour amplifier l'impact data</p></div></section>
+
+<section class="intro-dark"><div class="container"><div class="intro-grid">
+    <div class="reveal reveal-left">
+        <span class="intro-label">ALLIANCES BUSINESS</span>
+        <h2 class="intro-title">Créer de la valeur<br><span>ensemble</span></h2>
+        <p class="intro-text">Les partenariats commerciaux d'Acropora Data sont construits sur une logique de complémentarité et de co-création de valeur. Nous collaborons avec des acteurs sélectionnés pour amplifier notre impact sur le marché.</p>
+        <p class="intro-text">Intégrateurs, cabinets de conseil, éditeurs ou revendeurs : chaque partenariat repose sur une confiance mutuelle, un alignement stratégique et un engagement fort envers nos clients communs.</p>
+    </div>
+    <div class="stat-cards reveal reveal-right">
+        <div class="stat-card"><div class="stat-icon">🤝</div><div class="stat-body"><strong>12+</strong><span>Partenaires commerciaux actifs</span></div></div>
+        <div class="stat-card"><div class="stat-icon">🌍</div><div class="stat-body"><strong>5</strong><span>Secteurs d'activité couverts</span></div></div>
+        <div class="stat-card"><div class="stat-icon">📊</div><div class="stat-body"><strong>40%</strong><span>des projets issus de recommandations partenaires</span></div></div>
+    </div>
+</div></div></section>
+
+<section class="page-section" style="background:#fff"><div class="container">
+    <div class="section-header reveal reveal-up"><span class="section-tag">TYPES DE PARTENAIRES</span><div class="section-line"></div><h2>Différents profils, un objectif commun</h2></div>
+    <div class="partners-grid">
+        <div class="partner-card reveal reveal-up" style="transition-delay:0ms">
+            <span class="pc-icon">🏗️</span>
+            <span class="pc-type">Intégrateur</span>
+            <div class="pc-name">ESN & Intégrateurs</div>
+            <p class="pc-text">Nous travaillons main dans la main avec des ESN et intégrateurs pour enrichir leurs offres data avec notre expertise MDM et gouvernance.</p>
+            <div class="pc-tags"><span class="pc-tag">Co-delivery</span><span class="pc-tag">MDM</span><span class="pc-tag">Nearshore</span></div>
+        </div>
+        <div class="partner-card reveal reveal-up" style="transition-delay:100ms">
+            <span class="pc-icon">🧠</span>
+            <span class="pc-type">Conseil</span>
+            <div class="pc-name">Cabinets de conseil</div>
+            <p class="pc-text">Nos alliances avec des cabinets de conseil permettent de proposer des approches holistiques alliant stratégie métier et excellence technique data.</p>
+            <div class="pc-tags"><span class="pc-tag">Stratégie data</span><span class="pc-tag">Transformation</span><span class="pc-tag">Advisory</span></div>
+        </div>
+        <div class="partner-card reveal reveal-up" style="transition-delay:200ms">
+            <span class="pc-icon">📦</span>
+            <span class="pc-type">Éditeur</span>
+            <div class="pc-name">Éditeurs de logiciels</div>
+            <p class="pc-text">Partenaires des principaux éditeurs MDM et data, nous assurons l'implémentation, la personnalisation et le support de leurs solutions.</p>
+            <div class="pc-tags"><span class="pc-tag">Implémentation</span><span class="pc-tag">Certification</span><span class="pc-tag">Support</span></div>
+        </div>
+        <div class="partner-card reveal reveal-up" style="transition-delay:300ms">
+            <span class="pc-icon">🔄</span>
+            <span class="pc-type">Revendeur</span>
+            <div class="pc-name">Revendeurs & VAR</div>
+            <p class="pc-text">Nous collaborons avec des revendeurs à valeur ajoutée (VAR) pour étendre notre portée géographique et sectorielle sur des marchés ciblés.</p>
+            <div class="pc-tags"><span class="pc-tag">Géographie</span><span class="pc-tag">VAR</span><span class="pc-tag">Distribution</span></div>
+        </div>
+        <div class="partner-card reveal reveal-up" style="transition-delay:400ms">
+            <span class="pc-icon">🎓</span>
+            <span class="pc-type">Formation</span>
+            <div class="pc-name">Organismes de formation</div>
+            <p class="pc-text">Des partenariats pédagogiques pour développer les compétences data des équipes de nos clients et former la prochaine génération d'experts MDM.</p>
+            <div class="pc-tags"><span class="pc-tag">E-learning</span><span class="pc-tag">Certification</span><span class="pc-tag">Upskilling</span></div>
+        </div>
+        <div class="partner-card reveal reveal-up" style="transition-delay:500ms">
+            <span class="pc-icon">🌐</span>
+            <span class="pc-type">Écosystème</span>
+            <div class="pc-name">Acteurs régionaux</div>
+            <p class="pc-text">Des alliances locales avec des acteurs régionaux clés — Île Maurice, Afrique, Moyen-Orient — pour ancrer nos expertises dans des marchés spécifiques.</p>
+            <div class="pc-tags"><span class="pc-tag">Ile Maurice</span><span class="pc-tag">Afrique</span><span class="pc-tag">Local</span></div>
+        </div>
+    </div>
+</div></section>
+
+<section class="page-section" style="background:var(--subtle-gray)"><div class="container">
+    <div class="section-header reveal reveal-up"><span class="section-tag">AVANTAGES PARTENAIRES</span><div class="section-line"></div><h2>Ce que vous gagnez en rejoignant l'écosystème</h2></div>
+    <div class="benefits-grid">
+        <div class="benefit-item reveal reveal-up" style="transition-delay:0ms">
+            <div class="benefit-num">01</div>
+            <div class="benefit-body"><h4>Accès à une expertise rare</h4><p>Profitez d'une expertise MDM et gouvernance de données reconnue sur le marché — une compétence difficile à trouver et très demandée.</p></div>
+        </div>
+        <div class="benefit-item reveal reveal-up" style="transition-delay:80ms">
+            <div class="benefit-num">02</div>
+            <div class="benefit-body"><h4>Co-commercialisation</h4><p>Intégrez nos offres dans vos propositions commerciales avec un soutien actif de nos équipes pour les avant-ventes et les réponses à appel d'offres.</p></div>
+        </div>
+        <div class="benefit-item reveal reveal-up" style="transition-delay:160ms">
+            <div class="benefit-num">03</div>
+            <div class="benefit-body"><h4>Formation & certification</h4><p>Accédez à des formations exclusives sur les technologies MDM et nos méthodologies propriétaires pour renforcer vos équipes.</p></div>
+        </div>
+        <div class="benefit-item reveal reveal-up" style="transition-delay:240ms">
+            <div class="benefit-num">04</div>
+            <div class="benefit-body"><h4>Support commercial dédié</h4><p>Un interlocuteur dédié chez Acropora Data, disponible pour répondre aux questions techniques, chiffrer les projets et accompagner vos commerciaux.</p></div>
+        </div>
+        <div class="benefit-item reveal reveal-up" style="transition-delay:320ms">
+            <div class="benefit-num">05</div>
+            <div class="benefit-body"><h4>Visibilité & référencement</h4><p>Présence sur notre site web, dans nos communications et lors de nos événements — une exposition à notre réseau de décideurs data.</p></div>
+        </div>
+        <div class="benefit-item reveal reveal-up" style="transition-delay:400ms">
+            <div class="benefit-num">06</div>
+            <div class="benefit-body"><h4>Revenus partagés</h4><p>Un modèle de commission transparent et équitable pour les apporteurs d'affaires — des conditions préférentielles pour les partenaires stratégiques.</p></div>
+        </div>
+    </div>
+</div></section>
+
+<section class="page-section dark-green"><div class="container">
+    <div class="section-header reveal reveal-up"><span class="section-tag">DEVENIR PARTENAIRE</span><div class="section-line"></div><h2>Un processus simple en 4 étapes</h2></div>
+    <div class="process-steps">
+        <div class="proc-step reveal reveal-up" style="transition-delay:0ms">
+            <div class="proc-circle">📩</div>
+            <h4>Prise de contact</h4>
+            <p>Remplissez notre formulaire de candidature partenaire ou contactez directement notre équipe alliances.</p>
+        </div>
+        <div class="proc-step reveal reveal-up" style="transition-delay:150ms">
+            <div class="proc-circle">🔍</div>
+            <h4>Qualification</h4>
+            <p>Échange exploratoire pour valider l'alignement stratégique, les opportunités marché et la complémentarité des offres.</p>
+        </div>
+        <div class="proc-step reveal reveal-up" style="transition-delay:300ms">
+            <div class="proc-circle">📋</div>
+            <h4>Accord de partenariat</h4>
+            <p>Signature d'un accord formel précisant les modalités commerciales, les engagements mutuels et les indicateurs de succès.</p>
+        </div>
+        <div class="proc-step reveal reveal-up" style="transition-delay:450ms">
+            <div class="proc-circle">🚀</div>
+            <h4>Lancement</h4>
+            <p>Onboarding, formation des équipes et identification des premières opportunités commerciales conjointes.</p>
+        </div>
+    </div>
+    <div style="text-align:center;margin-top:3rem" class="reveal reveal-up">
+        <p style="color:rgba(255,255,255,.7);margin-bottom:1.5rem">Secteurs couverts par nos alliances commerciales</p>
+        <div class="sectors-band">
+            <span class="sector-pill">Finance & Banque</span>
+            <span class="sector-pill">Industrie & Manufacturing</span>
+            <span class="sector-pill">Retail & Distribution</span>
+            <span class="sector-pill">Santé & Pharma</span>
+            <span class="sector-pill">Télécommunications</span>
+            <span class="sector-pill">Secteur Public</span>
+            <span class="sector-pill">Énergie & Utilities</span>
+        </div>
+    </div>
+</div></section>
+
+<section class="final-cta"><div class="container">
+    <h2>Construisons quelque chose ensemble</h2>
+    <p>Rejoignez l'écosystème Acropora Data et amplifiez votre impact sur le marché data</p>
+    <div class="cta-btns">
+        <a href="devenir-partenaire.html" class="btn-cta-primary">Devenir partenaire</a>
+        <a href="contact.html" class="btn-cta-ghost">Parler à notre équipe</a>
+    </div>
+</div></section>
+
+<footer class="footer"><div class="container"><div class="footer-content">
+    <div class="footer-section"><img src="acropora-logo-transparent.png" alt="Acropora Data" class="footer-logo"><p>Leader en Master Data Management</p></div>
+    <div class="footer-section"><h4>Qui sommes-nous ?</h4><ul><li><a href="presentation.html">Présentation</a></li><li><a href="equipe.html">Équipe</a></li><li><a href="ethique.html">Éthique & valeurs</a></li></ul></div>
+    <div class="footer-section"><h4>Solutions & Expertise</h4><ul><li><a href="mdm.html">MDM & intégration</a></li><li><a href="bi-analytique.html">BI & Analytique</a></li><li><a href="solutions-sur-mesure.html">Solutions sur mesure</a></li></ul></div>
+    <div class="footer-section"><h4>Ressources</h4><ul><li><a href="blog.html">Blog & Articles</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+</div><div class="footer-bottom"><p>&copy; 2025 Acropora Data. Tous droits réservés.</p></div></div></footer>
+<script src="script.js"></script><script src="scroll-animations.js"></script><script src="pages.js"></script>
+<script src="hero-animations.js"></script>
+</body>
+</html>

@@ -1,0 +1,667 @@
+﻿﻿﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BI & Analytics - Acropora Data</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .why-acropora-content {
+            display: flex;
+            align-items: center;
+            gap: 5rem;
+            margin-top: 3rem;
+        }
+        .why-acropora-img-wrapper {
+            flex: 1;
+            position: relative;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(26, 93, 106, 0.16);
+            overflow: hidden; /* Prevents content overflow during zoom */
+        }
+        .why-acropora-img-wrapper img {
+            width: 100%;
+            height: 314px;
+            object-fit: contain; /* Ensures the entire infographic is visible */
+            max-width: 100%;
+            display: block;
+            border-radius: 20px;
+            transform: scale(1.1); /* Slightly zooms the content within the frame */
+        }
+        .why-acropora-text-content {
+            flex: 1;
+        }
+        .key-expertise-grid {
+            display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 3rem;
+        }
+        .key-exp-item {
+            flex: 0 1 240px; aspect-ratio: 1; border-radius: 50%; background: #fff;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; padding: 2rem; transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: default; position: relative; border: 1px solid rgba(26, 93, 106, 0.1);
+            box-shadow: 0 10px 30px rgba(26, 93, 106, 0.04);
+        }
+        .key-exp-item:hover {
+            transform: scale(1.05); background: var(--primary-color); border: 5px solid #f3756e;
+            box-shadow: 0 0 25px rgba(243, 117, 110, 0.6), 0 20px 50px rgba(26, 93, 106, 0.15);
+        }
+        .key-exp-item h3 {
+            font-size: 1.1rem; color: var(--primary-color); font-weight: 700; transition: all 0.4s; margin: 0; line-height: 1.3;
+        }
+        .key-exp-item p {
+            font-size: 0.85rem; color: rgba(255, 255, 255, 0.9); position: absolute; padding: 0 1.5rem;
+            opacity: 0; transform: translateY(20px); transition: all 0.4s; margin: 0;
+        }
+        .key-exp-item:hover h3 { opacity: 0; transform: translateY(-20px); }
+        .key-exp-item:hover p { opacity: 1; transform: translateY(0); }
+        .why-work-card {
+            flex: 0 0 320px;
+            height: 240px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 24px;
+            padding: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            line-height: 1.4;
+            box-shadow: 0 12px 40px rgba(26, 93, 106, 0.12);
+            transition: all 0.4s ease;
+        }
+        .why-work-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(26, 93, 106, 0.2); }
+        .why-work-card:nth-child(even) { background: linear-gradient(135deg, #0f6170, #81abb3); }
+        .why-work-card:nth-child(3n) { background: linear-gradient(135deg, #1a5d6a, #f3756e); }
+        .use-cases-list { margin-top: 3rem; max-width: 1000px; margin-left: auto; margin-right: auto; }
+        .use-case-item {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1.8rem 0; border-bottom: 1px solid rgba(26, 93, 106, 0.1);
+            transition: all 0.3s ease;
+        }
+        .use-case-item:last-child { border-bottom: none; }
+        .use-case-title { font-weight: 700; color: var(--primary-color); font-size: 1.2rem; transition: transform 0.3s ease; }
+        .use-case-desc {
+            color: var(--accent-color); font-weight: 600; opacity: 0; transform: translateX(30px);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); text-align: right; font-size: 1rem; max-width: 50%;
+        }
+        .use-case-item:hover .use-case-title { transform: translateX(10px); }
+        .use-case-item:hover .use-case-desc { opacity: 1; transform: translateX(0); }
+        /* OPTIONAL CAPABILITIES STYLES (Bubbles) */
+        .optional-capabilities { padding: 6rem 0; background: var(--subtle-gray); overflow: hidden; position: relative; }
+        .bubbles-container { height: 550px; position: relative; margin-top: 3rem; }
+        .capability-bubble {
+            position: absolute; background: white; border: 2px solid var(--accent-color);
+            color: var(--primary-color); padding: 1.5rem; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; text-align: center;
+            font-weight: 700; cursor: pointer; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 30px rgba(26, 93, 106, 0.1); z-index: 5; font-size: 0.95rem; line-height: 1.3;
+        }
+        .capability-bubble:hover { transform: scale(1.1); background: var(--primary-color); color: white; border-color: var(--primary-color); }
+        .capability-bubble.burst { transform: scale(3); opacity: 0; pointer-events: none; }
+        .capability-detail {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.8);
+            background: white; padding: 3rem; border-radius: 30px; border: 3px solid #f3756e;
+            box-shadow: 0 25px 60px rgba(26, 93, 106, 0.25); width: 90%; max-width: 550px;
+            text-align: center; z-index: 50; opacity: 0; visibility: hidden; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .capability-detail.active { opacity: 1; visibility: visible; transform: translate(-50%, -50%) scale(1); }
+        .capability-detail h3 { color: var(--primary-color); margin-bottom: 1rem; font-size: 1.5rem; }
+        .capability-detail p { color: var(--text-medium); line-height: 1.6; }
+        .close-detail { margin-top: 2rem; display: inline-block; color: #f3756e; font-weight: 800; cursor: pointer; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em; }
+
+        /* Floating animations */
+        @keyframes bubbleFloat1 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(20px, -40px); } }
+        @keyframes bubbleFloat2 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-30px, 30px); } }
+        @keyframes bubbleFloat3 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(40px, 20px); } }
+
+        .b1 { width: 220px; height: 220px; left: 10%; top: 10%; animation: bubbleFloat1 14s infinite ease-in-out; }
+        .b2 { width: 200px; height: 200px; left: 40%; top: 5%; animation: bubbleFloat2 12s infinite ease-in-out; }
+        .b3 { width: 230px; height: 230px; right: 10%; top: 15%; animation: bubbleFloat3 16s infinite ease-in-out; }
+        .b4 { width: 210px; height: 210px; left: 20%; bottom: 10%; animation: bubbleFloat2 13s infinite ease-in-out -3s; }
+        .b5 { width: 240px; height: 240px; right: 25%; bottom: 5%; animation: bubbleFloat1 15s infinite ease-in-out -7s; }
+
+        /* ENGAGEMENT MODELS STYLES */
+        .engagement-models { padding: 6rem 0; background: var(--white); }
+        .engagement-grid { display: flex; gap: 4rem; margin-top: 3rem; align-items: stretch; }
+        .engagement-list { flex: 1; display: flex; flex-direction: column; gap: 1.2rem; }
+        .engagement-item {
+            padding: 1.8rem 2.5rem; background: var(--subtle-gray); border-radius: 16px;
+            border: 2px solid transparent; cursor: pointer; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            font-weight: 700; color: var(--primary-color); font-size: 1.15rem;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .engagement-item:hover { border-color: var(--accent-color); transform: translateX(10px); background: #fff; }
+        .engagement-item.active { background: var(--primary-color); color: white; border-color: var(--primary-color); box-shadow: 0 10px 30px rgba(26, 93, 106, 0.2); }
+        .engagement-item::after { content: '→'; opacity: 0.3; transition: all 0.3s; }
+        .engagement-item.active::after { opacity: 1; transform: translateX(5px); color: var(--accent-color); }
+        .engagement-content-box {
+            flex: 1.3; background: white; padding: 3.5rem; border-radius: 24px;
+            border: 3px solid #f3756e; box-shadow: 0 25px 60px rgba(26, 93, 106, 0.12);
+            display: flex; flex-direction: column; justify-content: center;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .engagement-content-box h3 { color: var(--primary-color); margin-bottom: 1.5rem; font-size: 2rem; font-weight: 800; }
+        .engagement-content-box p { color: #81abb3; line-height: 1.8; font-size: 1.15rem; }
+        .star-wars-section {
+            padding: 10rem 0;
+            text-align: center;
+            perspective: 1200px;
+        }
+        .star-wars-crawl h2, .star-wars-crawl p, .star-wars-crawl .star-wars-cta {
+            color: #81abb3;
+            font-weight: 800;
+            line-height: 1.2;
+            opacity: 0;
+            transform: rotateX(35deg) translateY(100px) translateZ(-100px);
+            transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1), transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .star-wars-crawl h2 { font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 2rem; }
+        .star-wars-crawl p { font-size: clamp(1.4rem, 3vw, 2rem); max-width: 1100px; margin: 0 auto; transition-delay: 0.3s; }
+        .star-wars-crawl .star-wars-cta { transition-delay: 0.6s; margin-top: 4rem; display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+        .star-wars-crawl h2.active, .star-wars-crawl p.active, .star-wars-crawl .star-wars-cta.active {
+            opacity: 1;
+            transform: rotateX(25deg) translateY(0) translateZ(0);
+            animation: bi-radiating-glow 3s infinite alternate;
+        }
+        .btn-star-wars {
+            background: #81abb3;
+            color: white !important;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            display: inline-block;
+        }
+        .btn-star-wars:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(129, 171, 179, 0.4);
+            background: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .why-acropora-content { flex-direction: column; gap: 3rem; }
+            .why-acropora-img-wrapper { width: 100%; }
+            .why-acropora-img-wrapper img { height: auto; } /* Reset height on mobile */
+            .use-case-item { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+            .use-case-desc { opacity: 1; transform: none; text-align: left; max-width: 100%; font-size: 0.9rem; }
+            .use-case-item:hover .use-case-title { transform: none; }
+            .bubbles-container { height: auto; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+            .capability-bubble { position: static !important; width: 240px !important; height: 240px !important; animation: none !important; }
+            .engagement-grid { flex-direction: column; gap: 2rem; }
+            .engagement-content-box { padding: 2rem; min-height: auto; }
+        }
+    </style>
+</head>
+<body>
+<div class="parallax-coral"><div class="coral-shape"></div><div class="coral-shape"></div><div class="coral-shape"></div><div class="coral-shape"></div></div>
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo-container">
+            <a href="index_en.html"><img src="acropora-logo-transparent.png" alt="Acropora Data" class="logo"></a>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link" style="cursor: default;">About Us</a>
+                <div class="mega-menu">
+                    <div class="mega-menu-inner mega-menu-4">
+                        <div class="mega-col"><div class="mega-col-title">The Company</div><a href="presentation_en.html"><span class="link-text"><strong>Overview</strong><span>Our history and vision</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Method</div><a href="approche-donnees_en.html"><span class="link-text"><strong>Our Data Approach</strong><span>Methodology & framework</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">People</div><a href="equipe_en.html"><span class="link-text"><strong>Team</strong><span>Our data experts</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Commitment</div><a href="ethique_en.html"><span class="link-text"><strong>Ethics & Values</strong><span>Our founding principles</span></span></a></div>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link active" style="cursor: default;">Solutions & Expertise</a>
+                <div class="mega-menu">
+                    <div class="mega-menu-inner mega-menu-4">
+                        <div class="mega-col"><div class="mega-col-title">MDM</div><a href="mdm_en.html"><span class="link-text"><strong>MDM & Integration</strong><span>Repositories & pipelines</span></span></a><a href="ai-foundations_en.html"><span class="link-text"><strong>AI Foundations</strong><span>AI-ready data landscapes</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Migration</div><a href="migration-mdm_en.html"><span class="link-text"><strong>Test Strategy</strong><span>Seamless transition</span></span></a><a href="tests-validation_en.html"><span class="link-text"><strong>Automation Testing</strong><span>Quality & compliance</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Analytics</div><a href="bi-analytique_en.html"><span class="link-text"><strong>BI & Analytics</strong><span>Insights and reporting</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Audit</div><a href="cadrage-projet_en.html"><span class="link-text"><strong>Project Scoping</strong><span>Structuring your initiatives</span></span></a></div>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link" style="cursor: default;">Partners</a>
+                <div class="mega-menu">
+                    <div class="mega-menu-inner mega-menu-5">
+                        <div class="mega-col">
+                            <div class="mega-col-title">Technology</div>
+                            <a href="partenaires-technologiques_en.html"><span class="link-text"><strong>Technology Partners</strong><span>Informatica, Snowflake, Azure…</span></span></a>
+                        </div>
+                        <div class="mega-col">
+                            <div class="mega-col-title">Business</div>
+                            <a href="partenaires-commerciaux_en.html"><span class="link-text"><strong>Business Partners</strong><span>Business alliances and synergies</span></span></a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link cta-nav" style="cursor: default;">Contact</a>
+                <div class="mega-menu">
+                    <div class="mega-menu-inner mega-menu-5">
+                        <div class="mega-col"><div class="mega-col-title">Join Us</div><a href="carrieres_en.html"><span class="link-text"><strong>Careers</strong><span>Jobs & applications</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Partnership</div><a href="devenir-partenaire_en.html"><span class="link-text"><strong>Become a partner</strong><span>Join the ecosystem</span></span></a></div>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="bi-analytique.html" class="lang-switch-btn" title="Switch to French">FR</a>
+            </li>
+        </ul>
+        <button class="menu-toggle" onclick="document.querySelector('.nav-menu').classList.toggle('active')"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+<section class="page-hero" data-hero-anim="bi">
+    <div class="container">
+        <h1 class="page-title">BI & Analytics</h1>
+        <p class="page-subtitle">From Raw Data to Strategic Insights</p>
+    </div>
+</section>
+
+<!-- SECTION BI INTRO ANIMATED -->
+<section class="bi-intro-animated">
+    <div class="container">
+        <h2 class="bi-line-1 reveal">Power BI Advisory & Implementation Services</h2>
+        <h3 class="bi-line-2 reveal">Transform Data into Trusted, Actionable Intelligence at Scale</h3>
+        <p class="bi-line-3 reveal">We help organizations design and deploy enterprise-grade Power BI ecosystems that enable consistent reporting, real-time insights, and data-driven decision-making across the business.</p>
+        <div class="bi-cta-wrap bi-line-4 reveal">
+            <a href="contact_en.html" class="btn-lighthouse">Book a demo</a>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION TRUSTED ANALYTICS INTRO -->
+<section class="page-section reveal reveal-up" style="padding-top: 0.5rem; padding-bottom: 2rem;">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="home-section-title">Trusted Analytics Starts with the Right Foundation</h2>
+            <div class="home-divider"></div>
+            <p class="home-section-subtitle" style="color: #81abb3; font-weight: 600;">Many organizations invest in Power BI but struggle to unlock its full value due to:</p>
+        </div>
+
+        <div class="sol-brief-grid">
+            <div class="sol-brief-card reveal reveal-up" style="transition-delay: 100ms;">
+                <h3>Fragmented and inconsistent data sources</h3>
+            </div>
+            <div class="sol-brief-card reveal reveal-up" style="transition-delay: 300ms;">
+                <h3>Poorly designed data models</h3>
+            </div>
+            <div class="sol-brief-card reveal reveal-up" style="transition-delay: 500ms;">
+                <h3>Lack of governance and standards</h3>
+            </div>
+            <div class="sol-brief-card reveal reveal-up" style="transition-delay: 700ms;">
+                <h3>Manual, error-prone reporting processes</h3>
+            </div>
+            <div class="sol-brief-card reveal reveal-up" style="transition-delay: 900ms;">
+                <h3>Dashboards that lack adoption or business relevance</h3>
+            </div>
+        </div>
+
+        <div class="bi-conclusion-text reveal reveal-up" style="transition-delay: 1200ms;">
+            "Without a structured approach, Power BI becomes a reporting tool—rather than a strategic asset."
+        </div>
+    </div>
+</section>
+
+<!-- SECTION OUR APPROACH -->
+<section class="page-section reveal reveal-up" style="padding-top: 2rem;">
+    <div class="container">
+        <div class="section-header">
+            <div class="home-divider"></div>
+            <h2 class="home-section-title">Our Approach</h2>
+        </div>
+        <div class="why-acropora-content">
+            <div class="why-acropora-img-wrapper reveal reveal-left">
+                <img src="infographie-BI-en.png" alt="Power BI Infographic Acropora">
+            </div>
+            <div class="why-acropora-text-content reveal reveal-right">
+                <p style="color: #81abb3; font-size: 1.25rem; font-weight: 600; line-height: 1.8;">We deliver end-to-end Power BI solutions grounded in data architecture, governance, and business alignment.<br><br>Our methodology ensures that every dashboard is built on a robust, scalable, and trusted data foundation, enabling long-term value—not just short-term visualization.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION WHAT WE DELIVER -->
+<section class="approach-section reveal reveal-up">
+    <div class="container">
+        <div class="section-header">
+            <div class="home-divider"></div>
+            <h2 class="home-section-title">What We Deliver</h2>
+        </div>
+
+        <div class="approche-flow" style="margin-top: 4rem;">
+            <div class="approche-step s1">
+                <div class="approche-step-num">1</div>
+                <h3>Data Integration & Preparation</h3>
+                <p>Source connectivity, data cleansing, and transformation (ETL/ELT).</p>
+            </div>
+            <div class="approche-step s2">
+                <div class="approche-step-num">2</div>
+                <h3>Data Modeling & Semantic Layer</h3>
+                <p>Star schema design and implementation of business logic.</p>
+            </div>
+            <div class="approche-step s3">
+                <div class="approche-step-num">3</div>
+                <h3>Dashboard & Report Development</h3>
+                <p>Interactive and user-centric visualizations.</p>
+            </div>
+            <div class="approche-step s4">
+                <div class="approche-step-num">4</div>
+                <h3>DAX & Performance Optimization</h3>
+                <p>Advanced calculations and ensuring report responsiveness.</p>
+            </div>
+            <div class="approche-step s5">
+                <div class="approche-step-num">5</div>
+                <h3>Governance & Security</h3>
+                <p>Row-Level Security (RLS) setup and publishing standards.</p>
+            </div>
+            <div class="approche-step s6">
+                <div class="approche-step-num">6</div>
+                <h3>Deployment & Enablement</h3>
+                <p>Change management and training for successful adoption.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION BUSINESS OUTCOMES -->
+<section class="page-section reveal reveal-up" style="padding-top: 2rem;">
+    <div class="container">
+        <div class="section-header">
+            <div class="home-divider"></div>
+            <h2 class="home-section-title">Business Outcomes</h2>
+            <p class="home-section-subtitle" style="color: #81abb3; font-weight: 600;">Our Power BI engagements are designed to deliver measurable impact:</p>
+        </div>
+
+        <div class="key-expertise-grid">
+            <div class="key-exp-item">
+                <h3>Single source of truth</h3>
+                <p>Across the organization</p>
+            </div>
+            <div class="key-exp-item">
+                <h3>Faster decision-making</h3>
+                <p>Through real-time insights</p>
+            </div>
+            <div class="key-exp-item">
+                <h3>Reduced reporting cycles</h3>
+                <p>And manual effort</p>
+            </div>
+            <div class="key-exp-item">
+                <h3>Improved data accuracy</h3>
+                <p>And consistency</p>
+            </div>
+            <div class="key-exp-item">
+                <h3>Scalable analytics platform</h3>
+                <p>Aligned with enterprise needs</p>
+            </div>
+            <div class="key-exp-item">
+                <h3>Increased adoption</h3>
+                <p>Through intuitive and relevant dashboards</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION WHY WORK WITH US -->
+<section class="page-section reveal reveal-up" style="padding-top: 2rem;">
+    <div class="container">
+        <div class="section-header">
+            <div class="home-divider"></div>
+            <h2 class="home-section-title">Why Work With Us</h2>
+        </div>
+        <div class="hub-cards-row" style="margin-top: 3rem; padding-bottom: 2rem;">
+            <div class="why-work-card">
+                Consulting-led approach combining business and technical expertise
+            </div>
+            <div class="why-work-card">
+                Strong data modeling discipline to ensure long-term scalability
+            </div>
+            <div class="why-work-card">
+                Enterprise governance mindset embedded from day one
+            </div>
+            <div class="why-work-card">
+                Agile delivery model with iterative validation and feedback loops
+            </div>
+            <div class="why-work-card">
+                Cross-functional expertise across data engineering, BI, and analytics
+            </div>
+            <div class="why-work-card">
+                Focus on measurable business outcomes, not just delivery
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION TYPICAL USE CASES -->
+<section class="page-section reveal reveal-up" style="padding-top: 2rem;">
+    <div class="container">
+        <div class="section-header">
+            <div class="home-divider"></div>
+            <h2 class="home-section-title">Typical Use Cases</h2>
+            <p class="home-section-subtitle" style="color: #81abb3; font-weight: 600;">Our Power BI solutions support a wide range of business functions:</p>
+        </div>
+        <div class="use-cases-list">
+            <div class="use-case-item">
+                <div class="use-case-title">Executive performance dashboards (KPIs, financials)</div>
+                <div class="use-case-desc">Strategic steering and real-time financial health tracking.</div>
+            </div>
+            <div class="use-case-item">
+                <div class="use-case-title">Sales and revenue analytics</div>
+                <div class="use-case-desc">Tracking sales targets and segment profitability analysis.</div>
+            </div>
+            <div class="use-case-item">
+                <div class="use-case-title">Supply chain and operations monitoring</div>
+                <div class="use-case-desc">Inventory optimization and logistics flow monitoring.</div>
+            </div>
+            <div class="use-case-item">
+                <div class="use-case-title">HR and workforce analytics</div>
+                <div class="use-case-desc">Human capital management, absenteeism, and talent tracking.</div>
+            </div>
+            <div class="use-case-item">
+                <div class="use-case-title">Customer and marketing insights</div>
+                <div class="use-case-desc">Understanding purchasing behavior and campaign effectiveness.</div>
+            </div>
+            <div class="use-case-item">
+                <div class="use-case-title">Regulatory and compliance reporting</div>
+                <div class="use-case-desc">Automated legal reporting and data auditability.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION OPTIONAL CAPABILITIES -->
+<section class="optional-capabilities reveal reveal-up">
+    <div class="container">
+        <div class="section-header">
+            <div class="home-divider"></div>
+            <h2 class="home-section-title">Optional Capabilities</h2>
+            <p class="home-section-subtitle">Explore our additional expertise for your BI projects</p>
+        </div>
+
+        <div class="bubbles-container">
+            <div class="capability-bubble b1" onclick="burstBubble(this, 'detail-1')">Power BI audit & optimization of existing environments</div>
+            <div class="capability-bubble b2" onclick="burstBubble(this, 'detail-2')">Migration from legacy BI tools</div>
+            <div class="capability-bubble b3" onclick="burstBubble(this, 'detail-3')">Data warehouse / lakehouse design integration</div>
+            <div class="capability-bubble b4" onclick="burstBubble(this, 'detail-4')">Advanced analytics & AI integration</div>
+            <div class="capability-bubble b5" onclick="burstBubble(this, 'detail-5')">Training programs and center of excellence setup</div>
+
+            <!-- DETAILS (Hidden by default) -->
+            <div id="detail-1" class="capability-detail">
+                <h3>Audit & Optimization</h3>
+                <p>Performance analysis, security review, and compliance check with industry best practices to maximize your Power BI ROI.</p>
+                <div class="close-detail" onclick="resetBubbles()">Close</div>
+            </div>
+            <div id="detail-2" class="capability-detail">
+                <h3>BI Migration</h3>
+                <p>Secure transition of your reports from Tableau, Qlik, or SAP BO to Power BI without data loss.</p>
+                <div class="close-detail" onclick="resetBubbles()">Close</div>
+            </div>
+            <div id="detail-3" class="capability-detail">
+                <h3>Modern Data Storage</h3>
+                <p>Modern storage architecture (Lakehouse/Warehouse) to fuel your analytics with structured and reliable data.</p>
+                <div class="close-detail" onclick="resetBubbles()">Close</div>
+            </div>
+            <div id="detail-4" class="capability-detail">
+                <h3>AI & Analytics</h3>
+                <p>Implementation of predictive models and Copilot integration to transform historical data into future insights.</p>
+                <div class="close-detail" onclick="resetBubbles()">Close</div>
+            </div>
+            <div id="detail-5" class="capability-detail">
+                <h3>Training & CoE</h3>
+                <p>Tailored training programs and Center of Excellence setup to empower your teams and standardize BI practices.</p>
+                <div class="close-detail" onclick="resetBubbles()">Close</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION ENGAGEMENT MODELS -->
+<section class="engagement-models reveal reveal-up">
+    <div class="container">
+        <div class="section-header">
+            <div class="home-divider"></div>
+            <h2 class="home-section-title">Engagement Models</h2>
+        </div>
+        <p class="reveal reveal-up" style="font-size: 1.8rem; font-weight: 700; color: #81abb3; text-align: center; margin-bottom: 4rem; max-width: 900px; margin-left: auto; margin-right: auto;">
+            We adapt to your needs through flexible engagement models:
+        </p>
+        
+        <div class="engagement-grid">
+            <div class="engagement-list">
+                <div class="engagement-item active" onclick="updateEngDetail(this, 'adv')">Advisory & assessment</div>
+                <div class="engagement-item" onclick="updateEngDetail(this, 'fixed')">Fixed-scope implementation</div>
+                <div class="engagement-item" onclick="updateEngDetail(this, 'augment')">Dedicated team augmentation</div>
+                <div class="engagement-item" onclick="updateEngDetail(this, 'managed')">Managed analytics services</div>
+            </div>
+            <div id="engagement-detail-box" class="engagement-content-box">
+                <h3>Advisory & assessment</h3>
+                <p>We provide a comprehensive review of your current BI environment, identify maturity gaps, and define a clear strategic roadmap. This ensures that your technology investments are directly aligned with your long-term business objectives and operational requirements.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION STAR WARS CONCLUSION -->
+<section class="star-wars-section">
+    <div class="container">
+        <div class="star-wars-crawl">
+            <h2 class="reveal">Let’s Build Your Data Foundation</h2>
+            <p class="reveal">We partner with organizations to move from fragmented reporting to a trusted, 
+            enterprise-grade analytics platform that drives better decisions at every level.</p>
+            <div class="star-wars-cta reveal">
+                <a href="contact_en.html" class="btn-star-wars">Request a Consultation</a>
+                <a href="contact_en.html" class="btn-star-wars">Speak to a Power BI Expert</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <img src="acropora-logo-transparent.png" alt="Acropora Data" class="footer-logo">
+                <p>Leader in Master Data Management</p>
+                <p style="margin-top:1rem;font-size:.85rem;opacity:.7">Turn your data into strategic assets</p>
+            </div>
+            <div class="footer-section">
+                <h4>About Us</h4>
+                <ul>
+                    <li><a href="presentation_en.html">Overview</a></li>
+                    <li><a href="approche-donnees_en.html">Our Data Approach</a></li>
+                    <li><a href="equipe_en.html">Team</a></li>
+                    <li><a href="ethique_en.html">Ethics & Values</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Solutions & Expertise</h4>
+                <ul>
+                    <li><a href="mdm_en.html">MDM & Integration</a></li>
+                    <li><a href="bi-analytique_en.html">BI & Analytics</a></li>
+                    <li><a href="tests-validation_en.html">Automation Testing</a></li>
+                    <li><a href="solutions-sur-mesure_en.html">Custom Solutions</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="blog_en.html">Blog & Articles</a></li>
+                    <li><a href="etudes-de-cas_en.html">Case Studies</a></li>
+                    <li><a href="academie_en.html">Acropora Academy</a></li>
+                    <li><a href="contact_en.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Acropora Data. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+<script src="script.js"></script>
+<script src="scroll-animations.js"></script>
+<script src="pages.js"></script>
+<script>
+    function burstBubble(bubble, detailId) {
+        bubble.classList.add('burst');
+        setTimeout(() => {
+            document.querySelectorAll('.capability-detail').forEach(d => d.classList.remove('active'));
+            document.getElementById(detailId).classList.add('active');
+        }, 400);
+    }
+
+    function resetBubbles() {
+        document.querySelectorAll('.capability-detail').forEach(d => d.classList.remove('active'));
+        setTimeout(() => {
+            document.querySelectorAll('.capability-bubble').forEach(b => {
+                b.classList.remove('burst');
+            });
+        }, 300);
+    }
+</script>
+<script>
+    function updateEngDetail(el, type) {
+        const content = {
+            'adv': {
+                title: 'Advisory & assessment',
+                desc: 'We provide a comprehensive review of your current BI environment, identify maturity gaps, and define a clear strategic roadmap. This ensures that your technology investments are directly aligned with your long-term business objectives and operational requirements.'
+            },
+            'fixed': {
+                title: 'Fixed-scope implementation',
+                desc: 'Perfect for well-defined projects such as new dashboard creation, migration from legacy tools, or specific data modeling tasks. We work with agreed timelines, fixed budgets, and guaranteed deliverables to ensure high-quality execution without surprises.'
+            },
+            'augment': {
+                title: 'Dedicated team augmentation',
+                desc: 'When you need specific skills to scale your internal efforts, we provide senior Power BI architects, developers, or data engineers. They integrate seamlessly into your teams and processes to boost velocity and share best practices.'
+            },
+            'managed': {
+                title: 'Managed analytics services',
+                desc: 'Focus on your business while we manage the complexity of your platform. We handle monitoring, performance tuning, proactive maintenance, and end-user support to ensure your Power BI ecosystem remains reliable, secure, and up-to-date.'
+            }
+        };
+        
+        document.querySelectorAll('.engagement-item').forEach(i => i.classList.remove('active'));
+        el.classList.add('active');
+        
+        const box = document.getElementById('engagement-detail-box');
+        box.style.opacity = '0';
+        box.style.transform = 'translateY(10px)';
+        setTimeout(() => {
+            box.innerHTML = `<h3>${content[type].title}</h3><p>${content[type].desc}</p>`;
+            box.style.opacity = '1';
+            box.style.transform = 'translateY(0)';
+        }, 200);
+    }
+</script>
+<script src="hero-animations.js"></script>
+</body>
+</html>

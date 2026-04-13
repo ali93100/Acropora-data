@@ -1,0 +1,481 @@
+﻿﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automation Testing - Acropora Data</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ── SIMPLE AUTOMATION INTRO ─────────────────────────── */
+        .automation-intro-simple {
+            background: transparent;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        .automation-intro-simple .intro-title {
+            color: #81abb3;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+        .automation-intro-simple .intro-subtitle {
+            color: #81abb3;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1s forwards;
+        }
+        .automation-intro-simple .intro-lead {
+            color: #81abb3;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 600;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1.5s forwards;
+        }
+        .automation-intro-simple .intro-slider-container {
+            overflow: hidden;
+            width: 100%;
+            margin-top: 3rem;
+            mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 2s forwards;
+        }
+        .automation-intro-simple .intro-slider-track {
+            display: flex;
+            gap: 2rem;
+            width: max-content;
+            animation: slide-horizontal 40s linear infinite;
+        }
+        .automation-intro-simple .intro-value-item {
+            background: rgba(129, 171, 179, 0.1);
+            border: 2px solid #81abb3;
+            border-radius: 8px;
+            padding: 1rem 2rem;
+            color: #81abb3;
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            font-weight: 600;
+            text-align: center;
+            white-space: nowrap;
+            box-shadow: 0 4px 8px rgba(129, 171, 179, 0.2);
+        }
+        .automation-intro-simple .intro-slider-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes slide-horizontal {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+    </style>
+</head>
+<body>
+<div class="parallax-coral"><div class="coral-shape"></div><div class="coral-shape"></div><div class="coral-shape"></div><div class="coral-shape"></div></div>
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo-container">
+            <a href="index_en.html"><img src="acropora-logo-transparent.png" alt="Acropora Data" class="logo"></a>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link" style="cursor: default;">About Us</a>
+                <div class="mega-menu">
+                    <div class="mega-menu-inner mega-menu-4">
+                        <div class="mega-col"><div class="mega-col-title">The Company</div><a href="presentation_en.html"><span class="link-text"><strong>Overview</strong><span>Our history and vision</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Method</div><a href="approche-donnees_en.html"><span class="link-text"><strong>Our Data Approach</strong><span>Methodology & framework</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">People</div><a href="equipe_en.html"><span class="link-text"><strong>Team</strong><span>Our data experts</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Commitment</div><a href="ethique_en.html"><span class="link-text"><strong>Ethics & Values</strong><span>Our founding principles</span></span></a></div>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link active" style="cursor: default;">Solutions & Expertise</a>
+                <div class="mega-menu">
+                    <div class="mega-menu-inner mega-menu-4">
+                        <div class="mega-col"><div class="mega-col-title">MDM</div><a href="mdm_en.html"><span class="link-text"><strong>MDM & Integration</strong><span>Repositories & pipelines</span></span></a><a href="ai-foundations_en.html"><span class="link-text"><strong>AI Foundations</strong><span>AI-ready data landscapes</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Migration</div><a href="migration-mdm_en.html"><span class="link-text"><strong>Test Strategy</strong><span>Seamless transition</span></span></a><a href="tests-validation_en.html"><span class="link-text"><strong>Automation Testing</strong><span>Quality & compliance</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Analytics</div><a href="bi-analytique_en.html"><span class="link-text"><strong>BI & Analytics</strong><span>Insights and reporting</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Audit</div><a href="cadrage-projet_en.html"><span class="link-text"><strong>Project Scoping</strong><span>Structuring your initiatives</span></span></a></div>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link" style="cursor: default;">Partners</a>
+                <div class="mega-menu">
+                    <div class="mega-menu-inner mega-menu-5">
+                        <div class="mega-col">
+                            <div class="mega-col-title">Technology</div>
+                            <a href="partenaires-technologiques_en.html"><span class="link-text"><strong>Technology Partners</strong><span>Informatica, Snowflake, Azure…</span></span></a>
+                        </div>
+                        <div class="mega-col">
+                            <div class="mega-col-title">Business</div>
+                            <a href="partenaires-commerciaux_en.html"><span class="link-text"><strong>Business Partners</strong><span>Business alliances and synergies</span></span></a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link cta-nav" style="cursor: default;">Contact</a>
+                <div class="mega-menu">
+                    <div class="mega-menu-inner mega-menu-5">
+                        <div class="mega-col"><div class="mega-col-title">Join Us</div><a href="carrieres_en.html"><span class="link-text"><strong>Careers</strong><span>Jobs & applications</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Partnership</div><a href="devenir-partenaire_en.html"><span class="link-text"><strong>Become a partner</strong><span>Join the ecosystem</span></span></a></div>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="tests-validation.html" class="lang-switch-btn" title="Switch to French">FR</a>
+            </li>
+        </ul>
+        <button class="menu-toggle" onclick="document.querySelector('.nav-menu').classList.toggle('active')"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+<section class="page-hero" data-hero-anim="testing">
+    <div class="container">
+        <h1 class="page-title">Automation Testing</h1>
+        <p class="page-subtitle">Quality and compliance at every stage of the data cycle</p>
+    </div>
+</section>
+<section class="automation-intro-simple">
+    <div class="container">
+        <h2 class="intro-title">Test automation is the next evolution of quality assurance</h2>
+        <h3 class="intro-subtitle">Automate your tests. Accelerate your results</h3>
+        <p class="intro-lead">Eliminate repetitive manual work and empower your team with scripts that:</p>
+        <div class="intro-slider-container">
+            <div class="intro-slider-track">
+                <div class="intro-value-item">Execute at speed</div>
+                <div class="intro-value-item">Expand test coverage</div>
+                <div class="intro-value-item">Boost reliability</div>
+                <div class="intro-value-item">Execute anytime, even outside working hours</div>
+                <div class="intro-value-item">Generate reports automatically</div>
+                <!-- Duplicate items for seamless infinite loop -->
+                <div class="intro-value-item">Execute at speed</div>
+                <div class="intro-value-item">Expand test coverage</div>
+                <div class="intro-value-item">Boost reliability</div>
+                <div class="intro-value-item">Execute anytime, even outside working hours</div>
+                <div class="intro-value-item">Generate reports automatically</div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="page-section" style="padding-bottom: 0;">
+    <div class="container" style="text-align: center; padding-top: 2rem; padding-bottom: 0;">
+        <img 
+            src="diagramme-automation-testing-en.png" 
+            alt="Automation Testing Diagram" 
+            style="max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 12px; box-shadow: 0 8px 32px rgba(26, 93, 106, 0.16);"
+            class="reveal reveal-up"
+        >
+    </div>
+</section> <!-- Fermeture correcte de la section image -->
+<section class="page-section" style="padding-top: 2rem;">
+    <div class="container">
+        <div class="section-header">
+            <div class="home-divider"></div>
+            <h2 class="home-section-title">Why do we recommend Tosca?</h2>
+        </div>
+
+        <div class="key-expertise-grid">
+            <div class="key-exp-item">
+                <h3>Official Partner</h3>
+                <p>Official partner of Tricentis</p>
+            </div>
+            <div class="key-exp-item">
+                <h3>Proven Expertise</h3>
+                <p>Proven expertise with years of hands-on experience</p>
+            </div>
+            <div class="key-exp-item">
+                <h3>Industry Leader</h3>
+                <p>Industry-leading platform trusted by global enterprises</p>
+            </div>
+            <div class="key-exp-item">
+                <h3>Enterprise Grade</h3>
+                <p>Enterprise-grade, premium solution</p>
+            </div>
+            <div class="key-exp-item">
+                <h3>Codeless Approach</h3>
+                <p>Empower both testers and business users</p>
+            </div>
+            <div class="key-exp-item">
+                <h3>CI/CD Integration</h3>
+                <p>Seamless integration with CI/CD pipelines</p>
+            </div>
+            <div class="key-exp-item">
+                <h3>Scalability</h3>
+                <p>Scalable for complex, enterprise environments</p>
+            </div>
+            <div class="key-exp-item">
+                <h3>Strong Ecosystem</h3>
+                <p>Strong support, training, and ecosystem</p>
+            </div>
+        </div>
+
+        <!-- Illustrative image below Tosca benefits -->
+        <div style="text-align: center; margin-top: 4rem;">
+            <img src="manuel-test-en.png" alt="Manual vs Automated Testing" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 32px rgba(26, 93, 106, 0.16);" class="reveal reveal-up">
+        </div>
+    </div>
+</section>
+
+<!-- TOSCA VERTICAL TICKER -->
+<style>
+.tosca-ticker {
+  background: #000;
+  overflow: hidden;
+  height: 540px;
+  position: relative;
+}
+.tosca-ticker::before,
+.tosca-ticker::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  height: 130px;
+  z-index: 3;
+  pointer-events: none;
+}
+.tosca-ticker::before { top: 0;    background: linear-gradient(to bottom, #000 0%, transparent 100%); }
+.tosca-ticker::after  { bottom: 0; background: linear-gradient(to top,   #000 0%, transparent 100%); }
+
+/* scanline overlay */
+.tosca-ticker-scanlines {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 3px,
+    rgba(0,0,0,0.08) 3px,
+    rgba(0,0,0,0.08) 4px
+  );
+}
+
+.tosca-ticker-inner {
+  display: flex;
+  height: 100%;
+}
+
+.tosca-ticker-col {
+  flex: 1;
+  overflow: hidden;
+  border-right: 1px solid rgba(129,171,179,0.08);
+}
+.tosca-ticker-col:last-child { border-right: none; }
+
+.tosca-ticker-track {
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+}
+
+.tosca-ticker-col--up   .tosca-ticker-track { animation: tt-up   22s linear infinite; }
+.tosca-ticker-col--down .tosca-ticker-track { animation: tt-down 22s linear infinite; }
+
+@keyframes tt-up   { 0% { transform: translateY(0); }    100% { transform: translateY(-50%); } }
+@keyframes tt-down { 0% { transform: translateY(-50%); } 100% { transform: translateY(0); } }
+
+.tosca-ticker-item {
+  padding: 2.2rem 2.8rem;
+  border-bottom: 1px solid rgba(129,171,179,0.08);
+  transition: background 0.35s;
+  cursor: default;
+  position: relative;
+}
+.tosca-ticker-item::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: #81abb3;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.35s ease;
+}
+.tosca-ticker-item:hover { background: rgba(129,171,179,0.04); }
+.tosca-ticker-item:hover::before { transform: scaleY(1); }
+
+.tt-num {
+  display: block;
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  color: rgba(129,171,179,0.45);
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+}
+.tt-title {
+  display: block;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.02em;
+}
+.tt-desc {
+  display: block;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.38);
+  line-height: 1.5;
+}
+</style>
+
+<section class="tosca-ticker">
+  <div class="tosca-ticker-scanlines"></div>
+  <div class="tosca-ticker-inner">
+
+    <!-- Left column — scrolls UP -->
+    <div class="tosca-ticker-col tosca-ticker-col--up">
+      <div class="tosca-ticker-track">
+        <!-- Set A -->
+        <div class="tosca-ticker-item">
+          <span class="tt-num">01</span>
+          <span class="tt-title">Official Partner</span>
+          <span class="tt-desc">Official partner of Tricentis</span>
+        </div>
+        <div class="tosca-ticker-item">
+          <span class="tt-num">03</span>
+          <span class="tt-title">Industry Leader</span>
+          <span class="tt-desc">Industry-leading platform trusted by global enterprises</span>
+        </div>
+        <div class="tosca-ticker-item">
+          <span class="tt-num">05</span>
+          <span class="tt-title">Codeless Approach</span>
+          <span class="tt-desc">Empower both testers and business users</span>
+        </div>
+        <div class="tosca-ticker-item">
+          <span class="tt-num">07</span>
+          <span class="tt-title">Scalability</span>
+          <span class="tt-desc">Scalable for complex, enterprise environments</span>
+        </div>
+        <!-- Set B (duplicate for seamless loop) -->
+        <div class="tosca-ticker-item">
+          <span class="tt-num">01</span>
+          <span class="tt-title">Official Partner</span>
+          <span class="tt-desc">Official partner of Tricentis</span>
+        </div>
+        <div class="tosca-ticker-item">
+          <span class="tt-num">03</span>
+          <span class="tt-title">Industry Leader</span>
+          <span class="tt-desc">Industry-leading platform trusted by global enterprises</span>
+        </div>
+        <div class="tosca-ticker-item">
+          <span class="tt-num">05</span>
+          <span class="tt-title">Codeless Approach</span>
+          <span class="tt-desc">Empower both testers and business users</span>
+        </div>
+        <div class="tosca-ticker-item">
+          <span class="tt-num">07</span>
+          <span class="tt-title">Scalability</span>
+          <span class="tt-desc">Scalable for complex, enterprise environments</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right column — scrolls DOWN -->
+    <div class="tosca-ticker-col tosca-ticker-col--down">
+      <div class="tosca-ticker-track">
+        <!-- Set A -->
+        <div class="tosca-ticker-item">
+          <span class="tt-num">02</span>
+          <span class="tt-title">Proven Expertise</span>
+          <span class="tt-desc">Proven expertise with years of hands-on experience</span>
+        </div>
+        <div class="tosca-ticker-item">
+          <span class="tt-num">04</span>
+          <span class="tt-title">Enterprise Grade</span>
+          <span class="tt-desc">Enterprise-grade, premium solution</span>
+        </div>
+        <div class="tosca-ticker-item">
+          <span class="tt-num">06</span>
+          <span class="tt-title">CI/CD Integration</span>
+          <span class="tt-desc">Seamless integration with CI/CD pipelines</span>
+        </div>
+        <div class="tosca-ticker-item">
+          <span class="tt-num">08</span>
+          <span class="tt-title">Strong Ecosystem</span>
+          <span class="tt-desc">Strong support, training, and ecosystem</span>
+        </div>
+        <!-- Set B (duplicate) -->
+        <div class="tosca-ticker-item">
+          <span class="tt-num">02</span>
+          <span class="tt-title">Proven Expertise</span>
+          <span class="tt-desc">Proven expertise with years of hands-on experience</span>
+        </div>
+        <div class="tosca-ticker-item">
+          <span class="tt-num">04</span>
+          <span class="tt-title">Enterprise Grade</span>
+          <span class="tt-desc">Enterprise-grade, premium solution</span>
+        </div>
+        <div class="tosca-ticker-item">
+          <span class="tt-num">06</span>
+          <span class="tt-title">CI/CD Integration</span>
+          <span class="tt-desc">Seamless integration with CI/CD pipelines</span>
+        </div>
+        <div class="tosca-ticker-item">
+          <span class="tt-num">08</span>
+          <span class="tt-title">Strong Ecosystem</span>
+          <span class="tt-desc">Strong support, training, and ecosystem</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="page-cta">
+    <div class="container">
+        <h2>Ready to go further?</h2>
+        <p>Contact us today</p>
+        <a href="contact_en.html" class="btn btn-primary">Contact Us</a>
+    </div>
+</section>
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <img src="acropora-logo-transparent.png" alt="Acropora Data" class="footer-logo">
+                <p>Leader in Master Data Management</p>
+                <p style="margin-top:1rem;font-size:.85rem;opacity:.7">Turn your data into strategic assets</p>
+            </div>
+            <div class="footer-section">
+                <h4>About Us</h4>
+                <ul>
+                    <li><a href="presentation_en.html">Overview</a></li>
+                    <li><a href="approche-donnees_en.html">Our Data Approach</a></li>
+                    <li><a href="equipe_en.html">Team</a></li>
+                    <li><a href="ethique_en.html">Ethics & Values</a></li>
+                </ul>
+            </div>
+            <!-- Footer sections identical to English base -->
+            <div class="footer-section"><h4>Solutions</h4><ul><li><a href="mdm_en.html">MDM</a></li><li><a href="bi-analytique_en.html">BI</a></li><li><a href="tests-validation_en.html">Testing</a></li><li><a href="solutions-sur-mesure_en.html">Custom</a></li></ul></div><div class="footer-section"><h4>Resources</h4><ul><li><a href="blog_en.html">Blog</a></li><li><a href="etudes-de-cas_en.html">Case Studies</a></li><li><a href="academie_en.html">Academy</a></li><li><a href="contact_en.html">Contact</a></li></ul></div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Acropora Data. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+<script src="script.js"></script>
+<script src="pages.js"></script>
+<script src="hero-animations.js"></script>
+</body>
+</html
