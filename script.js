@@ -12,8 +12,8 @@ const navMenu = document.querySelector('.nav-menu');
 // Close menu when clicking outside
 document.addEventListener('click', (e) => {
     if (!e.target.closest('.navbar')) {
-        navMenu.classList.remove('active');
-        menuToggle.classList.remove('active');
+        if (navMenu) navMenu.classList.remove('active');
+        if (menuToggle) menuToggle.classList.remove('active');
     }
 });
 
@@ -294,7 +294,7 @@ let scrollPosition = 0;
 function updateParallax() {
     scrollPosition = window.pageYOffset;
     document.body.style.setProperty('--scroll', scrollPosition);
-    document.body.classList.add('parallax-active');
+   
 }
 
 // Throttle function for better performance

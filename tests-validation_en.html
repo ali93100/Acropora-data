@@ -176,14 +176,118 @@
         </div>
     </div>
 </section>
-<section class="page-section" style="padding-bottom: 0;">
-    <div class="container" style="text-align: center; padding-top: 2rem; padding-bottom: 0;">
-        <img 
-            src="diagramme-automation-testing-en.png" 
-            alt="Automation Testing Diagram" 
-            style="max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 12px; box-shadow: 0 8px 32px rgba(26, 93, 106, 0.16);"
-            class="reveal reveal-up"
-        >
+<section class="page-section" style="padding-top: 2rem; padding-bottom: 0;">
+    <div class="container reveal reveal-up">
+        <div class="at-approches-wrap">
+            <h2 class="at-approches-title">Three approaches, one goal: quality</h2>
+            <p class="at-approches-sub">These tools are not opposed — they adapt to the maturity, context, and constraints of each project.</p>
+
+            <div class="at-spectrum-bar">
+                <div class="at-spec-seg at-seg-blue">
+                    <span class="at-seg-tool">Selenium</span>
+                    <span class="at-seg-nature">Code-first</span>
+                </div>
+                <div class="at-spec-seg at-seg-teal">
+                    <span class="at-seg-tool">UiPath</span>
+                    <span class="at-seg-nature">Low-code</span>
+                </div>
+                <div class="at-spec-seg at-seg-coral">
+                    <span class="at-seg-tool">Tosca</span>
+                    <span class="at-seg-nature">Model-based</span>
+                </div>
+            </div>
+            <div class="at-axis-labels">
+                <span>High technical control</span>
+                <span>Enterprise governance</span>
+            </div>
+
+            <div class="at-cards">
+                <div class="at-card">
+                    <div class="at-card-head">
+                        <div class="at-card-dot at-dot-blue"></div>
+                        <span class="at-card-tool">Selenium</span>
+                        <span class="at-card-profile">Open source</span>
+                    </div>
+                    <div class="at-criteria">
+                        <div class="at-criterion">
+                            <span class="at-crit-label">Data</span>
+                            <span class="at-crit-val">Static, defined in scripts</span>
+                        </div>
+                        <div class="at-criterion">
+                            <span class="at-crit-label">Collaboration</span>
+                            <span class="at-crit-val">Individual or small tech team</span>
+                        </div>
+                        <div class="at-criterion">
+                            <span class="at-crit-label">When to use it</span>
+                            <span class="at-crit-val">Existing dev team, constrained budget, complex test logic</span>
+                        </div>
+                    </div>
+                    <div class="at-pill-row">
+                        <span class="at-pill at-pill-blue">Scripting</span>
+                        <span class="at-pill at-pill-blue">Flexible</span>
+                        <span class="at-pill at-pill-blue">Free</span>
+                    </div>
+                </div>
+
+                <div class="at-card">
+                    <div class="at-card-head">
+                        <div class="at-card-dot at-dot-teal"></div>
+                        <span class="at-card-tool">UiPath</span>
+                        <span class="at-card-profile">RPA / Low-code</span>
+                    </div>
+                    <div class="at-criteria">
+                        <div class="at-criterion">
+                            <span class="at-crit-label">Data</span>
+                            <span class="at-crit-val">Dynamic via Excel, API, files</span>
+                        </div>
+                        <div class="at-criterion">
+                            <span class="at-crit-label">Collaboration</span>
+                            <span class="at-crit-val">Mixed business + IT teams</span>
+                        </div>
+                        <div class="at-criterion">
+                            <span class="at-crit-label">When to use it</span>
+                            <span class="at-crit-val">Accelerate automation without strong dependency on code</span>
+                        </div>
+                    </div>
+                    <div class="at-pill-row">
+                        <span class="at-pill at-pill-teal">UI Scan</span>
+                        <span class="at-pill at-pill-teal">Data injection</span>
+                        <span class="at-pill at-pill-teal">Agile</span>
+                    </div>
+                </div>
+
+                <div class="at-card">
+                    <div class="at-card-head">
+                        <div class="at-card-dot at-dot-coral"></div>
+                        <span class="at-card-tool">Tosca</span>
+                        <span class="at-card-profile">Enterprise</span>
+                    </div>
+                    <div class="at-criteria">
+                        <div class="at-criterion">
+                            <span class="at-crit-label">Data</span>
+                            <span class="at-crit-val">Contextual, managed in the tool</span>
+                        </div>
+                        <div class="at-criterion">
+                            <span class="at-crit-label">Collaboration</span>
+                            <span class="at-crit-val">Large teams, approval workflows</span>
+                        </div>
+                        <div class="at-criterion">
+                            <span class="at-crit-label">When to use it</span>
+                            <span class="at-crit-val">Complex projects with strong reporting and governance requirements</span>
+                        </div>
+                    </div>
+                    <div class="at-pill-row">
+                        <span class="at-pill at-pill-coral">MBT</span>
+                        <span class="at-pill at-pill-coral">Auto reporting</span>
+                        <span class="at-pill at-pill-coral">Multi-team</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="at-context-box">
+                <strong>The role of ACROPORA DATA</strong> — We analyze your project context (technical stack, team maturity, test volume) to recommend and implement the best-adapted approach, regardless of the tool chosen.
+            </div>
+        </div>
     </div>
 </section> <!-- Fermeture correcte de la section image -->
 <section class="page-section" style="padding-top: 2rem;">
@@ -194,43 +298,94 @@
         </div>
 
         <div class="key-expertise-grid">
-            <div class="key-exp-item">
+            <div class="key-exp-item reveal reveal-up" style="transition-delay: 0ms;">
                 <h3>Official Partner</h3>
                 <p>Official partner of Tricentis</p>
             </div>
-            <div class="key-exp-item">
+            <div class="key-exp-item reveal reveal-up" style="transition-delay: 100ms;">
                 <h3>Proven Expertise</h3>
                 <p>Proven expertise with years of hands-on experience</p>
             </div>
-            <div class="key-exp-item">
+            <div class="key-exp-item reveal reveal-up" style="transition-delay: 200ms;">
                 <h3>Industry Leader</h3>
                 <p>Industry-leading platform trusted by global enterprises</p>
             </div>
-            <div class="key-exp-item">
+            <div class="key-exp-item reveal reveal-up" style="transition-delay: 300ms;">
                 <h3>Enterprise Grade</h3>
                 <p>Enterprise-grade, premium solution</p>
             </div>
-            <div class="key-exp-item">
+            <div class="key-exp-item reveal reveal-up" style="transition-delay: 400ms;">
                 <h3>Codeless Approach</h3>
                 <p>Empower both testers and business users</p>
             </div>
-            <div class="key-exp-item">
+            <div class="key-exp-item reveal reveal-up" style="transition-delay: 500ms;">
                 <h3>CI/CD Integration</h3>
                 <p>Seamless integration with CI/CD pipelines</p>
             </div>
-            <div class="key-exp-item">
+            <div class="key-exp-item reveal reveal-up" style="transition-delay: 600ms;">
                 <h3>Scalability</h3>
                 <p>Scalable for complex, enterprise environments</p>
             </div>
-            <div class="key-exp-item">
+            <div class="key-exp-item reveal reveal-up" style="transition-delay: 700ms;">
                 <h3>Strong Ecosystem</h3>
                 <p>Strong support, training, and ecosystem</p>
             </div>
         </div>
 
-        <!-- Illustrative image below Tosca benefits -->
-        <div style="text-align: center; margin-top: 4rem;">
-            <img src="manuel-test-en.png" alt="Manual vs Automated Testing" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 32px rgba(26, 93, 106, 0.16);" class="reveal reveal-up">
+        <div class="tc-wrap reveal reveal-up">
+            <div class="tc-header">
+                <p class="tc-header-eyebrow">Tool Comparison</p>
+                <h2 class="tc-header-title">Selenium · UiPath · Tosca</h2>
+                <p class="tc-header-sub">Choose the right tool based on your project context</p>
+            </div>
+            <div class="tc-cols">
+                <div class="tc-col-selenium">
+                    <div class="tc-col-header">
+                        <div class="tc-col-label">Open source</div>
+                        <div class="tc-col-name">Selenium</div>
+                        <div class="tc-col-tag">Technical Profile</div>
+                    </div>
+                    <div class="tc-col-body">
+                        <div class="tc-feature-card"><div class="tc-feat-icon tc-icon-blue"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><div class="tc-feat-title">Code-oriented</div><p class="tc-feat-desc">Requires scripting (Java, Python, JS…). Total control over test logic.</p></div>
+                        <div class="tc-feature-card"><div class="tc-feat-icon tc-icon-blue"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="12" rx="10" ry="4"/><path d="M2 12c0 2.2 4.5 4 10 4s10-1.8 10-4"/><path d="M2 12v8c0 2.2 4.5 4 10 4s10-1.8 10-4v-8"/></svg></div><div class="tc-feat-title">Static Data</div><p class="tc-feat-desc">Datasets are defined in scripts. No native dynamic injection.</p></div>
+                        <div class="tc-feature-card"><div class="tc-feat-icon tc-icon-blue"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><div class="tc-feat-title">Individual Usage</div><p class="tc-feat-desc">No native collaborative platform. Ideal for a developer or small team.</p></div>
+                    </div>
+                </div>
+                <div class="tc-col-uipath">
+                    <div class="tc-col-header">
+                        <div class="tc-col-label">Low-code RPA</div>
+                        <div class="tc-col-name">UiPath</div>
+                        <div class="tc-col-tag">Agile Teams</div>
+                    </div>
+                    <div class="tc-col-body">
+                        <div class="tc-feature-card"><div class="tc-feat-icon tc-icon-teal"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 9h6M9 13h4"/><circle cx="19" cy="9" r="3" fill="none"/><path d="M17 9l1 1 2-2"/></svg></div><div class="tc-feat-title">Application Scan</div><p class="tc-feat-desc">Automatically detects and maps UI elements. Low-code requirement.</p></div>
+                        <div class="tc-feature-card"><div class="tc-feat-icon tc-icon-teal"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="12" y2="17"/></svg></div><div class="tc-feat-title">Data from files</div><p class="tc-feat-desc">Import Excel, CSV, and API. Dynamic data injection into test scenarios.</p></div>
+                        <div class="tc-feature-card"><div class="tc-feat-icon tc-icon-teal"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div class="tc-feat-title">Collaborative Environment</div><p class="tc-feat-desc">Shared platform for teams. Integrated role and access management.</p></div>
+                    </div>
+                </div>
+                <div class="tc-col-tosca">
+                    <div class="tc-col-header">
+                        <div class="tc-col-label">Enterprise</div>
+                        <div class="tc-col-name">Tosca</div>
+                        <div class="tc-col-tag">Enterprise</div>
+                    </div>
+                    <div class="tc-col-body">
+                        <div class="tc-feature-card"><div class="tc-feat-icon tc-icon-coral"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 9h6M9 13h4"/><circle cx="19" cy="7" r="3" fill="none"/><path d="M17.5 7l.8.8 1.7-1.6"/></svg></div><div class="tc-feat-title">Advanced Scan (MBT)</div><p class="tc-feat-desc">Model-based automation. Full coverage, no manual scripting.</p></div>
+                        <div class="tc-feature-card"><div class="tc-feat-icon tc-icon-coral"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="tc-feat-title">Contextual Data</div><p class="tc-feat-desc">Manage data directly in the application. Context-based isolation and control.</p></div>
+                        <div class="tc-feature-card"><div class="tc-feat-icon tc-icon-coral"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 13h6M9 17h4"/><circle cx="18" cy="15" r="3"/><path d="M16.5 15l.8.8 1.7-1.6"/></svg></div><div class="tc-feat-title">Reports & Case Generation</div><p class="tc-feat-desc">Automatic test case generation and lifecycle reporting integrated into the quality pipeline.</p></div>
+                    </div>
+                </div>
+            </div>
+            <div class="tc-reco-row">
+                <div class="tc-reco-card"><div class="tc-reco-title" style="color:#0C447C;">Choose Selenium if…</div>Your team is technical, you want maximum control, and have fewer budget constraints on licenses.</div>
+                <div class="tc-reco-card"><div class="tc-reco-title" style="color:#085041;">Choose UiPath if…</div>You want to accelerate automation with low-code and have mixed teams (business + IT).</div>
+                <div class="tc-reco-card"><div class="tc-reco-title" style="color:#712B13;">Choose Tosca if…</div>You manage complex enterprise projects with high governance and quality reporting requirements.</div>
+            </div>
+            <div class="tc-legend">
+                <div class="tc-legend-item"><div class="tc-legend-dot" style="background:#185FA5;"></div>Open source · developer-oriented</div>
+                <div class="tc-legend-item"><div class="tc-legend-dot" style="background:#0F6E56;"></div>Low-code · agile teams</div>
+                <div class="tc-legend-item"><div class="tc-legend-dot" style="background:#993C1D;"></div>Enterprise · advanced governance</div>
+            </div>
         </div>
     </div>
 </section>
