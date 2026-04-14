@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -71,32 +71,39 @@
         <button class="menu-toggle" onclick="document.querySelector('.nav-menu').classList.toggle('active')"><span></span><span></span><span></span></button>
     </div>
 </nav>
-<section class="page-hero" data-hero-anim="overview">
+<section class="page-hero">
     <div class="container">
         <h1 class="page-title">Overview</h1>
-        <p class="page-subtitle">Our history, our vision since 2008</p>
+        <p class="page-subtitle">Our history, our vision since 2023</p>
     </div>
 </section>
 
-<!-- ═══ 1. INTRO — white bg ═══════════════════════════════ -->
-<section class="page-section" style="padding: 7rem 0;">
-  <div class="container">
-    <div class="ov-intro-grid">
-      <div class="ov-intro-text reveal reveal-left">
-        <span class="ov-label">About us</span>
-        <h2 class="ov-heading">Built by data professionals,<br>for data-driven businesses.</h2>
-        <p class="ov-body">ACROPORA DATA was founded by professionals with extensive experience in global data projects. Our agile approach delivers high-quality services tailored to each client's specific needs.</p>
-        <p class="ov-body" style="margin-top:1rem;">Based in <strong>Mauritius</strong>, we offer a strategic advantage in time zone alignment for both European and Asian markets — combined with competitive pricing and bilingual English/French teams.</p>
-      </div>
-      <div class="ov-intro-photo reveal reveal-right">
-        <img src="photo dirigeante.JPG" alt="Acropora Data Leadership">
-      </div>
+<section class="page-section team-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Presentation</h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="team-grid" data-animate="reveal-shine">
+            <div class="team-info-col">
+                <p class="lead" data-animate="reveal-left" style="font-size: 1.4rem; line-height: 1.8; color: #81abb3; font-weight: 500; margin: 0;">
+                    ACROPORA DATA was founded by data professionals with extensive experience in global projects. Our agile and flexible approach allows us to deliver high-quality services tailored to the specific needs of our clients.
+                </p>
+            </div>
+            <div class="team-photo-col">
+                <img src="photo dirigeante.JPG" alt="Acropora Data Leadership">
+            </div>
+        </div>
+
+        <p class="reveal reveal-up" style="font-size: 1.6rem; line-height: 1.8; color: #0f6170; font-weight: 600; text-align: center; max-width: 1100px; margin: 4rem auto 0;">
+            Based in Mauritius, we offer a strategic advantage in terms of time zone alignment for both European and Asian markets, combined with competitive pricing and bilingual teams proficient in both English and French.
+        </p>
     </div>
-  </div>
 </section>
 
-<!-- ═══ 2. MAURITIUS HUB — alt-bg ══════════════════════════ -->
-<section class="page-section alt-bg" id="hub-maurice" style="padding: 5rem 0;">
+<!-- MAURITIUS HUB -->
+<section class="page-section alt-bg" id="hub-maurice">
   <div class="container">
     <div class="mauritius-hub reveal reveal-zoom-in" style="transition-duration: 1s;">
       <img src="carte-maurice-rouge.png" alt="Map of Mauritius highlighting business advantages for Acropora Data">
@@ -104,38 +111,32 @@
   </div>
 </section>
 
-<!-- ═══ 3. WHO WE ARE — #81abb3 bg ═════════════════════════ -->
-<section class="ov-approach-section">
-  <div class="container">
-    <div class="ov-approach-inner">
-      <div class="ov-approach-left reveal reveal-up">
-        <span class="ov-label light">Our mission</span>
-        <h2 class="ov-heading light">Who are we?</h2>
-        <p class="ov-body light">ACROPORA helps organisations take control of their data — not just by implementing tools, but by making data truly usable, reliable and business-ready.</p>
-      </div>
-      <div class="ov-approach-right">
-        <div class="ov-pillar reveal reveal-up" style="transition-delay:100ms">
-          <div class="ov-pillar-num">01</div>
-          <div class="ov-pillar-text">Less theory</div>
-        </div>
-        <div class="ov-pillar reveal reveal-up" style="transition-delay:250ms">
-          <div class="ov-pillar-num">02</div>
-          <div class="ov-pillar-text">More execution</div>
-        </div>
-        <div class="ov-pillar reveal reveal-up" style="transition-delay:400ms">
-          <div class="ov-pillar-num">03</div>
-          <div class="ov-pillar-text">More impact</div>
-        </div>
-      </div>
+<!-- MISSION & APPROACH -->
+<section class="page-section">
+  <div class="container" style="text-align: center;">
+    <div class="section-header reveal reveal-up">
+      <h2>Who are we?</h2>
+      <div class="section-line"></div>
+    </div>
+    <p class="reveal reveal-up" style="font-size: 1.4rem; color: var(--text-medium); max-width: 900px; margin: 0 auto 2rem; line-height: 1.6;">
+      ACROPORA helps organizations take control of their data-not just by implementing tools, but by making data actually usable, reliable and business-ready.
+    </p>
+    <p class="reveal reveal-up" style="font-size: 1.25rem; font-weight: 600; color: #0f6170; margin-bottom: 3rem;">
+      ACROPORA brings a different approach :
+    </p>
+    <div class="approach-summary" style="display: flex; flex-direction: column; gap: 1.5rem; align-items: center;">
+      <div class="reveal reveal-up" style="font-size: 2.2rem; font-weight: 800; color: #f3756e; transition-delay: 200ms;">- Less theory</div>
+      <div class="reveal reveal-up" style="font-size: 2.2rem; font-weight: 800; color: #f3756e; transition-delay: 400ms;">- More execution</div>
+      <div class="reveal reveal-up" style="font-size: 2.2rem; font-weight: 800; color: #f3756e; transition-delay: 600ms;">- More impact</div>
     </div>
   </div>
 </section>
 
-<!-- ═══ 4. WHAT WE BELIEVE — dark bg ══════════════════════ -->
+<!-- WHAT WE BELIEVE -->
 <section class="belief-section">
-  <div class="container" style="text-align:center;">
+  <div class="container">
     <div class="section-header reveal reveal-up">
-      <h2>What we believe</h2>
+      <h2>What we believe?</h2>
       <div class="section-line"></div>
     </div>
     <div class="reveal reveal-belief">
@@ -144,7 +145,7 @@
 
     <!-- IF YOUR DATA IS -->
     <div class="data-risk-block">
-      <p class="data-risk-intro">If your data is:</p>
+      <p class="data-risk-intro reveal reveal-up">If your data is:</p>
       <div class="data-risk-circles">
         <div class="risk-circle" data-delay="0">
           <div class="risk-circle-inner">
@@ -165,18 +166,18 @@
           </div>
         </div>
       </div>
-      <p class="data-risk-consequence">
+      <p class="data-risk-consequence reveal reveal-up">
         Then your decisions, your operations, and your AI initiatives are at risk.
       </p>
     </div>
   </div>
 </section>
 
-<!-- ═══ 5. MANIFESTO — black bg, white text ════════════════ -->
+<!-- CLOSING MANIFESTO -->
 <section class="manifesto-section">
   <div class="container">
     <div class="manifesto-stage" id="manifestoStage">
-      <div class="manifesto-line">
+      <div class="manifesto-line" id="mLine1">
         <span class="manifesto-word" style="--d:0ms">We</span>
         <span class="manifesto-word" style="--d:60ms">believe</span>
         <span class="manifesto-word" style="--d:120ms">companies</span>
@@ -185,15 +186,18 @@
         <span class="manifesto-word" style="--d:300ms">more</span>
         <span class="manifesto-word accent" style="--d:370ms">tools.</span>
       </div>
-      <div class="manifesto-line">
+      <div class="manifesto-line" id="mLine2">
         <span class="manifesto-word" style="--d:500ms">They</span>
         <span class="manifesto-word" style="--d:560ms">need</span>
         <span class="manifesto-word highlight" style="--d:630ms">clarity,</span>
         <span class="manifesto-word highlight" style="--d:730ms">structure,</span>
         <span class="manifesto-word" style="--d:830ms">and</span>
         <span class="manifesto-word highlight" style="--d:900ms">discipline</span>
-        <span class="manifesto-word" style="--d:1000ms">in how data is</span>
-        <span class="manifesto-word accent" style="--d:1180ms">managed.</span>
+        <span class="manifesto-word" style="--d:1000ms">in</span>
+        <span class="manifesto-word" style="--d:1060ms">how</span>
+        <span class="manifesto-word" style="--d:1120ms">data</span>
+        <span class="manifesto-word" style="--d:1180ms">is</span>
+        <span class="manifesto-word accent" style="--d:1240ms">managed.</span>
       </div>
       <div class="manifesto-cta" id="mCta">
         <a href="approche-donnees_en.html" class="manifesto-link">
@@ -208,114 +212,15 @@
 </section>
 
 <style>
-/* ── OVERVIEW PAGE STYLES ──────────────────────────── */
-
-/* shared tokens */
-.ov-label {
-  display: inline-block;
-  font-size: .75rem;
-  font-weight: 700;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: #f3756e;
-  margin-bottom: 1rem;
-}
-.ov-label.light { color: rgba(255,255,255,0.7); }
-.ov-heading {
-  font-size: clamp(1.8rem, 3vw, 2.8rem);
-  font-weight: 800;
-  color: #0a2a35;
-  line-height: 1.2;
-  margin-bottom: 1.5rem;
-}
-.ov-heading.light { color: #fff; }
-.ov-body {
-  font-size: 1.05rem;
-  color: #4a6472;
-  line-height: 1.8;
-}
-.ov-body.light { color: rgba(255,255,255,0.85); }
-
-/* 1. Intro grid */
-.ov-intro-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: center;
-}
-.ov-intro-text { padding-right: 2rem; }
-.ov-intro-photo {
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.12);
-}
-.ov-intro-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-@media (max-width: 860px) {
-  .ov-intro-grid { grid-template-columns: 1fr; gap: 3rem; }
-  .ov-intro-text { padding-right: 0; }
-}
-
-/* 3. Approach section — #81abb3 bg */
-.ov-approach-section {
-  background: #81abb3;
-  padding: 7rem 0;
-}
-.ov-approach-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: center;
-}
-.ov-approach-right {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-.ov-pillar {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  background: rgba(255,255,255,0.18);
-  border: 1px solid rgba(255,255,255,0.35);
-  border-radius: 14px;
-  padding: 1.4rem 2rem;
-  backdrop-filter: blur(6px);
-  transition: background 0.3s, transform 0.3s;
-}
-.ov-pillar:hover {
-  background: rgba(255,255,255,0.28);
-  transform: translateX(6px);
-}
-.ov-pillar-num {
-  font-size: 2rem;
-  font-weight: 800;
-  color: rgba(255,255,255,0.35);
-  min-width: 2.5rem;
-  line-height: 1;
-}
-.ov-pillar-text {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: #fff;
-}
-@media (max-width: 860px) {
-  .ov-approach-inner { grid-template-columns: 1fr; gap: 3rem; }
-}
-
-/* 4. Data risk circles (inside belief-section dark bg) */
+/* ── DATA RISK CIRCLES ─────────────────────────────── */
 .data-risk-block {
   margin-top: 5rem;
   text-align: center;
 }
 .data-risk-intro {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 600;
-  color: rgba(255,255,255,0.65);
+  color: rgba(255,255,255,0.7);
   margin-bottom: 3rem;
   letter-spacing: .02em;
 }
@@ -331,61 +236,72 @@
   transform: translateY(60px) scale(0.7);
   transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
 }
-.risk-circle.in-view { opacity: 1; transform: translateY(0) scale(1); }
+.risk-circle.in-view {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
 .risk-circle-inner {
   width: 160px;
   height: 160px;
   border-radius: 50%;
-  border: 2px solid rgba(243,117,110,0.4);
-  background: radial-gradient(circle at 35% 35%, rgba(243,117,110,0.15), rgba(15,97,112,0.08));
+  border: 2px solid rgba(243,117,110,0.5);
+  background: radial-gradient(circle at 35% 35%, rgba(243,117,110,0.18), rgba(15,97,112,0.12));
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: .7rem;
-  box-shadow: 0 0 30px rgba(243,117,110,0.12);
+  position: relative;
+  box-shadow: 0 0 30px rgba(243,117,110,0.15), inset 0 0 30px rgba(243,117,110,0.05);
   transition: box-shadow 0.4s, border-color 0.4s;
 }
 .risk-circle-inner:hover {
-  border-color: rgba(243,117,110,0.85);
-  box-shadow: 0 0 50px rgba(243,117,110,0.3);
+  border-color: rgba(243,117,110,0.9);
+  box-shadow: 0 0 50px rgba(243,117,110,0.35), inset 0 0 40px rgba(243,117,110,0.12);
 }
-.risk-icon { font-size: 2rem; color: #f3756e; line-height: 1; }
+.risk-icon {
+  font-size: 2rem;
+  color: #f3756e;
+  line-height: 1;
+}
 .risk-label {
-  font-size: .85rem;
-  font-weight: 700;
-  color: rgba(255,255,255,0.85);
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  text-align: center;
-  padding: 0 10px;
-}
-.data-risk-consequence {
-  font-size: 1.25rem;
+  font-size: .95rem;
   font-weight: 700;
   color: #f3756e;
-  max-width: 680px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  text-align: center;
+  padding: 0 12px;
+}
+.data-risk-consequence {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #f3756e;
+  max-width: 700px;
   margin: 0 auto;
   line-height: 1.6;
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.8s 0.5s cubic-bezier(0.16,1,0.3,1), transform 0.8s 0.5s cubic-bezier(0.16,1,0.3,1);
 }
-.data-risk-consequence.in-view { opacity: 1; transform: translateY(0); }
+.data-risk-consequence.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-/* 5. Manifesto — black bg, white text */
+/* ── MANIFESTO SECTION ─────────────────────────────── */
 .manifesto-section {
   position: relative;
   background: #020d12;
-  padding: 10rem 2rem 9rem;
+  padding: 10rem 2rem 8rem;
   overflow: hidden;
 }
 .manifesto-grid-bg {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(15,97,112,0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(15,97,112,0.07) 1px, transparent 1px);
+    linear-gradient(rgba(15,97,112,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15,97,112,0.08) 1px, transparent 1px);
   background-size: 60px 60px;
   mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 100%);
   pointer-events: none;
@@ -402,115 +318,142 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: .35em;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
 }
 .manifesto-word {
-  font-size: clamp(2rem, 4.5vw, 3.8rem);
+  font-size: clamp(2rem, 4.5vw, 4rem);
   font-weight: 800;
-  color: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.12);
   transition: color 0.6s cubic-bezier(0.16,1,0.3,1);
+  will-change: color;
 }
-.manifesto-word.lit { color: rgba(255,255,255,0.92); }
-.manifesto-word.accent.lit { color: #f3756e; }
-.manifesto-word.highlight.lit { color: #81abb3; }
+.manifesto-word.lit {
+  color: rgba(255,255,255,0.92);
+}
+.manifesto-word.accent.lit {
+  color: #f3756e;
+}
+.manifesto-word.highlight.lit {
+  color: #81abb3;
+}
 .manifesto-cta {
-  margin-top: 4.5rem;
+  margin-top: 4rem;
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.9s 1.4s cubic-bezier(0.16,1,0.3,1), transform 0.9s 1.4s cubic-bezier(0.16,1,0.3,1);
+  transition: opacity 0.9s 1.6s cubic-bezier(0.16,1,0.3,1), transform 0.9s 1.6s cubic-bezier(0.16,1,0.3,1);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   position: relative;
 }
-.manifesto-cta.lit { opacity: 1; transform: translateY(0); }
+.manifesto-cta.lit {
+  opacity: 1;
+  transform: translateY(0);
+}
 .manifesto-link {
   display: inline-flex;
   align-items: center;
   gap: .8rem;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: #fff;
   text-decoration: none;
-  letter-spacing: .08em;
+  letter-spacing: .06em;
   text-transform: uppercase;
   padding: 1rem 2.5rem;
-  border: 1px solid rgba(255,255,255,0.25);
+  border: 1px solid rgba(129,171,179,0.5);
   border-radius: 60px;
-  background: rgba(255,255,255,0.05);
+  background: rgba(129,171,179,0.07);
   transition: background 0.3s, border-color 0.3s, color 0.3s, transform 0.3s;
   position: relative;
   z-index: 1;
 }
-.manifesto-link svg { width: 18px; height: 18px; transition: transform 0.3s; }
+.manifesto-link svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s;
+}
 .manifesto-link:hover {
-  background: rgba(129,171,179,0.15);
+  background: rgba(129,171,179,0.18);
   border-color: #81abb3;
   color: #81abb3;
   transform: translateX(4px);
 }
-.manifesto-link:hover svg { transform: translateX(5px); }
+.manifesto-link:hover svg {
+  transform: translateX(5px);
+}
 .manifesto-pulse {
   position: absolute;
   inset: -8px;
   border-radius: 60px;
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(129,171,179,0.2);
   animation: manifestoPulse 2.5s ease-in-out infinite;
   pointer-events: none;
 }
 @keyframes manifestoPulse {
-  0%, 100% { transform: scale(1); opacity: 0.6; }
+  0%, 100% { transform: scale(1); opacity: 0.5; }
   50% { transform: scale(1.06); opacity: 0.15; }
 }
 @media (max-width: 600px) {
   .data-risk-circles { gap: 1.5rem; }
   .risk-circle-inner { width: 120px; height: 120px; }
   .risk-icon { font-size: 1.5rem; }
-  .risk-label { font-size: .78rem; }
+  .risk-label { font-size: .8rem; }
 }
 </style>
 
 <script>
 (function() {
-  // Risk circles
+  // ── Risk circles IntersectionObserver ──
   const circles = document.querySelectorAll('.risk-circle');
   const consequence = document.querySelector('.data-risk-consequence');
-  const obsC = new IntersectionObserver(entries => {
+
+  const obsCircles = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
         const delay = parseInt(e.target.dataset.delay) || 0;
         setTimeout(() => e.target.classList.add('in-view'), delay);
-        obsC.unobserve(e.target);
+        obsCircles.unobserve(e.target);
       }
     });
   }, { threshold: 0.3 });
-  circles.forEach(c => obsC.observe(c));
+
+  circles.forEach(c => obsCircles.observe(c));
 
   if (consequence) {
-    const obsK = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting) { consequence.classList.add('in-view'); obsK.disconnect(); }
+    const obsCons = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+        consequence.classList.add('in-view');
+        obsCons.disconnect();
+      }
     }, { threshold: 0.4 });
-    obsK.observe(consequence);
+    obsCons.observe(consequence);
   }
 
-  // Manifesto light-up
+  // ── Manifesto word-by-word light-up ──
   const stage = document.getElementById('manifestoStage');
   const cta = document.getElementById('mCta');
   if (!stage) return;
+
   const words = stage.querySelectorAll('.manifesto-word');
   let triggered = false;
-  const obsM = new IntersectionObserver(entries => {
+
+  const obsManifesto = new IntersectionObserver(entries => {
     if (entries[0].isIntersecting && !triggered) {
       triggered = true;
       words.forEach(w => {
         const delay = parseInt(w.style.getPropertyValue('--d')) || 0;
         setTimeout(() => w.classList.add('lit'), delay);
       });
-      if (cta) setTimeout(() => cta.classList.add('lit'), 1500);
-      obsM.disconnect();
+      if (cta) {
+        setTimeout(() => cta.classList.add('lit'), 1700);
+      }
+      obsManifesto.disconnect();
     }
   }, { threshold: 0.2 });
-  obsM.observe(stage);
+
+  obsManifesto.observe(stage);
 })();
 </script>
 
@@ -542,7 +485,5 @@
 <script src="script.js"></script>
 <script src="pages.js"></script>
 <script src="scroll-animations.js"></script>
-<script src="hero-animations.js"></script>
 </body>
 </html>
-

@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
         /* ══════════════════════════════════════════════
-           PUZZLE SECTION
+           TEAM CARDS SECTION
         ══════════════════════════════════════════════ */
         .puzzle-section {
             padding: 5rem 0 7rem;
@@ -24,104 +24,55 @@
         }
         .puzzle-hint strong { color: var(--primary-color); }
 
-        .puzzle-outer {
-            position: relative;
-            width: 100%;
+        .team-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2.5rem;
             max-width: 1200px;
-            margin: 3rem auto 0;
-            overflow: visible;
+            margin: 4rem auto 0;
         }
-
-        .pz-inner {
-            position: absolute;
-            top: 0; left: 0;
-            width: 1200px; height: 1200px;
-            transform-origin: top left;
-            background: #081e23;
-            border-radius: 14px;
-            overflow: hidden;
-        }
-
-        .pz-piece {
-            position: absolute;
-            top: 0; left: 0;
-            width: 1200px; height: 600px;
+        .team-card {
+            perspective: 1500px;
+            height: 520px;
             cursor: pointer;
-            transition: transform .45s cubic-bezier(.16,1,.3,1),
-                        filter .45s ease;
-            z-index: 1;
         }
-        .pz-piece:hover {
-            filter: drop-shadow(0 10px 24px rgba(0,0,0,.6))
-                    drop-shadow(0 2px 6px rgba(0,0,0,.4));
-            z-index: 10;
+        .team-card-inner {
+            position: relative;
+            width: 100%; height: 100%;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
         }
-
-        #pz-0 { transform-origin: 150px 300px; }
-        #pz-1 { transform-origin: 450px 300px; }
-        #pz-2 { transform-origin: 750px 300px; }
-        #pz-3 { transform-origin:1050px 300px; }
-        #pz-4 { transform-origin: 150px 900px; }
-        #pz-5 { transform-origin: 450px 900px; }
-        #pz-6 { transform-origin: 750px 900px; }
-        #pz-7 { transform-origin:1050px 900px; }
-        .pz-piece:hover { transform: scale(1.025); }
-
-        #pz-0 { clip-path: path('M 0,0 L 300,0 L 300,236 C 337,236 337,364 300,364 L 300,600 L 182,600 C 182,674 118,674 118,600 L 0,600 Z'); }
-        #pz-1 { clip-path: path('M 300,0 L 600,0 L 600,236 C 637,236 637,364 600,364 L 600,600 L 482,600 C 482,526 418,526 418,600 L 300,600 L 300,364 C 337,364 337,236 300,236 L 300,0 Z'); }
-        #pz-2 { clip-path: path('M 600,0 L 900,0 L 900,236 C 937,236 937,364 900,364 L 900,600 L 782,600 C 782,674 718,674 718,600 L 600,600 L 600,364 C 637,364 637,236 600,236 L 600,0 Z'); }
-        #pz-3 { clip-path: path('M 900,0 L 1200,0 L 1200,600 L 1082,600 C 1082,526 1018,526 1018,600 L 900,600 L 900,364 C 937,364 937,236 900,236 L 900,0 Z'); }
-        #pz-4 { clip-path: path('M 0,600 L 118,600 C 118,674 182,674 182,600 L 300,600 L 300,836 C 263,836 263,964 300,964 L 300,1200 L 0,1200 Z'); }
-        #pz-5 { clip-path: path('M 300,600 L 418,600 C 418,526 482,526 482,600 L 600,600 L 600,836 C 637,836 637,964 600,964 L 600,1200 L 300,1200 L 300,964 C 263,964 263,836 300,836 L 300,600 Z'); }
-        #pz-6 { clip-path: path('M 600,600 L 718,600 C 718,674 782,674 782,600 L 900,600 L 900,836 C 863,836 863,964 900,964 L 900,1200 L 600,1200 L 600,964 C 637,964 637,836 600,836 L 600,600 Z'); }
-        #pz-7 { clip-path: path('M 900,600 L 1018,600 C 1018,526 1082,526 1082,600 L 1200,600 L 1200,1200 L 900,1200 L 900,964 C 863,964 863,836 900,836 L 900,600 Z'); }
-
-        .pz-img {
+        .team-card:hover .team-card-inner { transform: rotateY(180deg); }
+        .team-card-front, .team-card-back {
             position: absolute;
-            object-fit: cover;
-            display: block;
+            inset: 0;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
         }
-        .pz-grad {
-            position: absolute;
-            display: flex; align-items: center; justify-content: center;
-        }
-        .pz-grad-initials {
-            color: rgba(255,255,255,.18);
-            font-size: 5rem; font-weight: 900;
-            letter-spacing: -.05em; line-height: 1;
-        }
-
-        .pz-overlay {
-            position: absolute;
-            background: linear-gradient(160deg, rgba(26,93,106,.85), rgba(8,30,35,.78));
-            opacity: 0;
-            transition: opacity .3s ease;
+        .team-card-front img { width: 100%; height: 100%; object-fit: cover; }
+        .team-card-back {
+            background: linear-gradient(160deg, #1a5d6a, #081e23);
+            transform: rotateY(180deg);
             display: flex; flex-direction: column;
             align-items: center; justify-content: center;
-            gap: .35rem;
-            pointer-events: none;
+            padding: 2.5rem; text-align: center; color: #fff;
         }
-        .pz-piece:hover .pz-overlay { opacity: 1; }
+        .team-card-name { font-size: 1.25rem; font-weight: 800; margin-bottom: 0.6rem; line-height: 1.2; }
+        .team-card-role { font-size: 0.9rem; color: #81abb3; font-weight: 600; margin-bottom: 2rem; }
+        .team-card-btn {
+            background: #f3756e; color: #fff; border: none;
+            padding: 0.7rem 1.6rem; border-radius: 30px;
+            font-weight: 800; font-size: 0.75rem;
+            text-transform: uppercase; letter-spacing: 0.08em;
+            cursor: pointer; transition: all 0.3s ease;
+        }
+        .team-card-btn:hover { background: #fff; color: #1a5d6a; transform: scale(1.05); }
 
-        .pz-ov-name {
-            color: #fff; font-weight: 800;
-            font-size: clamp(.5rem, 1.15vw, .95rem);
-            text-align: center; line-height: 1.25;
-            padding: 0 .5rem;
-        }
-        .pz-ov-role {
-            color: #81abb3; font-weight: 600;
-            font-size: clamp(.4rem, .85vw, .75rem);
-            text-align: center; padding: 0 .5rem;
-        }
-        .pz-ov-btn {
-            margin-top: .5rem;
-            background: #f3756e; color: #fff;
-            font-size: clamp(.38rem, .75vw, .68rem);
-            font-weight: 800; padding: .3em .85em;
-            border-radius: 20px; letter-spacing: .07em;
-            text-transform: uppercase;
-        }
+        @media (max-width: 1100px) { .team-cards-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; } }
+        @media (max-width: 640px) { .team-cards-grid { grid-template-columns: 1fr; } .team-card { height: 480px; } }
 
         /* ══════════════════════════════════════════════
            MEMBER MODAL
@@ -205,6 +156,25 @@
         }
 
     </style>
+    <style id="nav-desktop-lock">
+        /* Force desktop nav layout — survives browser extension injection */
+        html body nav.navbar div.nav-container ul.nav-menu {
+            display: flex !important;
+            flex-direction: row !important;
+            flex-wrap: nowrap !important;
+            white-space: nowrap !important;
+            align-items: center !important;
+            height: 100% !important;
+            gap: 0 !important;
+        }
+        html body nav.navbar div.nav-container ul.nav-menu > li.nav-item {
+            display: flex !important;
+            align-items: center !important;
+            height: 100% !important;
+            flex-direction: row !important;
+            flex-shrink: 0 !important;
+        }
+    </style>
 </head>
 <body>
 <div class="parallax-coral"><div class="coral-shape"></div><div class="coral-shape"></div><div class="coral-shape"></div><div class="coral-shape"></div></div>
@@ -280,99 +250,96 @@
             <p class="puzzle-hint">Hover a piece and <strong>click</strong> to discover a team member</p>
         </div>
 
-        <div class="puzzle-outer reveal reveal-up" style="transition-delay:250ms;">
-            <div class="pz-inner" id="pzInner">
-
-                <!-- ── PIECE 0 : Shaheen Alladin ── -->
-                <div class="pz-piece" id="pz-0" onclick="openMember(0)" role="button" tabindex="0" aria-label="Shaheen Alladin">
-                    <img class="pz-img" src="Shaheen Alladin.JPG" alt=""
-                         style="left:0;top:0;width:337px;height:674px;object-fit:cover;object-position:center top;">
-                    <div class="pz-overlay" style="left:0;top:0;width:300px;height:600px;">
-                        <span class="pz-ov-name">Shaheen Alladin</span>
-                        <span class="pz-ov-role">Founder & Data Management Expert</span>
-                        <span class="pz-ov-btn">View profile</span>
+        <div class="team-cards-grid reveal reveal-up" style="transition-delay:250ms;">
+            <!-- Member 0 -->
+            <div class="team-card" onclick="openMember(0)">
+                <div class="team-card-inner">
+                    <div class="team-card-front"><img src="Shaheen Alladin.JPG" alt="Shaheen Alladin"></div>
+                    <div class="team-card-back">
+                        <h3 class="team-card-name">Shaheen Alladin</h3>
+                        <p class="team-card-role">Founder & Data Management Expert</p>
+                        <button class="team-card-btn">View profile</button>
                     </div>
                 </div>
-
-                <!-- ── PIECE 1 : ZiyAad Mahamoodally ── -->
-                <div class="pz-piece" id="pz-1" onclick="openMember(1)" role="button" tabindex="0" aria-label="ZiyAad Mahamoodally">
-                    <img class="pz-img" src="DSC_0849.JPG" alt=""
-                         style="left:263px;top:0;width:374px;height:600px;object-fit:cover;object-position:center top;">
-                    <div class="pz-overlay" style="left:300px;top:0;width:300px;height:600px;">
-                        <span class="pz-ov-name">ZiyAad Mahamoodally</span>
-                        <span class="pz-ov-role">Developer</span>
-                        <span class="pz-ov-btn">View profile</span>
+            </div>
+            <!-- Member 1 -->
+            <div class="team-card" onclick="openMember(1)">
+                <div class="team-card-inner">
+                    <div class="team-card-front"><img src="DSC_0849.JPG" alt="ZiyAad Mahamoodally"></div>
+                    <div class="team-card-back">
+                        <h3 class="team-card-name">ZiyAad Mahamoodally</h3>
+                        <p class="team-card-role">Developer</p>
+                        <button class="team-card-btn">View profile</button>
                     </div>
                 </div>
-
-                <!-- ── PIECE 2 : Kevin BoolkAh ── -->
-                <div class="pz-piece" id="pz-2" onclick="openMember(2)" role="button" tabindex="0" aria-label="Kevin BoolkAh">
-                    <img class="pz-img" src="Kevin Boolkah.JPG" alt=""
-                         style="left:563px;top:0;width:374px;height:674px;object-fit:cover;object-position:center top;">
-                    <div class="pz-overlay" style="left:600px;top:0;width:300px;height:600px;">
-                        <span class="pz-ov-name">Kevin BoolkAh</span>
-                        <span class="pz-ov-role">Developer</span>
-                        <span class="pz-ov-btn">View profile</span>
+            </div>
+            <!-- Member 2 -->
+            <div class="team-card" onclick="openMember(2)">
+                <div class="team-card-inner">
+                    <div class="team-card-front"><img src="Kevin Boolkah.JPG" alt="Kevin BoolkAh"></div>
+                    <div class="team-card-back">
+                        <h3 class="team-card-name">Kevin BoolkAh</h3>
+                        <p class="team-card-role">Developer</p>
+                        <button class="team-card-btn">View profile</button>
                     </div>
                 </div>
-
-                <!-- ── PIECE 3 : RushdAa Mahamedally ── -->
-                <div class="pz-piece" id="pz-3" onclick="openMember(3)" role="button" tabindex="0" aria-label="RushdAa Mahamedally">
-                    <img class="pz-img" src="RushdAa Mahamedally.JPG" alt=""
-                         style="left:863px;top:0;width:337px;height:600px;object-fit:cover;object-position:center top;">
-                    <div class="pz-overlay" style="left:900px;top:0;width:300px;height:600px;">
-                        <span class="pz-ov-name">RushdAa Mahamedally</span>
-                        <span class="pz-ov-role">Tester — QA Lead</span>
-                        <span class="pz-ov-btn">View profile</span>
+            </div>
+            <!-- Member 3 -->
+            <div class="team-card" onclick="openMember(3)">
+                <div class="team-card-inner">
+                    <div class="team-card-front"><img src="RushdAa Mahamedally.JPG" alt="RushdAa Mahamedally"></div>
+                    <div class="team-card-back">
+                        <h3 class="team-card-name">RushdAa Mahamedally</h3>
+                        <p class="team-card-role">Tester — QA Lead</p>
+                        <button class="team-card-btn">View profile</button>
                     </div>
                 </div>
-
-                <!-- ── PIECE 4 : ReemA Boodhram ── -->
-                <div class="pz-piece" id="pz-4" onclick="openMember(4)" role="button" tabindex="0" aria-label="ReemA Boodhram">
-                    <img class="pz-img" src="ReemA Boodhram.JPG" alt=""
-                         style="left:0;top:600px;width:300px;height:600px;object-fit:cover;object-position:center top;">
-                    <div class="pz-overlay" style="left:0;top:600px;width:300px;height:600px;">
-                        <span class="pz-ov-name">ReemA Boodhram</span>
-                        <span class="pz-ov-role">Tester</span>
-                        <span class="pz-ov-btn">View profile</span>
+            </div>
+            <!-- Member 4 -->
+            <div class="team-card" onclick="openMember(4)">
+                <div class="team-card-inner">
+                    <div class="team-card-front"><img src="ReemA Boodhram.JPG" alt="ReemA Boodhram"></div>
+                    <div class="team-card-back">
+                        <h3 class="team-card-name">ReemA Boodhram</h3>
+                        <p class="team-card-role">Tester</p>
+                        <button class="team-card-btn">View profile</button>
                     </div>
                 </div>
-
-                <!-- ── PIECE 5 : Andy Mooroogen ── -->
-                <div class="pz-piece" id="pz-5" onclick="openMember(5)" role="button" tabindex="0" aria-label="Andy Mooroogen">
-                    <img class="pz-img" src="Andy Mooroogen.JPG" alt=""
-                         style="left:263px;top:600px;width:374px;height:600px;object-fit:cover;object-position:center top;">
-                    <div class="pz-overlay" style="left:300px;top:600px;width:300px;height:600px;">
-                        <span class="pz-ov-name">Andy Mooroogen</span>
-                        <span class="pz-ov-role">Automation Tester</span>
-                        <span class="pz-ov-btn">View profile</span>
+            </div>
+            <!-- Member 5 -->
+            <div class="team-card" onclick="openMember(5)">
+                <div class="team-card-inner">
+                    <div class="team-card-front"><img src="Andy Mooroogen.JPG" alt="Andy Mooroogen"></div>
+                    <div class="team-card-back">
+                        <h3 class="team-card-name">Andy Mooroogen</h3>
+                        <p class="team-card-role">Automation Tester</p>
+                        <button class="team-card-btn">View profile</button>
                     </div>
                 </div>
-
-                <!-- ── PIECE 6 : GAurav Bundhoo ── -->
-                <div class="pz-piece" id="pz-6" onclick="openMember(6)" role="button" tabindex="0" aria-label="GAurav Bundhoo">
-                    <img class="pz-img" src="GAurav Bundhoo.JPG" alt=""
-                         style="left:600px;top:600px;width:300px;height:600px;object-fit:cover;object-position:center top;">
-                    <div class="pz-overlay" style="left:600px;top:600px;width:300px;height:600px;">
-                        <span class="pz-ov-name">GAurav Bundhoo</span>
-                        <span class="pz-ov-role">Business Analyst</span>
-                        <span class="pz-ov-btn">View profile</span>
+            </div>
+            <!-- Member 6 -->
+            <div class="team-card" onclick="openMember(6)">
+                <div class="team-card-inner">
+                    <div class="team-card-front"><img src="GAurav Bundhoo.JPG" alt="GAurav Bundhoo"></div>
+                    <div class="team-card-back">
+                        <h3 class="team-card-name">GAurav Bundhoo</h3>
+                        <p class="team-card-role">Business Analyst</p>
+                        <button class="team-card-btn">View profile</button>
                     </div>
                 </div>
-
-                <!-- ── PIECE 7 : Ally Ibn Abbas Hardoyal ── -->
-                <div class="pz-piece" id="pz-7" onclick="openMember(7)" role="button" tabindex="0" aria-label="Ally Ibn Abbas Hardoyal">
-                    <img class="pz-img" src="Ally Ibn Abbas Hardoyal.JPG" alt=""
-                         style="left:863px;top:600px;width:337px;height:600px;object-fit:cover;object-position:center top;">
-                    <div class="pz-overlay" style="left:900px;top:600px;width:300px;height:600px;">
-                        <span class="pz-ov-name">Ally Ibn Abbas Hardoyal</span>
-                        <span class="pz-ov-role">Project Management & Architecture</span>
-                        <span class="pz-ov-btn">View profile</span>
+            </div>
+            <!-- Member 7 -->
+            <div class="team-card" onclick="openMember(7)">
+                <div class="team-card-inner">
+                    <div class="team-card-front"><img src="Ally Ibn Abbas Hardoyal.JPG" alt="Ally Ibn Abbas Hardoyal"></div>
+                    <div class="team-card-back">
+                        <h3 class="team-card-name">Ally Ibn Abbas Hardoyal</h3>
+                        <p class="team-card-role">Co-founder et BI Expert</p>
+                        <button class="team-card-btn">View profile</button>
                     </div>
                 </div>
-
-            </div><!-- /pz-inner -->
-        </div><!-- /puzzle-outer -->
+            </div>
+        </div>
     </div>
 </section>
 
@@ -508,7 +475,7 @@ const MEMBERS = [
     {
         initials: 'AH',
         name: 'Ally Ibn Abbas Hardoyal',
-        role: 'Project Management & Architecture',
+        role: 'Co-founder et BI Expert',
         years: '',
         expertise: 'Project Management, Service Delivery, ETL Architect, Server Architecture',
         tech: '',
@@ -516,29 +483,6 @@ const MEMBERS = [
     }
 ];
 
-/* ── Responsive puzzle scaling ── */
-function scalePuzzle() {
-    const outer = document.querySelector('.puzzle-outer');
-    const inner = document.getElementById('pzInner');
-    if (!outer || !inner) return;
-    const scale = outer.offsetWidth / 1200;
-    inner.style.transform = 'scale(' + scale + ')';
-    outer.style.height = (1200 * scale) + 'px';
-}
-window.addEventListener('resize', scalePuzzle);
-document.addEventListener('DOMContentLoaded', scalePuzzle);
-scalePuzzle();
-
-/* ── Keyboard accessibility ── */
-document.querySelectorAll('.pz-piece').forEach(function(piece) {
-    piece.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            const onclick = piece.getAttribute('onclick');
-            if (onclick) eval(onclick);
-        }
-    });
-});
 
 /* ── Modal open ── */
 function openMember(id) {
@@ -586,5 +530,31 @@ document.addEventListener('keydown', function(e) {
 });
 </script>
 <script src="hero-animations.js"></script>
+<script>
+/* Nav desktop lock — re-appended after any extension style injection */
+(function() {
+    var CSS = '@media (min-width: 769px) { html body nav.navbar div.nav-container ul.nav-menu{display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;white-space:nowrap!important;align-items:center!important;height:100%!important;gap:0!important}html body nav.navbar div.nav-container ul.nav-menu>li.nav-item{display:flex!important;align-items:center!important;height:100%!important;flex-direction:row!important;flex-shrink:0!important} }';
+    function inject() {
+        var old = document.getElementById('nav-ext-override');
+        if (old) old.remove();
+        var s = document.createElement('style');
+        s.id = 'nav-ext-override';
+        s.textContent = CSS;
+        document.head.appendChild(s);
+    }
+    inject();
+    new MutationObserver(function(mutations) {
+        for (var i = 0; i < mutations.length; i++) {
+            var nodes = mutations[i].addedNodes;
+            for (var j = 0; j < nodes.length; j++) {
+                if ((nodes[j].tagName === 'STYLE' || nodes[j].tagName === 'LINK') && nodes[j].id !== 'nav-ext-override') {
+                    inject();
+                    break;
+                }
+            }
+        }
+    }).observe(document.head, { childList: true });
+})();
+</script>
 </body>
 </html>

@@ -379,13 +379,25 @@
     width: 100%; max-width: 1400px; margin: 0 auto; padding: 0 2rem;
 }
 .team-3d-frame {
-    width: 100%; border: 8px solid #f3756e; border-radius: 20px;
+    width: 100%; border: none; border-radius: 20px;
     position: relative; overflow: hidden; transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
     opacity: 0; transform: translateY(30px);
     animation: kf-glow 2.5s infinite alternate;
 }
 .team-3d-frame.active { opacity: 1; transform: translateY(0); }
 .team-3d-frame img { width: 100%; height: auto; display: block; border-radius: 12px; }
+
+.team-split-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-top: 4rem;
+}
+
+@media (max-width: 900px) {
+    .team-split-grid { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
+}
 
 /* ── EFFET SCINTILLANT BOUTON ────────────────────────────── */
 .btn-sparkle { position: relative; overflow: hidden; }
@@ -738,14 +750,20 @@
     <div class="container">
         <div class="home-divider"></div>
         <h2 class="home-section-title">Notre Équipe</h2>
-    </div>
-    <div class="team-3d-container">
-        <div class="team-3d-frame reveal-3d">
-            <img src="DSC_1811.jpg" alt="L'équipe Acropora Data">
+
+        <div class="team-split-grid">
+            <div class="team-text-content fade-in" style="text-align: left;">
+                <p style="font-size: 1.25rem; line-height: 1.8; color: #81abb3; margin-bottom: 2rem;">
+                    Une équipe d'experts passionnés, unis par une vision commune : transformer la complexité des données en leviers de croissance. Notre force réside dans notre diversité de compétences et notre engagement indéfectible envers l'excellence.
+                </p>
+                <a href="carrieres.html" class="btn-hero-primary btn-sparkle" style="background: var(--primary-color); color: white;">Rejoindre l'aventure →</a>
+            </div>
+            <div class="team-image-content fade-in">
+                <div class="team-3d-frame active" style="margin: 0; opacity: 1; transform: none;">
+                    <img src="DSC_1811.jpg" alt="L'équipe Acropora Data">
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="container" style="text-align: center; margin-top: 3rem;">
-        <a href="carrieres.html" class="btn-hero-primary btn-sparkle fade-in">Rejoindre l'aventure →</a>
     </div>
 </section>
 

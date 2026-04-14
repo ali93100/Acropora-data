@@ -1,0 +1,240 @@
+
+<style>
+  .wrap { font-family: var(--font-sans, sans-serif); padding: 2rem 1.5rem 2.5rem; max-width: 860px; margin: 0 auto; }
+
+  .eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-secondary); text-align: center; margin-bottom: 6px; }
+  .main-title { font-size: 20px; font-weight: 500; color: var(--color-text-primary); text-align: center; margin: 0 0 6px; }
+  .sub { font-size: 13px; color: var(--color-text-secondary); text-align: center; margin: 0 0 2.2rem; line-height: 1.6; }
+
+  .spectrum-bar {
+    display: flex;
+    align-items: stretch;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 0.5px solid var(--color-border-tertiary);
+    margin-bottom: 10px;
+  }
+
+  .spec-seg {
+    flex: 1;
+    padding: 16px 18px;
+    border-right: 0.5px solid var(--color-border-tertiary);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .spec-seg:last-child { border-right: none; }
+
+  .seg-tool { font-size: 13px; font-weight: 500; }
+  .seg-nature { font-size: 11px; font-weight: 400; }
+
+  .seg-blue .seg-tool { color: #0C447C; }
+  .seg-blue .seg-nature { color: #185FA5; }
+  .seg-blue { background: #E6F1FB; }
+
+  .seg-teal .seg-tool { color: #085041; }
+  .seg-teal .seg-nature { color: #0F6E56; }
+  .seg-teal { background: #E1F5EE; }
+
+  .seg-coral .seg-tool { color: #712B13; }
+  .seg-coral .seg-nature { color: #993C1D; }
+  .seg-coral { background: #FAECE7; }
+
+  .axis-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--color-text-secondary);
+    padding: 0 4px;
+    margin-bottom: 2rem;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 1.6rem;
+  }
+
+  .card {
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: 12px;
+    padding: 16px;
+    background: var(--color-background-primary);
+  }
+
+  .card-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+
+  .card-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .dot-blue { background: #185FA5; }
+  .dot-teal { background: #0F6E56; }
+  .dot-coral { background: #993C1D; }
+
+  .card-tool { font-size: 14px; font-weight: 500; color: var(--color-text-primary); }
+  .card-profile { font-size: 11px; color: var(--color-text-secondary); margin-left: auto; }
+
+  .criteria { display: flex; flex-direction: column; gap: 9px; }
+
+  .criterion { display: flex; flex-direction: column; gap: 2px; }
+  .crit-label { font-size: 11px; font-weight: 500; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.05em; }
+  .crit-val { font-size: 12px; color: var(--color-text-primary); line-height: 1.45; }
+
+  .pill-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 12px; }
+  .pill {
+    font-size: 11px;
+    padding: 3px 9px;
+    border-radius: 20px;
+    border: 0.5px solid;
+  }
+  .pill-blue { background: #E6F1FB; color: #0C447C; border-color: #B5D4F4; }
+  .pill-teal { background: #E1F5EE; color: #085041; border-color: #9FE1CB; }
+  .pill-coral { background: #FAECE7; color: #712B13; border-color: #F5C4B3; }
+
+  .context-box {
+    background: var(--color-background-secondary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    line-height: 1.65;
+    text-align: center;
+  }
+  .context-box strong {
+    color: var(--color-text-primary);
+    font-weight: 500;
+  }
+
+  @media (max-width: 580px) {
+    .cards { grid-template-columns: 1fr; }
+    .spectrum-bar { flex-direction: column; }
+    .spec-seg { border-right: none; border-bottom: 0.5px solid var(--color-border-tertiary); }
+    .spec-seg:last-child { border-bottom: none; }
+  }
+</style>
+
+<div class="wrap">
+  <p class="eyebrow">ACROPORA DATA — Test Automation</p>
+  <h2 class="main-title">Trois approches, un seul objectif : la qualité</h2>
+  <p class="sub">Ces outils ne s'opposent pas — ils s'adaptent à la maturité, au contexte et aux contraintes de chaque projet.</p>
+
+  <div class="spectrum-bar">
+    <div class="spec-seg seg-blue">
+      <span class="seg-tool">Selenium</span>
+      <span class="seg-nature">Code-first</span>
+    </div>
+    <div class="spec-seg seg-teal">
+      <span class="seg-tool">UiPath</span>
+      <span class="seg-nature">Low-code</span>
+    </div>
+    <div class="spec-seg seg-coral">
+      <span class="seg-tool">Tosca</span>
+      <span class="seg-nature">Model-based</span>
+    </div>
+  </div>
+  <div class="axis-labels">
+    <span>Contrôle technique élevé</span>
+    <span>Gouvernance entreprise</span>
+  </div>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="card-head">
+        <div class="card-dot dot-blue"></div>
+        <span class="card-tool">Selenium</span>
+        <span class="card-profile">Open source</span>
+      </div>
+      <div class="criteria">
+        <div class="criterion">
+          <span class="crit-label">Données</span>
+          <span class="crit-val">Statiques, définies dans les scripts</span>
+        </div>
+        <div class="criterion">
+          <span class="crit-label">Collaboration</span>
+          <span class="crit-val">Individuelle ou petite équipe tech</span>
+        </div>
+        <div class="criterion">
+          <span class="crit-label">Quand l'utiliser</span>
+          <span class="crit-val">Équipe dev existante, budget contraint, logique de test complexe</span>
+        </div>
+      </div>
+      <div class="pill-row">
+        <span class="pill pill-blue">Scripting</span>
+        <span class="pill pill-blue">Flexible</span>
+        <span class="pill pill-blue">Gratuit</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="card-dot dot-teal"></div>
+        <span class="card-tool">UiPath</span>
+        <span class="card-profile">RPA / Low-code</span>
+      </div>
+      <div class="criteria">
+        <div class="criterion">
+          <span class="crit-label">Données</span>
+          <span class="crit-val">Dynamiques via Excel, API, fichiers</span>
+        </div>
+        <div class="criterion">
+          <span class="crit-label">Collaboration</span>
+          <span class="crit-val">Équipes mixtes métier + IT</span>
+        </div>
+        <div class="criterion">
+          <span class="crit-label">Quand l'utiliser</span>
+          <span class="crit-val">Accélérer l'automatisation sans dépendance forte au code</span>
+        </div>
+      </div>
+      <div class="pill-row">
+        <span class="pill pill-teal">Scan UI</span>
+        <span class="pill pill-teal">Injection data</span>
+        <span class="pill pill-teal">Agile</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="card-dot dot-coral"></div>
+        <span class="card-tool">Tosca</span>
+        <span class="card-profile">Enterprise</span>
+      </div>
+      <div class="criteria">
+        <div class="criterion">
+          <span class="crit-label">Données</span>
+          <span class="crit-val">Contextuelles, gérées dans l'outil</span>
+        </div>
+        <div class="criterion">
+          <span class="crit-label">Collaboration</span>
+          <span class="crit-val">Grandes équipes, workflows d'approbation</span>
+        </div>
+        <div class="criterion">
+          <span class="crit-label">Quand l'utiliser</span>
+          <span class="crit-val">Projets complexes avec exigences fortes en reporting et gouvernance</span>
+        </div>
+      </div>
+      <div class="pill-row">
+        <span class="pill pill-coral">MBT</span>
+        <span class="pill pill-coral">Reporting auto</span>
+        <span class="pill pill-coral">Multi-équipes</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="context-box">
+    <strong>Le rôle d'ACROPORA DATA</strong> — Nous analysons votre contexte projet (stack technique, maturité des équipes, volumétrie des tests) pour recommander et implémenter l'approche la mieux adaptée, quelle que soit l'outil retenu.
+  </div>
+</div>

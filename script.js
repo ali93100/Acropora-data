@@ -4,12 +4,10 @@
 const menuToggle = document.querySelector('.menu-toggle');
 const navMenu = document.querySelector('.nav-menu');
 
-if (menuToggle) {
-    menuToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-        menuToggle.classList.toggle('active');
-    });
-}
+// Note: Le basculement du menu est géré directement par l'attribut onclick 
+// dans vos fichiers HTML pour éviter les doubles déclenchements.
+// Exemple: onclick="document.querySelector('.nav-menu').classList.toggle('active')"
+
 
 // Close menu when clicking outside
 document.addEventListener('click', (e) => {
