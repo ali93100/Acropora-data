@@ -1647,7 +1647,18 @@ body.parallax-active .coral-shape:nth-child(4) {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
-    .agile-center-col { order: -1; }
+    .agile-center-col {
+        order: -1;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 2rem 0;
+    }
+    .agile-img-wrap {
+        width: 220px;
+        height: 220px;
+        overflow: visible;
+    }
     .agile-right .ag-card {
         text-align: left;
         border-left: 2px solid rgba(129,171,179,0.2);
