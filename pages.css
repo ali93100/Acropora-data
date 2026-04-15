@@ -1852,16 +1852,11 @@
         gap: 3rem;
     }
     .team-photo-col {
-        height: 500px;
+        height: 500px; /* Hauteur fixe sur mobile */
         position: relative;
     }
     .team-photo-col img {
-        position: absolute;    /* ← static → absolute */
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;          /* ← ajouter */
-        object-fit: cover;     /* ← ajouter */
+        position: static;
     }
 }
 
@@ -2080,7 +2075,8 @@
 .agile-text-lighthouse span {
     display: block;
     opacity: 0.2;
-    transition: all rem;
+    transition: all 1s ease;
+    margin-bottom: 1rem;
 }
 .agile-text-lighthouse span.active {
     opacity: 1;
