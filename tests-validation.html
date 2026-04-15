@@ -1,4 +1,4 @@
-﻿﻿<!DOCTYPE html>
+﻿﻿﻿﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -145,12 +145,12 @@
                 <a href="tests-validation_en.html" class="lang-switch-btn" title="Switch to English">EN</a>
             </li>
         </ul>
-        <button class="menu-toggle" onclick="document.querySelector('.nav-menu').classList.toggle('active')"><span></span><span></span><span></span></button>
+        <button class="menu-toggle" onclick="this.closest('.nav-container').querySelector('.nav-menu').classList.toggle('active')">
+    <span></span><span></span><span></span>
+</button>
     </div>
 </nav>
 <section class="page-hero" data-hero-anim="testing">
-    <div class="page-logo-bg">
-    </div>
     <div class="container">
         <h1 class="page-title">Automatisation de Tests</h1>
         <p class="page-subtitle">Qualité et conformité à chaque étape du cycle data</p>
@@ -538,7 +538,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Acropora Data. Tous droits réservés.</p>
+            <p>&copy; 2026 Acropora Data. Tous droits réservés.</p>
         </div>
     </div>
 </footer>

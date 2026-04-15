@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     activeLineIdx = (activeLineIdx + 1) % lines.length;
                 };
                 cycle();
-                agileIntervalId = setInterval(cycle, 1400);
+                agileIntervalId = setInterval(cycle, 3000);
             }
         };
 

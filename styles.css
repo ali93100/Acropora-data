@@ -1673,3 +1673,38 @@ section.page-section.alt-bg {
     padding-top: 3rem;
     padding-bottom: 3rem;
 }
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex !important;
+    }
+    .nav-menu {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: #fff;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2rem;
+        transition: all .3s;
+        overflow-y: auto;
+        z-index: 998;
+    }
+    .nav-menu.active {
+        left: 0;
+    }
+    .mega-menu {
+        position: static !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        box-shadow: none !important;
+        border-top: none !important;
+        display: none;
+    }
+    .nav-item.open .mega-menu {
+        display: block;
+    }
+}
