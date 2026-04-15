@@ -207,5 +207,44 @@
 </div><div class="footer-bottom"><p>&copy; 2025 Acropora Data. All rights reserved.</p></div></div></footer>
 <script src="script.js"></script><script src="scroll-animations.js"></script><script src="pages.js"></script>
 <script src="hero-animations.js"></script>
+<script>
+// Gestion du mega-menu sur mobile (tactile)
+document.querySelectorAll('.nav-item').forEach(function(item) {
+    var link = item.querySelector('.nav-link');
+    var mega = item.querySelector('.mega-menu');
+    if (!mega) return; // item sans sous-menu (ex: EN)
+
+    link.addEventListener('click', function(e) {
+        var isMobile = window.innerWidth <= 768;
+        if (!isMobile) return; // sur desktop, le hover CSS suffit
+
+        e.preventDefault(); // empêche la navigation (ces liens sont javascript:void)
+        
+        var isOpen = item.classList.contains('open');
+        
+        // Ferme tous les autres sous-menus ouverts
+        document.querySelectorAll('.nav-item.open').forEach(function(other) {
+            other.classList.remove('open');
+            other.querySelector('.mega-menu').style.display = '';
+        });
+
+        // Ouvre ou ferme celui-ci
+        if (!isOpen) {
+            item.classList.add('open');
+            mega.style.display = 'block';
+        }
+    });
+});
+
+// Ferme le menu si on clique en dehors
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('.navbar')) {
+        document.querySelectorAll('.nav-item.open').forEach(function(item) {
+            item.classList.remove('open');
+            item.querySelector('.mega-menu').style.display = '';
+        });
+    }
+});
+</script>
 </body>
 </html>
