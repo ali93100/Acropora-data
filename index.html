@@ -15,11 +15,7 @@
     <title>Acropora Data — Leader en Master Data Management</title>
     <script>
         (function() {
-            // Redirige vers la version anglaise si l'utilisateur arrive sur la racine 
-            // sans paramètre de langue et n'est pas déjà en train de naviguer sur le site.
-            if (!window.location.search.includes('lang=fr') && !document.referrer.includes(window.location.host)) {
-                window.location.replace("index_en.html");
-            }
+            window.location.replace("index_en.html");
         })();
     </script>
     <link rel="stylesheet" href="styles.css">
@@ -137,8 +133,8 @@
 .hero-badge::before { content: '◉'; color: #7fc4c9; animation: pulse-dot 2s infinite; }
 @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:.3} }
 
-.hero-title-home {
-    font-size: clamp(2rem, 5vw, 4rem);
+ .hero-title-home {
+    font-size: clamp(1.6rem, 4vw, 3.2rem);
     font-weight: 800; line-height: 1.1;
     margin-bottom: 1.5rem; color: rgba(255, 255, 255, 0.55);
     text-shadow: none;
@@ -553,7 +549,7 @@
 }
 @media (max-width: 768px) {
     .menu-toggle { display: flex !important; }
-    .hero-title-home { font-size: 2.5rem; }
+    .hero-title-home { font-size: 2.2rem; }
     .hero-sub-home { font-size: 1rem; }
     .hero-title-home { white-space: normal; text-align: center; }
     .sol-brief-card { flex: 0 1 100%; }
