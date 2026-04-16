@@ -1,4 +1,4 @@
-﻿﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
@@ -15,7 +15,88 @@
     <title>Become a Partner - Acropora Data</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="pages.css">
+    <link rel="stylesheet" href="animations.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .intro-dark{background:#fff;padding:7rem 0 8rem;position:relative;overflow:hidden}
+        .intro-dark::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(129,171,179,.08) 0%,transparent 70%);top:-150px;right:-100px;animation:orbFloat 14s ease-in-out infinite}
+        @keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-30px,25px) scale(1.1)}}
+        .intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;position:relative;z-index:1}
+        .intro-label{display:inline-block;color:#81abb3;font-size:.78rem;font-weight:800;letter-spacing:.25em;text-transform:uppercase;border:1px solid rgba(129,171,179,.4);border-radius:50px;padding:.4rem 1.2rem;margin-bottom:1.5rem}
+        .intro-title{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;color:var(--primary-color);line-height:1.15;margin-bottom:1.5rem}
+        .intro-title span{color:#f3756e}
+        .intro-text{color:var(--text-medium);font-size:1rem;line-height:1.85;margin-bottom:1rem}
+        .stat-cards{display:flex;flex-direction:column;gap:1.4rem}
+        .stat-card{background:rgba(26,93,106,.05);border:1px solid rgba(26,93,106,.12);border-radius:16px;padding:1.6rem 2rem;display:flex;align-items:center;gap:1.4rem;transition:all .4s ease}
+        .stat-card:hover{background:rgba(26,93,106,.09);transform:translateX(8px)}
+        .stat-icon{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,rgba(26,93,106,.1),rgba(129,171,179,.15));display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+        .stat-body strong{display:block;color:var(--primary-color);font-size:1.4rem;font-weight:900;line-height:1;margin-bottom:.25rem}
+        .stat-body span{color:var(--text-medium);font-size:.82rem}
+        .section-tag{display:inline-block;color:var(--primary-color);font-size:.78rem;font-weight:800;letter-spacing:.25em;text-transform:uppercase;border:1px solid rgba(26,93,106,.2);border-radius:50px;padding:.4rem 1.2rem;background:rgba(26,93,106,.05);margin-bottom:1.2rem}
+        .types-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;margin-top:3.5rem}
+        .type-card{border-radius:22px;padding:2.5rem 2rem;position:relative;overflow:hidden;transition:all .4s cubic-bezier(.16,1,.3,1)}
+        .type-card.tech{background:linear-gradient(135deg,rgba(26,93,106,.06),rgba(129,171,179,.04));border:1px solid rgba(26,93,106,.12)}
+        .type-card.biz{background:linear-gradient(135deg,rgba(243,117,110,.05),rgba(243,117,110,.02));border:1px solid rgba(243,117,110,.12)}
+        .type-card.strat{background:linear-gradient(135deg,rgba(26,93,106,.1),rgba(26,93,106,.05));border:2px solid rgba(26,93,106,.2)}
+        .type-card:hover{transform:translateY(-8px);box-shadow:0 24px 50px rgba(26,93,106,.12)}
+        .type-card .tc-icon{font-size:2.4rem;display:block;margin-bottom:1.2rem}
+        .type-card .tc-badge{display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;padding:.25rem .8rem;border-radius:20px;margin-bottom:.8rem}
+        .tech .tc-badge{background:rgba(26,93,106,.1);color:#1a5d6a}
+        .biz .tc-badge{background:rgba(243,117,110,.1);color:#f3756e}
+        .strat .tc-badge{background:rgba(26,93,106,.15);color:#0d3d47}
+        .type-card h3{font-size:1.15rem;font-weight:900;color:var(--primary-color);margin-bottom:.8rem}
+        .type-card p{font-size:.83rem;color:var(--text-medium);line-height:1.7;margin-bottom:1.4rem}
+        .tc-list{list-style:none;padding:0;margin:0}
+        .tc-list li{font-size:.8rem;color:var(--text-medium);padding:.3rem 0;display:flex;gap:.6rem}
+        .criteria-section{background:#81abb3}
+        .criteria-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem;margin-top:3.5rem}
+        .criterion{background:#fff;border-radius:16px;padding:1.8rem;display:flex;gap:1.2rem;align-items:flex-start;border-left:4px solid transparent;transition:all .35s ease}
+        .criterion:hover{border-left-color:#1a5d6a;box-shadow:0 12px 30px rgba(26,93,106,.08);transform:translateX(4px)}
+        .crit-icon{font-size:1.5rem;flex-shrink:0;width:44px;height:44px;background:linear-gradient(135deg,rgba(26,93,106,.1),rgba(129,171,179,.08));border-radius:12px;display:flex;align-items:center;justify-content:center}
+        .crit-body h4{font-size:.9rem;font-weight:800;color:var(--primary-color);margin-bottom:.35rem}
+        .crit-body p{font-size:.8rem;color:var(--text-medium);line-height:1.65;margin:0}
+        .dark-green{background:linear-gradient(160deg,#0d3d47 0%,#1a5d6a 60%,#1e6d7e 100%)}
+        .dark-green .section-tag{color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.07)}
+        .dark-green h2{color:#fff}
+        .dark-green .section-line{background:linear-gradient(90deg,rgba(255,255,255,.4),transparent)}
+        @keyframes flowAnim{0%{background-position:200% center}100%{background-position:-200% center}}
+        .steps-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-top:3.5rem}
+        .step-item{text-align:center;position:relative}
+        .step-item::after{content:'→';position:absolute;top:22px;right:-10px;color:rgba(255,255,255,.3);font-size:1rem}
+        .step-item:last-child::after{display:none}
+        .step-num{width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.1);border:2px solid rgba(129,171,179,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1rem;font-weight:900;color:#fff;transition:all .35s ease}
+        .step-item:hover .step-num{background:rgba(243,117,110,.2);border-color:rgba(243,117,110,.4);transform:scale(1.1)}
+        .step-item h4{font-size:.82rem;font-weight:800;color:#fff;margin-bottom:.4rem}
+        .step-item p{font-size:.72rem;color:rgba(255,255,255,.6);line-height:1.55}
+        .contact-form-section{background:#fff}
+        .contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;align-items:start}
+        .contact-info h3{font-size:1.4rem;font-weight:900;color:var(--primary-color);margin-bottom:1rem}
+        .contact-info p{font-size:.88rem;color:var(--text-medium);line-height:1.75;margin-bottom:2rem}
+        .contact-item{display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.5rem}
+        .ci-icon{width:44px;height:44px;border-radius:12px;background:rgba(26,93,106,.08);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+        .ci-body strong{display:block;font-size:.85rem;font-weight:800;color:var(--primary-color);margin-bottom:.2rem}
+        .ci-body span{font-size:.8rem;color:var(--text-medium)}
+        .partner-form{background:var(--subtle-gray);border-radius:24px;padding:3rem}
+        .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+        .form-group{margin-bottom:1rem}
+        .form-group label{display:block;font-size:.78rem;font-weight:700;color:var(--primary-color);margin-bottom:.45rem;letter-spacing:.03em}
+        .form-control{width:100%;padding:.85rem 1.2rem;border:1.5px solid rgba(26,93,106,.15);border-radius:12px;font-size:.88rem;font-family:inherit;outline:none;transition:border-color .3s ease;background:#fff;box-sizing:border-box}
+        .form-control:focus{border-color:var(--primary-color)}
+        select.form-control{cursor:pointer}
+        textarea.form-control{min-height:120px;resize:vertical}
+        .form-submit{background:#f3756e;color:#fff;border:none;padding:1rem 2.8rem;border-radius:50px;font-weight:700;font-size:.95rem;cursor:pointer;width:100%;transition:all .35s ease;font-family:inherit;margin-top:.5rem;box-shadow:0 10px 28px rgba(243,117,110,.3)}
+        .form-submit:hover{background:#d95c55;transform:translateY(-2px)}
+        .final-cta{background:linear-gradient(160deg,#081e23 0%,#0d3d47 50%,#1a5d6a 100%);padding:7rem 0;text-align:center;position:relative;overflow:hidden}
+        .final-cta h2{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;color:#f3756e;margin-bottom:1rem;position:relative;z-index:1}
+        .final-cta p{color:rgba(255,255,255,.7);margin-bottom:2.5rem;position:relative;z-index:1}
+        .cta-btns{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+        .btn-cta-primary{background:#f3756e;color:#fff !important;padding:1rem 2.4rem;border-radius:50px;text-decoration:none;font-weight:700;transition:all .35s ease;box-shadow:0 10px 28px rgba(243,117,110,.35)}
+        .btn-cta-primary:hover{transform:translateY(-3px) scale(1.04)}
+        .btn-cta-ghost{background:transparent;color:rgba(255,255,255,.85) !important;padding:1rem 2.4rem;border-radius:50px;text-decoration:none;font-weight:700;border:1.5px solid rgba(255,255,255,.3);transition:all .35s ease}
+        .btn-cta-ghost:hover{background:rgba(255,255,255,.1);transform:translateY(-3px)}
+        @media(max-width:1100px){.types-grid{grid-template-columns:1fr 1fr}.steps-grid{grid-template-columns:repeat(3,1fr)}.steps-grid .step-item:nth-child(3)::after,.steps-grid .step-item:nth-child(5)::after{display:none}}
+        @media(max-width:900px){.intro-grid{grid-template-columns:1fr;gap:3rem}.criteria-grid{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}}
+    </style>
 </head>
 <body>
 <div class="parallax-coral"><div class="coral-shape"></div><div class="coral-shape"></div><div class="coral-shape"></div><div class="coral-shape"></div></div>
@@ -64,18 +145,6 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a href="javascript:void(0)" class="nav-link" style="cursor: default;">Resources</a>
-                <div class="mega-menu">
-                    <div class="mega-menu-inner mega-menu-5">
-                        <div class="mega-col"><div class="mega-col-title">Content</div><a href="blog_en.html"><span class="link-text"><strong>Blog & Articles</strong><span>Acropost — our media</span></span></a></div>
-                        <div class="mega-col"><div class="mega-col-title">Case Studies</div><a href="etudes-de-cas_en.html"><span class="link-text"><strong>Case Studies</strong><span>Measured ROI and success</span></span></a></div>
-                        <div class="mega-col"><div class="mega-col-title">News</div><a href="actualites_en.html"><span class="link-text"><strong>News & Events</strong><span>Agenda and news</span></span></a></div>
-                        <div class="mega-col"><div class="mega-col-title">Training</div><a href="academie_en.html"><span class="link-text"><strong>Acropora Academy</strong><span>E-learning & certifications</span></span></a></div>
-                        <div class="mega-col"><div class="mega-col-title">Guides</div><a href="ressources_en.html"><span class="link-text"><strong>White Papers</strong><span>Guides & whitepapers</span></span></a></div>
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item">
                 <a href="javascript:void(0)" class="nav-link cta-nav active" style="cursor: default;">Contact</a>
                 <div class="mega-menu">
                     <div class="mega-menu-inner mega-menu-5">
@@ -88,286 +157,246 @@
                 <a href="devenir-partenaire.html" class="lang-switch-btn" title="Switch to French">FR</a>
             </li>
         </ul>
-        <button class="menu-toggle" onclick="document.querySelector('.nav-menu').classList.toggle('active')"><span></span><span></span><span></span></button>
+        <button class="menu-toggle" onclick="this.classList.toggle('active'); document.querySelector('.nav-menu').classList.toggle('active')"><span></span><span></span><span></span></button>
     </div>
 </nav>
-<section class="page-hero">
-    <div class="container">
-        <h1 class="page-title">Become a Partner</h1>
-        <p class="page-subtitle">Join a specialized MDM & Master Data ecosystem</p>
-    </div>
-</section>
 
-<!-- Why collaborate with us -->
-<section class="page-section">
-  <div class="container">
-    <div class="section-header">
-      <h2>Why collaborate with us</h2>
-      <div class="section-line"></div>
-    </div>
-    <div class="hub-cards-row">
-      <div class="hub-card">
-        <span class="hub-card-icon">🗄️</span>
-        <h3>Access to our MDM platform</h3>
-        <p>Benefit from demos, sandbox environments, and accelerators for your prospects and clients.</p>
-      </div>
-      <div class="hub-card">
-        <span class="hub-card-icon">📣</span>
-        <h3>Co-marketing & Visibility</h3>
-        <p>Webinars, events, co-branded case studies, and presence on our communication channels.</p>
-      </div>
-      <div class="hub-card">
-        
-        <h3>Access to qualified leads</h3>
-        <p>Qualified opportunities from our campaigns and our multi-sector client base.</p>
-      </div>
-      <div class="hub-card">
-        <span class="hub-card-icon"></span>
-        <h3>Our Differentiation</h3>
-        <p>Scalable repositories, 99.9% data quality, and a proven methodology on 200+ projects.</p>
-      </div>
-    </div>
-  </div>
-</section>
+<section class="page-hero" data-hero-anim="become-partner"><div class="container"><h1 class="page-title">Become a Partner</h1><p class="page-subtitle">Join the Acropora Data ecosystem and create value together</p></div></section>
 
-<!-- Partnership Types -->
-<section class="page-section alt-bg">
-  <div class="container">
-    <div class="section-header">
-      <h2>Partnership Types</h2>
-      <div class="section-line"></div>
+<section class="intro-dark"><div class="container"><div class="intro-grid">
+    <div class="reveal reveal-left">
+        <span class="intro-label">PARTNER PROGRAM</span>
+        <h2 class="intro-title">The ecosystem<br><span>that makes the difference</span></h2>
+        <p class="intro-text">Joining the Acropora Data partner program means accessing rare MDM market expertise, a recognized brand, and a community of committed professionals.</p>
+        <p class="intro-text">Whether it's a technology alliance, a business partnership, or co-innovation, we build long-term relationships based on mutual value and client excellence.</p>
     </div>
-    <div class="partners-grid">
-      <div class="partner-card">
-        <h3>Technology Partner</h3>
-        <p>Integrate your solutions with our MDM platform and build joint high-value offers.</p>
-        <ul class="service-list">
-          <li>Certified Connectors & APIs</li>
-          <li>Shared Product Roadmaps</li>
-          <li>Dedicated Technical Sessions</li>
-        </ul>
-      </div>
-      <div class="partner-card">
-        <h3>Business Partner</h3>
-        <p>Resell our MDM solutions to your customers, with structured pre-sales support.</p>
-        <ul class="service-list">
-          <li>Packaged Offers & Pricing Grids</li>
-          <li>Pre-sales Support & RFPs</li>
-          <li>Incentive Programs</li>
-        </ul>
-      </div>
-      <div class="partner-card">
-        <h3>Integrator Partner</h3>
-        <p>Support the deployment and industrialization of MDM repositories for our mutual clients.</p>
-        <ul class="service-list">
-          <li>Access to our Project Methodology</li>
-          <li>Coaching on Initial Missions</li>
-          <li>Library of Templates & Best Practices</li>
-        </ul>
-      </div>
+    <div class="stat-cards reveal reveal-right">
+        <div class="stat-card"><div class="stat-icon">🤝</div><div class="stat-body"><strong>20+</strong><span>Active partners in the ecosystem</span></div></div>
+        <div class="stat-card"><div class="stat-icon">🌍</div><div class="stat-body"><strong>3</strong><span>Geographic zones covered</span></div></div>
+        <div class="stat-card"><div class="stat-icon">📈</div><div class="stat-body"><strong>2×</strong><span>Average growth of active partners</span></div></div>
     </div>
-  </div>
-</section>
+</div></div></section>
 
-<!-- Partnership Levels -->
-<section class="page-section">
-  <div class="container">
-    <div class="section-header">
-      <h2>Partnership Levels</h2>
-      <div class="section-line"></div>
+<section class="page-section" style="background:#fff"><div class="container">
+    <div class="section-header reveal reveal-up"><span class="section-tag">PARTNERSHIP TYPES</span><div class="section-line"></div><h2>Choose the model that fits you</h2></div>
+    <div class="types-grid">
+        <div class="type-card tech reveal reveal-up" style="transition-delay:0ms">
+            <span class="tc-badge">Technology</span>
+            <h3>Technology Partner</h3>
+            <p>For software publishers and data solution providers who want to integrate or certify within the Acropora ecosystem.</p>
+            <ul class="tc-list">
+                <li>✅ Certified technical integration</li>
+                <li>✅ Co-development of connectors</li>
+                <li>✅ Access to the Acropora innovation lab</li>
+                <li>✅ Listed in our RFPs</li>
+            </ul>
+        </div>
+        <div class="type-card biz reveal reveal-up" style="transition-delay:150ms">
+            <span class="tc-badge">Business</span>
+            <h3>Business Partner</h3>
+            <p>For IT service companies, integrators, consultancies, and business introducers who want to enrich their offering with Acropora's MDM expertise.</p>
+            <ul class="tc-list">
+                <li>✅ Commission on business referrals</li>
+                <li>✅ Co-marketing and co-selling</li>
+                <li>✅ Training and certification</li>
+                <li>✅ Dedicated pre-sales support</li>
+            </ul>
+        </div>
+        <div class="type-card strat reveal reveal-up" style="transition-delay:300ms">
+            <span class="tc-badge">Strategic</span>
+            <h3>Strategic Alliance</h3>
+            <p>For players who want a deep alliance relationship: joint go-to-market, mutual commitments, and a shared vision.</p>
+            <ul class="tc-list">
+                <li>✅ Formalized partnership agreement</li>
+                <li>✅ Contractualized common objectives</li>
+                <li>✅ Priority access to leadership teams</li>
+                <li>✅ Co-innovation and shared R&D</li>
+            </ul>
+        </div>
     </div>
-    <div class="benefits-grid">
-      <div class="benefit-item" style="border-top:4px solid #9e9e9e;">
-        <div class="benefit-icon"></div>
-        <div>
-          <h3>Silver</h3>
-          <p>Partner portal access, dedicated documentation, initial training, and standard support.</p>
-        </div>
-      </div>
-      <div class="benefit-item" style="border-top:4px solid #ffc107;">
-        <div class="benefit-icon"></div>
-        <div>
-          <h3>Gold</h3>
-          <p>All Silver + co-marketing, certification training, dedicated account manager, and quarterly reviews.</p>
-        </div>
-      </div>
-      <div class="benefit-item" style="border-top:4px solid #1a5d6a;">
-        <div class="benefit-icon"></div>
-        <div>
-          <h3>Platinum</h3>
-          <p>All Gold + joint development, systematic lead sharing, and preferential commercial conditions.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+</div></section>
 
-<!-- Requirements -->
-<section class="page-section alt-bg">
-  <div class="container">
-    <div class="section-header">
-      <h2>Requirements</h2>
-      <div class="section-line"></div>
+<section class="page-section criteria-section"><div class="container">
+    <div class="section-header reveal reveal-up"><span class="section-tag">SELECTION CRITERIA</span><div class="section-line"></div><h2>What we look for in a partner</h2></div>
+    <div class="criteria-grid">
+        <div class="criterion reveal reveal-up" style="transition-delay:0ms">
+            <div class="crit-icon">🎯</div>
+            <div class="crit-body"><h4>Strategic alignment</h4><p>Your vision and target markets must be compatible with our MDM and data governance positioning.</p></div>
+        </div>
+        <div class="criterion reveal reveal-up" style="transition-delay:80ms">
+            <div class="crit-icon">💡</div>
+            <div class="crit-body"><h4>Complementary offerings</h4><p>We favor partners whose solutions or services complement our offering without replacing it — synergy takes precedence over competition.</p></div>
+        </div>
+        <div class="criterion reveal reveal-up" style="transition-delay:160ms">
+            <div class="crit-icon">🏅</div>
+            <div class="crit-body"><h4>Recognized expertise</h4><p>Proven experience in your field, solid client references, and a competent team are fundamental prerequisites.</p></div>
+        </div>
+        <div class="criterion reveal reveal-up" style="transition-delay:240ms">
+            <div class="crit-icon">🤝</div>
+            <div class="crit-body"><h4>Long-term commitment</h4><p>We build lasting relationships. We look for partners who embrace a long-term, non-transactional partnership approach.</p></div>
+        </div>
+        <div class="criterion reveal reveal-up" style="transition-delay:320ms">
+            <div class="crit-icon">🔒</div>
+            <div class="crit-body"><h4>Ethical standards</h4><p>GDPR compliance, good industry practices, transparency in client relationships — our partners share our ethical values.</p></div>
+        </div>
+        <div class="criterion reveal reveal-up" style="transition-delay:400ms">
+            <div class="crit-icon">📍</div>
+            <div class="crit-body"><h4>Geographic presence</h4><p>A local presence (Mauritius, Sub-Saharan Africa, Europe, Middle East) is an asset for developing complementary markets.</p></div>
+        </div>
     </div>
-    <div class="benefits-grid">
-      <div class="benefit-item">
-        <div class="benefit-icon"></div>
-        <div>
-          <h3>Data Experience</h3>
-          <p>Proven expertise in ERP, CRM, business IS environments, or large-scale data projects.</p>
-        </div>
-      </div>
-      <div class="benefit-item">
-        <div class="benefit-icon"></div>
-        <div>
-          <h3>Technical Certifications</h3>
-          <p>Vendor and cloud certifications appreciated (Informatica, Snowflake, cloud hyperscalers, etc.).</p>
-        </div>
-      </div>
-      <div class="benefit-item">
-        <div class="benefit-icon"></div>
-        <div>
-          <h3>Business Capability</h3>
-          <p>Ability to generate opportunities, manage a sales pipe, and support clients over the long term.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+</div></section>
 
-<!-- Application Form -->
-<section class="page-section alt-bg">
-  <div class="container">
-    <div class="section-header">
-      <h2>Apply as a Partner</h2>
-      <div class="section-line"></div>
+<section class="page-section dark-green"><div class="container">
+    <div class="section-header reveal reveal-up"><span class="section-tag">INTEGRATION PROCESS</span><div class="section-line"></div><h2>Becoming a partner in 5 steps</h2></div>
+    <div class="steps-grid">
+        <div class="step-item reveal reveal-up" style="transition-delay:0ms">
+            <div class="step-num">01</div>
+            <h4>Application</h4>
+            <p>Fill in the form below with your information and the type of partnership you are looking for.</p>
+        </div>
+        <div class="step-item reveal reveal-up" style="transition-delay:100ms">
+            <div class="step-num">02</div>
+            <h4>Exploratory call</h4>
+            <p>Our alliances team will contact you within 5 business days for an initial qualification call.</p>
+        </div>
+        <div class="step-item reveal reveal-up" style="transition-delay:200ms">
+            <div class="step-num">03</div>
+            <h4>Due diligence</h4>
+            <p>Mutual verification of strategic alignment, references, and offering compatibility.</p>
+        </div>
+        <div class="step-item reveal reveal-up" style="transition-delay:300ms">
+            <div class="step-num">04</div>
+            <h4>Partnership agreement</h4>
+            <p>Negotiation and signing of an agreement defining the terms, commitments, and success metrics.</p>
+        </div>
+        <div class="step-item reveal reveal-up" style="transition-delay:400ms">
+            <div class="step-num">05</div>
+            <h4>Onboarding & activation</h4>
+            <p>Introduction to the teams, training, identification of first opportunities, and official launch.</p>
+        </div>
     </div>
+</div></section>
+
+<section class="page-section contact-form-section"><div class="container">
     <div class="contact-grid">
-      <div class="contact-form">
-        <h2>Application Form</h2>
-        <form>
-          <div class="form-group">
-            <label>Company Name *</label>
-            <input type="text" required placeholder="Name of your company">
-          </div>
-          <div class="form-group">
-            <label>Industry *</label>
-            <input type="text" required placeholder="Retail, Banking, Manufacturing...">
-          </div>
-          <div class="form-group">
-            <label>Contact Name *</label>
-            <input type="text" required placeholder="Contact full name">
-          </div>
-          <div class="form-group">
-            <label>Email *</label>
-            <input type="email" required placeholder="contact@company.com">
-          </div>
-          <div class="form-group">
-            <label>Desired Partnership Type</label>
-            <select style="width:100%;padding:1rem;border:2px solid #f5f9fa;border-radius:8px;font-family:inherit;font-size:1rem;background:white">
-              <option>Technology Partner</option>
-              <option>Business Partner</option>
-              <option>Integrator Partner</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Message</label>
-            <textarea rows="5" placeholder="Introduce your business, your geographic area, and your expectations from the partnership..."></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary" style="background:var(--primary-color);color:white">
-            Apply as Partner
-          </button>
-        </form>
-      </div>
-      <div class="contact-info">
-        <h2>Partnership Contact</h2>
-        <div class="info-item">
-          <h3>Dedicated Email</h3>
-          <p><a href="mailto:shaheen.alladin@acropora-data.com" style="color:inherit;">shaheen.alladin@acropora-data.com</a></p>
+        <div class="reveal reveal-left">
+            <span class="section-tag">APPLICATION</span>
+            <div class="section-line"></div>
+            <h3>Let's get in touch</h3>
+            <p>Fill in this form and our alliances team will get back to you within 48 business hours to discuss collaboration opportunities.</p>
+            <div class="contact-item">
+                <div class="ci-icon">✉️</div>
+                <div class="ci-body"><strong>Partnership email</strong><span>partners@acroporadata.com</span></div>
+            </div>
+            <div class="contact-item">
+                <div class="ci-icon">🌐</div>
+                <div class="ci-body"><strong>Geographic coverage</strong><span>Mauritius · Africa · Europe · Middle East</span></div>
+            </div>
+            <div class="contact-item">
+                <div class="ci-icon">⏱️</div>
+                <div class="ci-body"><strong>Response time</strong><span>Within 48 business hours</span></div>
+            </div>
         </div>
-        <div class="info-item">
-          <h3>📞 Hotline</h3>
-          <p>+230 4686682</p>
+        <div class="partner-form reveal reveal-right">
+            <div class="form-row">
+                <div class="form-group"><label>First Name *</label><input type="text" class="form-control" placeholder="John"></div>
+                <div class="form-group"><label>Last Name *</label><input type="text" class="form-control" placeholder="Smith"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group"><label>Professional email *</label><input type="email" class="form-control" placeholder="j.smith@company.com"></div>
+                <div class="form-group"><label>Phone</label><input type="tel" class="form-control" placeholder="+230 00 00 00 00"></div>
+            </div>
+            <div class="form-group"><label>Company *</label><input type="text" class="form-control" placeholder="Your company name"></div>
+            <div class="form-row">
+                <div class="form-group"><label>Partnership type *</label><select class="form-control"><option value="">Select…</option><option>Technology Partner</option><option>Business Partner</option><option>Strategic Alliance</option><option>Business Introducer</option></select></div>
+                <div class="form-group"><label>Industry</label><select class="form-control"><option value="">Select…</option><option>IT Services / Integration</option><option>Consulting & Advisory</option><option>Software Publisher</option><option>Reseller / VAR</option><option>Training</option><option>Other</option></select></div>
+            </div>
+            <div class="form-group"><label>Describe your partnership project</label><textarea class="form-control" placeholder="Briefly explain your business, your target markets, and what you expect from a partnership with Acropora Data…"></textarea></div>
+            <button class="form-submit">Submit my application →</button>
         </div>
-        <div class="info-item">
-          <h3>⏱ Process</h3>
-          <p>Review of your file and response within 5 business days.</p>
-        </div>
-      </div>
     </div>
-  </div>
-</section>
-<section class="page-cta">
-    <div class="container">
-        <h2>Ready to go further?</h2>
-        <p>Contact us today</p>
-        <a href="contact_en.html" class="btn btn-primary">Contact Us</a>
+</div></section>
+
+<section class="final-cta"><div class="container">
+    <h2>Together, further</h2>
+    <p>The best data projects come from the best collaborations</p>
+    <div class="cta-btns">
+        <a href="partenaires-technologiques_en.html" class="btn-cta-ghost">Technology Partners</a>
+        <a href="partenaires-commerciaux_en.html" class="btn-cta-ghost">Business Partners</a>
     </div>
-</section>
+</div></section>
+
 <footer class="footer">
     <div class="container">
-        <div class="footer-content">
-            <div class="footer-section">
-                <img src="acropora-logo-transparent.png" alt="Acropora Data" class="footer-logo">
-                <p>Leader in Master Data Management</p>
-                <p style="margin-top:1rem;font-size:.85rem;opacity:.7">Turn your data into strategic assets</p>
+        <div class="footer-content" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 2rem;">
+            <div class="footer-section" style="flex: 1; min-width: 250px;">
+                <img src="acropora-logo-transparent.png" alt="Acropora Data" class="footer-logo" style="margin-bottom: 1rem; width: 180px; display: block;">
+                <p style="font-weight: 700; margin-bottom: 0.2rem; color: #fff;">Leader in Master Data Management</p>
+                <p style="font-size: 0.85rem; opacity: 0.7; color: #fff;">Turn your data into strategic assets</p>
+                <div style="margin-top: 1.5rem; display: flex; justify-content: center; width: 180px;">
+                    <a href="https://www.linkedin.com/company/acropora-data" target="_blank" style="color: #81abb3; transition: color 0.3s;" onmouseover="this.style.color='#f3756e'" onmouseout="this.style.color='#81abb3'">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display: block !important;"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                </div>
             </div>
-            <div class="footer-section">
-                <h4>About Us</h4>
-                <ul>
-                    <li><a href="presentation_en.html">Overview</a></li>
-                    <li><a href="approche-donnees_en.html">Our Data Approach</a></li>
-                    <li><a href="equipe_en.html">Team</a></li>
-                    <li><a href="ethique_en.html">Ethics & Values</a></li>
+            <div class="footer-section" style="flex: 1; min-width: 200px;">
+                <h4 style="color: #81abb3; margin-bottom: 1.5rem; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.05em;">About Us</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 0.7rem;"><a href="presentation_en.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Overview</a></li>
+                    <li style="margin-bottom: 0.7rem;"><a href="approche-donnees_en.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Our Data Approach</a></li>
+                    <li style="margin-bottom: 0.7rem;"><a href="equipe_en.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Team</a></li>
+                    <li style="margin-bottom: 0.7rem;"><a href="ethique_en.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Ethics &amp; Values</a></li>
                 </ul>
             </div>
-            <div class="footer-section">
-                <h4>Solutions & Expertise</h4>
-                <ul>
-                    <li><a href="mdm_en.html">MDM & Integration</a></li>
-                    <li><a href="bi-analytique_en.html">BI & Analytics</a></li>
-                    <li><a href="tests-validation_en.html">Testing & Validation</a></li>
-                    <li><a href="solutions-sur-mesure_en.html">Custom Solutions</a></li>
+            <div class="footer-section" style="flex: 1; min-width: 200px;">
+                <h4 style="color: #81abb3; margin-bottom: 1.5rem; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.05em;">Solutions &amp; Expertise</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 0.7rem;"><a href="mdm_en.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">MDM &amp; Integration</a></li>
+                    <li style="margin-bottom: 0.7rem;"><a href="ai-foundations_en.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">AI Foundations</a></li>
+                    <li style="margin-bottom: 0.7rem;"><a href="migration-mdm_en.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Test Strategy</a></li>
+                    <li style="margin-bottom: 0.7rem;"><a href="tests-validation_en.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Automation Testing</a></li>
+                    <li style="margin-bottom: 0.7rem;"><a href="bi-analytique_en.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">BI &amp; Analytics</a></li>
+                    <li style="margin-bottom: 0.7rem;"><a href="cadrage-projet_en.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Project Scoping</a></li>
                 </ul>
             </div>
-            <div class="footer-section">
-                <h4>Resources</h4>
-                <ul>
-                    <li><a href="blog_en.html">Blog & Articles</a></li>
-                    <li><a href="etudes-de-cas_en.html">Case Studies</a></li>
-                    <li><a href="academie_en.html">Acropora Academy</a></li>
-                    <li><a href="contact_en.html">Contact</a></li>
+            <div class="footer-section" style="flex: 1; min-width: 200px;">
+                <h4 style="color: #81abb3; margin-bottom: 1.5rem; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.05em;">Partners &amp; Contact</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 0.7rem;"><a href="partenaires-technologiques_en.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Technology Partners</a></li>
+                    <li style="margin-bottom: 0.7rem;"><a href="partenaires-commerciaux_en.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Business Partners</a></li>
+                    <li style="margin-bottom: 0.7rem;"><a href="devenir-partenaire_en.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Become a partner</a></li>
+                    <li style="margin-bottom: 0.7rem;"><a href="carrieres_en.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Careers</a></li>
+                    <li style="margin-bottom: 0.7rem;"><a href="contact_en.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Contact</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Acropora Data. All rights reserved.</p>
+            <p>&copy; 2026 Acropora Data. All rights reserved.</p>
         </div>
     </div>
 </footer>
-<script src="script.js"></script>
+<script src="script.js"></script><script src="scroll-animations.js"></script><script src="pages.js"></script>
+<script src="hero-animations.js"></script>
 <script>
-// Gestion du mega-menu sur mobile (tactile)
+// Mobile mega-menu handling
 document.querySelectorAll('.nav-item').forEach(function(item) {
     var link = item.querySelector('.nav-link');
     var mega = item.querySelector('.mega-menu');
-    if (!mega) return; // item sans sous-menu (ex: EN)
+    if (!mega) return;
 
     link.addEventListener('click', function(e) {
         var isMobile = window.innerWidth <= 768;
-        if (!isMobile) return; // sur desktop, le hover CSS suffit
+        if (!isMobile) return;
 
-        e.preventDefault(); // empêche la navigation (ces liens sont javascript:void)
-        
+        e.preventDefault();
+
         var isOpen = item.classList.contains('open');
-        
-        // Ferme tous les autres sous-menus ouverts
+
         document.querySelectorAll('.nav-item.open').forEach(function(other) {
             other.classList.remove('open');
             other.querySelector('.mega-menu').style.display = '';
         });
 
-        // Ouvre ou ferme celui-ci
         if (!isOpen) {
             item.classList.add('open');
             mega.style.display = 'block';
@@ -375,7 +404,6 @@ document.querySelectorAll('.nav-item').forEach(function(item) {
     });
 });
 
-// Ferme le menu si on clique en dehors
 document.addEventListener('click', function(e) {
     if (!e.target.closest('.navbar')) {
         document.querySelectorAll('.nav-item.open').forEach(function(item) {

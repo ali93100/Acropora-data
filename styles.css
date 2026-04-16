@@ -1160,7 +1160,7 @@ body.parallax-active .coral-shape:nth-child(4) {
 .mega-menu-inner{max-width:1400px;margin:0 auto;padding:2rem 2rem 2.5rem;display:grid;gap:2.5rem}
 .mega-menu-5{grid-template-columns:repeat(5,1fr)}
 .mega-menu-4{grid-template-columns:repeat(4,1fr)}
-.mega-menu-2{grid-template-columns:repeat(2,1fr);max-width:540px}
+.mega-menu-2{grid-template-columns:repeat(2,1fr);max-width:540px;margin-left:0}
 .mega-col-title{font-size:.7rem;font-weight:700;color:var(--text-light);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.85rem;padding-bottom:.5rem;border-bottom:2px solid var(--subtle-gray)}
 .mega-col a{display:flex;align-items:flex-start;gap:.7rem;padding:.65rem .75rem;color:var(--text-dark);text-decoration:none;border-radius:8px;transition:all .3s;font-size:.85rem;font-weight:500;margin-bottom:.1rem}
 .mega-col a:hover{background:var(--subtle-gray);color:var(--primary-color);transform:translateX(4px)}
@@ -1644,29 +1644,34 @@ body.parallax-active .coral-shape:nth-child(4) {
 /* Mobile */
 @media (max-width: 768px) {
     .agile-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+        grid-template-columns: 1fr 130px 1fr;
+        gap: 0.6rem;
+        align-items: center;
     }
     .agile-center-col {
-        order: -1;
+        order: unset;
         width: 100%;
         display: flex;
         justify-content: center;
-        padding: 2rem 0;
+        padding: 0;
     }
     .agile-img-wrap {
-        width: 220px;
-        height: 220px;
+        width: 130px;
+        height: 130px;
         overflow: visible;
     }
+    .ag-card { padding: 0.4rem 0.5rem; }
+    .ag-num { font-size: 0.7rem; }
+    .ag-card h4 { font-size: 0.72rem; }
+    .ag-desc { font-size: 0.62rem; line-height: 1.4; }
     .agile-right .ag-card {
         text-align: left;
         border-left: 2px solid rgba(129,171,179,0.2);
         border-right: none;
         border-radius: 0 6px 6px 0;
-        transform: translateX(-20px);
+        transform: translateX(0);
     }
-    .agile-right .ag-card:hover { transform: translateX(5px); }
+    .agile-right .ag-card:hover { transform: translateX(3px); }
     .agile-right .ag-card-top { flex-direction: row; }
     .agile-right .ag-bar { margin-left: 0; background: linear-gradient(90deg, #81abb3, #1a5d6a); }
     .agile-right .ag-card::after {

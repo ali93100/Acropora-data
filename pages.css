@@ -5,6 +5,9 @@
 /* Page Hero */
 .page-hero {
     padding: 12rem 0 6rem;
+    min-height: 420px;
+    display: flex;
+    align-items: center;
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
     color: var(--white);
     text-align: center;
@@ -12,6 +15,7 @@
     overflow: hidden;
 }
 .page-hero .container {
+    width: 100%;
     position: relative;
     z-index: 2;
 }
@@ -66,6 +70,7 @@
 .page-section {
     padding: 8rem 0;
     position: relative;
+    background: #fff;
 }
 
 .page-section::before {
@@ -637,7 +642,7 @@
 
 /* Page CTA */
 .page-cta {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+    background: linear-gradient(135deg, #081e23 0%, #0d3d47 55%, #1a5d6a 100%);
     padding: 6rem 0;
     text-align: center;
     color: var(--white);
@@ -1835,15 +1840,17 @@
     box-shadow: var(--shadow-lg);
     background: var(--subtle-gray);
     z-index: 2;
-    min-height: auto;
+    min-height: 480px;
 }
 
 .team-photo-col img {
     width: 100%;
-    height: auto;
-    object-fit: contain;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
     display: block;
-    position: relative;
+    position: absolute;
+    inset: 0;
 }
 
 @media (max-width: 900px) {
