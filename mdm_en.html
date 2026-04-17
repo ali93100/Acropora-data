@@ -691,9 +691,7 @@
                     </div>
                 </div>
             </li>
-            <li class="nav-item">
-                <a href="mdm.html" class="lang-switch-btn" title="Switch to French">FR</a>
-            </li>
+            
         </ul>
         <button class="menu-toggle" onclick="this.classList.toggle('active'); document.querySelector('.nav-menu').classList.toggle('active')"><span></span><span></span><span></span></button>
     </div>
@@ -1007,12 +1005,12 @@
 </section>
 
 <!-- SECTION USE CASES -->
-<section class="page-section reveal reveal-up" style="padding-top: 2rem; padding-bottom: 2rem;">
+<section class="page-section reveal reveal-up" style="padding-top: 2rem; padding-bottom: 2rem; background:#020d12;">
     <div class="container">
         <div class="section-header">
-            <span class="challenge-tag">USE CASES</span>
+            <span class="challenge-tag" style="color:#81abb3;">USE CASES</span>
             <div class="home-divider" style="margin: 1rem auto 1.5rem;"></div>
-            <h2 class="home-section-title">Concrete business use cases</h2>
+            <h2 class="home-section-title" style="color:#fff;">Concrete business use cases</h2>
         </div>
         <div class="benefits-grid" style="margin-top: 2rem; grid-template-columns: repeat(2, 1fr); max-width: 850px; margin-left: auto; margin-right: auto; gap: 1.5rem;">
             <div class="benefit-item fade-in" style="flex-direction: column; align-items: flex-start; text-align: left; padding: 1rem 1.5rem; min-height: 110px;">
@@ -1048,7 +1046,7 @@
 </section>
 
 <!-- SECTION TECHNOLOGIES -->
-<section class="page-section alt-bg reveal reveal-up" style="padding-top: 6rem; padding-bottom: 12rem; position: relative; min-height: 600px; overflow: hidden; background: #020d12;">
+<section class="page-section alt-bg reveal reveal-up" style="padding-top: 6rem; padding-bottom: 12rem; position: relative; min-height: 600px; overflow: hidden; background: #fff;">
     <div class="ocean-partners-bg" style="z-index: 0;">
         <img src="reltio.png" class="floating-partner fp-1" alt="Reltio">
         <img src="semarchy.png" class="floating-partner fp-2" alt="Semarchy">
@@ -1068,7 +1066,7 @@
         <div class="section-header">
             <span class="challenge-tag" style="color: #81abb3;">TECHNOLOGIES</span>
             <div class="home-divider" style="margin: 1rem auto 1.5rem;"></div>
-            <h2 class="home-section-title" style="color: #fff;">Tools & ecosystems we master</h2>
+            <h2 class="home-section-title" style="color: #0a2a35;">Tools & ecosystems we master</h2>
         </div>
     </div>
 </section>
@@ -1182,13 +1180,13 @@ document.querySelectorAll('.nav-item').forEach(function(item) {
         // Ferme tous les autres sous-menus ouverts
         document.querySelectorAll('.nav-item.open').forEach(function(other) {
             other.classList.remove('open');
-            other.querySelector('.mega-menu').style.display = '';
+            // display handled by CSS
         });
 
         // Ouvre ou ferme celui-ci
         if (!isOpen) {
             item.classList.add('open');
-            mega.style.display = 'block';
+            // display handled by CSS
         }
     });
 });

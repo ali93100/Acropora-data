@@ -367,25 +367,6 @@
         }
 
     </style>
-    <style id="nav-desktop-lock">
-        /* Force desktop nav layout — survives browser extension injection */
-        html body nav.navbar div.nav-container ul.nav-menu {
-            display: flex !important;
-            flex-direction: row !important;
-            flex-wrap: nowrap !important;
-            white-space: nowrap !important;
-            align-items: center !important;
-            height: 100% !important;
-            gap: 0 !important;
-        }
-        html body nav.navbar div.nav-container ul.nav-menu > li.nav-item {
-            display: flex !important;
-            align-items: center !important;
-            height: 100% !important;
-            flex-direction: row !important;
-            flex-shrink: 0 !important;
-        }
-    </style>
 </head>
 <body>
 <div class="parallax-coral"><div class="coral-shape"></div><div class="coral-shape"></div><div class="coral-shape"></div><div class="coral-shape"></div></div>
@@ -436,9 +417,7 @@
                     </div>
                 </div>
             </li>
-            <li class="nav-item">
-                <a href="carrieres.html" class="lang-switch-btn" title="Switch to French">FR</a>
-            </li>
+            
         </ul>
         <button class="menu-toggle" onclick="this.classList.toggle('active'); document.querySelector('.nav-menu').classList.toggle('active')"><span></span><span></span><span></span></button>
     </div>
@@ -855,13 +834,13 @@ document.querySelectorAll('.nav-item').forEach(function(item) {
         // Ferme tous les autres sous-menus ouverts
         document.querySelectorAll('.nav-item.open').forEach(function(other) {
             other.classList.remove('open');
-            other.querySelector('.mega-menu').style.display = '';
+            // display handled by CSS
         });
 
         // Ouvre ou ferme celui-ci
         if (!isOpen) {
             item.classList.add('open');
-            mega.style.display = 'block';
+            // display handled by CSS
         }
     });
 });

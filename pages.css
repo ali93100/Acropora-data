@@ -1691,25 +1691,13 @@
 
 /* ── RESPONSIVE ──────────────────────────────────── */
 @media(max-width:768px){
-    .nav-container { height: 70px !important; }
-    .logo { width: 160px !important; }
+    .nav-container { height: 64px !important; }
+    .logo { width: auto !important; height: 44px !important; }
     .hub-stats{gap:1.5rem;padding:2rem}
     .hub-num{font-size:2.2rem}
     .hub-card{min-width:220px}
     .pipeline{gap:.25rem}
     .pipeline-step{min-width:120px;padding:1.5rem 1rem}
-    .nav-menu{position:fixed;top:70px;left:-100%;width:100%;height:calc(100vh - 70px);background:#fff;flex-direction:column;align-items:flex-start;padding:1rem 1.5rem;transition:all .3s;overflow-y:auto;gap:0;z-index: 1000; box-shadow: 0 10px 30px rgba(0,0,0,0.1);}
-    .nav-menu.active{left:0}
-    .nav-item{width:100%;height:auto;flex-direction:column;align-items:flex-start}
-    .nav-link{width:100%;padding:.8rem 1rem}
-    .nav-item:not(:last-child) .nav-link::after{display:none}
-    .mega-menu{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:none;background:var(--subtle-gray);border-radius:8px;margin:.25rem 0 .5rem;display:none}
-    .nav-item.open .mega-menu{display:block}
-    .mega-menu-inner{grid-template-columns:1fr;gap:.5rem;padding:.75rem}
-    .menu-toggle{display:flex !important; z-index: 1001;}
-    .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-    .menu-toggle.active span:nth-child(2) { opacity: 0; }
-    .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
     .page-cta h2{font-size:2rem}
 }
 

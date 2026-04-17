@@ -16,9 +16,6 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="pages.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        .approche-detail-popover { display: none !important; }
-    </style>
 </head>
 <body>
 <div class="parallax-coral"><div class="coral-shape"></div><div class="coral-shape"></div><div class="coral-shape"></div><div class="coral-shape"></div></div>
@@ -75,9 +72,7 @@
                     </div>
                 </div>
             </li>
-            <li class="nav-item">
-                <a href="approche-donnees.html" class="lang-switch-btn" title="Switch to French">FR</a>
-            </li>
+            
         </ul>
         <button class="menu-toggle" onclick="this.classList.toggle('active'); document.querySelector('.nav-menu').classList.toggle('active')"><span></span><span></span><span></span></button>
     </div>
@@ -102,212 +97,24 @@
             <h3>Audit & Diagnosis</h3>
             <p>Mapping your data, identifying gaps and opportunities for improvement</p>
             
-            <!-- Interactive detail on hover -->
-            <div class="approche-detail-popover">
-                <div class="popover-intro">Audit & Diagnosis: Shedding light on your data assets</div>
-                <p class="popover-desc">Before transforming your data, you must first understand it. Our audit offers a clear and objective vision of your current situation: where your data is, how it flows, and above all, what concrete opportunities are available to you.</p>
-                
-                <div class="popover-schema">
-                    <div class="schema-box">
-                        <h4>AUDIT</h4>
-                        <span class="sub">Complete mapping</span>
-                        <ul>
-                            <li>Where is your data?</li>
-                            <li>How does it flow?</li>
-                            <li>What volumes are managed?</li>
-                        </ul>
-                    </div>
-                    <div class="schema-arrow">→</div>
-                    <div class="schema-box">
-<h4>ANALYSIS</h4>
-                        <span class="sub">Gap identification</span>
-                        <ul>
-                            <li>Which duplicates?</li>
-                            <li>Actual quality level?</li>
-                            <li>GDPR compliant?</li>
-                        </ul>
-                    </div>
-                    <div class="schema-arrow">→</div>
-                    <div class="schema-box">
-                        <h4>ACTION PLAN</h4>
-                        <span class="sub">Custom recommendations</span>
-                        <ul>
-                            <li>Quick wins</li>
-                            <li>12-month roadmap</li>
-                            <li>Budget & prioritization</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="popover-details">
-                    <div class="detail-item"><h5>AUDIT - Mapping</h5><p>We start by capturing your data reality: sources, flows, volumes. No jargon, just a clear map of your landscape.</p></div>
-                    <div class="detail-item"><h5>ANALYSIS - Bottlenecks</h5><p>We pinpoint friction points: duplicates, obsolete data, GDPR risks. Every identified gap is a measurable opportunity.</p></div>
-                    <div class="detail-item"><h5>ACTION PLAN - Roadmap</h5><p>No more shelf-ware reports. A concrete plan with quick wins, prioritized 12-month roadmap, and realistic budget.</p></div>
-                </div>
-
-                <div class="popover-conclusion">
-                    Concrete result: In 2 to 4 weeks, you get a 360° view of your data and an operational action plan for your teams.
-                </div>
-            </div>
         </div>
         <div class="approche-step s2 reveal reveal-up delay-150">
             <div class="approche-step-num">2</div>
             <h3>Architecture</h3>
             <p>Designing the MDM repository tailored to your challenges and technical environment</p>
 
-            <!-- Interactive detail on hover (Architecture) -->
-            <div class="approche-detail-popover">
-                <div class="popover-intro">Architecture: Building solid foundations for your MDM</div>
-                <p class="popover-desc">An effective MDM repository doesn't come off-the-shelf. It must align with your business processes, integrate with your existing infrastructure, and grow with you. Our approach: design an architecture that meets today's challenges without locking you into tomorrow's constraints.</p>
-                
-                <div class="popover-schema">
-                    <div class="schema-box">
-                        <h4>🏗️ DESIGN</h4>
-                        <span class="sub">Repository Design</span>
-                        <ul>
-                            <li>Which data to master?</li>
-                            <li>Which governance model?</li>
-                            <li>Which technical stack?</li>
-                        </ul>
-                    </div>
-                    <div class="schema-arrow">→</div>
-                    <div class="schema-box">
-                        <h4>🔧 ADAPTATION</h4>
-                        <span class="sub">Ecosystem Integration</span>
-                        <ul>
-                            <li>Connection to existing IS?</li>
-                            <li>Cloud/On-premise strategy?</li>
-                            <li>Security & GDPR?</li>
-                        </ul>
-                    </div>
-                    <div class="schema-arrow">→</div>
-                    <div class="schema-box">
-                        <h4>📐 VALIDATION</h4>
-                        <span class="sub">Operational Technical Plan</span>
-                        <ul>
-                            <li>Documented architecture</li>
-                            <li>Specs for development</li>
-                            <li>Scalability & evolution</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="popover-details">
-                    <div class="detail-item"><h5>🏗️ DESIGN - Custom-made</h5><p>We define the scope (customers, products...) and choose the relevant stack (Informatica, custom, cloud native) based on your constraints.</p></div>
-                    <div class="detail-item"><h5>🔧 ADAPTATION - Connectivity</h5><p>Designing links with your ERP/CRM. We decide between real-time or batch flows and integrate security from day one.</p></div>
-                    <div class="detail-item"><h5>📐 VALIDATION - Blueprints</h5><p>We deliver clear, actionable diagrams for your devs. An MDM designed to evolve without needing a complete overhaul every 3 years.</p></div>
-                </div>
-
-                <div class="popover-conclusion">
-                    Concrete result: A documented MDM architecture, validated by your experts, and ready for implementation with a clear cost view.
-                </div>
-            </div>
         </div>
         <div class="approche-step s3 reveal reveal-up delay-300">
             <div class="approche-step-num">3</div>
             <h3>Implementation</h3>
             <p>Agile deployment in sprints, integration with your systems, and continuous testing</p>
 
-            <!-- Interactive detail on hover (Implementation) -->
-            <div class="approche-detail-popover">
-                <div class="popover-intro">Implementation: We build with you, not for you</div>
-                <p class="popover-desc">No more 18-month development black holes. We work in agile mode: short sprints, concrete deliverables every 2-3 weeks, and your validation at each stage. You drive the progress, we manage the technical complexity.</p>
-                
-                <div class="popover-schema">
-                    <div class="schema-box">
-                        <h4>DEPLOYMENT</h4>
-                        <span class="sub">Sprint-based construction</span>
-                        <ul>
-                            <li>Deliveries every 2-3 weeks</li>
-                            <li>Validation at every stage</li>
-                            <li>Real-time adjustments</li>
-                        </ul>
-                    </div>
-                    <div class="schema-arrow">→</div>
-                    <div class="schema-box">
-                        <h4>INTEGRATION</h4>
-                        <span class="sub">Ecosystem connection</span>
-                        <ul>
-                            <li>ERP, CRM, BI connection</li>
-                            <li>Auto & monitored flows</li>
-                            <li>Zero-downtime migration</li>
-                        </ul>
-                    </div>
-                    <div class="schema-arrow">→</div>
-                    <div class="schema-box">
-                        <h4>TESTING</h4>
-                        <span class="sub">Continuous validation</span>
-                        <ul>
-                            <li>Testing before production</li>
-                            <li>Business compliance check</li>
-                            <li>Continuous bug fixing</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="popover-details">
-                    <div class="detail-item"><h5>DEPLOYMENT - Sprint by sprint</h5><p>Each iteration delivers a functional block you can test immediately. We pivot at the next sprint if your priorities change.</p></div>
-                    <div class="detail-item"><h5>INTEGRATION - Seamless</h5><p>We automate and secure flows to your current tools. Migration is gradual, without impacting your live production environment.</p></div>
-                    <div class="detail-item"><h5>TESTING - Guaranteed Quality</h5><p>A bug detected in sprint 3 is fixed in 48h. We validate everything with key users before global deployment.</p></div>
-                </div>
-
-                <div class="popover-conclusion">
-                    Concrete result: An operational MDM deployed progressively. Your teams are trained as we go for full autonomy from Day 1.
-                </div>
-            </div>
         </div>
         <div class="approche-step s4 reveal reveal-up delay-450">
             <div class="approche-step-num">4</div>
             <h3>Measurement & ROI</h3>
             <p>Quality KPIs, ROI reporting, continuous improvement, and skill development</p>
 
-            <!-- Interactive detail on hover (Measurement & ROI) -->
-            <div class="approche-detail-popover">
-                <div class="popover-intro">Measurement & ROI: Turning data into business value</div>
-                <p class="popover-desc">Implementation is just the start. We don't just deliver a tool: we measure the real impact on your business. Every euro invested in your MDM must pay off.</p>
-                
-                <div class="popover-schema">
-                    <div class="schema-box">
-                        <h4>REPORTING</h4>
-                        <span class="sub">Performance Tracking</span>
-                        <ul>
-                            <li>Real-time quality dashboards</li>
-                            <li>Anomaly automated alerts</li>
-                            <li>Executive ROI reporting</li>
-                        </ul>
-                    </div>
-                    <div class="schema-arrow">→</div>
-                    <div class="schema-box">
-                        <h4>IMPROVEMENT</h4>
-                        <span class="sub">Maintenance & Evolution</span>
-                        <ul>
-                            <li>Autonomous teams</li>
-                            <li>Model fine-tuning</li>
-                            <li>Long-term expert support</li>
-                        </ul>
-                    </div>
-                    <div class="schema-arrow">→</div>
-                    <div class="schema-box">
-                        <h4>ROI CALCULATION</h4>
-                        <span class="sub">Concrete Gains</span>
-                        <ul>
-                            <li>Reduced operational costs</li>
-                            <li>Faster Time-to-Market</li>
-                            <li>Data asset valuation</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="popover-details">
-                    <div class="detail-item"><h5>REPORTING - Visibility</h5><p>No more flying blind. Our indicators prove the project's daily value to your business units.</p></div>
-                    <div class="detail-item"><h5>EVOLUTION - Sustainability</h5><p>Skill transfer is in our DNA. We train your teams for total operational autonomy.</p></div>
-                    <div class="detail-item"><h5>ROI - Validation</h5><p>We co-calculate real gains (time, budget, productivity). Our success is your financial achievement.</p></div>
-                </div>
-
-                <div class="popover-conclusion">
-                    Concrete result: A virtuous cycle of quality data that boosts productivity and guarantees a sustainable ROI.
-                </div>
-            </div>
         </div>
     </div>
   </div>
@@ -498,26 +305,24 @@
 document.querySelectorAll('.nav-item').forEach(function(item) {
     var link = item.querySelector('.nav-link');
     var mega = item.querySelector('.mega-menu');
-    if (!mega) return; // item sans sous-menu (ex: EN)
+    if (!mega) return;
 
     link.addEventListener('click', function(e) {
         var isMobile = window.innerWidth <= 768;
-        if (!isMobile) return; // sur desktop, le hover CSS suffit
+        if (!isMobile) return;
 
-        e.preventDefault(); // empêche la navigation (ces liens sont javascript:void)
-        
+        e.preventDefault();
+
         var isOpen = item.classList.contains('open');
-        
-        // Ferme tous les autres sous-menus ouverts
+
         document.querySelectorAll('.nav-item.open').forEach(function(other) {
             other.classList.remove('open');
-            other.querySelector('.mega-menu').style.display = '';
+            // display handled by CSS
         });
 
-        // Ouvre ou ferme celui-ci
         if (!isOpen) {
             item.classList.add('open');
-            mega.style.display = 'block';
+            // display handled by CSS
         }
     });
 });

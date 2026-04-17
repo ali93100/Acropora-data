@@ -47,7 +47,7 @@
         .type-card h3{font-size:1.15rem;font-weight:900;color:var(--primary-color);margin-bottom:.8rem}
         .type-card p{font-size:.83rem;color:var(--text-medium);line-height:1.7;margin-bottom:1.4rem}
         .tc-list{list-style:none;padding:0;margin:0}
-        .tc-list li{font-size:.8rem;color:var(--text-medium);padding:.3rem 0;display:flex;gap:.6rem}
+        .tc-list li{font-size:.8rem;color:#81abb3;padding:.3rem 0;display:flex;gap:.6rem}
         .criteria-section{background:#81abb3}
         .criteria-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem;margin-top:3.5rem}
         .criterion{background:#fff;border-radius:16px;padding:1.8rem;display:flex;gap:1.2rem;align-items:flex-start;border-left:4px solid transparent;transition:all .35s ease}
@@ -153,9 +153,7 @@
                     </div>
                 </div>
             </li>
-            <li class="nav-item">
-                <a href="devenir-partenaire.html" class="lang-switch-btn" title="Switch to French">FR</a>
-            </li>
+            
         </ul>
         <button class="menu-toggle" onclick="this.classList.toggle('active'); document.querySelector('.nav-menu').classList.toggle('active')"><span></span><span></span><span></span></button>
     </div>
@@ -185,10 +183,10 @@
             <h3>Technology Partner</h3>
             <p>For software publishers and data solution providers who want to integrate or certify within the Acropora ecosystem.</p>
             <ul class="tc-list">
-                <li>✅ Certified technical integration</li>
-                <li>✅ Co-development of connectors</li>
-                <li>✅ Access to the Acropora innovation lab</li>
-                <li>✅ Listed in our RFPs</li>
+                <li>Certified technical integration</li>
+                <li>Co-development of connectors</li>
+                <li>Access to the Acropora innovation lab</li>
+                <li>Listed in our RFPs</li>
             </ul>
         </div>
         <div class="type-card biz reveal reveal-up" style="transition-delay:150ms">
@@ -196,10 +194,10 @@
             <h3>Business Partner</h3>
             <p>For IT service companies, integrators, consultancies, and business introducers who want to enrich their offering with Acropora's MDM expertise.</p>
             <ul class="tc-list">
-                <li>✅ Commission on business referrals</li>
-                <li>✅ Co-marketing and co-selling</li>
-                <li>✅ Training and certification</li>
-                <li>✅ Dedicated pre-sales support</li>
+                <li>Commission on business referrals</li>
+                <li>Co-marketing and co-selling</li>
+                <li>Training and certification</li>
+                <li>Dedicated pre-sales support</li>
             </ul>
         </div>
         <div class="type-card strat reveal reveal-up" style="transition-delay:300ms">
@@ -207,10 +205,10 @@
             <h3>Strategic Alliance</h3>
             <p>For players who want a deep alliance relationship: joint go-to-market, mutual commitments, and a shared vision.</p>
             <ul class="tc-list">
-                <li>✅ Formalized partnership agreement</li>
-                <li>✅ Contractualized common objectives</li>
-                <li>✅ Priority access to leadership teams</li>
-                <li>✅ Co-innovation and shared R&D</li>
+                <li>Formalized partnership agreement</li>
+                <li>Contractualized common objectives</li>
+                <li>Priority access to leadership teams</li>
+                <li>Co-innovation and shared R&D</li>
             </ul>
         </div>
     </div>
@@ -394,12 +392,12 @@ document.querySelectorAll('.nav-item').forEach(function(item) {
 
         document.querySelectorAll('.nav-item.open').forEach(function(other) {
             other.classList.remove('open');
-            other.querySelector('.mega-menu').style.display = '';
+            // display handled by CSS
         });
 
         if (!isOpen) {
             item.classList.add('open');
-            mega.style.display = 'block';
+            // display handled by CSS
         }
     });
 });

@@ -84,7 +84,7 @@
             <li class="nav-item"><a href="javascript:void(0)" class="nav-link" style="cursor:default;">Partners</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-2"><div class="mega-col"><div class="mega-col-title">Technology</div><a href="partenaires-technologiques_en.html"><span class="link-text"><strong>Technology Partners</strong><span>Semarchy, OneBX, Talend…</span></span></a></div><div class="mega-col"><div class="mega-col-title">Business</div><a href="partenaires-commerciaux_en.html"><span class="link-text"><strong>Business Partners</strong><span>Alliances & business synergies</span></span></a></div></div></div></li>
             
             <li class="nav-item"><a href="javascript:void(0)" class="nav-link cta-nav" style="cursor:default;">Contact</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-5"><div class="mega-col"><div class="mega-col-title">Join us</div><a href="carrieres_en.html"><span class="link-text"><strong>Careers</strong><span>Openings & applications</span></span></a></div><div class="mega-col"><div class="mega-col-title">Partnership</div><a href="devenir-partenaire_en.html"><span class="link-text"><strong>Become a Partner</strong><span>Join the ecosystem</span></span></a></div></div></div></li>
-            <li class="nav-item"><a href="ethique.html" class="lang-switch-btn" title="Passer en Français">FR</a></li>
+            
         </ul>
         <button class="menu-toggle" onclick="this.classList.toggle('active'); document.querySelector('.nav-menu').classList.toggle('active')"><span></span><span></span><span></span></button>
     </div>
@@ -259,13 +259,13 @@ document.querySelectorAll('.nav-item').forEach(function(item) {
         // Ferme tous les autres sous-menus ouverts
         document.querySelectorAll('.nav-item.open').forEach(function(other) {
             other.classList.remove('open');
-            other.querySelector('.mega-menu').style.display = '';
+            // display handled by CSS
         });
 
         // Ouvre ou ferme celui-ci
         if (!isOpen) {
             item.classList.add('open');
-            mega.style.display = 'block';
+            // display handled by CSS
         }
     });
 });
