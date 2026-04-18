@@ -795,13 +795,10 @@
         }
     }
     function handleSpontUpload(input) {
-        if (input.files && input.files[0]) {
-            const btn = input.closest('.btn-spont-primary');
-            btn.innerHTML = '✅ ' + input.files[0].name + '<input type="file" accept=".pdf,.doc,.docx" onchange="handleSpontUpload(this)">';
-        }
+        window.location.href = 'mailto:shaheen.alladin@acropora-data.com?subject=Candidature spontanée&body=Bonjour,%0A%0AJe vous adresse ma candidature spontanée.%0A%0AVeuillez trouver mon CV en pièce jointe.%0A%0ACordialement,';
     }
     function submitApplication(role) {
-        alert('Thank you for applying for the "' + role + '" position!\nWe will get back to you as soon as possible.');
+        window.location.href = 'mailto:shaheen.alladin@acropora-data.com?subject=Candidature - ' + encodeURIComponent(role) + '&body=Bonjour,%0A%0AJe souhaite postuler au poste de ' + encodeURIComponent(role) + '.%0A%0AVeuillez trouver mon CV et ma lettre de motivation en pièce jointe.%0A%0ACordialement,';
     }
     const cards = document.querySelectorAll('.job-card');
     const obs = new IntersectionObserver(entries => {

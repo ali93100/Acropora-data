@@ -907,15 +907,12 @@
     }
 
     function handleSpontUpload(input) {
-        if (input.files && input.files[0]) {
-            const btn = input.closest('.btn-spont-primary');
-            btn.innerHTML = '✅ ' + input.files[0].name + '<input type="file" accept=".pdf,.doc,.docx" onchange="handleSpontUpload(this)">';
-        }
+        window.location.href = 'mailto:shaheen.alladin@acropora-data.com?subject=Candidature spontanée&body=Bonjour,%0A%0AJe vous adresse ma candidature spontanée.%0A%0AVeuillez trouver mon CV en pièce jointe.%0A%0ACordialement,';
     }
 
     /* ── Submit feedback ── */
     function submitApplication(poste) {
-        alert('Merci pour votre candidature au poste "' + poste + '" !\nNous vous contacterons dans les plus brefs délais.');
+        window.location.href = 'mailto:shaheen.alladin@acropora-data.com?subject=Candidature - ' + encodeURIComponent(poste) + '&body=Bonjour,%0A%0AJe souhaite postuler au poste de ' + encodeURIComponent(poste) + '.%0A%0AVeuillez trouver mon CV et ma lettre de motivation en pièce jointe.%0A%0ACordialement,';
     }
 
     /* ── Scroll-reveal for job cards ── */

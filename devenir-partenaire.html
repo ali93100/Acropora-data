@@ -254,21 +254,24 @@
             </div>
         </div>
         <div class="partner-form reveal reveal-right">
+            <form action="https://formspree.io/f/xyklwvar" method="POST">
             <div class="form-row">
-                <div class="form-group"><label>Prénom *</label><input type="text" class="form-control" placeholder="Jean"></div>
-                <div class="form-group"><label>Nom *</label><input type="text" class="form-control" placeholder="Dupont"></div>
+                <div class="form-group"><label>Prénom *</label><input type="text" name="prenom" class="form-control" placeholder="Jean"></div>
+                <div class="form-group"><label>Nom *</label><input type="text" name="nom" class="form-control" placeholder="Dupont"></div>
             </div>
             <div class="form-row">
-                <div class="form-group"><label>Email professionnel *</label><input type="email" class="form-control" placeholder="j.dupont@entreprise.com"></div>
-                <div class="form-group"><label>Téléphone</label><input type="tel" class="form-control" placeholder="+33 6 00 00 00 00"></div>
+                <div class="form-group"><label>Email professionnel *</label><input type="email" name="email" class="form-control" placeholder="j.dupont@entreprise.com"></div>
+                <div class="form-group"><label>Téléphone</label><input type="tel" name="telephone" class="form-control" placeholder="+33 6 00 00 00 00"></div>
             </div>
-            <div class="form-group"><label>Entreprise *</label><input type="text" class="form-control" placeholder="Nom de votre entreprise"></div>
+            <div class="form-group"><label>Entreprise *</label><input type="text" name="entreprise" class="form-control" placeholder="Nom de votre entreprise"></div>
             <div class="form-row">
-                <div class="form-group"><label>Type de partenariat *</label><select class="form-control"><option value="">Choisir…</option><option>Partenaire Technologique</option><option>Partenaire Commercial</option><option>Alliance Stratégique</option><option>Apporteur d'affaires</option></select></div>
-                <div class="form-group"><label>Secteur d'activité</label><select class="form-control"><option value="">Choisir…</option><option>ESN / Intégration</option><option>Conseil & Advisory</option><option>Éditeur de logiciels</option><option>Revendeur / VAR</option><option>Formation</option><option>Autre</option></select></div>
+                <div class="form-group"><label>Type de partenariat *</label><select name="type_partenariat" class="form-control"><option value="">Choisir…</option><option>Partenaire Technologique</option><option>Partenaire Commercial</option><option>Alliance Stratégique</option><option>Apporteur d'affaires</option></select></div>
+                <div class="form-group"><label>Secteur d'activité</label><select name="secteur" class="form-control"><option value="">Choisir…</option><option>ESN / Intégration</option><option>Conseil & Advisory</option><option>Éditeur de logiciels</option><option>Revendeur / VAR</option><option>Formation</option><option>Autre</option></select></div>
             </div>
-            <div class="form-group"><label>Décrivez votre projet de partenariat</label><textarea class="form-control" placeholder="Expliquez brièvement votre activité, vos marchés cibles et ce que vous attendez d'un partenariat avec Acropora Data…"></textarea></div>
-            <button class="form-submit">Envoyer ma candidature →</button>
+            <div class="form-group"><label>Décrivez votre projet de partenariat</label><textarea name="message" class="form-control" placeholder="Expliquez brièvement votre activité, vos marchés cibles et ce que vous attendez d'un partenariat avec Acropora Data…"></textarea></div>
+            <input type="hidden" name="_subject" value="Demande partenariat - Acropora Data">
+            <button type="submit" class="form-submit">Envoyer ma candidature →</button>
+            </form>
         </div>
     </div>
 </div></section>
