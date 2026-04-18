@@ -1973,12 +1973,12 @@ document.querySelectorAll('.nav-item').forEach(function(item) {
 
         document.querySelectorAll('.nav-item.open').forEach(function(other) {
             other.classList.remove('open');
-            // display handled by CSS
+            other.querySelector('.mega-menu').style.removeProperty('display');
         });
 
         if (!isOpen) {
             item.classList.add('open');
-            // display handled by CSS
+            mega.style.setProperty('display', 'block', 'important');
         }
     });
 });
@@ -1988,7 +1988,7 @@ document.addEventListener('click', function(e) {
     if (!e.target.closest('.navbar')) {
         document.querySelectorAll('.nav-item.open').forEach(function(item) {
             item.classList.remove('open');
-            item.querySelector('.mega-menu').style.display = '';
+            item.querySelector('.mega-menu').style.removeProperty('display');
         });
     }
 });
