@@ -243,14 +243,15 @@
         .use-cases-list { margin-top: 3rem; max-width: 1000px; margin-left: auto; margin-right: auto; }
         .use-case-item {
             display: flex; justify-content: space-between; align-items: center;
+            gap: 2rem;
             padding: 1.8rem 0; border-bottom: 1px solid rgba(26, 93, 106, 0.1);
             transition: all 0.3s ease;
         }
         .use-case-item:last-child { border-bottom: none; }
-        .use-case-title { font-weight: 700; color: var(--primary-color); font-size: 1.2rem; transition: transform 0.3s ease; }
+        .use-case-title { font-weight: 700; color: var(--primary-color); font-size: 1rem; transition: transform 0.3s ease; flex: 1; min-width: 0; }
         .use-case-desc {
             color: var(--accent-color); font-weight: 600; opacity: 0; transform: translateX(30px);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); text-align: right; font-size: 1rem; max-width: 50%;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); text-align: right; font-size: 0.9rem; flex-shrink: 0; max-width: 45%;
         }
         .use-case-item:hover .use-case-title { transform: translateX(10px); }
         .use-case-item:hover .use-case-desc { opacity: 1; transform: translateX(0); }

@@ -686,6 +686,136 @@
   </div>
 </section>
 
+<!-- ═══ AUTOMATION TEASER ════════════════════════════════ -->
+<div class="ts-auto-teaser">
+  <style>
+    .ts-auto-teaser {
+      position: relative;
+      background: #fff;
+      padding: 2rem 2rem;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    /* subtle animated dot grid */
+    .ts-auto-teaser::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(26,93,106,0.06) 1px, transparent 1px);
+      background-size: 24px 24px;
+      pointer-events: none;
+    }
+    .ts-auto-inner {
+      position: relative; z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      max-width: 1100px; width: 100%;
+      flex-wrap: wrap;
+    }
+    /* mini SVG schema */
+    .ts-auto-schema {
+      flex-shrink: 0;
+      opacity: 0.85;
+    }
+    /* text block */
+    .ts-auto-text {
+      flex: 1; min-width: 220px;
+    }
+    .ts-auto-eyebrow {
+      font-size: 0.62rem; font-weight: 800;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: #f3756e;
+      margin-bottom: 0.35rem;
+    }
+    .ts-auto-title {
+      font-size: 1.1rem; font-weight: 900;
+      color: #0a2a35; margin: 0 0 0.4rem;
+      line-height: 1.25;
+    }
+    .ts-auto-desc {
+      font-size: 0.82rem; color: #4a6472;
+      line-height: 1.6; margin: 0;
+    }
+    .ts-auto-link {
+      flex-shrink: 0;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: #f3756e;
+      border: 1px solid #f3756e;
+      color: #fff;
+      font-size: 0.75rem; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      padding: 0.7rem 1.5rem; border-radius: 30px;
+      text-decoration: none;
+      transition: background 0.25s, border-color 0.25s, transform 0.2s;
+      white-space: nowrap;
+      box-shadow: 0 4px 14px rgba(243,117,110,0.3);
+    }
+    .ts-auto-link:hover {
+      background: #e05e58;
+      border-color: #e05e58;
+      transform: translateY(-2px);
+    }
+    .ts-auto-link svg { flex-shrink: 0; }
+    @media (max-width: 640px) {
+      .ts-auto-schema { display: none; }
+      .ts-auto-inner { gap: 1.2rem; }
+    }
+  </style>
+
+  <div class="ts-auto-inner">
+
+    <!-- Mini pipeline schema -->
+    <div class="ts-auto-schema">
+      <svg width="200" height="56" viewBox="0 0 200 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="ag" x="-80%" y="-80%" width="260%" height="260%">
+            <feGaussianBlur stdDeviation="2.5" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <!-- guide line -->
+        <line x1="16" y1="28" x2="184" y2="28" stroke="rgba(129,171,179,0.15)" stroke-width="1"/>
+        <!-- flowing dashes -->
+        <line x1="16" y1="28" x2="184" y2="28" stroke="rgba(129,171,179,0.55)" stroke-width="1.2" stroke-dasharray="5 10">
+          <animate attributeName="stroke-dashoffset" from="45" to="0" dur="1.6s" repeatCount="indefinite"/>
+        </line>
+        <!-- nodes -->
+        <circle cx="16"  cy="28" r="6" fill="rgba(129,171,179,0.15)" stroke="rgba(129,171,179,0.5)" stroke-width="1"/>
+        <circle cx="72"  cy="28" r="6" fill="rgba(129,171,179,0.15)" stroke="rgba(129,171,179,0.5)" stroke-width="1"/>
+        <circle cx="128" cy="28" r="6" fill="rgba(129,171,179,0.15)" stroke="rgba(129,171,179,0.5)" stroke-width="1"/>
+        <circle cx="184" cy="28" r="7" fill="rgba(243,117,110,0.2)"  stroke="rgba(243,117,110,0.7)" stroke-width="1.2">
+          <animate attributeName="r" values="7;9;7" dur="2s" repeatCount="indefinite"/>
+        </circle>
+        <!-- pulse dot -->
+        <circle r="3.5" fill="rgba(129,171,179,0.9)" filter="url(#ag)">
+          <animateMotion dur="1.6s" repeatCount="indefinite" path="M16,28 L184,28"/>
+        </circle>
+        <!-- labels -->
+        <text x="16"  y="46" text-anchor="middle" font-size="6.5" fill="rgba(129,171,179,0.45)" font-family="Montserrat,sans-serif" font-weight="700">PLAN</text>
+        <text x="72"  y="46" text-anchor="middle" font-size="6.5" fill="rgba(129,171,179,0.45)" font-family="Montserrat,sans-serif" font-weight="700">BUILD</text>
+        <text x="128" y="46" text-anchor="middle" font-size="6.5" fill="rgba(129,171,179,0.45)" font-family="Montserrat,sans-serif" font-weight="700">RUN</text>
+        <text x="184" y="46" text-anchor="middle" font-size="6.5" fill="rgba(243,117,110,0.6)"  font-family="Montserrat,sans-serif" font-weight="700">AUTO</text>
+      </svg>
+    </div>
+
+    <!-- Text -->
+    <div class="ts-auto-text">
+      <div class="ts-auto-eyebrow">Next step</div>
+      <h3 class="ts-auto-title">Ready to automate your tests?</h3>
+      <p class="ts-auto-desc">Move beyond manual testing — discover how we build scalable, CI/CD-integrated automation pipelines.</p>
+    </div>
+
+    <!-- CTA -->
+    <a href="tests-validation_en.html" class="ts-auto-link">
+      Automation Testing
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+
+  </div>
+</div>
+
 <!-- ═══ GET IN TOUCH ══════════════════════════════════════ -->
 <section class="ts-contact-section">
   <div class="ts-contact-dotgrid" aria-hidden="true"></div>
@@ -1118,7 +1248,7 @@
 .ts-contact-section {
   position: relative;
   background: #fff;
-  padding: 8rem 2rem 9rem;
+  padding: 3rem 2rem 9rem;
   overflow: hidden;
 }
 .ts-contact-dotgrid {
@@ -1460,7 +1590,7 @@
 .ts-svc-section {
   position: relative;
   background: #fff;
-  padding: 8rem 2rem;
+  padding: 3rem 2rem 8rem;
   overflow: hidden;
 }
 .ts-svc-dotgrid {
@@ -1651,12 +1781,12 @@
 .ts-type-num {
   font-size: 3.5rem;
   font-weight: 800;
-  color: rgba(129,171,179,0.12);
+  color: #0a2a35;
   line-height: 1;
   margin-bottom: .5rem;
   transition: color 0.3s;
 }
-.ts-type-card:hover .ts-type-num { color: rgba(129,171,179,0.22); }
+.ts-type-card:hover .ts-type-num { color: #1a5d6a; }
 
 /* icon badge */
 .ts-type-icon {
@@ -1817,7 +1947,7 @@
 .ts-step-num {
   font-size: 2.8rem;
   font-weight: 800;
-  color: rgba(15,97,112,0.15);
+  color: #fff;
   line-height: 1;
   margin-bottom: .7rem;
 }
