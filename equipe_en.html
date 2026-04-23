@@ -79,7 +79,7 @@
         .leader-orb { display: flex; flex-direction: column; align-items: center; gap: 1.6rem; }
         .leader-card-wrap {
             position: relative;
-            width: 270px; height: 360px;
+            width: 270px; height: 480px;
             cursor: pointer;
             perspective: 1200px;
         }
@@ -132,9 +132,9 @@
         .leader-front, .leader-back {
             position: absolute; inset: 0; border-radius: 20px;
             -webkit-backface-visibility: hidden; backface-visibility: hidden;
-            overflow: hidden;
             box-shadow: 0 24px 60px rgba(0,0,0,0.45);
         }
+        .leader-front { overflow: hidden; }
         .leader-front img {
             width: 100%; height: 100%;
             object-fit: cover; object-position: top center;
@@ -171,41 +171,41 @@
         .leader-back {
             transform: rotateY(180deg);
             background: linear-gradient(150deg, #0a2d35 0%, #1a5d6a 55%, #0d3d47 100%);
-            display: flex; flex-direction: column; padding: 1.8rem 1.6rem;
+            display: flex; flex-direction: column; justify-content: center; padding: 1.8rem 1.2rem 1.4rem; align-items: center; text-align: center;
             color: #fff;
+            overflow: hidden;
         }
         .leader-back-close {
-            position: absolute; top: 0.8rem; right: 1rem;
+            position: absolute; top: 0.5rem; right: 0.8rem;
             background: none; border: none;
-            color: rgba(129,171,179,0.5); font-size: 1.5rem;
+            color: rgba(129,171,179,0.5); font-size: 1.3rem;
             cursor: pointer; line-height: 1; transition: color 0.2s;
         }
         .leader-back-close:hover { color: #f3756e; }
         .leader-back-avatar {
-            width: 52px; height: 52px; border-radius: 50%;
+            width: 40px; height: 40px; border-radius: 50%;
             background: rgba(129,171,179,0.12);
             border: 2px solid rgba(129,171,179,0.38);
             display: flex; align-items: center; justify-content: center;
-            font-size: 1.1rem; font-weight: 900; color: #81abb3;
-            margin-bottom: 0.85rem; flex-shrink: 0;
+            font-size: 0.9rem; font-weight: 900; color: #81abb3;
+            margin-bottom: 0.5rem; flex-shrink: 0;
         }
         .leader-back-avatar.coral { color: #f3756e; border-color: rgba(243,117,110,0.38); }
-        .leader-back-name { font-size: 1rem; font-weight: 900; color: #fff; margin: 0 0 0.25rem; line-height: 1.2; }
-        .leader-back-role { font-size: 0.68rem; color: #f3756e; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.9rem; }
+        .leader-back-name { font-size: 0.9rem; font-weight: 900; color: #fff; margin: 0 0 0.15rem; line-height: 1.2; }
+        .leader-back-role { font-size: 0.62rem; color: #f3756e; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem; }
         .leader-back-role.teal { color: #81abb3; }
         .leader-back-divider {
             height: 1px;
             background: linear-gradient(90deg, rgba(129,171,179,0.4), transparent);
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.45rem;
         }
-        .leader-back-label { font-size: 0.55rem; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(129,171,179,0.5); margin-bottom: 0.3rem; }
-        .leader-back-value { font-size: 0.76rem; color: rgba(255,255,255,0.7); line-height: 1.55; margin-bottom: 0.8rem; }
+        .leader-back-label { font-size: 0.52rem; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(129,171,179,0.5); margin-bottom: 0.2rem; }
+        .leader-back-value { font-size: 0.72rem; color: rgba(255,255,255,0.7); line-height: 1.45; margin-bottom: 0.45rem; }
         .leader-back-bio {
-            font-size: 0.7rem; color: rgba(255,255,255,0.5); line-height: 1.65;
+            font-size: 0.67rem; color: rgba(255,255,255,0.5); line-height: 1.55;
             font-style: italic;
-            border-left: 2px solid rgba(129,171,179,0.28); padding-left: 0.75rem;
-            margin-top: auto;
-            display: -webkit-box; -webkit-line-clamp: 4; line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
+            border-left: 2px solid rgba(129,171,179,0.28); padding-left: 0.65rem;
+            margin-top: 0;
         }
         .leader-name-plate { text-align: center; }
         .leader-name-plate h3 { font-size: 1.1rem; font-weight: 800; color: var(--primary-color); margin: 0 0 0.28rem; }
@@ -415,7 +415,7 @@
         @media (max-width: 580px) {
             .team-net-grid { grid-template-columns: 1fr; }
             .team-flip-card { height: 380px; }
-            .leader-card-wrap { width: 250px; height: 330px; }
+            .leader-card-wrap { width: 250px; height: 480px; }
             .linkedin-card { padding: 2rem 1.5rem; }
             .leadership-header h2 { font-size: 1.8rem; }
         }
@@ -866,9 +866,28 @@
 
 <script>
 /* ── Leader card flip ── */
+var leaderBaseH = 420;
 function flipLeader(id) {
     var card = document.getElementById('lcard-' + id);
-    if (card) card.classList.toggle('flipped');
+    if (!card) return;
+    var isOpening = !card.classList.contains('flipped');
+    card.classList.toggle('flipped');
+    if (isOpening) {
+        var back = card.querySelector('.leader-back');
+        if (back) {
+            // Temporarily make back measurable
+            back.style.position = 'relative';
+            back.style.height = 'auto';
+            var needed = back.scrollHeight;
+            back.style.position = '';
+            back.style.height = '';
+            if (needed > leaderBaseH) {
+                card.style.height = needed + 'px';
+            }
+        }
+    } else {
+        card.style.height = leaderBaseH + 'px';
+    }
 }
 
 /* ── Team card flip ── */
