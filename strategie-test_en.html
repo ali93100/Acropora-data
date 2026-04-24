@@ -984,13 +984,15 @@
 .ts-diagram-wrap {
   position: relative;
   z-index: 1;
-  /* height adjusted by JS on small screens */
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
 }
 .ts-diagram {
   position: relative;
   width: 700px;
   height: 700px;
-  margin: 0 auto;
+  flex-shrink: 0;
   transform-origin: top center;
 }
 
@@ -1977,13 +1979,12 @@
 
   // Scale diagram to fit container on small screens
   function scaleDiagram() {
-    const avail = (wrap.offsetWidth || 700) - 32;
+    const avail = wrap.offsetWidth || 700;
     const ratio = Math.min(1, avail / 700);
     if (ratio < 1) {
-      const offset = (avail - 700) / 2 + 40;
       diagram.style.transform = 'scale(' + ratio + ')';
-      diagram.style.transformOrigin = 'top left';
-      diagram.style.marginLeft = offset + 'px';
+      diagram.style.transformOrigin = 'top center';
+      diagram.style.marginLeft = ((avail - 700) / 2) + 'px';
     } else {
       diagram.style.transform = '';
       diagram.style.transformOrigin = '';
