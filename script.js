@@ -4,9 +4,121 @@
 const menuToggle = document.querySelector('.menu-toggle');
 const navMenu = document.querySelector('.nav-menu');
 
-// Note: Le basculement du menu est géré directement par l'attribut onclick 
+// Note: Le basculement du menu est géré directement par l'attribut onclick
 // dans vos fichiers HTML pour éviter les doubles déclenchements.
 // Exemple: onclick="document.querySelector('.nav-menu').classList.toggle('active')"
+
+// ======================
+// Mobile Drill-Down Menu
+// ======================
+(function () {
+    var drillMenu = null, l1Panel = null, l2Panel = null;
+
+    function buildDrillMenu() {
+        if (drillMenu) return;
+
+        // Collect nav items from existing DOM
+        var items = [];
+        document.querySelectorAll('.navbar .nav-item').forEach(function (navItem) {
+            var link = navItem.querySelector('.nav-link');
+            var mega = navItem.querySelector('.mega-menu');
+            var subLinks = [];
+            if (mega) {
+                mega.querySelectorAll('.mega-col a').forEach(function (a) {
+                    var strong = a.querySelector('strong');
+                    subLinks.push({
+                        href: a.getAttribute('href') || '#',
+                        text: strong ? strong.textContent.trim() : a.textContent.trim()
+                    });
+                });
+            }
+            if (link) items.push({ label: link.textContent.trim(), isCta: link.classList.contains('cta-nav'), subLinks: subLinks });
+        });
+
+        // Build overlay
+        drillMenu = document.createElement('div');
+        drillMenu.id = 'mobile-drill-menu';
+        var panels = document.createElement('div');
+        panels.className = 'mdd-panels';
+
+        // --- Level 1 ---
+        l1Panel = document.createElement('div');
+        l1Panel.className = 'mdd-l1';
+        items.forEach(function (item) {
+            var el = document.createElement('div');
+            el.className = 'mdd-item' + (item.isCta ? ' cta' : '');
+            el.innerHTML = '<span>' + item.label + '</span>'
+                + (item.subLinks.length ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>' : '');
+            if (item.subLinks.length) {
+                el.addEventListener('click', function () { showL2(item.label, item.subLinks); });
+            }
+            l1Panel.appendChild(el);
+        });
+
+        // --- Level 2 ---
+        l2Panel = document.createElement('div');
+        l2Panel.className = 'mdd-l2';
+        l2Panel.innerHTML = '<div class="mdd-back"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg><span>Back</span></div><div class="mdd-l2-title"></div><div class="mdd-l2-links"></div>';
+        l2Panel.querySelector('.mdd-back').addEventListener('click', function () {
+            l2Panel.classList.remove('slide-in');
+            l1Panel.classList.remove('slide-out');
+        });
+
+        panels.appendChild(l1Panel);
+        panels.appendChild(l2Panel);
+        drillMenu.appendChild(panels);
+        document.body.appendChild(drillMenu);
+    }
+
+    function showL2(title, links) {
+        l2Panel.querySelector('.mdd-l2-title').textContent = title;
+        var linksEl = l2Panel.querySelector('.mdd-l2-links');
+        linksEl.innerHTML = '';
+        links.forEach(function (link) {
+            var a = document.createElement('a');
+            a.href = link.href;
+            a.textContent = link.text;
+            linksEl.appendChild(a);
+        });
+        l1Panel.classList.add('slide-out');
+        l2Panel.classList.add('slide-in');
+    }
+
+    function toggleDrill(forceClose) {
+        buildDrillMenu();
+        if (forceClose || drillMenu.classList.contains('open')) {
+            drillMenu.classList.remove('open');
+            l1Panel.classList.remove('slide-out');
+            l2Panel.classList.remove('slide-in');
+        } else {
+            drillMenu.classList.add('open');
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var toggle = document.querySelector('.menu-toggle');
+        if (!toggle) return;
+
+        // Override the onclick set in HTML
+        toggle.onclick = function () {
+            this.classList.toggle('active');
+            if (window.innerWidth <= 768) {
+                toggleDrill();
+            } else {
+                var nm = document.querySelector('.nav-menu');
+                if (nm) nm.classList.toggle('active');
+            }
+        };
+
+        // Close on outside click
+        document.addEventListener('click', function (e) {
+            if (!e.target.closest('.navbar') && !e.target.closest('#mobile-drill-menu')) {
+                if (drillMenu) toggleDrill(true);
+                toggle.classList.remove('active');
+            }
+        });
+    });
+})();
 
 
 // Close menu when clicking outside
