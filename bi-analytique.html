@@ -199,7 +199,7 @@
         @media (max-width: 768px) {
             .why-acropora-content { flex-direction: column; gap: 3rem; }
             .why-acropora-img-wrapper { width: 100%; }
-            .why-acropora-img-wrapper img { height: auto; } /* Retour auto sur mobile */
+            .why-acropora-img-wrapper img { height: auto; }
             .use-case-item { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
             .use-case-desc { opacity: 1; transform: none; text-align: left; max-width: 100%; font-size: 0.9rem; }
             .use-case-item:hover .use-case-title { transform: none; }
@@ -207,6 +207,27 @@
             .capability-bubble { position: static !important; width: 240px !important; height: 240px !important; animation: none !important; }
             .engagement-grid { flex-direction: column; gap: 2rem; }
             .engagement-content-box { padding: 2rem; min-height: auto; }
+
+            /* BI Schema - mobile fixes */
+            .bi-schema-wrap { padding: 0.75rem; width: 100%; box-sizing: border-box; }
+            .bi-layer { padding: 0.6rem 0.7rem; }
+            .bi-layer-tag { font-size: 0.58rem; margin-bottom: 0.4rem; }
+
+            /* HUB layer: stack center above outputs */
+            .bi-hub-row { flex-direction: column; align-items: stretch; gap: 0.5rem; }
+            .bi-hub-beam { display: none; }
+            .bi-hub-center { font-size: 0.65rem; width: 100%; text-align: center; }
+            .bi-hub-outputs { grid-template-columns: 1fr 1fr; }
+            .bi-output { font-size: 0.6rem; padding: 0.3rem 0.35rem; }
+
+            /* Processing layer: wrap nodes, hide horizontal connectors */
+            .bi-proc-row { flex-wrap: wrap; justify-content: center; gap: 0.45rem; }
+            .bi-h-flow { display: none; }
+            .bi-proc-node { font-size: 0.62rem; padding: 0.35rem 0.5rem; flex-shrink: 0; }
+
+            /* Foundation layer: 2-column grid */
+            .bi-found-row { flex-wrap: wrap; gap: 0.35rem; }
+            .bi-source { flex: 0 0 calc(50% - 0.18rem); font-size: 0.6rem; padding: 0.4rem 0.25rem; }
         }
     </style>
 </head>

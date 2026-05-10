@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8FFCFJNNG2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date()); gtag('config', 'G-8FFCFJNNG2');
+</script>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="favicon-acropora.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Ebook — Pourquoi les projets data échouent · Acropora Data">
+<title>Pourquoi les projets data échouent — Acropora Data</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   EBOOK — ACROPORA DATA
+   Palette : #0a2a35 · #81abb3 · #f3756e (coral léger) · #fff
+═══════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --dark:    #0a2a35;
+  --darker:  #060f14;
+  --teal:    #81abb3;
+  --coral:   #f3756e;
+  --white:   #ffffff;
+  --gray:    #f4f6f7;
+  --text:    #1a3540;
+  --muted:   rgba(10,42,53,0.52);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--white);
+  color: var(--text);
+  line-height: 1.7;
+}
+
+/* ── PROGRESS BAR ── */
+#eb-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--teal), var(--coral));
+  z-index: 1000;
+  transition: width 0.1s linear;
+}
+
+/* ── BACK + DOWNLOAD NAV ── */
+.eb-topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 2rem;
+  background: rgba(6,15,20,0.92);
+  backdrop-filter: blur(12px);
+}
+.eb-topbar-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.eb-topbar-back:hover { color: var(--teal); }
+.eb-topbar-logo { height: 28px; opacity: 0.9; }
+.eb-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--darker);
+  background: var(--teal);
+  border: none;
+  cursor: pointer;
+  padding: 0.55rem 1.2rem;
+  border-radius: 100px;
+  transition: background 0.25s, transform 0.2s;
+}
+.eb-download-btn:hover {
+  background: #6d99a1;
+  transform: translateY(-1px);
+}
+
+/* ── COVER ── */
+.eb-cover {
+  min-height: 100vh;
+  background: var(--darker);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8rem 2rem 5rem;
+  position: relative;
+  overflow: hidden;
+}
+.eb-cover::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(129,171,179,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.eb-cover::after {
+  content: '';
+  position: absolute;
+  bottom: -10%;
+  right: -5%;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(243,117,110,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+.eb-cover-eyebrow {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 0.7s ease 0.2s forwards;
+}
+.eb-cover-title {
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  max-width: 760px;
+  margin-bottom: 1.4rem;
+  opacity: 0;
+  animation: fadeUp 0.7s ease 0.4s forwards;
+}
+.eb-cover-title em {
+  font-style: normal;
+  color: var(--teal);
+}
+.eb-cover-sub {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.55);
+  max-width: 500px;
+  margin-bottom: 3rem;
+  opacity: 0;
+  animation: fadeUp 0.7s ease 0.6s forwards;
+}
+.eb-cover-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--white);
+  color: var(--darker);
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 0.95rem 2.2rem;
+  border-radius: 100px;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+  opacity: 0;
+  animation: fadeUp 0.7s ease 0.8s forwards;
+}
+.eb-cover-cta:hover {
+  background: var(--teal);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+.eb-cover-meta {
+  position: absolute;
+  bottom: 2.5rem;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0;
+  animation: fadeUp 0.6s ease 1.1s forwards;
+}
+
+/* ── TOC ── */
+.eb-toc {
+  background: var(--gray);
+  padding: 5rem 2rem;
+}
+.eb-toc-inner {
+  max-width: 740px;
+  margin: 0 auto;
+}
+.eb-toc-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 2rem;
+  display: block;
+}
+.eb-toc-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.02em;
+}
+.eb-toc-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.eb-toc-item a {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(10,42,53,0.08);
+  text-decoration: none;
+  color: var(--text);
+  font-size: 0.92rem;
+  font-weight: 500;
+  transition: color 0.2s, padding-left 0.2s;
+}
+.eb-toc-item a:hover {
+  color: var(--teal);
+  padding-left: 0.5rem;
+}
+.eb-toc-num {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--teal);
+  letter-spacing: 0.1em;
+  min-width: 24px;
+}
+.eb-toc-item:last-child a { border-bottom: none; }
+
+/* ── CHAPTER SHARED ── */
+.eb-chapter {
+  padding: 5.5rem 2rem;
+  position: relative;
+}
+.eb-chapter--white { background: var(--white); }
+.eb-chapter--gray  { background: var(--gray); }
+.eb-chapter--dark  { background: var(--dark); color: var(--white); }
+.eb-chapter--darker{ background: var(--darker); color: var(--white); }
+
+.eb-ch-inner {
+  max-width: 740px;
+  margin: 0 auto;
+}
+
+.eb-ch-num {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 0.8rem;
+  display: block;
+}
+.eb-chapter--dark .eb-ch-num,
+.eb-chapter--darker .eb-ch-num { color: rgba(129,171,179,0.8); }
+
+.eb-ch-title {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  margin-bottom: 1.8rem;
+}
+.eb-chapter--dark .eb-ch-title,
+.eb-chapter--darker .eb-ch-title { color: var(--white); }
+
+.eb-ch-intro {
+  font-size: 1.05rem;
+  font-weight: 400;
+  line-height: 1.78;
+  color: rgba(10,42,53,0.75);
+  margin-bottom: 2rem;
+}
+.eb-chapter--dark .eb-ch-intro,
+.eb-chapter--darker .eb-ch-intro { color: rgba(255,255,255,0.65); }
+
+.eb-ch-body {
+  font-size: 0.96rem;
+  line-height: 1.82;
+  color: rgba(10,42,53,0.7);
+}
+.eb-chapter--dark .eb-ch-body,
+.eb-chapter--darker .eb-ch-body { color: rgba(255,255,255,0.6); }
+
+.eb-ch-body + .eb-ch-body { margin-top: 1rem; }
+
+/* ── HIGHLIGHT QUOTE ── */
+.eb-highlight {
+  border-left: 3px solid var(--teal);
+  padding: 1.2rem 1.5rem;
+  margin: 2rem 0;
+  background: rgba(129,171,179,0.07);
+  border-radius: 0 8px 8px 0;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--dark);
+  line-height: 1.65;
+}
+.eb-chapter--dark .eb-highlight,
+.eb-chapter--darker .eb-highlight {
+  background: rgba(129,171,179,0.1);
+  color: rgba(255,255,255,0.85);
+}
+.eb-highlight em {
+  font-style: normal;
+  color: var(--coral);
+}
+
+/* ── SUBCHAPTER ── */
+.eb-subch {
+  margin-top: 3rem;
+}
+.eb-subch-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.eb-chapter--dark .eb-subch-title,
+.eb-chapter--darker .eb-subch-title { color: var(--white); }
+.eb-subch-title::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 2px;
+  background: var(--teal);
+  flex-shrink: 0;
+}
+
+/* ── LIST ── */
+.eb-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin: 1rem 0 1.5rem;
+}
+.eb-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.93rem;
+  color: rgba(10,42,53,0.72);
+  line-height: 1.6;
+}
+.eb-chapter--dark .eb-list li,
+.eb-chapter--darker .eb-list li { color: rgba(255,255,255,0.62); }
+.eb-list li::before {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  min-width: 5px;
+  border-radius: 50%;
+  background: var(--teal);
+  margin-top: 7px;
+}
+
+/* ── MYTH CARDS (ch.6) ── */
+.eb-myths {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-top: 2rem;
+}
+.eb-myth {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(10,42,53,0.08);
+}
+.eb-myth-header {
+  background: rgba(243,117,110,0.08);
+  border-bottom: 1px solid rgba(243,117,110,0.12);
+  padding: 1rem 1.4rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #c0524c;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  user-select: none;
+}
+.eb-myth-header:hover { background: rgba(243,117,110,0.13); }
+.eb-myth-header .eb-myth-icon {
+  font-size: 0.7rem;
+  font-weight: 700;
+  background: rgba(243,117,110,0.15);
+  color: var(--coral);
+  padding: 0.2rem 0.55rem;
+  border-radius: 100px;
+  letter-spacing: 0.08em;
+  flex-shrink: 0;
+}
+.eb-myth-header .eb-myth-arrow {
+  margin-left: auto;
+  transition: transform 0.3s;
+  color: var(--coral);
+  opacity: 0.6;
+}
+.eb-myth.open .eb-myth-arrow { transform: rotate(180deg); }
+.eb-myth-body {
+  background: var(--white);
+  padding: 0 1.4rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.3s ease;
+}
+.eb-myth.open .eb-myth-body {
+  max-height: 200px;
+  padding: 1.1rem 1.4rem;
+}
+.eb-myth-body p {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: rgba(10,42,53,0.7);
+}
+.eb-myth-body strong { color: var(--dark); font-weight: 600; }
+
+/* ── FRAMEWORK CARDS (ch.7) ── */
+.eb-framework {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem;
+  margin-top: 2.5rem;
+}
+.eb-fw-card {
+  border-radius: 14px;
+  padding: 1.6rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.eb-fw-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+}
+.eb-fw-card-num {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: rgba(129,171,179,0.25);
+  line-height: 1;
+  margin-bottom: 0.8rem;
+}
+.eb-fw-card-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 0.75rem;
+}
+.eb-fw-card-qs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.eb-fw-card-qs span {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.5);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.eb-fw-card-qs span::before {
+  content: '→';
+  color: var(--teal);
+  flex-shrink: 0;
+}
+.eb-fw-risk {
+  margin-top: 2rem;
+  padding: 1.2rem 1.5rem;
+  background: rgba(243,117,110,0.1);
+  border: 1px solid rgba(243,117,110,0.2);
+  border-radius: 10px;
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.65;
+}
+.eb-fw-risk strong { color: var(--coral); }
+
+/* ── CLOSING ── */
+.eb-closing {
+  background: linear-gradient(135deg, var(--dark) 0%, #0d3545 100%);
+  padding: 6rem 2rem;
+  text-align: center;
+}
+.eb-closing-inner { max-width: 660px; margin: 0 auto; }
+.eb-closing-title {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.25;
+  margin-bottom: 1.4rem;
+  letter-spacing: -0.02em;
+}
+.eb-closing-body {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.78;
+  margin-bottom: 2.5rem;
+}
+.eb-closing-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.eb-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--teal);
+  color: var(--white);
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0.9rem 2rem;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: background 0.25s, transform 0.2s;
+}
+.eb-btn-primary:hover { background: #6d99a1; transform: translateY(-2px); }
+.eb-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1.5px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.7);
+  font-size: 0.88rem;
+  font-weight: 500;
+  padding: 0.9rem 2rem;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: border-color 0.25s, color 0.25s;
+}
+.eb-btn-ghost:hover { border-color: var(--teal); color: var(--teal); }
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: 0.1s; }
+.reveal-d2 { transition-delay: 0.2s; }
+.reveal-d3 { transition-delay: 0.3s; }
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── PRINT ── */
+@media print {
+  .eb-topbar, #eb-progress, .eb-cover-cta { display: none !important; }
+  .eb-cover { min-height: auto; padding: 3rem 2rem; }
+  .eb-chapter, .eb-toc { padding: 3rem 2rem; }
+  .eb-myth-body { max-height: none !important; padding: 1rem 1.4rem !important; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .eb-framework { grid-template-columns: 1fr; }
+  .eb-topbar { padding: 0.8rem 1rem; }
+}
+</style>
+</head>
+<body>
+
+<div id="eb-progress"></div>
+
+<!-- TOP BAR -->
+<nav class="eb-topbar">
+  <a class="eb-topbar-back" href="blog_en.html">
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 8H3M7 4l-4 4 4 4"/></svg>
+    Field Notes
+  </a>
+  <img src="acropora-logo-transparent.png" alt="Acropora Data" class="eb-topbar-logo">
+  <button class="eb-download-btn" id="btnDownload" onclick="downloadPDF()">
+    <svg id="dlIcon" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v3h10v-3M8 2v8M5 7l3 3 3-3"/></svg>
+    <span id="dlLabel">Télécharger PDF</span>
+  </button>
+</nav>
+
+<!-- COVER -->
+<section class="eb-cover" id="top">
+  <span class="eb-cover-eyebrow">Acropora Data · Ebook</span>
+  <h1 class="eb-cover-title">Pourquoi les projets <em>data échouent</em></h1>
+  <p class="eb-cover-sub">Et ce qui fonctionne réellement dans les organisations — au-delà des tendances et des promesses.</p>
+  <a class="eb-cover-cta" href="#ch1">
+    Lire l'ebook
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v10M4 9l4 4 4-4"/></svg>
+  </a>
+  <span class="eb-cover-meta">Acropora Data · 2026 · Lecture ~12 min</span>
+</section>
+
+<!-- TABLE OF CONTENTS -->
+<section class="eb-toc">
+  <div class="eb-toc-inner reveal">
+    <span class="eb-toc-label">Sommaire</span>
+    <h2 class="eb-toc-title">Ce que vous trouverez dans ce document</h2>
+    <ul class="eb-toc-list">
+      <li class="eb-toc-item"><a href="#ch1"><span class="eb-toc-num">01</span>Introduction</a></li>
+      <li class="eb-toc-item"><a href="#ch2"><span class="eb-toc-num">02</span>La promesse</a></li>
+      <li class="eb-toc-item"><a href="#ch3"><span class="eb-toc-num">03</span>La réalité du terrain</a></li>
+      <li class="eb-toc-item"><a href="#ch4"><span class="eb-toc-num">04</span>Pourquoi les projets échouent</a></li>
+      <li class="eb-toc-item"><a href="#ch5"><span class="eb-toc-num">05</span>Ce qui fonctionne réellement</a></li>
+      <li class="eb-toc-item"><a href="#ch6"><span class="eb-toc-num">06</span>Idées reçues</a></li>
+      <li class="eb-toc-item"><a href="#ch7"><span class="eb-toc-num">07</span>Un cadre simple d'évaluation</a></li>
+      <li class="eb-toc-item"><a href="#ch8"><span class="eb-toc-num">08</span>Conclusion</a></li>
+      <li class="eb-toc-item"><a href="#ch9"><span class="eb-toc-num">09</span>Acropora Data</a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- CH 1 — INTRODUCTION -->
+<section class="eb-chapter eb-chapter--white" id="ch1">
+  <div class="eb-ch-inner">
+    <span class="eb-ch-num reveal">01 · Introduction</span>
+    <h2 class="eb-ch-title reveal">Le paradoxe de la data en entreprise</h2>
+    <p class="eb-ch-intro reveal">Depuis quelques années, la data est devenue le mot d'ordre de presque toutes les directions. Investissements massifs, recrutements, plateformes, initiatives IA — les organisations ne manquent ni d'ambition, ni de budget. Et pourtant.</p>
+    <p class="eb-ch-body reveal">Dans les faits, une grande partie de ces projets stagnent. Certains ne passent jamais à l'échelle. D'autres n'atteignent jamais la production. On parle beaucoup de transformation, mais peu des raisons profondes pour lesquelles cette transformation achoppe.</p>
+
+    <div class="eb-highlight reveal">
+      Ce document ne traite pas des tendances technologiques. Il répond à une question plus fondamentale : <em>pourquoi les projets data sous-performent-ils systématiquement ?</em>
+    </div>
+
+    <p class="eb-ch-body reveal">Les organisations investissent massivement dans des plateformes data, des équipes analytics et des initiatives de machine learning. Ces investissements sont réels. Les résultats, eux, sont souvent décevants. Ce document tente d'expliquer pourquoi — et surtout, ce qui change la donne.</p>
+  </div>
+</section>
+
+<!-- CH 2 — LA PROMESSE -->
+<section class="eb-chapter eb-chapter--gray" id="ch2">
+  <div class="eb-ch-inner">
+    <span class="eb-ch-num reveal">02 · La promesse</span>
+    <h2 class="eb-ch-title reveal">Ce que promet la data — et pourquoi c'est insuffisant</h2>
+    <p class="eb-ch-intro reveal">Le discours dominant est séduisant. Meilleure prise de décision, automatisation à grande échelle, avantage compétitif durable. Avec les bons outils, les entreprises projettent des insights en temps réel, des capacités prédictives, une efficacité opérationnelle transformée.</p>
+    <p class="eb-ch-body reveal">Cette promesse n'est pas fausse. Des organisations en font une réalité, et les bénéfices sont tangibles. Mais elle est incomplète — parce qu'elle ignore systématiquement les conditions nécessaires à sa réalisation.</p>
+
+    <div class="eb-highlight reveal">
+      La promesse décrit la destination. Elle ne dit rien du chemin. Et c'est dans ce chemin que se jouent tous les projets.
+    </div>
+
+    <p class="eb-ch-body reveal">Entre le discours des éditeurs et la réalité des organisations, il existe un fossé que beaucoup découvrent trop tard. Ce fossé n'est pas infranchissable — mais il faut d'abord accepter qu'il existe.</p>
+  </div>
+</section>
+
+<!-- CH 3 — LA RÉALITÉ -->
+<section class="eb-chapter eb-chapter--dark" id="ch3">
+  <div class="eb-ch-inner">
+    <span class="eb-ch-num reveal">03 · La réalité</span>
+    <h2 class="eb-ch-title reveal">Ce que les organisations affrontent vraiment</h2>
+    <p class="eb-ch-intro reveal">Derrière les roadmaps et les présentations de direction, les équipes data font face à des contraintes structurelles qui ne figurent jamais dans les slides de lancement. Voici ce qu'on observe systématiquement sur le terrain.</p>
+
+    <div class="eb-subch reveal">
+      <div class="eb-subch-title">Une donnée fragmentée</div>
+      <p class="eb-ch-body">La réalité de la plupart des organisations, c'est une donnée répartie entre plusieurs systèmes, dans des formats différents, avec des standards incohérents d'un département à l'autre. Il existe rarement une source unique et fiable. Et sans cette fondation, tout le reste vacille.</p>
+    </div>
+
+    <div class="eb-subch reveal">
+      <div class="eb-subch-title">Une qualité de donnée chroniquement sous-estimée</div>
+      <p class="eb-ch-body">Données manquantes, informations obsolètes, incohérences entre sources — ce ne sont pas des anomalies ponctuelles. Ce sont des problèmes structurels, présents dans la quasi-totalité des organisations que nous accompagnons. Ils ne disparaissent pas avec un nouvel outil.</p>
+    </div>
+
+    <div class="eb-subch reveal">
+      <div class="eb-subch-title">Des systèmes d'une complexité réelle</div>
+      <p class="eb-ch-body">Les entreprises reposent sur des infrastructures legacy, des systèmes critiques et des processus fortement interdépendants. Dans cet environnement, chaque modification introduit un risque. La simplicité qu'on voit dans les démos n'existe pas en production.</p>
+    </div>
+
+    <div class="eb-subch reveal">
+      <div class="eb-subch-title">Des équipes qui ne parlent pas le même langage</div>
+      <p class="eb-ch-body">Un projet data implique l'IT, les métiers et les équipes data. Sans gouvernance claire, les priorités divergent, les décisions ralentissent, et les projets se diluent dans des compromis successifs. Ce n'est pas un problème de compétences — c'est un problème d'alignement.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CH 4 — POURQUOI ÇA ÉCHOUE -->
+<section class="eb-chapter eb-chapter--white" id="ch4">
+  <div class="eb-ch-inner">
+    <span class="eb-ch-num reveal">04 · Les schémas d'échec</span>
+    <h2 class="eb-ch-title reveal">Pourquoi les projets échouent — et ce n'est pas une surprise</h2>
+    <p class="eb-ch-intro reveal">Les échecs data ne sont pas accidentels. Ils suivent des schémas récurrents, prévisibles, que nous observons d'une organisation à l'autre. Les identifier, c'est déjà se donner les moyens de les éviter.</p>
+
+    <div class="eb-subch reveal">
+      <div class="eb-subch-title">La focalisation excessive sur les outils</div>
+      <p class="eb-ch-body">Les entreprises investissent dans de nouvelles plateformes, des modèles avancés, des architectures modernes. C'est légitime. Mais les outils n'ont jamais résolu l'incohérence des données ni les frictions organisationnelles. Ils les amplifient, au mieux.</p>
+    </div>
+
+    <div class="eb-subch reveal">
+      <div class="eb-subch-title">La sous-estimation du passage à l'échelle</div>
+      <p class="eb-ch-body">Un prototype fonctionnel n'est pas un système opérationnel. Ce saut — du proof of concept à la production réelle — nécessite une intégration aux processus existants, une compatibilité avec les systèmes en place, et une stabilité opérationnelle que beaucoup n'anticipent pas.</p>
+    </div>
+
+    <div class="eb-subch reveal">
+      <div class="eb-subch-title">Des cas d'usage flous</div>
+      <p class="eb-ch-body">Les projets échouent lorsque les objectifs sont vagues, lorsque le succès n'est pas mesurable et lorsque le périmètre est trop large pour être réellement piloté. On ne résout pas un problème qu'on n'a pas défini précisément.</p>
+    </div>
+
+    <div class="eb-subch reveal">
+      <div class="eb-subch-title">L'absence de responsabilité claire</div>
+      <p class="eb-ch-body">Sans ownership identifié, les décisions sont retardées, les rôles se chevauchent, et l'exécution s'affaiblit progressivement. Un projet data sans sponsor réel est un projet en sursis.</p>
+    </div>
+
+    <div class="eb-subch reveal">
+      <div class="eb-subch-title">Des attentes déconnectées de la réalité</div>
+      <p class="eb-ch-body">Les attentes sont souvent façonnées par les promesses des éditeurs et le discours du marché. Elles ignorent les contraintes réelles, les dépendances, et les délais nécessaires. Le résultat : des projets lancés avec enthousiasme, abandonnés dans la frustration.</p>
+    </div>
+
+    <div class="eb-highlight reveal">
+      Aucun de ces schémas n'est inévitable. Mais aucun ne disparaît seul. <em>Il faut les nommer pour les traiter.</em>
+    </div>
+  </div>
+</section>
+
+<!-- CH 5 — CE QUI FONCTIONNE -->
+<section class="eb-chapter eb-chapter--gray" id="ch5">
+  <div class="eb-ch-inner">
+    <span class="eb-ch-num reveal">05 · Ce qui fonctionne</span>
+    <h2 class="eb-ch-title reveal">Les initiatives data qui réussissent suivent une logique différente</h2>
+    <p class="eb-ch-intro reveal">Les organisations qui obtiennent des résultats durables ne sont pas celles qui bougent le plus vite, ni celles qui investissent le plus. Ce sont celles qui travaillent différemment — avec plus de rigueur et moins d'illusions.</p>
+
+    <div class="eb-subch reveal">
+      <div class="eb-subch-title">Partir des contraintes, pas des ambitions</div>
+      <p class="eb-ch-body">Au lieu de demander "Que peut-on construire ?", les projets efficaces demandent "Que peut-on réellement intégrer dans notre environnement actuel ?" Ce changement de perspective change tout.</p>
+    </div>
+
+    <div class="eb-subch reveal">
+      <div class="eb-subch-title">Prioriser la fiabilité des données en amont</div>
+      <p class="eb-ch-body">Avant toute initiative IA ou analytics avancée, les fondations doivent tenir. Identifier les sources critiques, évaluer la qualité, garantir la cohérence. Sans données fiables, il n'existe pas de système durable — quelle que soit la sophistication de la couche au-dessus.</p>
+    </div>
+
+    <div class="eb-subch reveal">
+      <div class="eb-subch-title">Cibler des cas d'usage précis et mesurables</div>
+      <p class="eb-ch-body">Les projets efficaces répondent à un problème concret, produisent un impact mesurable, et peuvent être étendus progressivement. La précision n'est pas une limitation — c'est ce qui rend les résultats possibles.</p>
+    </div>
+
+    <div class="eb-subch reveal">
+      <div class="eb-subch-title">Concevoir pour l'intégration dès le départ</div>
+      <p class="eb-ch-body">Tenir compte des systèmes existants, anticiper les dépendances, éviter les solutions isolées. Une solution qui ne s'intègre pas au reste de l'organisation n'est pas une solution — c'est un problème supplémentaire.</p>
+    </div>
+
+    <div class="eb-subch reveal">
+      <div class="eb-subch-title">Aligner les parties prenantes avant d'exécuter</div>
+      <p class="eb-ch-body">Un responsable clairement identifié, des objectifs partagés, une coordination continue. L'alignement n'est pas un luxe en début de projet — c'est ce qui détermine si le projet existe encore six mois plus tard.</p>
+    </div>
+
+    <div class="eb-subch reveal">
+      <div class="eb-subch-title">Accepter la progression itérative</div>
+      <p class="eb-ch-body">Les résultats durables reposent sur l'itération, la validation et l'adaptation. Pas sur des déploiements massifs et rapides qui créent autant de problèmes qu'ils en résolvent.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CH 6 — IDÉES REÇUES -->
+<section class="eb-chapter eb-chapter--white" id="ch6">
+  <div class="eb-ch-inner">
+    <span class="eb-ch-num reveal">06 · Idées reçues</span>
+    <h2 class="eb-ch-title reveal">Ce qu'on entend souvent — et ce que ça cache</h2>
+    <p class="eb-ch-intro reveal">Certaines croyances sont si répandues dans l'écosystème data qu'elles finissent par s'imposer comme des évidences. Ce sont pourtant elles qui expliquent une bonne partie des échecs.</p>
+    <p class="eb-ch-body reveal" style="margin-bottom:0.5rem;">Cliquez sur chaque idée reçue pour voir la réalité.</p>
+
+    <div class="eb-myths reveal">
+
+      <div class="eb-myth" onclick="toggleMyth(this)">
+        <div class="eb-myth-header">
+          <span class="eb-myth-icon">Mythe</span>
+          "Les bons outils suffisent"
+          <svg class="eb-myth-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg>
+        </div>
+        <div class="eb-myth-body">
+          <p><strong>Faux.</strong> Les outils amplifient ce qui existe déjà — ils ne le corrigent pas. Un bon outil sur des données incohérentes produit des résultats incohérents plus rapidement. La technologie est un levier, pas une solution en soi.</p>
+        </div>
+      </div>
+
+      <div class="eb-myth" onclick="toggleMyth(this)">
+        <div class="eb-myth-header">
+          <span class="eb-myth-icon">Mythe</span>
+          "L'IA compensera une mauvaise donnée"
+          <svg class="eb-myth-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg>
+        </div>
+        <div class="eb-myth-body">
+          <p><strong>Faux.</strong> L'IA dépend directement de la qualité des données qu'elle consomme. Un modèle entraîné sur des données fragmentées ou incohérentes produira des résultats fragmentés et incohérents — avec une apparence de confiance qui les rend encore plus dangereux.</p>
+        </div>
+      </div>
+
+      <div class="eb-myth" onclick="toggleMyth(this)">
+        <div class="eb-myth-header">
+          <span class="eb-myth-icon">Mythe</span>
+          "Il faut aller plus vite"
+          <svg class="eb-myth-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg>
+        </div>
+        <div class="eb-myth-body">
+          <p><strong>Contre-productif.</strong> Sans structure, la vitesse aggrave les problèmes. Elle multiplie les erreurs, accélère les mauvaises décisions et crée une dette technique que l'organisation mettra des années à rembourser.</p>
+        </div>
+      </div>
+
+      <div class="eb-myth" onclick="toggleMyth(this)">
+        <div class="eb-myth-header">
+          <span class="eb-myth-icon">Mythe</span>
+          "La transformation data est un sujet technique"
+          <svg class="eb-myth-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg>
+        </div>
+        <div class="eb-myth-body">
+          <p><strong>C'est avant tout organisationnel.</strong> Les projets data les plus complexes que nous ayons accompagnés n'ont pas échoué sur des questions techniques. Ils ont échoué sur des questions de gouvernance, d'ownership, de communication entre équipes — des sujets humains.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CH 7 — CADRE -->
+<section class="eb-chapter eb-chapter--darker" id="ch7">
+  <div class="eb-ch-inner">
+    <span class="eb-ch-num reveal">07 · Un cadre simple</span>
+    <h2 class="eb-ch-title reveal">Quatre questions pour évaluer n'importe quel projet data</h2>
+    <p class="eb-ch-intro reveal">Avant de lancer un projet, ou pour diagnostiquer un projet en difficulté, posez-vous ces quatre questions. Si l'une d'elles reste sans réponse solide, le projet est à risque.</p>
+
+    <div class="eb-framework">
+      <div class="eb-fw-card reveal">
+        <div class="eb-fw-card-num">01</div>
+        <div class="eb-fw-card-title">La Donnée</div>
+        <div class="eb-fw-card-qs">
+          <span>Est-elle disponible ?</span>
+          <span>Est-elle fiable ?</span>
+        </div>
+      </div>
+      <div class="eb-fw-card reveal reveal-d1">
+        <div class="eb-fw-card-num">02</div>
+        <div class="eb-fw-card-title">Le Système</div>
+        <div class="eb-fw-card-qs">
+          <span>Peut-on l'intégrer ?</span>
+          <span>Quelles sont les dépendances ?</span>
+        </div>
+      </div>
+      <div class="eb-fw-card reveal reveal-d2">
+        <div class="eb-fw-card-num">03</div>
+        <div class="eb-fw-card-title">Le Cas d'usage</div>
+        <div class="eb-fw-card-qs">
+          <span>L'objectif est-il clair ?</span>
+          <span>Le succès est-il mesurable ?</span>
+        </div>
+      </div>
+      <div class="eb-fw-card reveal reveal-d3">
+        <div class="eb-fw-card-num">04</div>
+        <div class="eb-fw-card-title">L'Organisation</div>
+        <div class="eb-fw-card-qs">
+          <span>Qui est responsable ?</span>
+          <span>Les équipes sont-elles alignées ?</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="eb-fw-risk reveal">
+      <strong>Si un de ces éléments échoue, le projet est à risque.</strong> Ce cadre ne garantit pas le succès — mais il permet de ne pas avancer aveuglément vers l'échec.
+    </div>
+  </div>
+</section>
+
+<!-- CH 8 — CONCLUSION -->
+<section class="eb-chapter eb-chapter--white" id="ch8">
+  <div class="eb-ch-inner">
+    <span class="eb-ch-num reveal">08 · Conclusion</span>
+    <h2 class="eb-ch-title reveal">L'ambition ne suffit pas. La structure, si.</h2>
+    <p class="eb-ch-intro reveal">Les projets data n'échouent pas par manque d'ambition. Les organisations que nous accompagnons en ont en général beaucoup. Ils échouent parce que la complexité est sous-estimée, les contraintes ignorées, et la structure insuffisante pour absorber la réalité du terrain.</p>
+    <p class="eb-ch-body reveal">L'objectif n'est pas de faire plus. C'est de faire fonctionner ce qui est construit — de construire des systèmes qui durent, des processus qui tiennent dans le temps, et des décisions fondées sur des données en lesquelles on peut réellement avoir confiance.</p>
+
+    <div class="eb-highlight reveal">
+      La data n'est pas une destination. C'est un travail de fond, continu, qui demande autant de rigueur organisationnelle que de sophistication technique. <em>C'est ce travail-là qui crée de la valeur.</em>
+    </div>
+  </div>
+</section>
+
+<!-- CH 9 — CLOSING -->
+<section class="eb-closing" id="ch9">
+  <div class="eb-closing-inner">
+    <span class="eb-ch-num reveal" style="display:block;text-align:center;margin-bottom:1rem;">09 · Acropora Data</span>
+    <h2 class="eb-closing-title reveal">Nous ne suivons pas les tendances.<br>Nous construisons ce qui fonctionne.</h2>
+    <p class="eb-closing-body reveal">Chez Acropora Data, notre objectif est simple : rendre la donnée réellement exploitable, aligner les systèmes avec la réalité opérationnelle, et construire des solutions que les équipes utilisent vraiment. Pas des démos. Pas des prototypes. Des systèmes qui tournent.</p>
+    <div class="eb-closing-actions reveal">
+      <a class="eb-btn-primary" href="contact_en.html">
+        Parler de votre projet
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+      <a class="eb-btn-ghost" href="blog_en.html">
+        Retour au blog
+      </a>
+    </div>
+  </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+/* Progress bar */
+window.addEventListener('scroll', function () {
+  var scrolled = window.scrollY;
+  var total = document.documentElement.scrollHeight - window.innerHeight;
+  document.getElementById('eb-progress').style.width = (scrolled / total * 100) + '%';
+});
+
+/* Scroll reveal */
+(function () {
+  var els = document.querySelectorAll('.reveal');
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  els.forEach(function (el) { io.observe(el); });
+})();
+
+/* Myth toggle */
+function toggleMyth(el) {
+  var isOpen = el.classList.contains('open');
+  document.querySelectorAll('.eb-myth.open').forEach(function (m) { m.classList.remove('open'); });
+  if (!isOpen) el.classList.add('open');
+}
+
+/* PDF Download */
+function downloadPDF() {
+  var btn = document.getElementById('btnDownload');
+  var label = document.getElementById('dlLabel');
+  var icon = document.getElementById('dlIcon');
+
+  /* Loading state */
+  btn.disabled = true;
+  label.textContent = 'Génération…';
+  icon.innerHTML = '<circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="2" fill="none" stroke-dasharray="20" stroke-dashoffset="0"><animateTransform attributeName="transform" type="rotate" from="0 8 8" to="360 8 8" dur="0.8s" repeatCount="indefinite"/></circle>';
+
+  /* Open all myths for PDF */
+  document.querySelectorAll('.eb-myth').forEach(function (m) { m.classList.add('open'); });
+
+  /* Make all reveal elements visible */
+  document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visible'); });
+
+  var element = document.body;
+  var opt = {
+    margin:       [10, 8, 10, 8],
+    filename:     'Acropora-Data_Pourquoi-les-projets-data-echouent.pdf',
+    image:        { type: 'jpeg', quality: 0.95 },
+    html2canvas:  { scale: 1.8, useCORS: true, logging: false, scrollY: 0 },
+    jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
+    pagebreak:    { mode: ['avoid-all', 'css', 'legacy'] }
+  };
+
+  html2pdf().set(opt).from(element).save().then(function () {
+    /* Restore button */
+    btn.disabled = false;
+    label.textContent = 'Télécharger PDF';
+    icon.innerHTML = '<path d="M3 11v3h10v-3M8 2v8M5 7l3 3 3-3"/>';
+  });
+}
+</script>
+</body>
+</html>

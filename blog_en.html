@@ -1,196 +1,787 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8FFCFJNNG2"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-8FFCFJNNG2');
+  gtag('js', new Date()); gtag('config', 'G-8FFCFJNNG2');
 </script>
-    <meta charset="UTF-8">
-    <link rel="icon" type="image/png" href="favicon-acropora.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog & Articles - Acropora Data</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="pages.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="favicon-acropora.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Field Notes — Insights from real-world data missions by Acropora Data">
+<title>Field Notes — Acropora Data</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="pages.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   FIELD NOTES — BLOG PAGE
+═══════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  background: #f7f8f9;
+  color: #0a2a35;
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+}
+.parallax-coral { display: none; }
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: 0.08s; }
+.reveal-d2 { transition-delay: 0.18s; }
+.reveal-d3 { transition-delay: 0.28s; }
+
+/* Hero uses page-hero from pages.css */
+
+/* ── FEATURED SECTION ─────────────────────── */
+.fn-featured {
+  background: #fff;
+  padding: 5rem 2rem;
+}
+
+.fn-section-header {
+  max-width: 1060px; margin: 0 auto 2.8rem;
+  display: flex; align-items: center; gap: 1.2rem;
+}
+.fn-section-label {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.2em;
+  text-transform: uppercase; color: rgba(10,42,53,0.35);
+}
+.fn-section-line { flex: 1; height: 1px; background: rgba(10,42,53,0.08); }
+
+/* Featured card */
+.fn-feat-card {
+  max-width: 1060px; margin: 0 auto;
+  background: #fff;
+  border: 1px solid rgba(10,42,53,0.08);
+  border-radius: 20px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  box-shadow: 0 4px 40px rgba(10,42,53,0.07);
+  transition: box-shadow .35s, transform .35s;
+  cursor: pointer;
+  text-decoration: none;
+}
+.fn-feat-card:hover {
+  box-shadow: 0 16px 60px rgba(10,42,53,0.14);
+  transform: translateY(-4px);
+}
+
+/* Left: content */
+.fn-feat-content {
+  padding: 3rem 3rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Badge */
+.fn-feat-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(129,171,179,0.12);
+  border: 1px solid rgba(129,171,179,0.3);
+  border-radius: 100px;
+  padding: 0.3rem 0.85rem;
+  width: fit-content;
+  margin-bottom: 1.4rem;
+}
+.fn-feat-badge-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #81abb3;
+  animation: pulse 2s ease infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(129,171,179,0.5); }
+  50% { box-shadow: 0 0 0 5px rgba(129,171,179,0); }
+}
+.fn-feat-badge-text {
+  font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: #81abb3;
+}
+
+.fn-feat-category {
+  font-size: 0.78rem; font-weight: 500;
+  color: rgba(10,42,53,0.4);
+  letter-spacing: 0.06em; text-transform: uppercase;
+  margin-bottom: 0.85rem;
+}
+
+.fn-feat-title {
+  font-size: clamp(1.4rem, 2.5vw, 1.95rem);
+  font-weight: 700;
+  color: #0a2a35;
+  line-height: 1.22;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.1rem;
+}
+
+.fn-feat-teaser {
+  font-size: 0.95rem;
+  line-height: 1.72;
+  color: rgba(10,42,53,0.6);
+  margin: 0 0 1.8rem;
+  max-width: 480px;
+}
+
+/* City tags */
+.fn-feat-tags {
+  display: flex; flex-wrap: wrap; gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+.fn-feat-tag {
+  font-size: 0.72rem; font-weight: 500;
+  padding: 0.3rem 0.8rem;
+  border-radius: 100px;
+  background: #f0f4f5;
+  color: rgba(10,42,53,0.6);
+  border: 1px solid rgba(10,42,53,0.07);
+}
+
+/* CTA */
+.fn-feat-cta {
+  display: inline-flex; align-items: center; gap: 0.55rem;
+  font-size: 0.85rem; font-weight: 600;
+  color: #0a2a35;
+  margin-bottom: 2rem;
+  transition: gap 0.2s;
+}
+.fn-feat-cta:hover { gap: 0.9rem; }
+
+/* Meta */
+.fn-feat-meta {
+  display: flex; align-items: center; gap: 1rem;
+  font-size: 0.75rem; color: rgba(10,42,53,0.38);
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(10,42,53,0.07);
+}
+.fn-feat-meta-dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(10,42,53,0.2); }
+
+/* Right: visual panel */
+.fn-feat-visual {
+  position: relative;
+  overflow: hidden;
+  min-height: 380px;
+}
+.fn-feat-visual img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transition: transform .5s ease;
+}
+.fn-feat-card:hover .fn-feat-visual img { transform: scale(1.04); }
+.fn-feat-visual-label {
+  position: absolute; bottom: 1.4rem; right: 1.4rem;
+  display: flex; align-items: center; gap: 0.8rem;
+}
+.fn-feat-visual-tag {
+  background: rgba(5,18,28,0.55);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  font-size: 0.68rem; font-weight: 600;
+  padding: 0.35rem 0.8rem; border-radius: 100px;
+  letter-spacing: 0.08em;
+}
+.fn-feat-visual-num {
+  font-size: 0.65rem; font-weight: 700;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.12em;
+}
+
+/* ── OTHER ARTICLES ───────────────────────── */
+.fn-articles {
+  background: #f7f8f9;
+  padding: 5rem 2rem;
+}
+.fn-articles-inner {
+  max-width: 1060px; margin: 0 auto;
+}
+.fn-articles-header {
+  display: flex; align-items: center; gap: 1.2rem;
+  margin-bottom: 2.8rem;
+}
+
+.fn-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6rem;
+}
+
+.fn-card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(10,42,53,0.07);
+  box-shadow: 0 2px 20px rgba(10,42,53,0.05);
+  transition: box-shadow .3s, transform .3s;
+  text-decoration: none;
+  display: flex; flex-direction: column;
+}
+.fn-card:hover {
+  box-shadow: 0 10px 40px rgba(10,42,53,0.12);
+  transform: translateY(-3px);
+}
+.fn-card-bar {
+  height: 4px;
+  width: 100%;
+}
+.fn-card-bar--teal { background: #81abb3; }
+.fn-card-bar--coral { background: #f3756e; }
+.fn-card-bar--slate { background: #5a7a87; }
+
+.fn-card-body {
+  padding: 1.8rem;
+  flex: 1;
+  display: flex; flex-direction: column;
+}
+.fn-card-cat {
+  font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: rgba(10,42,53,0.38);
+  margin-bottom: 0.8rem;
+}
+.fn-card-title {
+  font-size: 1rem; font-weight: 700;
+  color: #0a2a35; line-height: 1.35;
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.01em;
+}
+.fn-card-teaser {
+  font-size: 0.85rem; line-height: 1.65;
+  color: rgba(10,42,53,0.55);
+  margin: 0; flex: 1;
+}
+.fn-card-footer {
+  padding: 1rem 1.8rem 1.5rem;
+  font-size: 0.72rem;
+  color: rgba(10,42,53,0.3);
+  display: flex; align-items: center; gap: 0.6rem;
+  border-top: 1px solid rgba(10,42,53,0.05);
+}
+.fn-card-soon {
+  display: inline-block;
+  font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 0.2rem 0.65rem;
+  border-radius: 100px;
+  background: rgba(10,42,53,0.05);
+  color: rgba(10,42,53,0.35);
+  margin-left: auto;
+}
+
+/* ── VISUAL BREAK ─────────────────────────── */
+.fn-break {
+  background: #0a2a35;
+  padding: 6rem 2rem;
+}
+.fn-break-inner {
+  max-width: 700px; margin: 0 auto;
+  text-align: center;
+}
+.fn-break-quote {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 300;
+  color: #fff;
+  line-height: 1.45;
+  margin: 0 0 1.2rem;
+  letter-spacing: -0.01em;
+}
+.fn-break-quote em {
+  font-style: normal;
+  font-weight: 700;
+  color: #81abb3;
+}
+.fn-break-sub {
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ── RESPONSIVE ───────────────────────────── */
+@media (max-width: 900px) {
+  .fn-feat-card { grid-template-columns: 1fr; }
+  .fn-feat-visual { min-height: 260px; order: -1; }
+  .fn-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .fn-grid { grid-template-columns: 1fr; }
+  .fn-feat-content { padding: 2rem 1.5rem; }
+}
+</style>
 </head>
 <body>
-<div class="parallax-coral"><div class="coral-shape"></div><div class="coral-shape"></div><div class="coral-shape"></div><div class="coral-shape"></div></div>
+
+<!-- NAV -->
+<div class="parallax-coral"></div>
 <nav class="navbar">
-    <div class="nav-container">
-        <div class="logo-container">
-            <a href="index_en.html"><img src="acropora-logo-transparent.png" alt="Acropora Data" class="logo"></a>
+  <div class="nav-container">
+    <div class="logo-container">
+      <a href="index_en.html"><img src="acropora-logo-transparent.png" alt="Acropora Data" class="logo"></a>
+    </div>
+    <ul class="nav-menu">
+      <li class="nav-item">
+        <a href="javascript:void(0)" class="nav-link" style="cursor:default;">About Us</a>
+        <div class="mega-menu">
+          <div class="mega-menu-inner mega-menu-4">
+            <div class="mega-col"><div class="mega-col-title">The Company</div><a href="presentation_en.html"><span class="link-text"><strong>Overview</strong><span>Our history and vision</span></span></a></div>
+            <div class="mega-col"><div class="mega-col-title">Method</div><a href="approche-donnees_en.html"><span class="link-text"><strong>Our Data Approach</strong><span>Methodology &amp; framework</span></span></a></div>
+            <div class="mega-col"><div class="mega-col-title">People</div><a href="equipe_en.html"><span class="link-text"><strong>Team</strong><span>Our data experts</span></span></a></div>
+            <div class="mega-col"><div class="mega-col-title">Commitment</div><a href="ethique_en.html"><span class="link-text"><strong>Ethics &amp; Values</strong><span>Our founding principles</span></span></a></div>
+          </div>
         </div>
-        <ul class="nav-menu">
-            <li class="nav-item">
-                <a href="javascript:void(0)" class="nav-link" style="cursor: default;">About Us</a>
-                <div class="mega-menu">
-                    <div class="mega-menu-inner mega-menu-4">
-                        <div class="mega-col"><div class="mega-col-title">The Company</div><a href="presentation_en.html"><span class="link-text"><strong>Overview</strong><span>Our history and vision</span></span></a></div>
-                        <div class="mega-col"><div class="mega-col-title">Method</div><a href="approche-donnees_en.html"><span class="link-text"><strong>Our Data Approach</strong><span>Methodology & framework</span></span></a></div>
-                        <div class="mega-col"><div class="mega-col-title">People</div><a href="equipe_en.html"><span class="link-text"><strong>Team</strong><span>Our data experts</span></span></a></div>
-                        <div class="mega-col"><div class="mega-col-title">Commitment</div><a href="ethique_en.html"><span class="link-text"><strong>Ethics & Values</strong><span>Our founding principles</span></span></a></div>
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a href="javascript:void(0)" class="nav-link" style="cursor: default;">Solutions & Expertise</a>
-                <div class="mega-menu">
-                    <div class="mega-menu-inner mega-menu-4">
-                        <div class="mega-col"><div class="mega-col-title">MDM</div><a href="mdm_en.html"><span class="link-text"><strong>MDM & Integration</strong><span>Repositories & pipelines</span></span></a><a href="ai-foundations_en.html"><span class="link-text"><strong>AI Foundations</strong><span>AI-ready data landscapes</span></span></a></div>
-                        <div class="mega-col"><div class="mega-col-title">Migration</div><a href="strategie-test_en.html"><span class="link-text"><strong>Test Strategy</strong><span>Seamless transition</span></span></a><a href="tests-validation_en.html"><span class="link-text"><strong>Automation Testing</strong><span>Quality & compliance</span></span></a></div>
-                        <div class="mega-col"><div class="mega-col-title">Analytics</div><a href="bi-analytique_en.html"><span class="link-text"><strong>BI & Analytics</strong><span>Insights and reporting</span></span></a></div>
-                        <div class="mega-col"><div class="mega-col-title">Audit</div><a href="cadrage-projet_en.html"><span class="link-text"><strong>Project Scoping</strong><span>Structuring your initiatives</span></span></a></div>
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a href="javascript:void(0)" class="nav-link" style="cursor: default;">Partners</a>
-                <div class="mega-menu">
-                    <div class="mega-menu-inner mega-menu-2">
-                        <div class="mega-col">
-                            <div class="mega-col-title">Technology</div>
-                            <a href="partenaires-technologiques_en.html"><span class="link-text"><strong>Technology Partners</strong><span>Semarchy, OnEBX, Talend...</span></span></a>
-                        </div>
-                        <div class="mega-col">
-                            <div class="mega-col-title">Business</div>
-                            <a href="partenaires-commerciaux_en.html"><span class="link-text"><strong>Business Partners</strong><span>Business alliances and synergies</span></span></a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            
-            <li class="nav-item">
-                <a href="javascript:void(0)" class="nav-link cta-nav" style="cursor: default;">Contact</a>
-                <div class="mega-menu">
-                    <div class="mega-menu-inner mega-menu-5">
-                        <div class="mega-col"><div class="mega-col-title">Join Us</div><a href="carrieres_en.html"><span class="link-text"><strong>Careers</strong><span>Jobs & applications</span></span></a></div>
-                        <div class="mega-col"><div class="mega-col-title">Partnership</div><a href="devenir-partenaire_en.html"><span class="link-text"><strong>Become a partner</strong><span>Join the ecosystem</span></span></a></div>
-                    </div>
-                </div>
-            </li>
-            
-        </ul>
-        <button class="menu-toggle" onclick="this.classList.toggle('active'); document.querySelector('.nav-menu').classList.toggle('active')"><span></span><span></span><span></span></button>
-    </div>
+      </li>
+      <li class="nav-item">
+        <a href="javascript:void(0)" class="nav-link" style="cursor:default;">Solutions &amp; Expertise</a>
+        <div class="mega-menu">
+          <div class="mega-menu-inner mega-menu-4">
+            <div class="mega-col"><div class="mega-col-title">MDM</div><a href="mdm_en.html"><span class="link-text"><strong>MDM &amp; Integration</strong><span>Repositories &amp; pipelines</span></span></a><a href="ai-foundations_en.html"><span class="link-text"><strong>AI Foundations</strong><span>AI-ready data landscapes</span></span></a></div>
+            <div class="mega-col"><div class="mega-col-title">Quality Assurance</div><a href="strategie-test_en.html"><span class="link-text"><strong>Test Strategy</strong><span>Seamless transition</span></span></a><a href="tests-validation_en.html"><span class="link-text"><strong>Automation Testing</strong><span>Quality &amp; compliance</span></span></a></div>
+            <div class="mega-col"><div class="mega-col-title">Analytics</div><a href="bi-analytique_en.html"><span class="link-text"><strong>BI &amp; Analytics</strong><span>Insights and reporting</span></span></a></div>
+            <div class="mega-col"><div class="mega-col-title">Audit</div><a href="cadrage-projet_en.html"><span class="link-text"><strong>Project Scoping</strong><span>Structuring your initiatives</span></span></a></div>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="javascript:void(0)" class="nav-link" style="cursor:default;">Partners</a>
+        <div class="mega-menu">
+          <div class="mega-menu-inner mega-menu-2">
+            <div class="mega-col"><div class="mega-col-title">Technology</div><a href="partenaires-technologiques_en.html"><span class="link-text"><strong>Technology Partners</strong><span>Semarchy, OnEBX, Talend...</span></span></a></div>
+            <div class="mega-col"><div class="mega-col-title">Business</div><a href="partenaires-commerciaux_en.html"><span class="link-text"><strong>Business Partners</strong><span>Business alliances and synergies</span></span></a></div>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="javascript:void(0)" class="nav-link" style="cursor:default;">Resources</a>
+        <div class="mega-menu">
+          <div class="mega-menu-inner mega-menu-2">
+            <div class="mega-col"><div class="mega-col-title">Insights</div><a href="blog_en.html"><span class="link-text"><strong>Field Notes</strong><span>Real-world data insights</span></span></a></div>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="javascript:void(0)" class="nav-link cta-nav" style="cursor:default;">Contact</a>
+        <div class="mega-menu">
+          <div class="mega-menu-inner mega-menu-5">
+            <div class="mega-col"><div class="mega-col-title">Join Us</div><a href="carrieres_en.html"><span class="link-text"><strong>Careers</strong><span>Jobs &amp; applications</span></span></a></div>
+            <div class="mega-col"><div class="mega-col-title">Partnership</div><a href="devenir-partenaire_en.html"><span class="link-text"><strong>Become a partner</strong><span>Join the ecosystem</span></span></a></div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <button class="menu-toggle" onclick="this.classList.toggle('active'); document.querySelector('.nav-menu').classList.toggle('active')"><span></span><span></span><span></span></button>
+  </div>
 </nav>
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
 <section class="page-hero" data-hero-anim="blog">
-    <div class="container">
-        <h1 class="page-title">Blog & Articles — Acropost</h1>
-        <p class="page-subtitle">Acropora Data's media channel</p>
-    </div>
-</section>
-<section class="page-section">
   <div class="container">
-    <div class="section-header fade-in"><h2>Latest Articles</h2><div class="section-line"></div></div>
-    <div class="resources-grid">
-      <div class="resource-card fade-in"><span class="resource-type">Trends</span><h3>MDM Trends 2025</h3><p>Generative AI, data mesh, MDM as a Service: what is transforming the market in 2025</p><a href="#" class="btn-link">Read →</a></div>
-      <div class="resource-card fade-in"><span class="resource-type">Best Practices</span><h3>Data Governance: The 2025 Guide</h3><p>From theory to practice: effective governance in 6 concrete steps</p><a href="#" class="btn-link">Read →</a></div>
-      <div class="resource-card fade-in"><span class="resource-type">Technical</span><h3>Snowflake + Informatica MDM</h3><p>Architecture, performance, and lessons learned from a hybrid retail deployment</p><a href="#" class="btn-link">Read →</a></div>
-      <div class="resource-card fade-in"><span class="resource-type">Opinion</span><h3>MDM: The Foundation of Reliable AI</h3><p>Garbage in, garbage out: without clean data, AI becomes a risk</p><a href="#" class="btn-link">Read →</a></div>
+    <h1 class="page-title">Blog</h1>
+    <p class="page-subtitle">What we actually see in the field — no filters, no generic advice.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FEATURED ARTICLE
+══════════════════════════════════════════ -->
+<section class="fn-featured">
+  <div class="fn-section-header reveal">
+    <span class="fn-section-label">Featured article</span>
+    <div class="fn-section-line"></div>
+  </div>
+
+  <a class="fn-feat-card reveal" href="europe-trip.html">
+
+    <!-- LEFT: text content -->
+    <div class="fn-feat-content">
+
+      <div class="fn-feat-badge">
+        <div class="fn-feat-badge-dot"></div>
+        <span class="fn-feat-badge-text">Featured</span>
+      </div>
+
+      <div class="fn-feat-category">Field Report · April 2026</div>
+
+      <h2 class="fn-feat-title">European Field Mission —&nbsp;April&nbsp;2026</h2>
+
+      <p class="fn-feat-teaser">From Prague to London, then into French industrial systems — what we observed across radically different environments, and why the gap between data ambition and data reality is still wider than anyone admits.</p>
+
+      <div class="fn-feat-tags">
+        <span class="fn-feat-tag">Prague</span>
+        <span class="fn-feat-tag">London</span>
+        <span class="fn-feat-tag">Saint-Denis</span>
+        <span class="fn-feat-tag">La Défense</span>
+      </div>
+
+      <span class="fn-feat-cta">
+        Read article
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </span>
+
+      <div class="fn-feat-meta">
+        <span>Acropora Data</span>
+        <span class="fn-feat-meta-dot"></span>
+        <span>April 2026</span>
+        <span class="fn-feat-meta-dot"></span>
+        <span>8 min read</span>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: visual panel -->
+    <div class="fn-feat-visual">
+      <img src="europe tour.png" alt="European Field Mission — Mauritius, Paris, Prague, London">
+      <div class="fn-feat-visual-label">
+        <span class="fn-feat-visual-tag">4 locations · Europe</span>
+        <span class="fn-feat-visual-num">01</span>
+      </div>
+    </div>
+
+  </a>
+</section>
+
+<!-- ══════════════════════════════════════════
+     OTHER ARTICLES
+══════════════════════════════════════════ -->
+<section class="fn-articles">
+  <div class="fn-articles-inner">
+
+    <div class="fn-articles-header reveal">
+      <span class="fn-section-label">More articles</span>
+      <div class="fn-section-line"></div>
+    </div>
+
+    <div class="fn-grid">
+
+      <div class="fn-card reveal">
+        <div class="fn-card-bar fn-card-bar--teal"></div>
+        <div class="fn-card-body">
+          <div class="fn-card-cat">MDM &amp; AI</div>
+          <h3 class="fn-card-title">When AI Meets Dirty Data: What Actually Happens</h3>
+          <p class="fn-card-teaser">AI models are only as reliable as the data they consume. What we've seen inside enterprise MDM projects tells a different story than the vendor pitch decks.</p>
+        </div>
+        <div class="fn-card-footer">
+          Acropora Data
+          <span class="fn-card-meta-dot" style="width:3px;height:3px;border-radius:50%;background:rgba(10,42,53,0.2);"></span>
+          Coming 2026
+          <span class="fn-card-soon">Soon</span>
+        </div>
+      </div>
+
+      <div class="fn-card reveal reveal-d1">
+        <div class="fn-card-bar fn-card-bar--coral"></div>
+        <div class="fn-card-body">
+          <div class="fn-card-cat">Data Quality</div>
+          <h3 class="fn-card-title">The Hidden Cost of a Bad Master Record</h3>
+          <p class="fn-card-teaser">A single duplicated supplier record can cascade across a dozen systems. We calculated what this costs — in hours, in decisions, and in trust.</p>
+        </div>
+        <div class="fn-card-footer">
+          Acropora Data
+          <span class="fn-card-meta-dot" style="width:3px;height:3px;border-radius:50%;background:rgba(10,42,53,0.2);"></span>
+          Coming 2026
+          <span class="fn-card-soon">Soon</span>
+        </div>
+      </div>
+
+      <div class="fn-card reveal reveal-d2">
+        <div class="fn-card-bar fn-card-bar--slate"></div>
+        <div class="fn-card-body">
+          <div class="fn-card-cat">Governance</div>
+          <h3 class="fn-card-title">Why Governance Projects Stall at Month Three</h3>
+          <p class="fn-card-teaser">The first sprint is always smooth. Then reality arrives. Here is what we've observed — and what separates the programs that recover from the ones that don't.</p>
+        </div>
+        <div class="fn-card-footer">
+          Acropora Data
+          <span class="fn-card-meta-dot" style="width:3px;height:3px;border-radius:50%;background:rgba(10,42,53,0.2);"></span>
+          Coming 2026
+          <span class="fn-card-soon">Soon</span>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
-<section class="page-cta">
-    <div class="container">
-        <h2>Ready to go further?</h2>
-        <p>Contact us today</p>
-        <a href="contact_en.html" class="btn btn-primary">Contact Us</a>
+
+<!-- ══════════════════════════════════════════
+     VISUAL BREAK
+══════════════════════════════════════════ -->
+<!-- ══════════════════════════════════════════
+     EBOOK DOWNLOAD
+══════════════════════════════════════════ -->
+<section class="fn-ebook">
+<style>
+.fn-ebook {
+  background: #fff;
+  padding: 4rem 2rem;
+}
+.fn-ebook-inner {
+  max-width: 1060px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 48px rgba(10,42,53,0.1);
+}
+.fn-ebook-left {
+  background: linear-gradient(145deg, #0a2a35 0%, #0d3a4a 100%);
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+.fn-ebook-left::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 260px; height: 260px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(129,171,179,0.12) 0%, transparent 70%);
+}
+.fn-ebook-left::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; left: -40px;
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(243,117,110,0.07) 0%, transparent 70%);
+}
+.fn-ebook-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(129,171,179,0.15);
+  border: 1px solid rgba(129,171,179,0.25);
+  border-radius: 100px;
+  padding: 0.3rem 0.85rem;
+  width: fit-content;
+  margin-bottom: 1.8rem;
+}
+.fn-ebook-badge span {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #81abb3;
+}
+.fn-ebook-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.8rem;
+  position: relative;
+  z-index: 1;
+}
+.fn-ebook-sub {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.65;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+.fn-ebook-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #81abb3;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.85rem 1.8rem;
+  border-radius: 100px;
+  text-decoration: none;
+  width: fit-content;
+  letter-spacing: 0.02em;
+  transition: background 0.25s, transform 0.2s;
+  position: relative;
+  z-index: 1;
+}
+.fn-ebook-cta:hover { background: #6d99a1; transform: translateY(-2px); }
+.fn-ebook-right {
+  background: #f7f8f9;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+.fn-ebook-right-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(10,42,53,0.35);
+  margin-bottom: 0.4rem;
+}
+.fn-ebook-chapter {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(10,42,53,0.07);
+}
+.fn-ebook-chapter:last-child { border-bottom: none; }
+.fn-ebook-ch-num {
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #81abb3;
+  letter-spacing: 0.1em;
+  min-width: 22px;
+}
+.fn-ebook-ch-text {
+  font-size: 0.84rem;
+  color: rgba(10,42,53,0.65);
+  font-weight: 500;
+  line-height: 1.3;
+}
+@media (max-width: 700px) {
+  .fn-ebook-inner { grid-template-columns: 1fr; }
+}
+</style>
+  <div class="fn-ebook-inner reveal">
+    <div class="fn-ebook-left">
+      <div>
+        <div class="fn-ebook-badge">
+          <svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="#81abb3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v3h10v-3M8 2v8M5 7l3 3 3-3"/></svg>
+          <span>Ebook gratuit</span>
+        </div>
+        <h3 class="fn-ebook-title">Pourquoi les projets data échouent</h3>
+        <p class="fn-ebook-sub">9 chapitres. Les vrais schémas d'échec, ce qui fonctionne réellement, et un cadre simple pour évaluer vos initiatives.</p>
+      </div>
+      <a class="fn-ebook-cta" href="ebook-data_en.html">
+        Lire l'ebook
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
     </div>
+    <div class="fn-ebook-right">
+      <div class="fn-ebook-right-label">Au sommaire</div>
+      <div class="fn-ebook-chapter"><span class="fn-ebook-ch-num">01</span><span class="fn-ebook-ch-text">Introduction — Le paradoxe de la data</span></div>
+      <div class="fn-ebook-chapter"><span class="fn-ebook-ch-num">02</span><span class="fn-ebook-ch-text">La promesse et ses limites</span></div>
+      <div class="fn-ebook-chapter"><span class="fn-ebook-ch-num">03</span><span class="fn-ebook-ch-text">La réalité du terrain</span></div>
+      <div class="fn-ebook-chapter"><span class="fn-ebook-ch-num">04</span><span class="fn-ebook-ch-text">Les schémas récurrents d'échec</span></div>
+      <div class="fn-ebook-chapter"><span class="fn-ebook-ch-num">05</span><span class="fn-ebook-ch-text">Ce qui fonctionne réellement</span></div>
+      <div class="fn-ebook-chapter"><span class="fn-ebook-ch-num">06</span><span class="fn-ebook-ch-text">Idées reçues — interactif</span></div>
+      <div class="fn-ebook-chapter"><span class="fn-ebook-ch-num">07</span><span class="fn-ebook-ch-text">Un cadre simple d'évaluation</span></div>
+      <div class="fn-ebook-chapter"><span class="fn-ebook-ch-num">08</span><span class="fn-ebook-ch-text">Conclusion</span></div>
+    </div>
+  </div>
 </section>
+
+<section class="fn-break">
+  <div class="fn-break-inner reveal">
+    <p class="fn-break-quote">Field insights, <em>not generic content.</em></p>
+    <p class="fn-break-sub">Every article is grounded in a real mission, a real client challenge, or a real industry event. No recycled frameworks. No obvious advice.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer class="footer">
-    <div class="container">
-        <div class="footer-content" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 2rem;">
-            <div class="footer-section" style="flex: 1; min-width: 250px;">
-                <img src="acropora-logo-transparent.png" alt="Acropora Data" class="footer-logo" style="margin-bottom: 1rem; width: 180px; display: block;">
-                <p style="font-weight: 700; margin-bottom: 0.2rem; color: #fff;">Data Management Expert</p>
-                <p style="font-size: 0.85rem; opacity: 0.7; color: #fff;">Turn your data into strategic assets</p>
-                <div style="margin-top: 1.5rem; display: flex; justify-content: center; width: 180px;">
-                    <a href="https://www.linkedin.com/company/acropora-data" target="_blank" style="color: #81abb3; transition: color 0.3s;" onmouseover="this.style.color='#f3756e'" onmouseout="this.style.color='#81abb3'">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display: block !important;"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                    </a>
-                </div>
-            </div>
-            <div class="footer-section" style="flex: 1; min-width: 200px;">
-                <h4 style="color: #81abb3; margin-bottom: 1.5rem; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.05em;">About Us</h4>
-                <ul style="list-style: none; padding: 0;">
-                    <li style="margin-bottom: 0.7rem;"><a href="presentation_en.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Overview</a></li>
-                    <li style="margin-bottom: 0.7rem;"><a href="approche-donnees_en.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Our Data Approach</a></li>
-                    <li style="margin-bottom: 0.7rem;"><a href="equipe_en.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Team</a></li>
-                    <li style="margin-bottom: 0.7rem;"><a href="ethique_en.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Ethics &amp; Values</a></li>
-                </ul>
-            </div>
-            <div class="footer-section" style="flex: 1; min-width: 200px;">
-                <h4 style="color: #81abb3; margin-bottom: 1.5rem; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.05em;">Solutions &amp; Expertise</h4>
-                <ul style="list-style: none; padding: 0;">
-                    <li style="margin-bottom: 0.7rem;"><a href="mdm_en.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">MDM &amp; Integration</a></li>
-                    <li style="margin-bottom: 0.7rem;"><a href="ai-foundations_en.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">AI Foundations</a></li>
-                    <li style="margin-bottom: 0.7rem;"><a href="strategie-test_en.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Test Strategy</a></li>
-                    <li style="margin-bottom: 0.7rem;"><a href="tests-validation_en.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Automation Testing</a></li>
-                    <li style="margin-bottom: 0.7rem;"><a href="bi-analytique_en.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">BI &amp; Analytics</a></li>
-                    <li style="margin-bottom: 0.7rem;"><a href="cadrage-projet_en.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Project Scoping</a></li>
-                </ul>
-            </div>
-            <div class="footer-section" style="flex: 1; min-width: 200px;">
-                <h4 style="color: #81abb3; margin-bottom: 1.5rem; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.05em;">Partners &amp; Contact</h4>
-                <ul style="list-style: none; padding: 0;">
-                    <li style="margin-bottom: 0.7rem;"><a href="partenaires-technologiques_en.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Technology Partners</a></li>
-                    <li style="margin-bottom: 0.7rem;"><a href="partenaires-commerciaux_en.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Business Partners</a></li>
-                    <li style="margin-bottom: 0.7rem;"><a href="devenir-partenaire_en.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Become a partner</a></li>
-                    <li style="margin-bottom: 0.7rem;"><a href="carrieres_en.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Careers</a></li>
-                    <li style="margin-bottom: 0.7rem;"><a href="contact_en.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Contact</a></li>
-                </ul>
-            </div>
+  <div class="container">
+    <div class="footer-content" style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:2rem;">
+      <div class="footer-section" style="flex:1;min-width:250px;">
+        <img src="acropora-logo-transparent.png" alt="Acropora Data" class="footer-logo" style="margin-bottom:1rem;width:180px;display:block;">
+        <p style="font-weight:700;margin-bottom:0.2rem;color:#fff;">Data Management Expert</p>
+        <p style="font-size:0.85rem;opacity:0.7;color:#fff;">Turn your data into strategic assets</p>
+        <div style="margin-top:1.5rem;display:flex;justify-content:center;width:180px;">
+          <a href="https://www.linkedin.com/company/acropora-data" target="_blank" style="color:#81abb3;transition:color 0.3s;" onmouseover="this.style.color='#f3756e'" onmouseout="this.style.color='#81abb3'">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Acropora Data. All rights reserved.</p>
-        </div>
+      </div>
+      <div class="footer-section" style="flex:1;min-width:200px;">
+        <h4 style="color:#81abb3;margin-bottom:1.5rem;font-size:1.1rem;text-transform:uppercase;letter-spacing:0.05em;">About Us</h4>
+        <ul style="list-style:none;padding:0;">
+          <li style="margin-bottom:0.7rem;"><a href="presentation_en.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Overview</a></li>
+          <li style="margin-bottom:0.7rem;"><a href="approche-donnees_en.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Our Data Approach</a></li>
+          <li style="margin-bottom:0.7rem;"><a href="equipe_en.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Team</a></li>
+          <li style="margin-bottom:0.7rem;"><a href="ethique_en.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Ethics &amp; Values</a></li>
+        </ul>
+      </div>
+      <div class="footer-section" style="flex:1;min-width:200px;">
+        <h4 style="color:#81abb3;margin-bottom:1.5rem;font-size:1.1rem;text-transform:uppercase;letter-spacing:0.05em;">Solutions &amp; Expertise</h4>
+        <ul style="list-style:none;padding:0;">
+          <li style="margin-bottom:0.7rem;"><a href="mdm_en.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">MDM &amp; Integration</a></li>
+          <li style="margin-bottom:0.7rem;"><a href="ai-foundations_en.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">AI Foundations</a></li>
+          <li style="margin-bottom:0.7rem;"><a href="strategie-test_en.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Test Strategy</a></li>
+          <li style="margin-bottom:0.7rem;"><a href="tests-validation_en.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Automation Testing</a></li>
+          <li style="margin-bottom:0.7rem;"><a href="bi-analytique_en.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">BI &amp; Analytics</a></li>
+          <li style="margin-bottom:0.7rem;"><a href="cadrage-projet_en.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Project Scoping</a></li>
+        </ul>
+      </div>
+      <div class="footer-section" style="flex:1;min-width:200px;">
+        <h4 style="color:#81abb3;margin-bottom:1.5rem;font-size:1.1rem;text-transform:uppercase;letter-spacing:0.05em;">Partners &amp; Contact</h4>
+        <ul style="list-style:none;padding:0;">
+          <li style="margin-bottom:0.7rem;"><a href="partenaires-technologiques_en.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Technology Partners</a></li>
+          <li style="margin-bottom:0.7rem;"><a href="partenaires-commerciaux_en.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Business Partners</a></li>
+          <li style="margin-bottom:0.7rem;"><a href="devenir-partenaire_en.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Become a partner</a></li>
+          <li style="margin-bottom:0.7rem;"><a href="carrieres_en.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Careers</a></li>
+          <li style="margin-bottom:0.7rem;"><a href="contact_en.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Contact</a></li>
+        </ul>
+      </div>
     </div>
+    <div class="footer-bottom"><p>&copy; 2026 Acropora Data. All rights reserved.</p></div>
+  </div>
 </footer>
+
 <script src="script.js"></script>
-<script src="pages.js"></script>
-<script src="hero-animations.js"></script>
 <script>
-// Gestion du mega-menu sur mobile (tactile)
-document.querySelectorAll('.nav-item').forEach(function(item) {
-    var link = item.querySelector('.nav-link');
-    var mega = item.querySelector('.mega-menu');
-    if (!mega) return; // item sans sous-menu (ex: EN)
-
-    link.addEventListener('click', function(e) {
-        var isMobile = window.innerWidth <= 768;
-        if (!isMobile) return; // sur desktop, le hover CSS suffit
-
-        e.preventDefault(); // empêche la navigation (ces liens sont javascript:void)
-        
-        var isOpen = item.classList.contains('open');
-        
-        // Ferme tous les autres sous-menus ouverts
-        document.querySelectorAll('.nav-item.open').forEach(function(other) {
-            other.classList.remove('open');
-            other.querySelector('.mega-menu').style.removeProperty('display');
-        });
-
-        // Ouvre ou ferme celui-ci
-        if (!isOpen) {
-            item.classList.add('open');
-            mega.style.setProperty('display', 'block', 'important');
-        }
+/* Scroll reveal */
+(function () {
+  var els = document.querySelectorAll('.reveal');
+  if (!els.length) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      }
     });
-});
+  }, { threshold: 0.12 });
+  els.forEach(function (el) { io.observe(el); });
+})();
 
-// Ferme le menu si on clique en dehors
-document.addEventListener('click', function(e) {
-    if (!e.target.closest('.navbar')) {
-        document.querySelectorAll('.nav-item.open').forEach(function(item) {
-            item.classList.remove('open');
-            item.querySelector('.mega-menu').style.removeProperty('display');
-        });
+/* Nav mega-menu mobile */
+document.querySelectorAll('.nav-item').forEach(function (item) {
+  var link = item.querySelector('.nav-link');
+  var mega = item.querySelector('.mega-menu');
+  if (!mega) return;
+  link.addEventListener('click', function (e) {
+    if (window.innerWidth > 768) return;
+    e.preventDefault();
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.nav-item.open').forEach(function (o) {
+      o.classList.remove('open');
+      o.querySelector('.mega-menu').style.removeProperty('display');
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      mega.style.setProperty('display', 'block', 'important');
     }
+  });
+});
+document.addEventListener('click', function (e) {
+  if (!e.target.closest('.navbar')) {
+    document.querySelectorAll('.nav-item.open').forEach(function (item) {
+      item.classList.remove('open');
+      item.querySelector('.mega-menu').style.removeProperty('display');
+    });
+  }
 });
 </script>
 </body>
