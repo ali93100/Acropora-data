@@ -1247,21 +1247,31 @@
 }
 
 /* ── DIAGRAM — mobile scaling ──────────────────────────── */
+/*
+  Safari iOS bug: justify-content:center on a flex child wider than
+  the container aligns it to the left edge instead of centering it.
+  Fix: switch to display:block + margin-left:calc(50% - 350px)
+  which mathematically centers the 700px element at 50% of the container,
+  then scale(S) from transform-origin:top center keeps the center fixed.
+*/
 @media (max-width: 700px) {
   .ts-diagram-wrap {
-    overflow: visible;
-    justify-content: center;
+    display: block;
+    overflow: hidden;
+    height: 370px;
   }
   .ts-diagram {
+    margin-left: calc(50% - 350px);
     transform: scale(0.52);
     transform-origin: top center;
-    margin-bottom: -336px; /* collapse layout space: -(700 * 0.48) */
   }
 }
 @media (max-width: 420px) {
+  .ts-diagram-wrap {
+    height: 315px;
+  }
   .ts-diagram {
     transform: scale(0.44);
-    margin-bottom: -392px; /* -(700 * 0.56) */
   }
 }
 
