@@ -908,6 +908,24 @@ body {
     transform: translateY(-3px);
 }
 
+/* Contact link in footer — discrete CTA, echoes the header pill */
+.footer a[href="contact_en.html"],
+.footer a[href="contact.html"] {
+    display: inline-block;
+    color: #81abb3 !important;
+    border: 1px solid rgba(129, 171, 179, 0.35);
+    border-radius: 6px;
+    padding: 0.2rem 0.65rem;
+    background: rgba(129, 171, 179, 0.08);
+    transition: background 0.3s, border-color 0.3s !important;
+}
+.footer a[href="contact_en.html"]:hover,
+.footer a[href="contact.html"]:hover {
+    background: rgba(129, 171, 179, 0.2) !important;
+    border-color: rgba(129, 171, 179, 0.6);
+    color: #fff !important;
+}
+
 .footer-bottom {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding-top: 2rem;

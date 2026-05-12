@@ -1246,6 +1246,25 @@
   .ts-why-cards  { grid-template-columns: 1fr 1fr; }
 }
 
+/* ── DIAGRAM — mobile scaling ──────────────────────────── */
+@media (max-width: 700px) {
+  .ts-diagram-wrap {
+    overflow: visible;
+    justify-content: center;
+  }
+  .ts-diagram {
+    transform: scale(0.52);
+    transform-origin: top center;
+    margin-bottom: -336px; /* collapse layout space: -(700 * 0.48) */
+  }
+}
+@media (max-width: 420px) {
+  .ts-diagram {
+    transform: scale(0.44);
+    margin-bottom: -392px; /* -(700 * 0.56) */
+  }
+}
+
 /* ── GET IN TOUCH ────────────────────────────────────── */
 .ts-contact-section {
   position: relative;
