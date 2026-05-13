@@ -1938,8 +1938,7 @@
 
 .reveal-belief span {
     color: #f3756e;
-    display: block;
-    margin-top: 1rem;
+    display: inline;
 }
 
 /* ── APPROCHE DONNÉES (Flow horizontal) ────────────────── */
