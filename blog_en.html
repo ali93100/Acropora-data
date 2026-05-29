@@ -10,8 +10,8 @@
 <meta charset="UTF-8">
 <link rel="icon" type="image/png" href="favicon-acropora.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Field Notes — Insights from real-world data missions by Acropora Data">
-<title>Field Notes — Acropora Data</title>
+<meta name="description" content="Blog &amp; Events — Insights, articles and 2026 events by Acropora Data">
+<title>Blog &amp; Events — Acropora Data</title>
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="pages.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -260,23 +260,6 @@ body {
   color: rgba(10,42,53,0.55);
   margin: 0; flex: 1;
 }
-.fn-card-footer {
-  padding: 1rem 1.8rem 1.5rem;
-  font-size: 0.72rem;
-  color: rgba(10,42,53,0.3);
-  display: flex; align-items: center; gap: 0.6rem;
-  border-top: 1px solid rgba(10,42,53,0.05);
-}
-.fn-card-soon {
-  display: inline-block;
-  font-size: 0.62rem; font-weight: 700;
-  letter-spacing: 0.14em; text-transform: uppercase;
-  padding: 0.2rem 0.65rem;
-  border-radius: 100px;
-  background: rgba(10,42,53,0.05);
-  color: rgba(10,42,53,0.35);
-  margin-left: auto;
-}
 
 /* ── VISUAL BREAK ─────────────────────────── */
 .fn-break {
@@ -364,7 +347,7 @@ body {
         <a href="javascript:void(0)" class="nav-link" style="cursor:default;">Resources</a>
         <div class="mega-menu">
           <div class="mega-menu-inner mega-menu-2">
-            <div class="mega-col"><div class="mega-col-title">Insights</div><a href="blog_en.html"><span class="link-text"><strong>Field Notes</strong><span>Real-world data insights</span></span></a></div>
+            <div class="mega-col"><div class="mega-col-title">Insights</div><a href="blog_en.html"><span class="link-text"><strong>Blog &amp; Events</strong><span>Articles, insights &amp; events</span></span></a></div>
           </div>
         </div>
       </li>
@@ -387,8 +370,8 @@ body {
 ══════════════════════════════════════════ -->
 <section class="page-hero" data-hero-anim="blog">
   <div class="container">
-    <h1 class="page-title">Blog</h1>
-    <p class="page-subtitle">What we actually see in the field — no filters, no generic advice.</p>
+    <h1 class="page-title">Blog &amp; Events</h1>
+    <p class="page-subtitle">Field insights, industry events and data perspectives — no filters, no generic advice.</p>
   </div>
 </section>
 
@@ -464,50 +447,32 @@ body {
 
     <div class="fn-grid">
 
-      <div class="fn-card reveal">
+      <a href="blog-ai-dirty-data_en.html" class="fn-card reveal">
         <div class="fn-card-bar fn-card-bar--teal"></div>
         <div class="fn-card-body">
           <div class="fn-card-cat">MDM &amp; AI</div>
           <h3 class="fn-card-title">When AI Meets Dirty Data: What Actually Happens</h3>
           <p class="fn-card-teaser">AI models are only as reliable as the data they consume. What we've seen inside enterprise MDM projects tells a different story than the vendor pitch decks.</p>
         </div>
-        <div class="fn-card-footer">
-          Acropora Data
-          <span class="fn-card-meta-dot" style="width:3px;height:3px;border-radius:50%;background:rgba(10,42,53,0.2);"></span>
-          Coming 2026
-          <span class="fn-card-soon">Soon</span>
-        </div>
-      </div>
+      </a>
 
-      <div class="fn-card reveal reveal-d1">
+      <a href="blog-bad-master-record_en.html" class="fn-card reveal reveal-d1">
         <div class="fn-card-bar fn-card-bar--coral"></div>
         <div class="fn-card-body">
           <div class="fn-card-cat">Data Quality</div>
           <h3 class="fn-card-title">The Hidden Cost of a Bad Master Record</h3>
           <p class="fn-card-teaser">A single duplicated supplier record can cascade across a dozen systems. We calculated what this costs — in hours, in decisions, and in trust.</p>
         </div>
-        <div class="fn-card-footer">
-          Acropora Data
-          <span class="fn-card-meta-dot" style="width:3px;height:3px;border-radius:50%;background:rgba(10,42,53,0.2);"></span>
-          Coming 2026
-          <span class="fn-card-soon">Soon</span>
-        </div>
-      </div>
+      </a>
 
-      <div class="fn-card reveal reveal-d2">
+      <a href="blog-governance-stall_en.html" class="fn-card reveal reveal-d2">
         <div class="fn-card-bar fn-card-bar--slate"></div>
         <div class="fn-card-body">
           <div class="fn-card-cat">Governance</div>
           <h3 class="fn-card-title">Why Governance Projects Stall at Month Three</h3>
           <p class="fn-card-teaser">The first sprint is always smooth. Then reality arrives. Here is what we've observed — and what separates the programs that recover from the ones that don't.</p>
         </div>
-        <div class="fn-card-footer">
-          Acropora Data
-          <span class="fn-card-meta-dot" style="width:3px;height:3px;border-radius:50%;background:rgba(10,42,53,0.2);"></span>
-          Coming 2026
-          <span class="fn-card-soon">Soon</span>
-        </div>
-      </div>
+      </a>
 
     </div>
   </div>
@@ -653,6 +618,76 @@ body {
 @media (max-width: 700px) {
   .fn-ebook-inner { grid-template-columns: 1fr; }
 }
+
+/* ── fn-ebook-cta button reset ──────────────────────── */
+.fn-ebook-cta { font-family: inherit; cursor: pointer; }
+
+/* ── EBOOK MODAL ─────────────────────────────────────── */
+.ebk-overlay {
+    position: fixed; inset: 0; z-index: 9999;
+    display: flex; align-items: center; justify-content: center;
+    padding: 1rem;
+    background: rgba(3,10,15,.8);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    opacity: 0; visibility: hidden;
+    transition: opacity .4s ease, visibility .4s ease;
+}
+.ebk-overlay.open { opacity: 1; visibility: visible; }
+.ebk-modal {
+    background: #07161e; border: 1px solid rgba(129,171,179,.18);
+    border-radius: 24px; width: 100%; max-width: 500px;
+    position: relative; overflow: hidden;
+    transform: scale(.92) translateY(24px);
+    transition: transform .45s cubic-bezier(.16,1,.3,1);
+    box-shadow: 0 40px 100px rgba(0,0,0,.6), 0 0 0 1px rgba(129,171,179,.06);
+}
+.ebk-overlay.open .ebk-modal { transform: scale(1) translateY(0); }
+.ebk-modal-top {
+    background: linear-gradient(145deg, #0d2f3e 0%, #07161e 100%);
+    padding: 2.5rem 2.5rem 1.8rem; position: relative; overflow: hidden;
+    border-bottom: 1px solid rgba(129,171,179,.1);
+}
+.ebk-modal-top::before { content:''; position:absolute; top:-80px; right:-80px; width:280px; height:280px; border-radius:50%; background:radial-gradient(circle,rgba(74,159,168,.12) 0%,transparent 70%); }
+.ebk-modal-top::after  { content:''; position:absolute; bottom:-40px; left:-40px; width:180px; height:180px; border-radius:50%; background:radial-gradient(circle,rgba(243,117,110,.06) 0%,transparent 70%); }
+.ebk-close {
+    position: absolute; top: 1.1rem; right: 1.1rem;
+    width: 30px; height: 30px; border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.05);
+    color: rgba(255,255,255,.45); font-size: 1.1rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all .2s; line-height: 1; padding: 0; z-index: 2;
+}
+.ebk-close:hover { background: rgba(255,255,255,.12); color: #fff; }
+.ebk-book { display:flex; align-items:flex-end; gap:0; margin-bottom:1.5rem; width:62px; height:80px; position:relative; z-index:1; }
+.ebk-spine { width:9px; height:80px; background:linear-gradient(180deg,#1a5d6a,#0d2030); border-radius:3px 0 0 3px; box-shadow:inset -2px 0 4px rgba(0,0,0,.4); }
+.ebk-cover { flex:1; height:80px; background:linear-gradient(145deg,#4a9fa8 0%,#7fc4c9 60%,#a8dde1 100%); border-radius:0 6px 6px 0; box-shadow:4px 4px 16px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.2); position:relative; overflow:hidden; }
+.ebk-cover::before { content:''; position:absolute; top:10px; left:8px; right:8px; height:2px; background:rgba(255,255,255,.3); border-radius:1px; }
+.ebk-cover::after  { content:''; position:absolute; top:17px; left:8px; right:16px; height:1px; background:rgba(255,255,255,.15); border-radius:1px; }
+.ebk-modal-badge { display:inline-flex; align-items:center; gap:.4rem; background:rgba(74,159,168,.12); border:1px solid rgba(74,159,168,.25); border-radius:100px; padding:.22rem .75rem; font-size:.62rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#81abb3; margin-bottom:1rem; position:relative; z-index:1; }
+.ebk-modal-title { font-size:1.35rem; font-weight:700; color:#fff; line-height:1.25; letter-spacing:-.02em; margin-bottom:.45rem; position:relative; z-index:1; }
+.ebk-modal-desc  { font-size:.84rem; color:rgba(255,255,255,.42); line-height:1.65; position:relative; z-index:1; }
+.ebk-modal-body  { padding:2rem 2.5rem 2.5rem; }
+.ebk-field-label { display:block; font-size:.75rem; font-weight:600; color:rgba(255,255,255,.5); margin-bottom:.55rem; letter-spacing:.04em; }
+.ebk-input { width:100%; padding:.88rem 1.2rem; border-radius:12px; border:1px solid rgba(129,171,179,.18); background:rgba(255,255,255,.04); color:#fff; font-size:.92rem; outline:none; transition:border-color .2s,background .2s,box-shadow .2s; font-family:inherit; margin-bottom:.9rem; }
+.ebk-input::placeholder { color:rgba(255,255,255,.22); }
+.ebk-input:focus { border-color:#81abb3; background:rgba(129,171,179,.07); box-shadow:0 0 0 3px rgba(129,171,179,.12); }
+.ebk-err { font-size:.75rem; color:#f3756e; margin:-.6rem 0 .7rem; display:none; }
+.ebk-submit { width:100%; padding:1rem; border-radius:12px; border:none; background:linear-gradient(135deg,#4a9fa8,#1a5d6a); color:#fff; font-size:.95rem; font-weight:700; cursor:pointer; font-family:inherit; position:relative; overflow:hidden; transition:opacity .2s,transform .2s,box-shadow .2s; letter-spacing:.01em; }
+.ebk-submit:hover:not(:disabled) { opacity:.92; transform:translateY(-1px); box-shadow:0 8px 24px rgba(74,159,168,.3); }
+.ebk-submit:disabled { opacity:.6; cursor:not-allowed; transform:none; }
+.ebk-submit::before { content:''; position:absolute; top:0; left:-100%; width:50%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent); animation:ebk-shimmer 2s ease-in-out infinite; }
+@keyframes ebk-shimmer { 0%{left:-100%} 100%{left:160%} }
+.ebk-privacy { font-size:.7rem; color:rgba(255,255,255,.22); text-align:center; margin-top:1rem; display:flex; align-items:center; justify-content:center; gap:.4rem; }
+.ebk-success-state { display:none; text-align:center; padding:.5rem 0; }
+.ebk-check-ring { width:68px; height:68px; border-radius:50%; background:linear-gradient(135deg,rgba(74,159,168,.15),rgba(127,196,201,.08)); border:2px solid rgba(74,159,168,.35); display:inline-flex; align-items:center; justify-content:center; margin-bottom:1.2rem; animation:ebk-pop .5s cubic-bezier(.16,1,.3,1) both; }
+@keyframes ebk-pop { from{transform:scale(0);opacity:0} to{transform:scale(1);opacity:1} }
+.ebk-check-icon { font-size:2rem; line-height:1; }
+.ebk-success-title { font-size:1.25rem; font-weight:700; color:#fff; margin-bottom:.45rem; }
+.ebk-success-sub { font-size:.85rem; color:rgba(255,255,255,.45); margin-bottom:1.8rem; line-height:1.65; }
+.ebk-access-link { display:inline-flex; align-items:center; gap:.6rem; padding:1rem 2.2rem; border-radius:12px; background:linear-gradient(135deg,#4a9fa8,#7fc4c9); color:#fff; font-size:.95rem; font-weight:700; text-decoration:none; transition:transform .25s,box-shadow .25s; }
+.ebk-access-link:hover { transform:translateY(-2px); box-shadow:0 10px 28px rgba(74,159,168,.38); }
+.ebk-spinner { display:inline-block; width:16px; height:16px; border:2px solid rgba(255,255,255,.3); border-top-color:#fff; border-radius:50%; animation:spin .7s linear infinite; vertical-align:middle; margin-right:.4rem; }
+@keyframes spin { to{transform:rotate(360deg)} }
 </style>
   <div class="fn-ebook-inner reveal">
     <div class="fn-ebook-left">
@@ -664,10 +699,10 @@ body {
         <h3 class="fn-ebook-title">Pourquoi les projets data échouent</h3>
         <p class="fn-ebook-sub">9 chapitres. Les vrais schémas d'échec, ce qui fonctionne réellement, et un cadre simple pour évaluer vos initiatives.</p>
       </div>
-      <a class="fn-ebook-cta" href="ebook-data_en.html">
-        Lire l'ebook
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-      </a>
+      <button class="fn-ebook-cta" onclick="openEbkModal()">
+        Télécharger l'ebook
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="12" y1="9" x2="12" y2="15"/><polyline points="9 12 12 15 15 12"/></svg>
+      </button>
     </div>
     <div class="fn-ebook-right">
       <div class="fn-ebook-right-label">Au sommaire</div>
@@ -679,6 +714,133 @@ body {
       <div class="fn-ebook-chapter"><span class="fn-ebook-ch-num">06</span><span class="fn-ebook-ch-text">Idées reçues — interactif</span></div>
       <div class="fn-ebook-chapter"><span class="fn-ebook-ch-num">07</span><span class="fn-ebook-ch-text">Un cadre simple d'évaluation</span></div>
       <div class="fn-ebook-chapter"><span class="fn-ebook-ch-num">08</span><span class="fn-ebook-ch-text">Conclusion</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     2026 EVENTS
+══════════════════════════════════════════ -->
+<section class="fn-events">
+<style>
+.fn-events {
+  background: #fff;
+  padding: 5rem 2rem;
+}
+.fn-events-inner {
+  max-width: 1060px;
+  margin: 0 auto;
+}
+.fn-events-header {
+  display: flex; align-items: center; gap: 1.2rem;
+  margin-bottom: 2.8rem;
+}
+.fn-evt-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.4rem;
+}
+.fn-evt-card {
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(10,42,53,0.08);
+  box-shadow: 0 2px 20px rgba(10,42,53,0.05);
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow .3s, transform .3s;
+  background: #fff;
+}
+.fn-evt-card:hover {
+  box-shadow: 0 10px 40px rgba(10,42,53,0.12);
+  transform: translateY(-4px);
+}
+.fn-evt-top {
+  padding: 1.6rem 1.6rem 1rem;
+  flex: 1;
+}
+.fn-evt-badge {
+  display: inline-block;
+  font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 0.22rem 0.7rem;
+  border-radius: 100px;
+  margin-bottom: 1rem;
+}
+.fn-evt-badge--teal { background: rgba(26,93,106,0.1); color: #1a5d6a; }
+.fn-evt-badge--blue { background: rgba(14,48,96,0.1); color: #0e3060; }
+.fn-evt-badge--orange { background: rgba(224,100,40,0.1); color: #b04010; }
+.fn-evt-badge--gold { background: rgba(200,160,48,0.1); color: #7a5a10; }
+.fn-evt-title {
+  font-size: 0.95rem; font-weight: 700;
+  color: #0a2a35; line-height: 1.3;
+  margin: 0 0 0.6rem;
+  letter-spacing: -0.01em;
+}
+.fn-evt-info {
+  font-size: 0.78rem;
+  color: rgba(10,42,53,0.5);
+  line-height: 1.55;
+  margin: 0;
+}
+.fn-evt-stripe {
+  height: 4px; width: 100%;
+}
+.fn-evt-stripe--teal { background: linear-gradient(90deg,#1a5d6a,#4a9fa8); }
+.fn-evt-stripe--blue { background: linear-gradient(90deg,#0e3060,#4a78c8); }
+.fn-evt-stripe--orange { background: linear-gradient(90deg,#e06428,#f08840); }
+.fn-evt-stripe--gold { background: linear-gradient(90deg,#c8a030,#e8c860); }
+@media (max-width: 900px) {
+  .fn-evt-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .fn-evt-grid { grid-template-columns: 1fr; }
+}
+</style>
+  <div class="fn-events-inner">
+    <div class="fn-events-header reveal">
+      <span class="fn-section-label">2026 Events</span>
+      <div class="fn-section-line"></div>
+    </div>
+    <div class="fn-evt-grid">
+
+      <a href="blog-event-dmm-2026_en.html" class="fn-evt-card reveal">
+        <div class="fn-evt-stripe fn-evt-stripe--teal"></div>
+        <div class="fn-evt-top">
+          <span class="fn-evt-badge fn-evt-badge--teal">Online · June 10–11</span>
+          <h3 class="fn-evt-title">Data Management Marathon 9.0</h3>
+          <p class="fn-evt-info">The world reference for data professionals. MDM, Data Quality, Governance and GenAI — 50+ speakers, 2 days online.</p>
+        </div>
+      </a>
+
+      <a href="blog-event-jftl-2026_en.html" class="fn-evt-card reveal reveal-d1">
+        <div class="fn-evt-stripe fn-evt-stripe--blue"></div>
+        <div class="fn-evt-top">
+          <span class="fn-evt-badge fn-evt-badge--blue">Montrouge · June 9</span>
+          <h3 class="fn-evt-title">JFTL 2026</h3>
+          <p class="fn-evt-info">France's leading software testing days. 1,300 QA professionals, 5 parallel tracks, AI in testing and automation.</p>
+        </div>
+      </a>
+
+      <a href="blog-event-data-ai-summit-2026_en.html" class="fn-evt-card reveal reveal-d2">
+        <div class="fn-evt-stripe fn-evt-stripe--orange"></div>
+        <div class="fn-evt-top">
+          <span class="fn-evt-badge fn-evt-badge--orange">San Francisco · June 15–18</span>
+          <h3 class="fn-evt-title">Data + AI Summit 2026</h3>
+          <p class="fn-evt-info">The Databricks world event. 800+ sessions, 160 countries — AI Agents, Lakehouse, MLOps and Data Governance.</p>
+        </div>
+      </a>
+
+      <a href="blog-event-cdao-ny-2026_en.html" class="fn-evt-card reveal reveal-d3">
+        <div class="fn-evt-stripe fn-evt-stripe--gold"></div>
+        <div class="fn-evt-top">
+          <span class="fn-evt-badge fn-evt-badge--gold">New York · June 9</span>
+          <h3 class="fn-evt-title">CDAO New York 2026</h3>
+          <p class="fn-evt-info">North America's C-suite data &amp; AI summit. 150 executives, 30 speakers — CDO, CAO and VP Analytics priorities for 2026.</p>
+        </div>
+      </a>
+
     </div>
   </div>
 </section>
@@ -782,6 +944,81 @@ document.addEventListener('click', function (e) {
       item.querySelector('.mega-menu').style.removeProperty('display');
     });
   }
+});
+</script>
+
+<!-- EBOOK DOWNLOAD MODAL -->
+<div id="ebk-overlay" class="ebk-overlay" onclick="handleOverlayClick(event)">
+  <div class="ebk-modal" role="dialog" aria-modal="true" aria-labelledby="ebk-title">
+    <div class="ebk-modal-top">
+      <button class="ebk-close" onclick="closeEbkModal()" aria-label="Close">&times;</button>
+      <div class="ebk-book"><div class="ebk-spine"></div><div class="ebk-cover"></div></div>
+      <div class="ebk-modal-badge">Free Ebook</div>
+      <h2 class="ebk-modal-title" id="ebk-title">Why Data Projects Fail</h2>
+      <p class="ebk-modal-desc">9 chapters — real failure patterns, what actually works, and a simple framework to assess your data initiatives.</p>
+    </div>
+    <div class="ebk-modal-body">
+      <div id="ebk-form-state" class="ebk-form-state">
+        <label class="ebk-field-label" for="ebk-email-input">Your professional email</label>
+        <input type="email" id="ebk-email-input" class="ebk-input" placeholder="you@company.com" autocomplete="email" required>
+        <div id="ebk-err" class="ebk-err">Please enter a valid email address.</div>
+        <button id="ebk-submit-btn" class="ebk-submit" onclick="submitEbkForm()">Access the ebook</button>
+        <p class="ebk-privacy">No spam. We respect your privacy.</p>
+      </div>
+      <div id="ebk-success-state" class="ebk-success-state">
+        <div class="ebk-check-ring"><span class="ebk-check-icon">&#10003;</span></div>
+        <h3 class="ebk-success-title">Your ebook is ready!</h3>
+        <p class="ebk-success-sub">Thank you. Click below to read the full ebook.</p>
+        <a href="ebook-data_en.html" target="_blank" class="ebk-access-link" onclick="closeEbkModal()">Read the ebook &rarr;</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function openEbkModal() {
+  var overlay = document.getElementById('ebk-overlay');
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  if (localStorage.getItem('ebk_submitted') === '1') {
+    document.getElementById('ebk-form-state').style.display = 'none';
+    document.getElementById('ebk-success-state').style.display = 'flex';
+  } else {
+    document.getElementById('ebk-form-state').style.display = 'block';
+    document.getElementById('ebk-success-state').style.display = 'none';
+    document.getElementById('ebk-err').style.display = 'none';
+    document.getElementById('ebk-email-input').value = '';
+  }
+}
+function closeEbkModal() {
+  document.getElementById('ebk-overlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+function handleOverlayClick(e) {
+  if (e.target === document.getElementById('ebk-overlay')) closeEbkModal();
+}
+function submitEbkForm() {
+  var emailInput = document.getElementById('ebk-email-input');
+  var err = document.getElementById('ebk-err');
+  var btn = document.getElementById('ebk-submit-btn');
+  var email = emailInput.value.trim();
+  var valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  if (!valid) { err.style.display = 'block'; return; }
+  err.style.display = 'none';
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  fetch('https://formspree.io/f/xwpkgvoe', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({ email: email, source: 'blog_en ebook modal' })
+  }).finally(function () {
+    localStorage.setItem('ebk_submitted', '1');
+    document.getElementById('ebk-form-state').style.display = 'none';
+    document.getElementById('ebk-success-state').style.display = 'flex';
+  });
+}
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') closeEbkModal();
 });
 </script>
 </body>

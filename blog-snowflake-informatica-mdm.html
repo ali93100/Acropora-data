@@ -1,0 +1,347 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8FFCFJNNG2"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8FFCFJNNG2');</script>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="favicon-acropora.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Snowflake + Informatica MDM : Architecture Hybride Retail — Acropost | Acropora Data</title>
+<meta name="description" content="Architecture, performance et enseignements d'un déploiement hybride MDM Snowflake + Informatica pour un retailer européen.">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="pages.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ── BASE ── */
+.art-hero{padding:11rem 0 5rem;background:linear-gradient(135deg,#0a2038 0%,#0d3d5c 50%,#1a6680 100%);color:#fff;position:relative;overflow:hidden}
+.art-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 10% 60%,rgba(255,255,255,.06) 0%,transparent 50%),radial-gradient(circle at 90% 10%,rgba(100,200,255,.12) 0%,transparent 40%)}
+.art-hero::after{content:'';position:absolute;width:600px;height:600px;right:-150px;top:-100px;border-radius:50%;background:radial-gradient(circle,rgba(74,159,168,.1) 0%,transparent 70%);animation:coral-float 14s ease-in-out infinite}
+.art-hero .container{position:relative;z-index:2}
+.art-bc{display:flex;align-items:center;gap:.5rem;margin-bottom:2rem;font-size:.8rem}
+.art-bc a{color:rgba(255,255,255,.7);text-decoration:none}.art-bc a:hover{color:#fff}
+.art-bc .sep{color:rgba(255,255,255,.35)}.art-bc .cur{color:rgba(255,255,255,.9)}
+.art-tags{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.a-tag{padding:.28rem 1rem;border-radius:50px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);color:#fff}
+.a-tag.primary{background:rgba(13,100,150,.55);border-color:rgba(74,159,168,.7)}
+.art-hero h1{font-size:clamp(1.9rem,4vw,3.1rem);font-weight:800;line-height:1.15;margin-bottom:1.5rem;max-width:860px}
+.art-hero .lead{font-size:1.1rem;opacity:.88;max-width:680px;line-height:1.75;margin-bottom:3rem;font-weight:300}
+.hero-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;max-width:900px}
+.kpi-c{background:rgba(255,255,255,.12);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.2);border-radius:16px;padding:1.2rem;text-align:center;transition:background .3s}
+.kpi-c:hover{background:rgba(255,255,255,.18)}
+.kpi-num{font-size:1.9rem;font-weight:800;line-height:1;background:linear-gradient(135deg,#fff,#a8dde1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.3rem}
+.kpi-lbl{font-size:.68rem;opacity:.78;line-height:1.4;font-weight:500}
+.page-bc{background:#f5f9fa;border-bottom:1px solid rgba(26,93,106,.08);padding:.75rem 0}
+.page-bc .container{display:flex;align-items:center;gap:.5rem;font-size:.82rem}
+.page-bc a{color:#4a9fa8;text-decoration:none;font-weight:500}.page-bc a:hover{color:#1a5d6a}
+.page-bc .sep{color:#ccc}.page-bc .cur{color:#4a4a4a}
+.art-body{padding:5rem 0;background:#fff}
+.art-wrap{max-width:1080px;margin:0 auto;padding:0 2rem}
+.art-h2{font-size:1.7rem;font-weight:800;color:#1a5d6a;margin-bottom:.5rem}
+.art-line{width:54px;height:4px;background:linear-gradient(90deg,#1a5d6a,#7fc4c9);border-radius:2px;margin:.7rem 0 2.5rem}
+.art-sub{color:#7a7a7a;font-size:.92rem;margin-bottom:2.5rem;line-height:1.6}
+.info-c{background:linear-gradient(135deg,rgba(74,159,168,.07),rgba(127,196,201,.04));border-left:4px solid #4a9fa8;border-radius:0 12px 12px 0;padding:1.4rem 2rem;margin:3rem 0}
+.info-c p{color:#1a5d6a;font-size:1.05rem;font-weight:500;line-height:1.75}
+
+/* ── CONTEXT CARDS ── */
+.context-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin:3rem 0}
+.ctx-card{background:#f5f9fa;border-radius:16px;padding:1.8rem;border-top:3px solid #4a9fa8}
+.ctx-card .ctx-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#7a7a7a;margin-bottom:.8rem}
+.ctx-card .ctx-val{font-size:1.4rem;font-weight:800;color:#1a5d6a;margin-bottom:.4rem}
+.ctx-card .ctx-desc{font-size:.82rem;color:#7a7a7a;line-height:1.5}
+
+/* ── ARCHITECTURE DIAGRAM ── */
+.arch-wrap{background:linear-gradient(135deg,#0a2038,#0d3d5c);border-radius:24px;padding:3rem;margin:4rem 0;color:#fff;overflow:hidden;position:relative}
+.arch-wrap::after{content:'';position:absolute;right:-80px;bottom:-80px;width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,rgba(74,159,168,.08) 0%,transparent 70%);pointer-events:none}
+.arch-wrap h3{font-size:1.25rem;font-weight:700;margin-bottom:.4rem}
+.arch-wrap .asub{font-size:.83rem;opacity:.6;margin-bottom:2.5rem}
+.arch-diagram{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:0;position:relative;z-index:1}
+.arch-layer{display:flex;flex-direction:column;gap:.8rem}
+.arch-box{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:1rem 1.2rem;text-align:center;transition:background .3s}
+.arch-box:hover{background:rgba(255,255,255,.18)}
+.arch-box.highlight{background:linear-gradient(135deg,rgba(74,159,168,.4),rgba(127,196,201,.25));border-color:rgba(127,196,201,.5)}
+.arch-box.golden{background:linear-gradient(135deg,rgba(243,117,110,.35),rgba(255,150,100,.2));border-color:rgba(243,117,110,.5)}
+.abox-icon{font-size:1.4rem;margin-bottom:.4rem}
+.abox-name{font-size:.78rem;font-weight:700;line-height:1.3}
+.abox-tech{font-size:.65rem;opacity:.65;margin-top:.25rem}
+.arch-arrow{display:flex;align-items:center;justify-content:center;color:rgba(127,196,201,.7);font-size:1.5rem;font-weight:700;padding:0 .5rem}
+.arch-label{text-align:center;margin-bottom:1rem}
+.arch-label span{background:rgba(255,255,255,.1);border-radius:50px;padding:.3rem 1rem;font-size:.72rem;font-weight:700;opacity:.8}
+
+/* ── PERFORMANCE CHART ── */
+.perf-wrap{background:#f5f9fa;border-radius:24px;padding:3rem;margin:4rem 0}
+.perf-wrap h3{font-size:1.35rem;font-weight:700;color:#1a5d6a;margin-bottom:.4rem;text-align:center}
+.perf-wrap .psub{text-align:center;color:#7a7a7a;font-size:.88rem;margin-bottom:2.5rem}
+.perf-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3rem}
+.perf-col h4{font-size:.85rem;font-weight:700;color:#7a7a7a;text-transform:uppercase;letter-spacing:.08em;margin-bottom:1.5rem;text-align:center}
+.perf-bars{display:flex;flex-direction:column;gap:1.2rem}
+.perf-row{display:flex;flex-direction:column;gap:.4rem}
+.perf-label{font-size:.82rem;font-weight:600;color:#4a4a4a;display:flex;justify-content:space-between}
+.perf-val{font-size:.82rem;font-weight:700;color:#1a5d6a}
+.perf-track{background:#e8eef0;border-radius:50px;height:28px;overflow:hidden}
+.perf-fill.before{background:linear-gradient(90deg,#e8a87c,#f0c070);width:0;height:100%;border-radius:50px;transition:width 1.4s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;padding:0 .8rem}
+.perf-fill.after{background:linear-gradient(90deg,#1a5d6a,#4a9fa8);width:0;height:100%;border-radius:50px;transition:width 1.4s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;padding:0 .8rem}
+.pfill-lbl{font-size:.68rem;font-weight:700;color:#fff;white-space:nowrap}
+
+/* ── TIMELINE ── */
+.timeline{position:relative;padding:0 0 2rem;margin:3rem 0}
+.timeline::before{content:'';position:absolute;left:24px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,#1a5d6a,#7fc4c9,#d4eef0)}
+.tl-item{display:grid;grid-template-columns:50px 1fr;gap:1.5rem;margin-bottom:2.5rem;position:relative}
+.tl-dot{width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,#1a5d6a,#4a9fa8);color:#fff;font-size:1rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 0 0 4px rgba(74,159,168,.15);z-index:1;position:relative}
+.tl-content{background:#fff;border-radius:16px;padding:1.8rem;box-shadow:0 4px 18px rgba(26,93,106,.09);border:1px solid rgba(74,159,168,.12);margin-top:.3rem}
+.tl-phase{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#4a9fa8;margin-bottom:.4rem}
+.tl-content h4{font-size:1rem;font-weight:700;color:#1a5d6a;margin-bottom:.6rem}
+.tl-content p{font-size:.85rem;color:#7a7a7a;line-height:1.65;margin-bottom:.8rem}
+.tl-tags{display:flex;gap:.5rem;flex-wrap:wrap}
+.tl-tag{background:rgba(74,159,168,.1);color:#1a5d6a;padding:.2rem .7rem;border-radius:50px;font-size:.68rem;font-weight:700}
+.tl-duration{background:rgba(26,93,106,.08);color:#1a5d6a;padding:.2rem .7rem;border-radius:50px;font-size:.68rem;font-weight:700}
+
+/* ── TECH STACK ── */
+.tech-stack{background:linear-gradient(135deg,#0a2038,#0d3d5c);border-radius:24px;padding:3rem;margin:4rem 0;color:#fff}
+.tech-stack h3{font-size:1.25rem;font-weight:700;margin-bottom:.4rem}
+.tech-stack .tsub{font-size:.83rem;opacity:.6;margin-bottom:2.5rem}
+.tech-layers{display:flex;flex-direction:column;gap:.8rem}
+.tech-layer{display:flex;align-items:center;gap:1.5rem}
+.tl-lbl{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;opacity:.6;width:120px;flex-shrink:0;text-align:right}
+.tl-items{display:flex;gap:.7rem;flex-wrap:wrap}
+.tech-pill{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:.4rem 1rem;font-size:.78rem;font-weight:600;transition:background .3s;cursor:default}
+.tech-pill:hover{background:rgba(255,255,255,.2)}
+.tech-pill.primary{background:rgba(74,159,168,.35);border-color:rgba(127,196,201,.5)}
+
+/* ── LESSONS ── */
+.lessons-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin:2.5rem 0}
+.lesson{background:#fff;border-radius:16px;padding:2rem;box-shadow:0 4px 16px rgba(26,93,106,.08);border-top:4px solid #4a9fa8;transition:transform .3s}
+.lesson:hover{transform:translateY(-3px)}
+.lesson-icon{font-size:1.8rem;margin-bottom:.8rem}
+.lesson h4{font-size:.93rem;font-weight:700;color:#1a5d6a;margin-bottom:.5rem}
+.lesson p{font-size:.82rem;color:#7a7a7a;line-height:1.6}
+
+/* ── CTA / RELATED ── */
+.art-cta{background:linear-gradient(135deg,#0a2038,#1a5d6a);border-radius:24px;padding:3.5rem;text-align:center;margin:4rem 0;color:#fff}
+.art-cta h3{font-size:1.7rem;font-weight:800;margin-bottom:.9rem}
+.art-cta p{font-size:.98rem;opacity:.9;max-width:540px;margin:0 auto 2rem;line-height:1.7}
+.btn-art{background:#fff;color:#1a5d6a;padding:.85rem 2rem;border-radius:50px;font-weight:700;text-decoration:none;display:inline-block;transition:all .3s;font-size:.93rem}
+.btn-art:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.2)}
+.rel-sec{background:#f5f9fa;padding:5rem 0}
+.rel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem}
+.rc{background:#fff;border-radius:16px;padding:2rem;box-shadow:0 4px 16px rgba(26,93,106,.07);text-decoration:none;color:inherit;transition:transform .3s,box-shadow .3s;display:block}
+.rc:hover{transform:translateY(-4px);box-shadow:0 10px 32px rgba(26,93,106,.13)}
+.rtag{font-size:.7rem;font-weight:700;text-transform:uppercase;color:#4a9fa8;letter-spacing:.08em;margin-bottom:.65rem}
+.rc h4{font-size:.93rem;font-weight:700;color:#1a5d6a;margin-bottom:.45rem;line-height:1.4}
+.rc p{font-size:.8rem;color:#7a7a7a;line-height:1.55}
+.rarr{font-size:.8rem;color:#4a9fa8;margin-top:.75rem;font-weight:600}
+/* RESPONSIVE */
+@media(max-width:900px){.arch-diagram{grid-template-columns:1fr;gap:1rem}.arch-arrow{transform:rotate(90deg)}.hero-kpis{grid-template-columns:repeat(2,1fr)}.perf-grid{grid-template-columns:1fr}.context-grid{grid-template-columns:1fr}.tech-layer{flex-direction:column;align-items:flex-start}.tl-lbl{width:auto;text-align:left}}
+@media(max-width:768px){.lessons-grid{grid-template-columns:1fr}.rel-grid{grid-template-columns:1fr}.arch-wrap{padding:2rem}.perf-wrap{padding:2rem}.tech-stack{padding:2rem}}
+</style>
+</head>
+<body>
+<div class="parallax-coral"><div class="coral-shape"></div><div class="coral-shape"></div><div class="coral-shape"></div><div class="coral-shape"></div></div>
+<nav class="navbar">
+<div class="nav-container">
+<div class="logo-container"><a href="index.html"><img src="acropora-logo-transparent.png" alt="Acropora Data" class="logo"></a></div>
+<ul class="nav-menu">
+<li class="nav-item"><a href="javascript:void(0)" class="nav-link" style="cursor:default">Présentation</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-4"><div class="mega-col"><div class="mega-col-title">L'entreprise</div><a href="presentation.html"><span class="link-text"><strong>Qui sommes-nous ?</strong><span>Notre histoire et vision</span></span></a></div><div class="mega-col"><div class="mega-col-title">Méthode</div><a href="approche-donnees.html"><span class="link-text"><strong>Notre approche données</strong><span>Méthodologie &amp; framework</span></span></a></div><div class="mega-col"><div class="mega-col-title">Personnes</div><a href="equipe.html"><span class="link-text"><strong>Équipe</strong><span>Nos experts data</span></span></a></div><div class="mega-col"><div class="mega-col-title">Engagement</div><a href="ethique.html"><span class="link-text"><strong>Éthique &amp; valeurs</strong><span>Nos principes fondateurs</span></span></a></div></div></div></li>
+<li class="nav-item"><a href="javascript:void(0)" class="nav-link" style="cursor:default">Solutions &amp; Expertise</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-4"><div class="mega-col"><div class="mega-col-title">MDM</div><a href="mdm.html"><span class="link-text"><strong>MDM &amp; Intégration</strong><span>Référentiels &amp; pipelines</span></span></a><a href="ai-foundations.html"><span class="link-text"><strong>Fondations IA</strong><span>Données prêtes pour l'IA</span></span></a></div><div class="mega-col"><div class="mega-col-title">Assurance Qualité</div><a href="migration-mdm.html"><span class="link-text"><strong>Stratégie de Tests</strong><span>Transition sans interruption</span></span></a><a href="tests-validation.html"><span class="link-text"><strong>Automatisation de Tests</strong><span>Qualité &amp; conformité</span></span></a></div><div class="mega-col"><div class="mega-col-title">Analytics</div><a href="bi-analytique.html"><span class="link-text"><strong>BI &amp; Analytique</strong><span>Insights et reporting</span></span></a></div><div class="mega-col"><div class="mega-col-title">Audit</div><a href="cadrage-projet.html"><span class="link-text"><strong>Cadrage de projet</strong><span>Structurer vos initiatives</span></span></a></div></div></div></li>
+<li class="nav-item"><a href="javascript:void(0)" class="nav-link" style="cursor:default">Partenaires</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-5"><div class="mega-col"><div class="mega-col-title">Technologie</div><a href="partenaires-technologiques.html"><span class="link-text"><strong>Partenaires technologiques</strong><span>Informatica, Snowflake, Azure…</span></span></a></div><div class="mega-col"><div class="mega-col-title">Business</div><a href="partenaires-commerciaux.html"><span class="link-text"><strong>Partenaires commerciaux</strong><span>Alliances et synergies business</span></span></a></div></div></div></li>
+            <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+            <li class="nav-item"><a href="javascript:void(0)" class="nav-link cta-nav" style="cursor:default">Contact</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-5"><div class="mega-col"><div class="mega-col-title">Rejoindre</div><a href="carrieres.html"><span class="link-text"><strong>Carrières</strong><span>Offres &amp; candidatures</span></span></a></div><div class="mega-col"><div class="mega-col-title">Partenariat</div><a href="devenir-partenaire.html"><span class="link-text"><strong>Devenir partenaire</strong><span>Rejoindre l'écosystème</span></span></a></div></div></div></li>
+</ul>
+<button class="menu-toggle" onclick="document.querySelector('.nav-menu').classList.toggle('active')"><span></span><span></span><span></span></button>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="art-hero">
+<div class="container">
+<div class="art-bc"><a href="blog.html">Blog</a><span class="sep">›</span><span class="cur">Snowflake + Informatica MDM</span></div>
+<div class="art-tags"><span class="a-tag primary">Technique</span><span class="a-tag">Case Study</span><span class="a-tag">Mars 2025</span><span class="a-tag">12 min</span></div>
+<h1>Snowflake + Informatica MDM : Architecture d'un Déploiement Hybride Retail</h1>
+<p class="lead">Comment un retailer européen a unifié 50 millions de références produit, réduit le temps de requête de 73% et atteint 99.8% de qualité de données — en 8 mois.</p>
+<div class="hero-kpis">
+<div class="kpi-c"><div class="kpi-num"><span data-counter="50" data-suffix="M" data-dec="0">0M</span></div><div class="kpi-lbl">Références produit gérées</div></div>
+<div class="kpi-c"><div class="kpi-num"><span data-counter="73" data-suffix="%" data-dec="0">0%</span></div><div class="kpi-lbl">Réduction du temps de requête</div></div>
+<div class="kpi-c"><div class="kpi-num"><span data-counter="99.8" data-suffix="%" data-dec="1">0%</span></div><div class="kpi-lbl">Score de qualité données</div></div>
+<div class="kpi-c"><div class="kpi-num"><span data-counter="8" data-suffix=" mois" data-dec="0">0 mois</span></div><div class="kpi-lbl">Time-to-production</div></div>
+</div>
+</div>
+</section>
+<div class="page-bc"><div class="container"><a href="index.html">Accueil</a><span class="sep">›</span><a href="blog.html">Blog</a><span class="sep">›</span><span class="cur">Snowflake + Informatica MDM</span></div></div>
+
+<!-- BODY -->
+<section class="art-body">
+<div class="art-wrap">
+
+<div class="info-c"><p>Ce cas client décrit le déploiement d'une architecture MDM hybride pour un retailer européen multi-enseigne (12 pays, 4 200 points de vente). Objectif : créer un référentiel produit unique et fiable comme socle pour l'IA et le commerce unifié.</p></div>
+
+<!-- CONTEXT -->
+<h2 class="art-h2">Contexte &amp; Enjeux</h2>
+<div class="art-line"></div>
+<div class="context-grid">
+<div class="ctx-card"><div class="ctx-label">Le client</div><div class="ctx-val">Retailer #4 Europe</div><div class="ctx-desc">12 pays, 4 200 magasins, 3 e-commerces, 15 ERP différents après 8 acquisitions en 5 ans</div></div>
+<div class="ctx-card"><div class="ctx-label">Le problème</div><div class="ctx-val">Donnée produit</div><div class="ctx-desc">Le même article avait jusqu'à 14 identifiants différents selon les systèmes. Impossible de faire du cross-selling ou de l'IA fiable.</div></div>
+<div class="ctx-card"><div class="ctx-label">L'objectif</div><div class="ctx-val">Golden Record</div><div class="ctx-desc">Un référentiel produit unique, distribué en temps réel à tous les systèmes. Base pour l'IA de recommandation et le commerce unifié.</div></div>
+</div>
+
+<!-- ARCHITECTURE DIAGRAM -->
+<h2 class="art-h2">Architecture de la Solution</h2>
+<div class="art-line"></div>
+<p class="art-sub">Architecture hybride en 3 couches : ingestion des sources, hub MDM central, distribution en temps réel vers les applications consommatrices.</p>
+
+<div class="arch-wrap">
+<h3>Architecture MDM Hybride — Vue Logique</h3>
+<p class="asub">Flux de données de bout en bout · Déploiement Azure + Snowflake + Informatica IICS</p>
+<div class="arch-diagram">
+<!-- Couche 1: Sources -->
+<div class="arch-layer">
+<div class="arch-label"><span>Sources</span></div>
+<div class="arch-box"><div class="abox-icon">🏬</div><div class="abox-name">ERP SAP</div><div class="abox-tech">15 instances</div></div>
+<div class="arch-box"><div class="abox-icon">🛒</div><div class="abox-name">e-Commerce</div><div class="abox-tech">Magento / Salesforce</div></div>
+<div class="arch-box"><div class="abox-icon">🏭</div><div class="abox-name">PIM Legacy</div><div class="abox-tech">Données fournisseurs</div></div>
+<div class="arch-box"><div class="abox-icon">📡</div><div class="abox-name">IoT / Capteurs</div><div class="abox-tech">Stocks temps réel</div></div>
+</div>
+<!-- Arrow 1 -->
+<div class="arch-arrow">→</div>
+<!-- Couche 2: MDM Hub -->
+<div class="arch-layer">
+<div class="arch-label"><span>MDM Hub (Informatica IICS)</span></div>
+<div class="arch-box highlight"><div class="abox-icon">🔄</div><div class="abox-name">Ingestion &amp; Dédoublonnage</div><div class="abox-tech">Match &amp; Merge AI</div></div>
+<div class="arch-box golden"><div class="abox-icon">⭐</div><div class="abox-name">Golden Record Engine</div><div class="abox-tech">Référentiel maître</div></div>
+<div class="arch-box highlight"><div class="abox-icon">✅</div><div class="abox-name">Data Quality &amp; Enrichissement</div><div class="abox-tech">DQ règles + IA</div></div>
+<div class="arch-box highlight"><div class="abox-icon">📊</div><div class="abox-name">Snowflake Data Share</div><div class="abox-tech">Analytics layer</div></div>
+</div>
+<!-- Arrow 2 -->
+<div class="arch-arrow">→</div>
+<!-- Couche 3: Consommateurs -->
+<div class="arch-layer">
+<div class="arch-label"><span>Applications</span></div>
+<div class="arch-box"><div class="abox-icon">🤖</div><div class="abox-name">IA Recommandation</div><div class="abox-tech">Azure ML</div></div>
+<div class="arch-box"><div class="abox-icon">📱</div><div class="abox-name">Commerce Unifié</div><div class="abox-tech">Omnicanal</div></div>
+<div class="arch-box"><div class="abox-icon">📈</div><div class="abox-name">BI &amp; Reporting</div><div class="abox-tech">Power BI / Tableau</div></div>
+<div class="arch-box"><div class="abox-icon">🔗</div><div class="abox-name">API Partenaires</div><div class="abox-tech">REST / GraphQL</div></div>
+</div>
+</div>
+</div>
+
+<!-- PERFORMANCE COMPARISON -->
+<div class="perf-wrap">
+<h3>Performances : Avant vs Après</h3>
+<p class="psub">Mesures effectuées 6 mois après la mise en production complète</p>
+<div class="perf-grid">
+<div>
+<h4>🔴 Avant le projet</h4>
+<div class="perf-bars">
+<div class="perf-row"><div class="perf-label"><span>Temps de recherche produit</span><span class="perf-val">8.4s</span></div><div class="perf-track"><div class="perf-fill before" data-width="84%"><span class="pfill-lbl">8.4 secondes</span></div></div></div>
+<div class="perf-row"><div class="perf-label"><span>Taux de doublons produit</span><span class="perf-val">23%</span></div><div class="perf-track"><div class="perf-fill before" data-width="23%"><span class="pfill-lbl">23%</span></div></div></div>
+<div class="perf-row"><div class="perf-label"><span>Score qualité données</span><span class="perf-val">71%</span></div><div class="perf-track"><div class="perf-fill before" data-width="71%"><span class="pfill-lbl">71%</span></div></div></div>
+<div class="perf-row"><div class="perf-label"><span>Délai sync inter-systèmes</span><span class="perf-val">J+2</span></div><div class="perf-track"><div class="perf-fill before" data-width="100%"><span class="pfill-lbl">2 jours</span></div></div></div>
+</div>
+</div>
+<div>
+<h4>🟢 Après le projet</h4>
+<div class="perf-bars">
+<div class="perf-row"><div class="perf-label"><span>Temps de recherche produit</span><span class="perf-val">2.3s</span></div><div class="perf-track"><div class="perf-fill after" data-width="23%"><span class="pfill-lbl">2.3 secondes</span></div></div></div>
+<div class="perf-row"><div class="perf-label"><span>Taux de doublons produit</span><span class="perf-val">0.2%</span></div><div class="perf-track"><div class="perf-fill after" data-width="2%"><span class="pfill-lbl">0.2%</span></div></div></div>
+<div class="perf-row"><div class="perf-label"><span>Score qualité données</span><span class="perf-val">99.8%</span></div><div class="perf-track"><div class="perf-fill after" data-width="99.8%"><span class="pfill-lbl">99.8%</span></div></div></div>
+<div class="perf-row"><div class="perf-label"><span>Délai sync inter-systèmes</span><span class="perf-val">&lt;500ms</span></div><div class="perf-track"><div class="perf-fill after" data-width="3%"><span class="pfill-lbl">&lt;500ms</span></div></div></div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- IMPLEMENTATION TIMELINE -->
+<h2 class="art-h2">Les 4 Phases du Déploiement</h2>
+<div class="art-line"></div>
+<div class="timeline">
+<div class="tl-item">
+<div class="tl-dot">1</div>
+<div class="tl-content">
+<div class="tl-phase">Phase 1 · Mois 1–2</div>
+<h4>Discovery &amp; Architecture</h4>
+<p>Audit des 15 ERP et 3 systèmes e-commerce. Cartographie des flux de données produit. Définition du modèle de données cible (Product Master Data Model). Sélection Snowflake + Informatica IICS comme stack central.</p>
+<div class="tl-tags"><span class="tl-tag">Data Mapping</span><span class="tl-tag">Architecture Design</span><span class="tl-duration">⏱ 8 semaines</span></div>
+</div>
+</div>
+<div class="tl-item">
+<div class="tl-dot">2</div>
+<div class="tl-content">
+<div class="tl-phase">Phase 2 · Mois 3–4</div>
+<h4>Mise en Place du Hub MDM</h4>
+<p>Déploiement d'Informatica Intelligent Cloud Services (IICS) sur Azure. Configuration du Match &amp; Merge engine avec règles de déduplication IA. Création du Snowflake Data Lakehouse pour l'analytics layer.</p>
+<div class="tl-tags"><span class="tl-tag">Informatica IICS</span><span class="tl-tag">Snowflake</span><span class="tl-tag">Azure</span><span class="tl-duration">⏱ 8 semaines</span></div>
+</div>
+</div>
+<div class="tl-item">
+<div class="tl-dot">3</div>
+<div class="tl-content">
+<div class="tl-phase">Phase 3 · Mois 5–7</div>
+<h4>Migration &amp; Nettoyage des Données</h4>
+<p>Migration progressive des 50M de références produit par domaine (alimentaire → non-alimentaire → textile). Nettoyage et enrichissement avec l'IA Informatica CLAIRE. Validation par les data stewards métier avant mise en production.</p>
+<div class="tl-tags"><span class="tl-tag">Data Migration</span><span class="tl-tag">CLAIRE AI</span><span class="tl-tag">Data Quality</span><span class="tl-duration">⏱ 12 semaines</span></div>
+</div>
+</div>
+<div class="tl-item">
+<div class="tl-dot">4</div>
+<div class="tl-content">
+<div class="tl-phase">Phase 4 · Mois 8</div>
+<h4>Go-Live &amp; Optimisation</h4>
+<p>Basculement vers le référentiel maître avec mise à jour en temps réel de tous les systèmes consommateurs via API REST. Activation de l'event streaming (Azure Event Hub) pour les synchronisations sous 500ms. Formation des équipes et transfert de compétences.</p>
+<div class="tl-tags"><span class="tl-tag">Go-Live</span><span class="tl-tag">Event Streaming</span><span class="tl-tag">API REST</span><span class="tl-duration">⏱ 4 semaines</span></div>
+</div>
+</div>
+</div>
+
+<!-- TECH STACK -->
+<div class="tech-stack">
+<h3>Stack Technologique Complet</h3>
+<p class="tsub">Toutes les couches de la solution déployée</p>
+<div class="tech-layers">
+<div class="tech-layer"><span class="tl-lbl">MDM Hub</span><div class="tl-items"><span class="tech-pill primary">Informatica IICS</span><span class="tech-pill primary">CLAIRE AI Engine</span><span class="tech-pill">MDM 360</span><span class="tech-pill">Data Quality</span></div></div>
+<div class="tech-layer"><span class="tl-lbl">Cloud DW</span><div class="tl-items"><span class="tech-pill primary">Snowflake Enterprise</span><span class="tech-pill">Data Share</span><span class="tech-pill">Cortex AI</span></div></div>
+<div class="tech-layer"><span class="tl-lbl">Infrastructure</span><div class="tl-items"><span class="tech-pill">Microsoft Azure</span><span class="tech-pill">Azure Event Hub</span><span class="tech-pill">Azure API Management</span><span class="tech-pill">Terraform</span></div></div>
+<div class="tech-layer"><span class="tl-lbl">Intégration</span><div class="tl-items"><span class="tech-pill">Informatica PowerCenter</span><span class="tech-pill">Azure Data Factory</span><span class="tech-pill">Apache Kafka</span><span class="tech-pill">REST APIs</span></div></div>
+<div class="tech-layer"><span class="tl-lbl">Analytics</span><div class="tl-items"><span class="tech-pill">Power BI Premium</span><span class="tech-pill">dbt Cloud</span><span class="tech-pill">Azure ML</span></div></div>
+</div>
+</div>
+
+<!-- LESSONS LEARNED -->
+<h2 class="art-h2">5 Enseignements Clés</h2>
+<div class="art-line"></div>
+<div class="lessons-grid">
+<div class="lesson"><div class="lesson-icon">🎯</div><h4>Commencer par un domaine</h4><p>Nous avons commencé par les produits alimentaires uniquement. Ce premier succès a convaincu le COMEX d'accélérer les autres domaines.</p></div>
+<div class="lesson"><div class="lesson-icon">🤝</div><h4>L'humain avant la tech</h4><p>Les 3 premiers mois ont été dédiés à identifier et former les data stewards. Sans eux, aucune règle de qualité ne serait réaliste.</p></div>
+<div class="lesson"><div class="lesson-icon">⚡</div><h4>Event-driven dès le départ</h4><p>Implémenter le streaming dès la phase 1 (pas en phase 4) aurait économisé 6 semaines de refactoring de l'architecture d'intégration.</p></div>
+<div class="lesson"><div class="lesson-icon">📊</div><h4>Mesurer pour convaincre</h4><p>Les tableaux de bord de qualité temps réel ont été le meilleur outil de communication vers la direction et les équipes métier.</p></div>
+<div class="lesson"><div class="lesson-icon">🔄</div><h4>Itérer, ne pas perfectionner</h4><p>Un golden record à 95% en production vaut mieux qu'un golden record à 100% en conception. L'amélioration continue fait le reste.</p></div>
+<div class="lesson"><div class="lesson-icon">🤖</div><h4>L'IA après la gouvernance</h4><p>Le projet IA de recommandation attendait ce référentiel depuis 2 ans. Le MDM est le prérequis absolument non négociable à l'IA fiable.</p></div>
+</div>
+
+<div class="art-cta"><h3>Un Projet Similaire à Démarrer ?</h3><p>Acropora Data, partenaire certifié Informatica et Snowflake, accompagne vos déploiements MDM hybrides de bout en bout.</p><a href="contact.html" class="btn-art">Discutons de votre architecture →</a></div>
+
+</div>
+</section>
+
+<section class="rel-sec">
+<div class="art-wrap">
+<h2 class="art-h2">Articles Connexes</h2><div class="art-line"></div>
+<div class="rel-grid">
+<a href="blog-tendances-mdm-2025.html" class="rc"><div class="rtag">Tendances</div><h4>Les tendances MDM 2025</h4><p>IA générative, data mesh, MDM as a Service : ce qui transforme le marché</p><div class="rarr">Lire l'article →</div></a>
+<a href="blog-data-governance-2025.html" class="rc"><div class="rtag">Best Practices</div><h4>Data Governance : le guide 2025</h4><p>Gouvernance efficace en 6 étapes concrètes</p><div class="rarr">Lire l'article →</div></a>
+<a href="blog-mdm-ia-fiable.html" class="rc"><div class="rtag">Opinion</div><h4>MDM : la base de l'IA fiable</h4><p>Garbage in, garbage out : sans données propres, l'IA est un risque</p><div class="rarr">Lire l'article →</div></a>
+</div>
+</div>
+</section>
+
+<footer class="footer"><div class="container"><div class="footer-content" style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:2rem"><div class="footer-section" style="flex:1;min-width:250px"><img src="acropora-logo-transparent.png" alt="Acropora Data" class="footer-logo" style="margin-bottom:1rem;width:180px;display:block"><p style="font-weight:700;margin-bottom:.2rem;color:#fff">Data Management Expert</p><p style="font-size:.85rem;opacity:.7;color:#fff">Turn your data into strategic assets</p><div style="margin-top:1.5rem;display:flex;justify-content:center;width:180px"><a href="https://www.linkedin.com/company/acropora-data" target="_blank" style="color:#81abb3;transition:color .3s" onmouseover="this.style.color='#f3756e'" onmouseout="this.style.color='#81abb3'"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a></div></div><div class="footer-section" style="flex:1;min-width:200px"><h4 style="color:#81abb3;margin-bottom:1.5rem;font-size:1.1rem;text-transform:uppercase;letter-spacing:.05em">Solutions</h4><ul style="list-style:none;padding:0"><li style="margin-bottom:.7rem"><a href="mdm.html" style="color:rgba(255,255,255,.8);text-decoration:none" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,.8)'">MDM &amp; intégration</a></li><li style="margin-bottom:.7rem"><a href="ai-foundations.html" style="color:rgba(255,255,255,.8);text-decoration:none" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,.8)'">Fondations IA</a></li><li style="margin-bottom:.7rem"><a href="bi-analytique.html" style="color:rgba(255,255,255,.8);text-decoration:none" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,.8)'">BI &amp; Analytique</a></li></ul></div><div class="footer-section" style="flex:1;min-width:200px"><h4 style="color:#81abb3;margin-bottom:1.5rem;font-size:1.1rem;text-transform:uppercase;letter-spacing:.05em">Contact</h4><ul style="list-style:none;padding:0"><li style="margin-bottom:.7rem"><a href="carrieres.html" style="color:rgba(255,255,255,.8);text-decoration:none" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,.8)'">Carrières</a></li><li style="margin-bottom:.7rem"><a href="contact.html" style="color:rgba(255,255,255,.8);text-decoration:none" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,.8)'">Contact</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 Acropora Data. Tous droits réservés.</p></div></div></footer>
+<script src="script.js"></script><script src="pages.js"></script><script src="hero-animations.js"></script>
+<script>
+document.querySelectorAll('.nav-item').forEach(function(item){var link=item.querySelector('.nav-link');var mega=item.querySelector('.mega-menu');if(!mega)return;link.addEventListener('click',function(e){if(window.innerWidth>768)return;e.preventDefault();var isOpen=item.classList.contains('open');document.querySelectorAll('.nav-item.open').forEach(function(o){o.classList.remove('open');o.querySelector('.mega-menu').style.display='';});if(!isOpen){item.classList.add('open');mega.style.display='block';}});});
+document.addEventListener('click',function(e){if(!e.target.closest('.navbar')){document.querySelectorAll('.nav-item.open').forEach(function(item){item.classList.remove('open');item.querySelector('.mega-menu').style.display='';});}});
+const bfills=document.querySelectorAll('.bfill[data-width],.perf-fill[data-width]');
+const bObs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.width=e.target.dataset.width;bObs.unobserve(e.target);}});},{threshold:.3});
+bfills.forEach(f=>bObs.observe(f));
+const ctrs=document.querySelectorAll('[data-counter]');
+const cObs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(!e.isIntersecting)return;const el=e.target,target=parseFloat(el.dataset.counter),suffix=el.dataset.suffix||'',prefix=el.dataset.prefix||'',dec=parseInt(el.dataset.dec||0);let s=0;const steps=50,timer=setInterval(()=>{s++;const v=(target/steps)*s;el.textContent=prefix+(dec?v.toFixed(dec):Math.floor(v))+suffix;if(s>=steps){el.textContent=prefix+(dec?target.toFixed(dec):target)+suffix;clearInterval(timer);}},2000/steps);cObs.unobserve(el);});},{threshold:.5});
+ctrs.forEach(el=>cObs.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8FFCFJNNG2"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8FFCFJNNG2');</script>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="favicon-acropora.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JFTL 2026 — Acropora Data aux Journées Françaises des Tests Logiciels</title>
+<meta name="description" content="Acropora Data participe aux JFTL 2026 le 9 juin au Beffroi de Montrouge. Tests logiciels, automatisation QA et IA : venez rencontrer nos experts.">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="pages.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+.art-hero{padding:11rem 0 5rem;background:linear-gradient(135deg,#081828 0%,#0e3060 50%,#1a5d6a 100%);color:#fff;position:relative;overflow:hidden}
+.art-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 60%,rgba(74,120,200,.12) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(127,196,201,.12) 0%,transparent 40%)}
+.art-hero::after{content:'';position:absolute;width:500px;height:500px;right:-100px;bottom:-100px;border-radius:50%;background:radial-gradient(circle,rgba(74,120,200,.08) 0%,transparent 70%);animation:coral-float 12s ease-in-out infinite}
+.art-hero .container{position:relative;z-index:2}
+.art-bc{display:flex;align-items:center;gap:.5rem;margin-bottom:2rem;font-size:.8rem}
+.art-bc a{color:rgba(255,255,255,.7);text-decoration:none}.art-bc a:hover{color:#fff}
+.art-bc .sep{color:rgba(255,255,255,.35)}.art-bc .cur{color:rgba(255,255,255,.9)}
+.art-tags{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.a-tag{padding:.28rem 1rem;border-radius:50px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;background:rgba(255,255,255,.14);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.22);color:#fff}
+.a-tag.primary{background:rgba(14,48,96,.6);border-color:rgba(74,120,200,.6)}
+.art-hero h1{font-size:clamp(1.9rem,4vw,3.1rem);font-weight:800;line-height:1.15;margin-bottom:1.5rem;max-width:860px}
+.art-hero .lead{font-size:1.1rem;opacity:.88;max-width:680px;line-height:1.75;margin-bottom:3rem;font-weight:300}
+.hero-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;max-width:680px}
+.kpi-c{background:rgba(255,255,255,.12);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.2);border-radius:16px;padding:1.4rem;text-align:center;transition:background .3s}.kpi-c:hover{background:rgba(255,255,255,.18)}
+.kpi-num{font-size:2.1rem;font-weight:800;line-height:1;background:linear-gradient(135deg,#fff,#a8c4f0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.35rem}
+.kpi-lbl{font-size:.72rem;opacity:.78;line-height:1.45;font-weight:500}
+.page-bc{background:#f5f9fa;border-bottom:1px solid rgba(26,93,106,.08);padding:.75rem 0}
+.page-bc .container{display:flex;align-items:center;gap:.5rem;font-size:.82rem}
+.page-bc a{color:#4a9fa8;text-decoration:none;font-weight:500}.page-bc a:hover{color:#1a5d6a}
+.page-bc .sep{color:#ccc}.page-bc .cur{color:#4a4a4a}
+.art-body{padding:5rem 0;background:#fff}
+.art-wrap{max-width:1080px;margin:0 auto;padding:0 2rem}
+.art-h2{font-size:1.7rem;font-weight:800;color:#1a5d6a;margin-bottom:.5rem}
+.art-line{width:54px;height:4px;background:linear-gradient(90deg,#1a5d6a,#7fc4c9);border-radius:2px;margin:.7rem 0 2.5rem}
+.art-sub{color:#7a7a7a;font-size:.92rem;margin-bottom:2.5rem;line-height:1.6}
+.info-c{background:linear-gradient(135deg,rgba(14,48,96,.07),rgba(74,120,200,.04));border-left:4px solid #4a78c8;border-radius:0 12px 12px 0;padding:1.4rem 2rem;margin:3rem 0}
+.info-c p{color:#1a5d6a;font-size:1.05rem;font-weight:500;line-height:1.75}
+.evt-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin:3rem 0}
+.evt-card{background:#f5f9fa;border-radius:18px;padding:2rem;text-align:center;border:1px solid rgba(74,120,200,.12);transition:transform .3s,box-shadow .3s}
+.evt-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(14,48,96,.12)}
+.evt-icon{font-size:2.2rem;margin-bottom:.8rem}
+.evt-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#4a78c8;margin-bottom:.4rem}
+.evt-value{font-size:1.1rem;font-weight:800;color:#1a5d6a;line-height:1.3}
+.evt-sub{font-size:.8rem;color:#7a7a7a;margin-top:.3rem}
+/* TRACKS */
+.tracks-wrap{background:#f5f9fa;border-radius:24px;padding:3rem;margin:4rem 0}
+.tracks-wrap h3{font-size:1.3rem;font-weight:700;color:#1a5d6a;margin-bottom:.4rem;text-align:center}
+.tracks-wrap .tsub{text-align:center;color:#7a7a7a;font-size:.88rem;margin-bottom:2.5rem}
+.tracks-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem}
+.track-card{border-radius:16px;padding:1.5rem 1rem;text-align:center;transition:transform .3s,box-shadow .3s;cursor:default;position:relative;overflow:hidden}
+.track-card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.1)}
+.track-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.t1{background:linear-gradient(135deg,rgba(74,120,200,.1),rgba(74,120,200,.04));border:1px solid rgba(74,120,200,.18)}.t1::after{background:linear-gradient(90deg,#4a78c8,#7aa0e0)}
+.t2{background:linear-gradient(135deg,rgba(74,159,168,.1),rgba(74,159,168,.04));border:1px solid rgba(74,159,168,.18)}.t2::after{background:linear-gradient(90deg,#4a9fa8,#7fc4c9)}
+.t3{background:linear-gradient(135deg,rgba(140,60,180,.1),rgba(140,60,180,.04));border:1px solid rgba(140,60,180,.18)}.t3::after{background:linear-gradient(90deg,#8c3cb4,#c078d8)}
+.t4{background:linear-gradient(135deg,rgba(40,140,80,.1),rgba(40,140,80,.04));border:1px solid rgba(40,140,80,.18)}.t4::after{background:linear-gradient(90deg,#288c50,#50b878)}
+.t5{background:linear-gradient(135deg,rgba(200,120,40,.1),rgba(200,120,40,.04));border:1px solid rgba(200,120,40,.18)}.t5::after{background:linear-gradient(90deg,#c87828,#e8a050)}
+.track-icon{font-size:1.8rem;margin-bottom:.8rem;display:block}
+.track-name{font-size:.8rem;font-weight:700;color:#1a5d6a;line-height:1.35;display:block}
+.track-count{font-size:.7rem;color:#7a7a7a;margin-top:.4rem;display:block}
+/* BAR CHART */
+.chart-dark{background:linear-gradient(135deg,#081828,#0e3060);border-radius:24px;padding:3rem;margin:4rem 0;color:#fff;position:relative;overflow:hidden}
+.chart-dark::after{content:'';position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(74,120,200,.1) 0%,transparent 70%);pointer-events:none}
+.chart-dark h3{font-size:1.25rem;font-weight:700;margin-bottom:.4rem}
+.chart-dark .csub{font-size:.83rem;opacity:.6;margin-bottom:2.5rem}
+.bchart{display:flex;flex-direction:column;gap:1.1rem}
+.brow{display:grid;grid-template-columns:175px 1fr 55px;align-items:center;gap:1rem}
+.blbl{font-size:.8rem;font-weight:600;opacity:.88;text-align:right}
+.btrack{background:rgba(255,255,255,.1);border-radius:50px;height:34px;overflow:hidden}
+.bfill{height:100%;border-radius:50px;width:0;background:linear-gradient(90deg,#4a78c8,#a8c4f0);transition:width 1.4s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;padding:0 1rem}
+.bill{font-size:.7rem;font-weight:700;color:#081828;white-space:nowrap}
+.bval{font-size:1.05rem;font-weight:800;text-align:right}
+/* WHY CARDS */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;margin:3rem 0}
+.why-card{background:#fff;border-radius:20px;padding:2.2rem;box-shadow:0 6px 28px rgba(26,93,106,.09);border:1px solid rgba(74,120,200,.12);position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s}
+.why-card:hover{transform:translateY(-5px);box-shadow:0 14px 44px rgba(14,48,96,.16)}
+.why-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#0e3060,#4a78c8)}
+.why-icon{font-size:2rem;margin-bottom:1rem}
+.why-card h4{font-size:1.05rem;font-weight:700;color:#1a5d6a;margin-bottom:.7rem}
+.why-card p{font-size:.88rem;color:#4a4a4a;line-height:1.7}
+/* ACROPORA EXPERTISE TABLE */
+.exp-table{background:#f5f9fa;border-radius:24px;padding:3rem;margin:4rem 0}
+.exp-table h3{font-size:1.3rem;font-weight:700;color:#1a5d6a;margin-bottom:.4rem;text-align:center}
+.exp-table .esub{text-align:center;color:#7a7a7a;font-size:.88rem;margin-bottom:2.5rem}
+.exp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.exp-item{background:#fff;border-radius:16px;padding:1.8rem;border:1px solid rgba(74,120,200,.1);display:flex;gap:1.2rem;align-items:flex-start;transition:transform .3s,box-shadow .3s}
+.exp-item:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(14,48,96,.1)}
+.exp-item-icon{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,rgba(74,120,200,.12),rgba(74,120,200,.06));display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.exp-item-body h5{font-size:.95rem;font-weight:700;color:#1a5d6a;margin-bottom:.4rem}
+.exp-item-body p{font-size:.83rem;color:#7a7a7a;line-height:1.55}
+.exp-item-body .badge{display:inline-block;margin-top:.5rem;padding:.18rem .65rem;border-radius:50px;font-size:.65rem;font-weight:700;background:rgba(14,48,96,.08);color:#0e3060}
+/* CTA */
+.art-cta{background:linear-gradient(135deg,#081828,#0e3060);border-radius:24px;padding:3.5rem;text-align:center;color:#fff;margin:4rem 0}
+.art-cta h3{font-size:1.6rem;font-weight:800;margin-bottom:.8rem}
+.art-cta p{font-size:1rem;opacity:.85;margin-bottom:2rem;max-width:560px;margin-left:auto;margin-right:auto}
+.btn-art{display:inline-block;padding:.9rem 2.2rem;background:linear-gradient(135deg,#4a78c8,#7aa0e0);color:#fff;border-radius:50px;font-weight:700;font-size:.95rem;text-decoration:none;transition:transform .3s,box-shadow .3s}
+.btn-art:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(74,120,200,.4)}
+.btn-art-outline{display:inline-block;padding:.9rem 2.2rem;background:transparent;color:#fff;border:2px solid rgba(255,255,255,.5);border-radius:50px;font-weight:700;font-size:.95rem;text-decoration:none;transition:all .3s;margin-left:1rem}
+.btn-art-outline:hover{background:rgba(255,255,255,.1);border-color:#fff}
+/* REL */
+.rel-sec{background:#f5f9fa;padding:4rem 0}
+.rel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem}
+.rc{background:#fff;border-radius:16px;padding:2rem;text-decoration:none;color:inherit;transition:transform .3s,box-shadow .3s;border:1px solid rgba(74,159,168,.1);display:block}
+.rc:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(26,93,106,.12)}
+.rtag{display:inline-block;padding:.22rem .8rem;border-radius:50px;font-size:.68rem;font-weight:700;background:rgba(74,159,168,.1);color:#1a5d6a;margin-bottom:.8rem}
+.rc h4{font-size:1rem;font-weight:700;color:#1a5d6a;margin-bottom:.5rem}
+.rc p{font-size:.83rem;color:#7a7a7a;line-height:1.55}
+.rarr{font-size:.8rem;font-weight:700;color:#4a9fa8;margin-top:1rem}
+</style>
+</head>
+<body>
+<div class="parallax-coral"><div class="coral-shape"></div><div class="coral-shape"></div><div class="coral-shape"></div><div class="coral-shape"></div></div>
+<nav class="navbar">
+<div class="nav-container">
+<div class="logo-container"><a href="index.html"><img src="acropora-logo-transparent.png" alt="Acropora Data" class="logo"></a></div>
+<ul class="nav-menu">
+<li class="nav-item"><a href="javascript:void(0)" class="nav-link" style="cursor:default">Présentation</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-4"><div class="mega-col"><div class="mega-col-title">L'entreprise</div><a href="presentation.html"><span class="link-text"><strong>Qui sommes-nous ?</strong><span>Notre histoire et vision</span></span></a></div><div class="mega-col"><div class="mega-col-title">Méthode</div><a href="approche-donnees.html"><span class="link-text"><strong>Notre approche données</strong><span>Méthodologie &amp; framework</span></span></a></div><div class="mega-col"><div class="mega-col-title">Personnes</div><a href="equipe.html"><span class="link-text"><strong>Équipe</strong><span>Nos experts data</span></span></a></div><div class="mega-col"><div class="mega-col-title">Engagement</div><a href="ethique.html"><span class="link-text"><strong>Éthique &amp; valeurs</strong><span>Nos principes fondateurs</span></span></a></div></div></div></li>
+<li class="nav-item"><a href="javascript:void(0)" class="nav-link" style="cursor:default">Solutions &amp; Expertise</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-4"><div class="mega-col"><div class="mega-col-title">MDM</div><a href="mdm.html"><span class="link-text"><strong>MDM &amp; Intégration</strong><span>Référentiels &amp; pipelines</span></span></a><a href="ai-foundations.html"><span class="link-text"><strong>Fondations IA</strong><span>Données prêtes pour l'IA</span></span></a></div><div class="mega-col"><div class="mega-col-title">Assurance Qualité</div><a href="migration-mdm.html"><span class="link-text"><strong>Stratégie de Tests</strong><span>Transition sans interruption</span></span></a><a href="tests-validation.html"><span class="link-text"><strong>Automatisation de Tests</strong><span>Qualité &amp; conformité</span></span></a></div><div class="mega-col"><div class="mega-col-title">Analytics</div><a href="bi-analytique.html"><span class="link-text"><strong>BI &amp; Analytique</strong><span>Insights et reporting</span></span></a></div><div class="mega-col"><div class="mega-col-title">Audit</div><a href="cadrage-projet.html"><span class="link-text"><strong>Cadrage de projet</strong><span>Structurer vos initiatives</span></span></a></div></div></div></li>
+<li class="nav-item"><a href="javascript:void(0)" class="nav-link" style="cursor:default">Partenaires</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-5"><div class="mega-col"><div class="mega-col-title">Technologie</div><a href="partenaires-technologiques.html"><span class="link-text"><strong>Partenaires technologiques</strong><span>Informatica, Snowflake, Azure…</span></span></a></div><div class="mega-col"><div class="mega-col-title">Business</div><a href="partenaires-commerciaux.html"><span class="link-text"><strong>Partenaires commerciaux</strong><span>Alliances et synergies business</span></span></a></div></div></div></li>
+<li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+<li class="nav-item"><a href="javascript:void(0)" class="nav-link cta-nav" style="cursor:default">Contact</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-5"><div class="mega-col"><div class="mega-col-title">Rejoindre</div><a href="carrieres.html"><span class="link-text"><strong>Carrières</strong><span>Offres &amp; candidatures</span></span></a></div><div class="mega-col"><div class="mega-col-title">Partenariat</div><a href="devenir-partenaire.html"><span class="link-text"><strong>Devenir partenaire</strong><span>Rejoindre l'écosystème</span></span></a></div></div></div></li>
+</ul><button class="menu-toggle" onclick="document.querySelector('.nav-menu').classList.toggle('active')"><span></span><span></span><span></span></button>
+</div>
+</nav>
+
+<section class="art-hero">
+<div class="container">
+<div class="art-bc"><a href="blog.html">Blog</a><span class="sep">›</span><span class="cur">JFTL 2026</span></div>
+<div class="art-tags"><span class="a-tag primary">Événement</span><span class="a-tag">Présentiel</span><span class="a-tag">9 Juin 2026</span><span class="a-tag">Tests &amp; QA</span></div>
+<h1>Acropora Data aux JFTL 2026 — Journées Françaises des Tests Logiciels</h1>
+<p class="lead">L'événement incontournable de la communauté QA française réunit plus de 1 300 professionnels des tests logiciels. Acropora Data y sera pour partager son expertise en automatisation, qualité data et IA dans les tests.</p>
+<div class="hero-kpis">
+<div class="kpi-c"><div class="kpi-num"><span data-counter="1300" data-suffix="+">0</span></div><div class="kpi-lbl">Participants<br>attendus</div></div>
+<div class="kpi-c"><div class="kpi-num"><span data-counter="5">0</span></div><div class="kpi-lbl">Auditoriums &amp;<br>salles en parallèle</div></div>
+<div class="kpi-c"><div class="kpi-num">9 Juin</div><div class="kpi-lbl">Beffroi de<br>Montrouge</div></div>
+</div>
+</div>
+</section>
+
+<div class="page-bc"><div class="container"><a href="blog.html">Blog</a><span class="sep">›</span><span class="cur">JFTL 2026</span></div></div>
+
+<section class="art-body">
+<div class="art-wrap">
+
+<h2 class="art-h2">Le Rendez-vous National de la Qualité Logicielle</h2>
+<div class="art-line"></div>
+<p class="art-sub">Les JFTL (Journées Françaises des Tests Logiciels) sont organisées par le CFTL, comité français des tests logiciels. Avec 1 300 participants annuels, cet événement rassemble toute la communauté QA francophone autour de sujets qui font l'actualité du secteur.</p>
+
+<div class="info-c"><p>📍 <strong>Beffroi de Montrouge</strong> — 9 juin 2026 — Présentiel — Ateliers pré-événement le 8 juin</p></div>
+
+<div class="evt-strip">
+<div class="evt-card"><div class="evt-icon">📍</div><div class="evt-label">Lieu</div><div class="evt-value">Beffroi de Montrouge</div><div class="evt-sub">Paris — Île-de-France<br>Accès facile en transports</div></div>
+<div class="evt-card"><div class="evt-icon">📅</div><div class="evt-label">Date</div><div class="evt-value">9 Juin 2026</div><div class="evt-sub">Ateliers pré-événement<br>le 8 juin (matin &amp; après-midi)</div></div>
+<div class="evt-card"><div class="evt-icon">👥</div><div class="evt-label">Audience</div><div class="evt-value">1 300 Professionnels</div><div class="evt-sub">Testeurs, QA, développeurs,<br>managers, consultants</div></div>
+</div>
+
+<div class="tracks-wrap">
+<h3>5 Tracks Parallèles — Programme Complet</h3>
+<p class="tsub">5 auditoriums en simultané pour couvrir toute la diversité du testing moderne</p>
+<div class="tracks-grid">
+<div class="track-card t1"><span class="track-icon">🤖</span><span class="track-name">IA dans les Tests</span><span class="track-count">Keynotes &amp; retours terrain</span></div>
+<div class="track-card t2"><span class="track-icon">⚙️</span><span class="track-name">Automatisation &amp; DevOps</span><span class="track-count">CI/CD, pipelines QA</span></div>
+<div class="track-card t3"><span class="track-icon">🧪</span><span class="track-name">Méthodes &amp; BDD</span><span class="track-count">TDD, ATDD, Gherkin</span></div>
+<div class="track-card t4"><span class="track-icon">♿</span><span class="track-name">Accessibilité &amp; RGAA</span><span class="track-count">Tests conformité</span></div>
+<div class="track-card t5"><span class="track-icon">📊</span><span class="track-name">Métriques &amp; Qualité</span><span class="track-count">KPIs, reporting, ROI</span></div>
+</div>
+</div>
+
+<h2 class="art-h2">Les Sujets Tendance de l'Édition 2026</h2>
+<div class="art-line"></div>
+<p class="art-sub">L'IA transforme profondément les pratiques de test. Voici les thématiques qui mobilisent le plus la communauté QA en 2026.</p>
+
+<div class="chart-dark">
+<h3>Tendances &amp; Popularité des Thèmes — JFTL 2026</h3>
+<p class="csub">Indicateur d'intérêt des soumissions et sessions confirmées</p>
+<div class="bchart">
+<div class="brow"><span class="blbl">IA dans les Tests</span><div class="btrack"><div class="bfill" data-width="88%"><span class="bill">LLM-based testing, auto-gen</span></div></div><span class="bval">88%</span></div>
+<div class="brow"><span class="blbl">Automatisation CI/CD</span><div class="btrack"><div class="bfill" data-width="82%"><span class="bill">Pipelines DevOps, shift-left</span></div></div><span class="bval">82%</span></div>
+<div class="brow"><span class="blbl">BDD / TDD / ATDD</span><div class="btrack"><div class="bfill" data-width="74%"><span class="bill">Cucumber, Gherkin, specs</span></div></div><span class="bval">74%</span></div>
+<div class="brow"><span class="blbl">Performance &amp; Load</span><div class="btrack"><div class="bfill" data-width="65%"><span class="bill">k6, Gatling, JMeter</span></div></div><span class="bval">65%</span></div>
+<div class="brow"><span class="blbl">Accessibilité RGAA</span><div class="btrack"><div class="bfill" data-width="55%"><span class="bill">Tests conformité WCAG</span></div></div><span class="bval">55%</span></div>
+</div>
+</div>
+
+<h2 class="art-h2">Pourquoi Acropora Participe</h2>
+<div class="art-line"></div>
+<div class="why-grid">
+<div class="why-card"><div class="why-icon">✅</div><h4>Expertise Tests &amp; QA</h4><p>L'automatisation de tests et la stratégie QA sont au cœur de nos services. Les JFTL sont le lieu où notre équipe rencontre ses homologues, valide ses approches et découvre les nouvelles pratiques de la communauté francophone.</p></div>
+<div class="why-card"><div class="why-icon">🔗</div><h4>Tests &amp; Qualité Data</h4><p>Nos projets MDM intègrent systématiquement une dimension qualité data et tests de régression. Les JFTL nous permettent de créer des ponts entre la communauté QA logicielle et le monde du data management.</p></div>
+<div class="why-card"><div class="why-icon">🧠</div><h4>IA &amp; Testing</h4><p>L'IA transforme radicalement les stratégies de test en 2026 : génération automatique de cas de test, détection d'anomalies, self-healing tests. Nous sommes là pour apprendre et partager nos expériences terrain.</p></div>
+</div>
+
+<div class="exp-table">
+<h3>Notre Expertise en Assurance Qualité</h3>
+<p class="esub">Ce que nous apportons à nos clients — et ce que nous partageons aux JFTL</p>
+<div class="exp-grid">
+<div class="exp-item"><div class="exp-item-icon">🏗️</div><div class="exp-item-body"><h5>Stratégie de Tests</h5><p>Conception de plans de test complets pour des projets de migration MDM, ERP et data platform. Couverture fonctionnelle, de régression et de performance.</p><span class="badge">Migration MDM</span></div></div>
+<div class="exp-item"><div class="exp-item-icon">⚡</div><div class="exp-item-body"><h5>Automatisation de Tests</h5><p>Mise en place de frameworks d'automatisation (Selenium, Cypress, Playwright, pytest) intégrés dans les pipelines CI/CD — du sprint jusqu'en production.</p><span class="badge">CI/CD &amp; DevOps</span></div></div>
+<div class="exp-item"><div class="exp-item-icon">📊</div><div class="exp-item-body"><h5>Tests de Qualité Data</h5><p>Validation des règles métier, contrôle de cohérence inter-domaines, tests de régression sur référentiels MDM. Nos tests garantissent l'intégrité des golden records.</p><span class="badge">Data Quality</span></div></div>
+<div class="exp-item"><div class="exp-item-icon">🤖</div><div class="exp-item-body"><h5>Tests Assistés par IA</h5><p>Intégration d'outils IA pour la génération de cas de test, l'analyse de couverture et la détection proactive de régressions dans les données critiques.</p><span class="badge">IA &amp; Testing</span></div></div>
+</div>
+</div>
+
+<div class="art-cta">
+<h3>Retrouvez-nous au Beffroi de Montrouge</h3>
+<p>Notre équipe QA &amp; data sera présente le 9 juin. Échangeons sur vos défis de test, d'automatisation et de qualité data autour d'un café.</p>
+<a href="contact.html" class="btn-art">Planifier un échange →</a>
+<a href="https://cftl.fr/actualites/jftl/" target="_blank" class="btn-art-outline">En savoir plus sur les JFTL</a>
+</div>
+
+</div>
+</section>
+
+<section class="rel-sec">
+<div class="art-wrap">
+<h2 class="art-h2">Autres Événements &amp; Articles</h2><div class="art-line"></div>
+<div class="rel-grid">
+<a href="blog-event-dmm-2026.html" class="rc"><div class="rtag">Événement</div><h4>Data Management Marathon 9.0</h4><p>10-11 juin 2026 — L'événement virtuel mondial du MDM et de la gouvernance</p><div class="rarr">Voir l'article →</div></a>
+<a href="blog-event-cdao-ny-2026.html" class="rc"><div class="rtag">Événement</div><h4>CDAO New York 2026</h4><p>9 juin, New York — Le sommet des executives data et IA d'Amérique du Nord</p><div class="rarr">Voir l'article →</div></a>
+<a href="blog-mdm-ia-fiable.html" class="rc"><div class="rtag">Opinion</div><h4>MDM : la base de l'IA fiable</h4><p>Garbage in, garbage out : sans données propres, l'IA devient un risque</p><div class="rarr">Lire l'article →</div></a>
+</div>
+</div>
+</section>
+
+<footer class="footer"><div class="container"><div class="footer-content" style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:2rem"><div class="footer-section" style="flex:1;min-width:250px"><img src="acropora-logo-transparent.png" alt="Acropora Data" class="footer-logo" style="margin-bottom:1rem;width:180px;display:block"><p style="font-weight:700;margin-bottom:.2rem;color:#fff">Data Management Expert</p><p style="font-size:.85rem;opacity:.7;color:#fff">Turn your data into strategic assets</p><div style="margin-top:1.5rem;display:flex;justify-content:center;width:180px"><a href="https://www.linkedin.com/company/acropora-data" target="_blank" style="color:#81abb3;transition:color .3s" onmouseover="this.style.color='#f3756e'" onmouseout="this.style.color='#81abb3'"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a></div></div><div class="footer-section" style="flex:1;min-width:200px"><h4 style="color:#81abb3;margin-bottom:1.5rem;font-size:1.1rem;text-transform:uppercase;letter-spacing:.05em">Solutions</h4><ul style="list-style:none;padding:0"><li style="margin-bottom:.7rem"><a href="mdm.html" style="color:rgba(255,255,255,.8);text-decoration:none" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,.8)'">MDM &amp; intégration</a></li><li style="margin-bottom:.7rem"><a href="tests-validation.html" style="color:rgba(255,255,255,.8);text-decoration:none" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,.8)'">Automatisation de Tests</a></li><li style="margin-bottom:.7rem"><a href="bi-analytique.html" style="color:rgba(255,255,255,.8);text-decoration:none" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,.8)'">BI &amp; Analytique</a></li></ul></div><div class="footer-section" style="flex:1;min-width:200px"><h4 style="color:#81abb3;margin-bottom:1.5rem;font-size:1.1rem;text-transform:uppercase;letter-spacing:.05em">Contact</h4><ul style="list-style:none;padding:0"><li style="margin-bottom:.7rem"><a href="carrieres.html" style="color:rgba(255,255,255,.8);text-decoration:none" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,.8)'">Carrières</a></li><li style="margin-bottom:.7rem"><a href="contact.html" style="color:rgba(255,255,255,.8);text-decoration:none" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,.8)'">Contact</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 Acropora Data. Tous droits réservés.</p></div></div></footer>
+<script src="script.js"></script><script src="pages.js"></script><script src="hero-animations.js"></script>
+<script>
+document.querySelectorAll('.nav-item').forEach(function(item){var link=item.querySelector('.nav-link');var mega=item.querySelector('.mega-menu');if(!mega)return;link.addEventListener('click',function(e){if(window.innerWidth>768)return;e.preventDefault();var isOpen=item.classList.contains('open');document.querySelectorAll('.nav-item.open').forEach(function(o){o.classList.remove('open');o.querySelector('.mega-menu').style.display='';});if(!isOpen){item.classList.add('open');mega.style.display='block';}});});
+document.addEventListener('click',function(e){if(!e.target.closest('.navbar')){document.querySelectorAll('.nav-item.open').forEach(function(item){item.classList.remove('open');item.querySelector('.mega-menu').style.display='';});}});
+const bfills=document.querySelectorAll('[data-width]');
+const bObs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.width=e.target.dataset.width;bObs.unobserve(e.target);}});},{threshold:.3});
+bfills.forEach(f=>bObs.observe(f));
+const ctrs=document.querySelectorAll('[data-counter]');
+const cObs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(!e.isIntersecting)return;const el=e.target,target=parseFloat(el.dataset.counter),suffix=el.dataset.suffix||'',prefix=el.dataset.prefix||'',dec=parseInt(el.dataset.dec||0);let s=0;const steps=50,timer=setInterval(()=>{s++;const v=(target/steps)*s;el.textContent=prefix+(dec?v.toFixed(dec):Math.floor(v))+suffix;if(s>=steps){el.textContent=prefix+(dec?target.toFixed(dec):target)+suffix;clearInterval(timer);}},2000/steps);cObs.unobserve(el);});},{threshold:.5});
+ctrs.forEach(el=>cObs.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,277 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8FFCFJNNG2"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8FFCFJNNG2');</script>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="favicon-acropora.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Governance Guide 2025 : 6 Étapes — Acropost | Acropora Data</title>
+<meta name="description" content="De la théorie à la pratique : gouvernance des données efficace en 6 étapes concrètes. Modèle de maturité, KPIs et pièges à éviter.">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="pages.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ── BASE ── */
+.art-hero{padding:11rem 0 5rem;background:linear-gradient(135deg,#0d2b4e 0%,#1a4d7a 50%,#2e7da8 100%);color:#fff;position:relative;overflow:hidden}
+.art-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 60%,rgba(255,255,255,.06) 0%,transparent 50%),radial-gradient(circle at 80% 15%,rgba(127,196,201,.14) 0%,transparent 40%)}
+.art-hero::after{content:'';position:absolute;width:500px;height:500px;right:-80px;bottom:-120px;border-radius:50%;background:radial-gradient(circle,rgba(74,159,168,.12) 0%,transparent 70%);animation:coral-float 12s ease-in-out infinite}
+.art-hero .container{position:relative;z-index:2}
+.art-bc{display:flex;align-items:center;gap:.5rem;margin-bottom:2rem;font-size:.8rem}
+.art-bc a{color:rgba(255,255,255,.7);text-decoration:none}.art-bc a:hover{color:#fff}
+.art-bc .sep{color:rgba(255,255,255,.35)}.art-bc .cur{color:rgba(255,255,255,.9)}
+.art-tags{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.a-tag{padding:.28rem 1rem;border-radius:50px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);color:#fff}
+.a-tag.primary{background:rgba(46,125,168,.55);border-color:rgba(74,159,168,.7)}
+.art-hero h1{font-size:clamp(1.9rem,4vw,3.1rem);font-weight:800;line-height:1.15;margin-bottom:1.5rem;max-width:860px}
+.art-hero .lead{font-size:1.1rem;opacity:.88;max-width:680px;line-height:1.75;margin-bottom:3rem;font-weight:300}
+.hero-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;max-width:680px}
+.kpi-c{background:rgba(255,255,255,.12);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.2);border-radius:16px;padding:1.4rem;text-align:center;transition:background .3s}
+.kpi-c:hover{background:rgba(255,255,255,.18)}
+.kpi-num{font-size:2.1rem;font-weight:800;line-height:1;background:linear-gradient(135deg,#fff,#a8dde1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.35rem}
+.kpi-lbl{font-size:.72rem;opacity:.78;line-height:1.45;font-weight:500}
+.page-bc{background:#f5f9fa;border-bottom:1px solid rgba(26,93,106,.08);padding:.75rem 0}
+.page-bc .container{display:flex;align-items:center;gap:.5rem;font-size:.82rem}
+.page-bc a{color:#4a9fa8;text-decoration:none;font-weight:500}.page-bc a:hover{color:#1a5d6a}
+.page-bc .sep{color:#ccc}.page-bc .cur{color:#4a4a4a}
+.art-body{padding:5rem 0;background:#fff}
+.art-wrap{max-width:1080px;margin:0 auto;padding:0 2rem}
+.art-h2{font-size:1.7rem;font-weight:800;color:#1a5d6a;margin-bottom:.5rem}
+.art-line{width:54px;height:4px;background:linear-gradient(90deg,#1a5d6a,#7fc4c9);border-radius:2px;margin:.7rem 0 2.5rem}
+.art-sub{color:#7a7a7a;font-size:.92rem;margin-bottom:2.5rem;line-height:1.6}
+.info-c{background:linear-gradient(135deg,rgba(74,159,168,.07),rgba(127,196,201,.04));border-left:4px solid #4a9fa8;border-radius:0 12px 12px 0;padding:1.4rem 2rem;margin:3rem 0}
+.info-c p{color:#1a5d6a;font-size:1.05rem;font-weight:500;line-height:1.75}
+
+/* ── MATURITY STAIRCASE ── */
+.maturity-wrap{background:linear-gradient(135deg,#0d2b4e,#1a5d6a);border-radius:24px;padding:3rem;margin:4rem 0;color:#fff;overflow:hidden;position:relative}
+.maturity-wrap::after{content:'';position:absolute;right:-50px;bottom:-50px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(127,196,201,.1) 0%,transparent 70%);pointer-events:none}
+.maturity-wrap h3{font-size:1.25rem;font-weight:700;margin-bottom:.4rem}
+.maturity-wrap .msub{font-size:.83rem;opacity:.6;margin-bottom:2.5rem}
+.staircase{display:flex;flex-direction:column;gap:.8rem;position:relative;z-index:1}
+.stair{display:flex;align-items:center;gap:1.2rem;cursor:default}
+.stair-bar{height:44px;border-radius:0 8px 8px 0;display:flex;align-items:center;padding:0 1.2rem;gap:1rem;background:rgba(255,255,255,.12);transition:background .3s;flex-shrink:0}
+.stair:hover .stair-bar{background:rgba(255,255,255,.18)}
+.stair-bar.l1{width:20%}.stair-bar.l2{width:36%}.stair-bar.l3{width:52%}.stair-bar.l4{width:68%}.stair-bar.l5{width:84%}
+.stair-bar.l5{background:linear-gradient(90deg,rgba(74,159,168,.6),rgba(127,196,201,.4))}
+.stair-level{font-size:.75rem;font-weight:800;opacity:.7;white-space:nowrap}
+.stair-name{font-size:.9rem;font-weight:700;white-space:nowrap}
+.stair-desc{font-size:.82rem;opacity:.8;line-height:1.5}
+.stair-badge{margin-left:auto;background:rgba(255,255,255,.15);padding:.2rem .7rem;border-radius:50px;font-size:.68rem;font-weight:700;white-space:nowrap;flex-shrink:0}
+.stair-bar.l5 .stair-badge{background:rgba(255,255,255,.25)}
+
+/* ── 6-STEP PROCESS ── */
+.process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin:3rem 0;position:relative}
+.process-grid::before{content:'';position:absolute;top:40px;left:calc(16.67% + 30px);right:calc(16.67% + 30px);height:2px;background:linear-gradient(90deg,#4a9fa8,#7fc4c9);z-index:0}
+.pstep{background:#fff;border-radius:20px;padding:2rem;box-shadow:0 6px 24px rgba(26,93,106,.09);border:1px solid rgba(74,159,168,.12);text-align:center;position:relative;z-index:1;transition:transform .3s,box-shadow .3s}
+.pstep:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(26,93,106,.15)}
+.pstep-num{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#1a5d6a,#4a9fa8);color:#fff;font-size:1.3rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem}
+.pstep h4{font-size:.95rem;font-weight:700;color:#1a5d6a;margin-bottom:.6rem}
+.pstep p{font-size:.82rem;color:#7a7a7a;line-height:1.6}
+.pstep .ptag{display:inline-block;margin-top:.8rem;padding:.22rem .75rem;border-radius:50px;font-size:.68rem;font-weight:700;background:rgba(74,159,168,.12);color:#1a5d6a}
+
+/* ── KPI DASHBOARD ── */
+.kpi-dashboard{background:#f5f9fa;border-radius:24px;padding:3rem;margin:4rem 0}
+.kpi-dashboard h3{font-size:1.35rem;font-weight:700;color:#1a5d6a;margin-bottom:.4rem;text-align:center}
+.kpi-dashboard .dsub{text-align:center;color:#7a7a7a;font-size:.88rem;margin-bottom:2.5rem}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.kpi-box{background:#fff;border-radius:16px;padding:1.8rem;text-align:center;box-shadow:0 4px 16px rgba(26,93,106,.08);border-top:3px solid #4a9fa8;transition:transform .3s}
+.kpi-box:hover{transform:translateY(-3px)}
+.kpi-box .knum{font-size:2.4rem;font-weight:800;color:#1a5d6a;line-height:1;margin-bottom:.35rem}
+.kpi-box .kunit{font-size:.95rem;font-weight:600;color:#4a9fa8;margin-bottom:.5rem}
+.kpi-box .kdesc{font-size:.78rem;color:#7a7a7a;line-height:1.5}
+
+/* ── PITFALLS ── */
+.pitfall-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem;margin:3rem 0}
+.pitfall{background:#fff;border-radius:16px;padding:2rem;box-shadow:0 4px 16px rgba(26,93,106,.07);display:flex;gap:1.2rem;align-items:flex-start;border-left:4px solid #e8a87c}
+.pitfall.good{border-left-color:#4a9fa8}
+.pitfall-icon{font-size:1.6rem;flex-shrink:0;margin-top:.1rem}
+.pitfall h4{font-size:.93rem;font-weight:700;color:#1a5d6a;margin-bottom:.4rem}
+.pitfall p{font-size:.82rem;color:#7a7a7a;line-height:1.6}
+
+/* ── ROI STATS ── */
+.roi-section{background:linear-gradient(135deg,#1a5d6a,#4a9fa8);border-radius:24px;padding:3rem;margin:4rem 0;color:#fff}
+.roi-section h3{font-size:1.35rem;font-weight:700;margin-bottom:.4rem;text-align:center}
+.roi-section .rsub{text-align:center;opacity:.7;font-size:.88rem;margin-bottom:2.5rem}
+.roi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.roi-stat{text-align:center}
+.roi-big{font-size:3rem;font-weight:800;line-height:1;background:linear-gradient(135deg,#fff,#a8dde1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.roi-label{font-size:.82rem;opacity:.85;margin-top:.5rem;line-height:1.5}
+
+/* ── CTA / RELATED ── */
+.art-cta{background:linear-gradient(135deg,#0d2b4e,#1a5d6a);border-radius:24px;padding:3.5rem;text-align:center;margin:4rem 0;color:#fff}
+.art-cta h3{font-size:1.7rem;font-weight:800;margin-bottom:.9rem}
+.art-cta p{font-size:.98rem;opacity:.9;max-width:540px;margin:0 auto 2rem;line-height:1.7}
+.btn-art{background:#fff;color:#1a5d6a;padding:.85rem 2rem;border-radius:50px;font-weight:700;text-decoration:none;display:inline-block;transition:all .3s;font-size:.93rem}
+.btn-art:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.2)}
+.rel-sec{background:#f5f9fa;padding:5rem 0}
+.rel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem}
+.rc{background:#fff;border-radius:16px;padding:2rem;box-shadow:0 4px 16px rgba(26,93,106,.07);text-decoration:none;color:inherit;transition:transform .3s,box-shadow .3s;display:block}
+.rc:hover{transform:translateY(-4px);box-shadow:0 10px 32px rgba(26,93,106,.13)}
+.rtag{font-size:.7rem;font-weight:700;text-transform:uppercase;color:#4a9fa8;letter-spacing:.08em;margin-bottom:.65rem}
+.rc h4{font-size:.93rem;font-weight:700;color:#1a5d6a;margin-bottom:.45rem;line-height:1.4}
+.rc p{font-size:.8rem;color:#7a7a7a;line-height:1.55}
+.rarr{font-size:.8rem;color:#4a9fa8;margin-top:.75rem;font-weight:600}
+/* BAR CHART */
+.chart-dark{background:linear-gradient(135deg,#0d2b4e,#1a5d6a);border-radius:24px;padding:3rem;margin:4rem 0;color:#fff;position:relative;overflow:hidden}
+.chart-dark::after{content:'';position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(127,196,201,.1) 0%,transparent 70%);pointer-events:none}
+.chart-dark h3{font-size:1.25rem;font-weight:700;margin-bottom:.4rem}
+.chart-dark .csub{font-size:.83rem;opacity:.6;margin-bottom:2.5rem}
+.bchart{display:flex;flex-direction:column;gap:1.1rem}
+.brow{display:grid;grid-template-columns:160px 1fr 60px;align-items:center;gap:1rem}
+.blbl{font-size:.8rem;font-weight:600;opacity:.88;text-align:right}
+.btrack{background:rgba(255,255,255,.1);border-radius:50px;height:34px;overflow:hidden}
+.bfill{height:100%;border-radius:50px;width:0;background:linear-gradient(90deg,#4a9fa8,#a8dde1);transition:width 1.4s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;padding:0 1rem}
+.bill{font-size:.7rem;font-weight:700;color:#0d2b4e;white-space:nowrap}
+.bval{font-size:1.05rem;font-weight:800;text-align:right}
+/* RESPONSIVE */
+@media(max-width:900px){.kpi-grid{grid-template-columns:repeat(2,1fr)}.process-grid{grid-template-columns:1fr}.process-grid::before{display:none}}
+@media(max-width:768px){.hero-kpis{grid-template-columns:1fr 1fr}.hero-kpis .kpi-c:last-child{grid-column:span 2}.pitfall-grid{grid-template-columns:1fr}.roi-grid{grid-template-columns:1fr}.rel-grid{grid-template-columns:1fr}.brow{grid-template-columns:100px 1fr 45px}.chart-dark{padding:2rem}}
+</style>
+</head>
+<body>
+<div class="parallax-coral"><div class="coral-shape"></div><div class="coral-shape"></div><div class="coral-shape"></div><div class="coral-shape"></div></div>
+<nav class="navbar">
+<div class="nav-container">
+<div class="logo-container"><a href="index.html"><img src="acropora-logo-transparent.png" alt="Acropora Data" class="logo"></a></div>
+<ul class="nav-menu">
+<li class="nav-item"><a href="javascript:void(0)" class="nav-link" style="cursor:default">Présentation</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-4"><div class="mega-col"><div class="mega-col-title">L'entreprise</div><a href="presentation.html"><span class="link-text"><strong>Qui sommes-nous ?</strong><span>Notre histoire et vision</span></span></a></div><div class="mega-col"><div class="mega-col-title">Méthode</div><a href="approche-donnees.html"><span class="link-text"><strong>Notre approche données</strong><span>Méthodologie &amp; framework</span></span></a></div><div class="mega-col"><div class="mega-col-title">Personnes</div><a href="equipe.html"><span class="link-text"><strong>Équipe</strong><span>Nos experts data</span></span></a></div><div class="mega-col"><div class="mega-col-title">Engagement</div><a href="ethique.html"><span class="link-text"><strong>Éthique &amp; valeurs</strong><span>Nos principes fondateurs</span></span></a></div></div></div></li>
+<li class="nav-item"><a href="javascript:void(0)" class="nav-link" style="cursor:default">Solutions &amp; Expertise</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-4"><div class="mega-col"><div class="mega-col-title">MDM</div><a href="mdm.html"><span class="link-text"><strong>MDM &amp; Intégration</strong><span>Référentiels &amp; pipelines</span></span></a><a href="ai-foundations.html"><span class="link-text"><strong>Fondations IA</strong><span>Données prêtes pour l'IA</span></span></a></div><div class="mega-col"><div class="mega-col-title">Assurance Qualité</div><a href="migration-mdm.html"><span class="link-text"><strong>Stratégie de Tests</strong><span>Transition sans interruption</span></span></a><a href="tests-validation.html"><span class="link-text"><strong>Automatisation de Tests</strong><span>Qualité &amp; conformité</span></span></a></div><div class="mega-col"><div class="mega-col-title">Analytics</div><a href="bi-analytique.html"><span class="link-text"><strong>BI &amp; Analytique</strong><span>Insights et reporting</span></span></a></div><div class="mega-col"><div class="mega-col-title">Audit</div><a href="cadrage-projet.html"><span class="link-text"><strong>Cadrage de projet</strong><span>Structurer vos initiatives</span></span></a></div></div></div></li>
+<li class="nav-item"><a href="javascript:void(0)" class="nav-link" style="cursor:default">Partenaires</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-5"><div class="mega-col"><div class="mega-col-title">Technologie</div><a href="partenaires-technologiques.html"><span class="link-text"><strong>Partenaires technologiques</strong><span>Informatica, Snowflake, Azure…</span></span></a></div><div class="mega-col"><div class="mega-col-title">Business</div><a href="partenaires-commerciaux.html"><span class="link-text"><strong>Partenaires commerciaux</strong><span>Alliances et synergies business</span></span></a></div></div></div></li>
+            <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+            <li class="nav-item"><a href="javascript:void(0)" class="nav-link cta-nav" style="cursor:default">Contact</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-5"><div class="mega-col"><div class="mega-col-title">Rejoindre</div><a href="carrieres.html"><span class="link-text"><strong>Carrières</strong><span>Offres &amp; candidatures</span></span></a></div><div class="mega-col"><div class="mega-col-title">Partenariat</div><a href="devenir-partenaire.html"><span class="link-text"><strong>Devenir partenaire</strong><span>Rejoindre l'écosystème</span></span></a></div></div></div></li>
+</ul>
+<button class="menu-toggle" onclick="document.querySelector('.nav-menu').classList.toggle('active')"><span></span><span></span><span></span></button>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="art-hero">
+<div class="container">
+<div class="art-bc"><a href="blog.html">Blog</a><span class="sep">›</span><span class="cur">Data Governance 2025</span></div>
+<div class="art-tags"><span class="a-tag primary">Best Practices</span><span class="a-tag">Avril 2025</span><span class="a-tag">10 min de lecture</span></div>
+<h1>Data Governance 2025 : 6 Étapes pour Passer de la Théorie à la Pratique</h1>
+<p class="lead">La gouvernance des données reste le défi n°1 des DSI. Voici un guide opérationnel pour construire une vraie gouvernance — sans jargon et avec des résultats mesurables.</p>
+<div class="hero-kpis">
+<div class="kpi-c"><div class="kpi-num"><span data-counter="73" data-suffix="%" data-dec="0">0%</span></div><div class="kpi-lbl">Des projets data échouent par manque de gouvernance</div></div>
+<div class="kpi-c"><div class="kpi-num"><span data-counter="340" data-suffix="%" data-dec="0">0%</span></div><div class="kpi-lbl">ROI moyen d'un programme de gouvernance sur 3 ans</div></div>
+<div class="kpi-c"><div class="kpi-num"><span data-counter="6" data-suffix=" mois" data-dec="0">0 mois</span></div><div class="kpi-lbl">Pour obtenir les premiers résultats mesurables</div></div>
+</div>
+</div>
+</section>
+<div class="page-bc"><div class="container"><a href="index.html">Accueil</a><span class="sep">›</span><a href="blog.html">Blog</a><span class="sep">›</span><span class="cur">Data Governance 2025</span></div></div>
+
+<!-- BODY -->
+<section class="art-body">
+<div class="art-wrap">
+
+<div class="info-c"><p>73% des projets data échouent non pas par manque de technologie, mais par absence de gouvernance claire. La data governance n'est pas un projet informatique : c'est une transformation organisationnelle qui touche métiers, IT et direction. Voici comment la réussir en 6 étapes éprouvées.</p></div>
+
+<!-- MATURITY MODEL -->
+<h2 class="art-h2">Modèle de Maturité Data Governance</h2>
+<div class="art-line"></div>
+<p class="art-sub">À quel niveau se situe votre organisation ? Le modèle CMMI adapté à la gouvernance des données distingue 5 niveaux — de la réactivité au pilotage prédictif.</p>
+
+<div class="maturity-wrap">
+<h3>Data Governance Maturity Model (DGMM)</h3>
+<p class="msub">Cliquez sur chaque niveau pour évaluer votre organisation</p>
+<div class="staircase">
+<div class="stair"><div class="stair-bar l1"><span class="stair-level">NIVEAU 1</span><span class="stair-name">Initial</span></div><span class="stair-desc">Données non gérées, silos, pas de propriétaire identifié. Les incidents sont traités au cas par cas.</span><span class="stair-badge">🔴 Départ</span></div>
+<div class="stair"><div class="stair-bar l2"><span class="stair-level">NIVEAU 2</span><span class="stair-name">Répétable</span></div><span class="stair-desc">Politiques de données documentées pour quelques domaines clés. Data stewards identifiés mais peu actifs.</span><span class="stair-badge">🟠 Basique</span></div>
+<div class="stair"><div class="stair-bar l3"><span class="stair-level">NIVEAU 3</span><span class="stair-name">Défini</span></div><span class="stair-desc">Framework de gouvernance standardisé, catalogue de données actif, KPIs de qualité suivis régulièrement.</span><span class="stair-badge">🟡 Standard</span></div>
+<div class="stair"><div class="stair-bar l4"><span class="stair-level">NIVEAU 4</span><span class="stair-name">Géré</span></div><span class="stair-desc">Mesures quantitatives, SLAs données formalisés, Data Council actif avec reporting mensuel au COMEX.</span><span class="stair-badge">🟢 Avancé</span></div>
+<div class="stair"><div class="stair-bar l5"><span class="stair-level">NIVEAU 5</span><span class="stair-name">Optimisé</span></div><span class="stair-desc">Amélioration continue pilotée par l'IA, gouvernance prédictive, culture data omniprésente dans l'organisation.</span><span class="stair-badge">🌟 Excellence</span></div>
+</div>
+</div>
+
+<!-- 6-STEP PROCESS -->
+<h2 class="art-h2">Les 6 Étapes du Programme de Gouvernance</h2>
+<div class="art-line"></div>
+<p class="art-sub">Un chemin structuré et itératif — de l'inventaire initial à la gouvernance continue. Chaque étape est un livrable concret.</p>
+<div class="process-grid">
+<div class="pstep"><div class="pstep-num">1</div><h4>Audit &amp; Inventaire</h4><p>Cartographier tous les actifs de données : sources, flux, propriétaires, qualité actuelle. Identifier les domaines prioritaires (clients, produits, finances).</p><span class="ptag">📋 Livrable : Data Map</span></div>
+<div class="pstep"><div class="pstep-num">2</div><h4>Ownership &amp; Responsabilités</h4><p>Nommer les Data Owners (métier) et Data Stewards (opérationnel). Créer la matrice RACI. Sans propriétaire clair, rien ne fonctionne.</p><span class="ptag">👥 Livrable : RACI Matrix</span></div>
+<div class="pstep"><div class="pstep-num">3</div><h4>Règles de Qualité</h4><p>Définir les critères de qualité par domaine : complétude, exactitude, cohérence, fraîcheur. Formaliser dans un Data Quality Framework.</p><span class="ptag">✅ Livrable : DQ Framework</span></div>
+<div class="pstep"><div class="pstep-num">4</div><h4>Data Council</h4><p>Mettre en place le comité de gouvernance (CDO, DSI, DPO, représentants métiers). Fixer le rythme des revues et la gouvernance des exceptions.</p><span class="ptag">🏛️ Livrable : Charter</span></div>
+<div class="pstep"><div class="pstep-num">5</div><h4>Monitoring &amp; KPIs</h4><p>Déployer les tableaux de bord de qualité en temps réel. Définir les alertes et seuils d'escalade. Rendre la qualité visible pour tous.</p><span class="ptag">📊 Livrable : Dashboard</span></div>
+<div class="pstep"><div class="pstep-num">6</div><h4>Évoluer &amp; Scaler</h4><p>Étendre la gouvernance à de nouveaux domaines. Automatiser avec l'IA. Mesurer le ROI et communiquer les succès pour ancrer la culture data.</p><span class="ptag">🚀 Livrable : Roadmap</span></div>
+</div>
+
+<!-- ADOPTION CHART -->
+<h2 class="art-h2">Où les Organisations en Sont-elles ?</h2>
+<div class="art-line"></div>
+<div class="chart-dark">
+<h3>Maturité Data Governance par secteur (France &amp; EMEA 2025)</h3>
+<p class="csub">% des organisations atteignant le niveau 3+ (gouvernance standardisée) · IDC &amp; Forrester 2025</p>
+<div class="bchart">
+<div class="brow"><span class="blbl">Services Financiers</span><div class="btrack"><div class="bfill" data-width="68%"><span class="bill">DORA &amp; conformité</span></div></div><span class="bval">68%</span></div>
+<div class="brow"><span class="blbl">Industrie &amp; Retail</span><div class="btrack"><div class="bfill" data-width="52%"><span class="bill">Supply chain data</span></div></div><span class="bval">52%</span></div>
+<div class="brow"><span class="blbl">Santé &amp; Pharma</span><div class="btrack"><div class="bfill" data-width="61%"><span class="bill">RGPD &amp; sécurité</span></div></div><span class="bval">61%</span></div>
+<div class="brow"><span class="blbl">Secteur Public</span><div class="btrack"><div class="bfill" data-width="38%"><span class="bill">Transformation numérique</span></div></div><span class="bval">38%</span></div>
+<div class="brow"><span class="blbl">Énergie &amp; Utilities</span><div class="btrack"><div class="bfill" data-width="45%"><span class="bill">Données IoT &amp; OT</span></div></div><span class="bval">45%</span></div>
+</div>
+</div>
+
+<!-- PITFALLS -->
+<h2 class="art-h2">Les 4 Pièges Classiques à Éviter</h2>
+<div class="art-line"></div>
+<div class="pitfall-grid">
+<div class="pitfall"><span class="pitfall-icon">⚠️</span><div><h4>Gouvernance 100% IT sans les métiers</h4><p>Erreur fatale. Si les directions métier ne s'approprient pas leurs données, la gouvernance reste théorique. Les Data Owners doivent être des managers métier, pas des techniciens.</p></div></div>
+<div class="pitfall"><span class="pitfall-icon">⚠️</span><div><h4>Vouloir tout gouverner d'un coup</h4><p>Le "big bang" de la gouvernance échoue systématiquement. Commencez par 2-3 domaines critiques (clients, produits), prouvez la valeur, puis étendez progressivement.</p></div></div>
+<div class="pitfall good"><span class="pitfall-icon">✅</span><div><h4>Quick wins dès les 90 premiers jours</h4><p>Identifiez et résolvez un problème de qualité de données concret et visible dès le début du programme. Rien ne vend mieux la gouvernance qu'une amélioration tangible rapidement.</p></div></div>
+<div class="pitfall good"><span class="pitfall-icon">✅</span><div><h4>Ancrer dans la culture d'entreprise</h4><p>Intégrez la qualité des données dans les objectifs des managers. Communiquez les résultats mensuellement au COMEX. La gouvernance doit être un KPI stratégique, pas un projet IT.</p></div></div>
+</div>
+
+<!-- ROI SECTION -->
+<div class="roi-section">
+<h3>Le ROI d'un Programme de Gouvernance</h3>
+<p class="rsub">Résultats observés après 18 mois de programme · Source : Acropora Data, cas clients 2024–2025</p>
+<div class="roi-grid">
+<div class="roi-stat"><div class="roi-big"><span data-counter="40" data-suffix="%" data-dec="0">0%</span></div><div class="roi-label">Réduction du temps passé à chercher et corriger des données</div></div>
+<div class="roi-stat"><div class="roi-big"><span data-counter="2.8" data-suffix="x" data-dec="1">0x</span></div><div class="roi-label">Accélération des projets BI &amp; analytics grâce à des données fiables</div></div>
+<div class="roi-stat"><div class="roi-big"><span data-counter="99.2" data-suffix="%" data-dec="1">0%</span></div><div class="roi-label">Taux de conformité RGPD atteint sur les domaines couverts</div></div>
+</div>
+</div>
+
+<!-- KPI DASHBOARD -->
+<div class="kpi-dashboard">
+<h3>Tableau de Bord : Les KPIs Clés à Suivre</h3>
+<p class="dsub">Les 8 indicateurs essentiels d'un programme de gouvernance mature</p>
+<div class="kpi-grid">
+<div class="kpi-box"><div class="knum">≥98</div><div class="kunit">%</div><div class="kdesc">Complétude des données critiques (clients, produits)</div></div>
+<div class="kpi-box"><div class="knum">&lt;24h</div><div class="kunit">SLA</div><div class="kdesc">Délai de résolution des incidents qualité P1</div></div>
+<div class="kpi-box"><div class="knum">100</div><div class="kunit">%</div><div class="kdesc">Couverture Data Owner sur les domaines prioritaires</div></div>
+<div class="kpi-box"><div class="knum">≥95</div><div class="kunit">%</div><div class="kdesc">Cohérence inter-systèmes (golden record vs sources)</div></div>
+</div>
+</div>
+
+<div class="art-cta"><h3>Votre Programme de Gouvernance sur Mesure</h3><p>Acropora Data vous aide à concevoir et déployer votre programme de gouvernance — de l'audit initial à la mise en production des KPIs.</p><a href="contact.html" class="btn-art">Démarrer l'audit gratuit →</a></div>
+
+</div>
+</section>
+
+<!-- RELATED -->
+<section class="rel-sec">
+<div class="art-wrap">
+<h2 class="art-h2">Articles Connexes</h2><div class="art-line"></div>
+<div class="rel-grid">
+<a href="blog-tendances-mdm-2025.html" class="rc"><div class="rtag">Tendances</div><h4>Les tendances MDM 2025</h4><p>IA générative, data mesh, MDM as a Service : ce qui transforme le marché</p><div class="rarr">Lire l'article →</div></a>
+<a href="blog-snowflake-informatica-mdm.html" class="rc"><div class="rtag">Technique</div><h4>Snowflake + Informatica MDM</h4><p>Architecture d'un déploiement hybride retail</p><div class="rarr">Lire l'article →</div></a>
+<a href="blog-mdm-ia-fiable.html" class="rc"><div class="rtag">Opinion</div><h4>MDM : la base de l'IA fiable</h4><p>Garbage in, garbage out : sans données propres, l'IA est un risque</p><div class="rarr">Lire l'article →</div></a>
+</div>
+</div>
+</section>
+
+<footer class="footer"><div class="container"><div class="footer-content" style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:2rem"><div class="footer-section" style="flex:1;min-width:250px"><img src="acropora-logo-transparent.png" alt="Acropora Data" class="footer-logo" style="margin-bottom:1rem;width:180px;display:block"><p style="font-weight:700;margin-bottom:.2rem;color:#fff">Data Management Expert</p><p style="font-size:.85rem;opacity:.7;color:#fff">Turn your data into strategic assets</p><div style="margin-top:1.5rem;display:flex;justify-content:center;width:180px"><a href="https://www.linkedin.com/company/acropora-data" target="_blank" style="color:#81abb3;transition:color .3s" onmouseover="this.style.color='#f3756e'" onmouseout="this.style.color='#81abb3'"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a></div></div><div class="footer-section" style="flex:1;min-width:200px"><h4 style="color:#81abb3;margin-bottom:1.5rem;font-size:1.1rem;text-transform:uppercase;letter-spacing:.05em">À propos</h4><ul style="list-style:none;padding:0"><li style="margin-bottom:.7rem"><a href="presentation.html" style="color:rgba(255,255,255,.8);text-decoration:none" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,.8)'">Présentation</a></li><li style="margin-bottom:.7rem"><a href="equipe.html" style="color:rgba(255,255,255,.8);text-decoration:none" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,.8)'">Équipe</a></li><li style="margin-bottom:.7rem"><a href="ethique.html" style="color:rgba(255,255,255,.8);text-decoration:none" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,.8)'">Éthique &amp; valeurs</a></li></ul></div><div class="footer-section" style="flex:1;min-width:200px"><h4 style="color:#81abb3;margin-bottom:1.5rem;font-size:1.1rem;text-transform:uppercase;letter-spacing:.05em">Solutions</h4><ul style="list-style:none;padding:0"><li style="margin-bottom:.7rem"><a href="mdm.html" style="color:rgba(255,255,255,.8);text-decoration:none" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,.8)'">MDM &amp; intégration</a></li><li style="margin-bottom:.7rem"><a href="bi-analytique.html" style="color:rgba(255,255,255,.8);text-decoration:none" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,.8)'">BI &amp; Analytique</a></li><li style="margin-bottom:.7rem"><a href="cadrage-projet.html" style="color:rgba(255,255,255,.8);text-decoration:none" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,.8)'">Cadrage de projet</a></li></ul></div><div class="footer-section" style="flex:1;min-width:200px"><h4 style="color:#81abb3;margin-bottom:1.5rem;font-size:1.1rem;text-transform:uppercase;letter-spacing:.05em">Contact</h4><ul style="list-style:none;padding:0"><li style="margin-bottom:.7rem"><a href="carrieres.html" style="color:rgba(255,255,255,.8);text-decoration:none" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,.8)'">Carrières</a></li><li style="margin-bottom:.7rem"><a href="contact.html" style="color:rgba(255,255,255,.8);text-decoration:none" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,.8)'">Contact</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 Acropora Data. Tous droits réservés.</p></div></div></footer>
+<script src="script.js"></script><script src="pages.js"></script><script src="hero-animations.js"></script>
+<script>
+document.querySelectorAll('.nav-item').forEach(function(item){var link=item.querySelector('.nav-link');var mega=item.querySelector('.mega-menu');if(!mega)return;link.addEventListener('click',function(e){if(window.innerWidth>768)return;e.preventDefault();var isOpen=item.classList.contains('open');document.querySelectorAll('.nav-item.open').forEach(function(o){o.classList.remove('open');o.querySelector('.mega-menu').style.display='';});if(!isOpen){item.classList.add('open');mega.style.display='block';}});});
+document.addEventListener('click',function(e){if(!e.target.closest('.navbar')){document.querySelectorAll('.nav-item.open').forEach(function(item){item.classList.remove('open');item.querySelector('.mega-menu').style.display='';});}});
+const bfills=document.querySelectorAll('.bfill[data-width]');
+const bObs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.width=e.target.dataset.width;bObs.unobserve(e.target);}});},{threshold:.3});
+bfills.forEach(f=>bObs.observe(f));
+const ctrs=document.querySelectorAll('[data-counter]');
+const cObs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(!e.isIntersecting)return;const el=e.target,target=parseFloat(el.dataset.counter),suffix=el.dataset.suffix||'',prefix=el.dataset.prefix||'',dec=parseInt(el.dataset.dec||0);let s=0;const steps=50,timer=setInterval(()=>{s++;const v=(target/steps)*s;el.textContent=prefix+(dec?v.toFixed(dec):Math.floor(v))+suffix;if(s>=steps){el.textContent=prefix+(dec?target.toFixed(dec):target)+suffix;clearInterval(timer);}},2000/steps);cObs.unobserve(el);});},{threshold:.5});
+ctrs.forEach(el=>cObs.observe(el));
+</script>
+</body>
+</html>
