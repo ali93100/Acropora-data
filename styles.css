@@ -1297,6 +1297,10 @@ svg {
     display: none !important;
 }
 
+.footer a svg {
+    display: inline-block !important;
+}
+
 @keyframes float-coral {
     0%, 100% {
         transform: translate(0, 0) rotate(0deg);

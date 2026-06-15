@@ -952,36 +952,137 @@ function toggleMyth(el) {
 
 /* PDF Download */
 function downloadPDF() {
-  var btn = document.getElementById('btnDownload');
+  var btn   = document.getElementById('btnDownload');
   var label = document.getElementById('dlLabel');
-  var icon = document.getElementById('dlIcon');
+  var icon  = document.getElementById('dlIcon');
 
-  /* Loading state */
   btn.disabled = true;
   label.textContent = 'Génération…';
   icon.innerHTML = '<circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="2" fill="none" stroke-dasharray="20" stroke-dashoffset="0"><animateTransform attributeName="transform" type="rotate" from="0 8 8" to="360 8 8" dur="0.8s" repeatCount="indefinite"/></circle>';
 
-  /* Open all myths for PDF */
+  /* ── 1. Ouvrir les mythes + supprimer la limite max-height ── */
   document.querySelectorAll('.eb-myth').forEach(function (m) { m.classList.add('open'); });
+  document.querySelectorAll('.eb-myth-body').forEach(function (b) {
+    b.style.maxHeight = 'none';
+    b.style.overflow  = 'visible';
+  });
 
-  /* Make all reveal elements visible */
-  document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visible'); });
+  /* ── 2. Rendre visibles tous les éléments .reveal ── */
+  document.querySelectorAll('.reveal').forEach(function (el) {
+    el.classList.add('visible');
+    el.style.opacity    = '1';
+    el.style.transform  = 'none';
+    el.style.transition = 'none';
+  });
 
-  var element = document.body;
+  /* ── 3. Rendre visibles les éléments animés de la couverture (CSS animations) ── */
+  var coverEls = document.querySelectorAll(
+    '.eb-cover-eyebrow, .eb-cover-title, .eb-cover-sub, .eb-cover-cta, .eb-cover-meta'
+  );
+  coverEls.forEach(function (el) {
+    el.style.opacity    = '1';
+    el.style.transform  = 'none';
+    el.style.animation  = 'none';
+    el.style.transition = 'none';
+  });
+
+  /* ── 4. Masquer topbar et barre de progression (position:fixed) ── */
+  var topbar   = document.querySelector('.eb-topbar');
+  var progress = document.getElementById('eb-progress');
+  topbar.style.display   = 'none';
+  progress.style.display = 'none';
+
+  /* ── 5. Réduire la couverture (100vh → page presque vide sinon) ── */
+  var cover = document.querySelector('.eb-cover');
+  cover.style.minHeight     = 'auto';
+  cover.style.paddingTop    = '4rem';
+  cover.style.paddingBottom = '4rem';
+
+  /* ── 6. Insérer des sauts de page explicites avant chaque section ──
+     html2pdf honore toujours les divs .html2pdf__page-break.
+     On les insère dynamiquement et on les retire après génération. ── */
+  var breakTargets = document.querySelectorAll('.eb-toc, .eb-chapter, .eb-closing');
+  breakTargets.forEach(function (section) {
+    var pb = document.createElement('div');
+    pb.className = 'html2pdf__page-break';
+    pb.setAttribute('data-pdf-inserted', 'true');
+    section.parentNode.insertBefore(pb, section);
+  });
+
+  /* ── 7. CSS minimal : empêcher les coupures à l'intérieur des petits blocs ── */
+  var pdfStyle = document.createElement('style');
+  pdfStyle.id = 'eb-pdf-style';
+  pdfStyle.textContent =
+    '.eb-subch, .eb-highlight, .eb-myth, .eb-myths, .eb-fw-card,' +
+    '.eb-framework, .eb-fw-risk, .eb-toc-inner, .eb-closing-inner,' +
+    '.eb-ch-intro {' +
+    '  page-break-inside: avoid !important;' +
+    '  break-inside: avoid !important;' +
+    '}' +
+    '.eb-ch-num { page-break-after: avoid !important; break-after: avoid !important; }' +
+    '.eb-ch-title { page-break-before: avoid !important; break-before: avoid !important; }';
+  document.head.appendChild(pdfStyle);
+
+  window.scrollTo(0, 0);
+
   var opt = {
-    margin:       [10, 8, 10, 8],
-    filename:     'Acropora-Data_Pourquoi-les-projets-data-echouent.pdf',
-    image:        { type: 'jpeg', quality: 0.95 },
-    html2canvas:  { scale: 1.8, useCORS: true, logging: false, scrollY: 0 },
-    jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
-    pagebreak:    { mode: ['avoid-all', 'css', 'legacy'] }
+    margin:      [12, 10, 12, 10],
+    filename:    'Acropora-Data_Pourquoi-les-projets-data-echouent.pdf',
+    image:       { type: 'jpeg', quality: 0.98 },
+    html2canvas: {
+      scale: 2,
+      useCORS: true,
+      logging: false,
+      scrollY: 0,
+      scrollX: 0,
+      windowWidth: document.documentElement.scrollWidth
+    },
+    jsPDF:      { unit: 'mm', format: 'a4', orientation: 'portrait' },
+    pagebreak:  { mode: ['legacy', 'css'] }
   };
 
-  html2pdf().set(opt).from(element).save().then(function () {
-    /* Restore button */
+  html2pdf().set(opt).from(document.body).save().then(function () {
+    /* Restaurer l'interface */
     btn.disabled = false;
     label.textContent = 'Télécharger PDF';
     icon.innerHTML = '<path d="M3 11v3h10v-3M8 2v8M5 7l3 3 3-3"/>';
+
+    /* Supprimer les sauts de page insérés */
+    document.querySelectorAll('[data-pdf-inserted]').forEach(function (el) {
+      el.parentNode.removeChild(el);
+    });
+
+    /* Supprimer le style temporaire */
+    var ps = document.getElementById('eb-pdf-style');
+    if (ps) ps.parentNode.removeChild(ps);
+
+    /* Restaurer les éléments masqués */
+    topbar.style.display   = '';
+    progress.style.display = '';
+
+    /* Restaurer la couverture */
+    cover.style.minHeight     = '';
+    cover.style.paddingTop    = '';
+    cover.style.paddingBottom = '';
+
+    /* Restaurer les éléments animés de la couverture */
+    coverEls.forEach(function (el) {
+      el.style.opacity    = '';
+      el.style.transform  = '';
+      el.style.animation  = '';
+      el.style.transition = '';
+    });
+
+    /* Restaurer les .reveal */
+    document.querySelectorAll('.reveal').forEach(function (el) {
+      el.style.transition = '';
+    });
+
+    /* Restaurer les corps des mythes */
+    document.querySelectorAll('.eb-myth-body').forEach(function (b) {
+      b.style.maxHeight = '';
+      b.style.overflow  = '';
+    });
   });
 }
 </script>
