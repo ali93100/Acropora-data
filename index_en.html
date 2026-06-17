@@ -321,6 +321,22 @@
 .kf-list li::before { content: '•'; color: #f3756e; font-size: 1.5rem; line-height: 1; }
 .kf-subtitle { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); margin-bottom: 1rem; }
 .kf-success-list { font-size: 1.05rem; color: var(--text-medium); line-height: 1.8; }
+.kf-stats-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; margin-top: 0.5rem;
+}
+.kf-stat {
+    padding: 1.1rem 1.3rem;
+    border-left: 3px solid #f3756e;
+    background: rgba(129,171,179,0.07);
+    border-radius: 0 12px 12px 0;
+}
+.kf-stat-num {
+    display: block; font-size: 1.65rem; font-weight: 800;
+    color: var(--primary-color); line-height: 1; margin-bottom: 0.3rem;
+}
+.kf-stat-label {
+    font-size: 0.8rem; color: rgba(10,42,53,0.58); line-height: 1.4;
+}
 
 /* ── KEY EXPERTISE ───────────────────────────────────── */
 .key-expertise-grid {
@@ -1046,19 +1062,31 @@
             </div>
             <div class="kf-content">
                 <h2 class="kf-title fade-in">ACROPORA DATA in key figures</h2>
-                <ul class="kf-list">
-                    <li class="fade-in" style="transition-delay: 100ms;">+ 11 years of MDM expertise</li>
-                    <li class="fade-in" style="transition-delay: 200ms;">+ 18 years in Data Management</li>
-                    <li class="fade-in" style="transition-delay: 300ms;">+ 30 repositories in production</li>
-                    <li class="fade-in" style="transition-delay: 400ms;">+ 15 MDM implementation projects</li>
-                    <li class="fade-in" style="transition-delay: 500ms;">+ 15 MDM specialized consultants</li>
-                </ul>
-                <h3 class="kf-subtitle fade-in">Our successes</h3>
-                <div class="kf-success-list fade-in">
-                    Master Data project implementation<br>
-                    Data Catalog projects<br>
-                    MDM project scoping<br>
-                    Implementation of data governance
+                <div class="kf-stats-grid">
+                    <div class="kf-stat fade-in" style="transition-delay:100ms">
+                        <span class="kf-stat-num">20+</span>
+                        <span class="kf-stat-label">Years of Data Management Experience</span>
+                    </div>
+                    <div class="kf-stat fade-in" style="transition-delay:200ms">
+                        <span class="kf-stat-num">20+</span>
+                        <span class="kf-stat-label">Enterprise Data Programs Delivered</span>
+                    </div>
+                    <div class="kf-stat fade-in" style="transition-delay:300ms">
+                        <span class="kf-stat-num">1000+</span>
+                        <span class="kf-stat-label">Business Rules Tested &amp; Automated</span>
+                    </div>
+                    <div class="kf-stat fade-in" style="transition-delay:400ms">
+                        <span class="kf-stat-num">Millions</span>
+                        <span class="kf-stat-label">of Master Data Records Managed</span>
+                    </div>
+                    <div class="kf-stat fade-in" style="transition-delay:500ms">
+                        <span class="kf-stat-num">3 Continents</span>
+                        <span class="kf-stat-label">Where our consultants deliver projects</span>
+                    </div>
+                    <div class="kf-stat fade-in" style="transition-delay:600ms">
+                        <span class="kf-stat-num">100%</span>
+                        <span class="kf-stat-label">Focused on Trusted Data &amp; AI Foundations</span>
+                    </div>
                 </div>
             </div>
         </div>
