@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
     <!-- Google tag (gtag.js) -->
@@ -14,11 +14,6 @@
     <link rel="icon" type="image/png" href="favicon-acropora.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acropora Data — Leader en Master Data Management</title>
-    <script>
-        (function() {
-            window.location.replace("index_en.html");
-        })();
-    </script>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -319,6 +314,22 @@
 .kf-list li::before { content: '•'; color: #f3756e; font-size: 1.5rem; line-height: 1; }
 .kf-subtitle { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); margin-bottom: 1rem; }
 .kf-success-list { font-size: 1.05rem; color: var(--text-medium); line-height: 1.8; }
+.kf-stats-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; margin-top: 0.5rem;
+}
+.kf-stat {
+    padding: 1.1rem 1.3rem;
+    border-left: 3px solid #f3756e;
+    background: rgba(129,171,179,0.07);
+    border-radius: 0 12px 12px 0;
+}
+.kf-stat-num {
+    display: block; font-size: 1.65rem; font-weight: 800;
+    color: var(--primary-color); line-height: 1; margin-bottom: 0.3rem;
+}
+.kf-stat-label {
+    font-size: 0.8rem; color: rgba(10,42,53,0.58); line-height: 1.4;
+}
 
 /* ── KEY EXPERTISE ───────────────────────────────────── */
 .key-expertise-grid {
@@ -617,6 +628,7 @@
             </li>
             
         </ul>
+        <a href="index_en.html" class="lang-switch">&#x1F1EC;&#x1F1E7; EN</a>
         <button class="menu-toggle" onclick="document.querySelector('.nav-menu').classList.toggle('active')"><span></span><span></span><span></span></button>
     </div>
 </nav>
@@ -722,19 +734,31 @@
             </div>
             <div class="kf-content">
                 <h2 class="kf-title fade-in">ACROPORA DATA en quelques chiffres</h2>
-                <ul class="kf-list">
-                    <li class="fade-in" style="transition-delay: 100ms;">+ 11 ans d'expertise en MDM</li>
-                    <li class="fade-in" style="transition-delay: 200ms;">+ 18 ans dans la Data</li>
-                    <li class="fade-in" style="transition-delay: 300ms;">+ de 30 référentiels en production</li>
-                    <li class="fade-in" style="transition-delay: 400ms;">+ de 15 projets d'impléméntation MDM</li>
-                    <li class="fade-in" style="transition-delay: 500ms;">+ de 15 consultants spécialisés MDM</li>
-                </ul>
-                <h3 class="kf-subtitle fade-in">Nos succès</h3>
-                <div class="kf-success-list fade-in">
-                    Implémentation de projets Master Data<br>
-                    Projets de Data Catalog<br>
-                    Cadrage de projets MDM<br>
-                    Mise en place de gouvernance de données
+                <div class="kf-stats-grid">
+                    <div class="kf-stat fade-in" style="transition-delay:100ms">
+                        <span class="kf-stat-num">20+</span>
+                        <span class="kf-stat-label">Ans d'expérience en Data Management</span>
+                    </div>
+                    <div class="kf-stat fade-in" style="transition-delay:200ms">
+                        <span class="kf-stat-num">20+</span>
+                        <span class="kf-stat-label">Programmes Data Entreprise livrés</span>
+                    </div>
+                    <div class="kf-stat fade-in" style="transition-delay:300ms">
+                        <span class="kf-stat-num">1000+</span>
+                        <span class="kf-stat-label">Règles Métier Testées &amp; Automatisées</span>
+                    </div>
+                    <div class="kf-stat fade-in" style="transition-delay:400ms">
+                        <span class="kf-stat-num">Millions</span>
+                        <span class="kf-stat-label">d'Enregistrements Master Data Gérés</span>
+                    </div>
+                    <div class="kf-stat fade-in" style="transition-delay:500ms">
+                        <span class="kf-stat-num">3 Continents</span>
+                        <span class="kf-stat-label">Où nos consultants livrent des projets</span>
+                    </div>
+                    <div class="kf-stat fade-in" style="transition-delay:600ms">
+                        <span class="kf-stat-num">100%</span>
+                        <span class="kf-stat-label">Focalisés sur la Data de Confiance &amp; les Fondations IA</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -781,6 +805,31 @@
     </div>
 </section>
 
+<!-- ═══════ TÉMOIGNAGES ═════════════════════════════════ -->
+<section style="background:#f7f8f9;padding:5rem 0;">
+    <div class="container">
+        <div class="home-divider"></div>
+        <h2 class="home-section-title">Ce que disent nos clients</h2>
+        <div style="max-width:800px;margin:3rem auto 0;background:#fff;border-radius:20px;box-shadow:0 4px 40px rgba(10,42,53,0.08);padding:3rem 3.5rem;position:relative;">
+            <span style="font-size:5rem;line-height:1;color:#81abb3;opacity:0.3;position:absolute;top:1.5rem;left:2rem;font-family:Georgia,serif;pointer-events:none;">&ldquo;</span>
+            <blockquote style="margin:0;padding:0;">
+                <p style="font-size:1.15rem;line-height:1.8;color:#0a2a35;font-style:italic;margin:0 0 2rem;position:relative;z-index:1;">
+                    ACROPORA DATA fait preuve d'une maîtrise rare du MDM, et l'équipe de Shaheen en est la preuve vivante. Leur expertise EBX, leur rigueur et leur sens du partenariat font vraiment la différence dans nos projets. Un partenaire qui n'exécute pas seulement — qui élève le niveau.
+                </p>
+                <footer style="display:flex;align-items:center;gap:1rem;">
+                    <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#1a5d6a,#81abb3);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                        <span style="color:#fff;font-weight:700;font-size:0.9rem;">V</span>
+                    </div>
+                    <div>
+                        <span style="display:block;font-weight:700;color:#0a2a35;font-size:0.95rem;">Victor</span>
+                        <span style="font-size:0.8rem;color:#81abb3;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;">SNCF</span>
+                    </div>
+                </footer>
+            </blockquote>
+        </div>
+    </div>
+</section>
+
 <!-- ═══════ CONTACT CTA ═════════════════════════════════ -->
 <section class="home-contact-cta">
     <div class="container">
@@ -800,7 +849,7 @@
             <div class="footer-section" style="flex: 1; min-width: 250px;">
                 <img src="acropora-logo-transparent.png" alt="Acropora Data" class="footer-logo" style="margin-bottom: 1rem; width: 180px; display: block;">
                 <p style="font-weight: 700; margin-bottom: 0.2rem; color: #fff;">Data Management Expert</p>
-                <p style="font-size: 0.85rem; opacity: 0.7; color: #fff;">Turn your data into strategic assets</p>
+                <p style="font-size: 0.85rem; opacity: 0.7; color: #fff;">Transformez vos données en actifs stratégiques</p>
                 <div style="margin-top: 1.5rem; display: flex; justify-content: center; width: 180px;">
                     <a href="https://www.linkedin.com/company/acropora-data" target="_blank" style="color: #81abb3; transition: color 0.3s;" onmouseover="this.style.color='#f3756e'" onmouseout="this.style.color='#81abb3'">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display: block !important;"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>

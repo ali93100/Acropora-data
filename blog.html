@@ -1,211 +1,949 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-    <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8FFCFJNNG2"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-8FFCFJNNG2');
+  gtag('js', new Date()); gtag('config', 'G-8FFCFJNNG2');
 </script>
-    <meta charset="UTF-8">
-    <link rel="icon" type="image/png" href="favicon-acropora.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog & Articles - Acropora Data</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="pages.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="favicon-acropora.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Blog &amp; Événements — Analyses, articles et événements 2026 par Acropora Data">
+<title>Blog &amp; Événements — Acropora Data</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="pages.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   FIELD NOTES — BLOG PAGE
+═══════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  background: #f7f8f9;
+  color: #0a2a35;
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+}
+.parallax-coral { display: none; }
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: 0.08s; }
+.reveal-d2 { transition-delay: 0.18s; }
+.reveal-d3 { transition-delay: 0.28s; }
+
+/* Hero uses page-hero from pages.css */
+
+/* ── FEATURED SECTION ─────────────────────── */
+.fn-featured {
+  background: #fff;
+  padding: 5rem 2rem;
+}
+
+.fn-section-header {
+  max-width: 1060px; margin: 0 auto 2.8rem;
+  display: flex; align-items: center; gap: 1.2rem;
+}
+.fn-section-label {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.2em;
+  text-transform: uppercase; color: rgba(10,42,53,0.35);
+}
+.fn-section-line { flex: 1; height: 1px; background: rgba(10,42,53,0.08); }
+
+/* Featured card */
+.fn-feat-card {
+  max-width: 1060px; margin: 0 auto;
+  background: #fff;
+  border: 1px solid rgba(10,42,53,0.08);
+  border-radius: 20px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  box-shadow: 0 4px 40px rgba(10,42,53,0.07);
+  transition: box-shadow .35s, transform .35s;
+  cursor: pointer;
+  text-decoration: none;
+}
+.fn-feat-card:hover {
+  box-shadow: 0 16px 60px rgba(10,42,53,0.14);
+  transform: translateY(-4px);
+}
+
+/* Left: content */
+.fn-feat-content {
+  padding: 3rem 3rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Badge */
+.fn-feat-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(129,171,179,0.12);
+  border: 1px solid rgba(129,171,179,0.3);
+  border-radius: 100px;
+  padding: 0.3rem 0.85rem;
+  width: fit-content;
+  margin-bottom: 1.4rem;
+}
+.fn-feat-badge-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #81abb3;
+  animation: pulse 2s ease infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(129,171,179,0.5); }
+  50% { box-shadow: 0 0 0 5px rgba(129,171,179,0); }
+}
+.fn-feat-badge-text {
+  font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: #81abb3;
+}
+
+.fn-feat-category {
+  font-size: 0.78rem; font-weight: 500;
+  color: rgba(10,42,53,0.4);
+  letter-spacing: 0.06em; text-transform: uppercase;
+  margin-bottom: 0.85rem;
+}
+
+.fn-feat-title {
+  font-size: clamp(1.4rem, 2.5vw, 1.95rem);
+  font-weight: 700;
+  color: #0a2a35;
+  line-height: 1.22;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.1rem;
+}
+
+.fn-feat-teaser {
+  font-size: 0.95rem;
+  line-height: 1.72;
+  color: rgba(10,42,53,0.6);
+  margin: 0 0 1.8rem;
+  max-width: 480px;
+}
+
+/* City tags */
+.fn-feat-tags {
+  display: flex; flex-wrap: wrap; gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+.fn-feat-tag {
+  font-size: 0.72rem; font-weight: 500;
+  padding: 0.3rem 0.8rem;
+  border-radius: 100px;
+  background: #f0f4f5;
+  color: rgba(10,42,53,0.6);
+  border: 1px solid rgba(10,42,53,0.07);
+}
+
+/* CTA */
+.fn-feat-cta {
+  display: inline-flex; align-items: center; gap: 0.55rem;
+  font-size: 0.85rem; font-weight: 600;
+  color: #0a2a35;
+  margin-bottom: 2rem;
+  transition: gap 0.2s;
+}
+.fn-feat-cta:hover { gap: 0.9rem; }
+
+/* Meta */
+.fn-feat-meta {
+  display: flex; align-items: center; gap: 1rem;
+  font-size: 0.75rem; color: rgba(10,42,53,0.38);
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(10,42,53,0.07);
+}
+.fn-feat-meta-dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(10,42,53,0.2); }
+
+/* Right: visual panel */
+.fn-feat-visual {
+  position: relative;
+  overflow: hidden;
+  min-height: 380px;
+}
+.fn-feat-visual img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transition: transform .5s ease;
+}
+.fn-feat-card:hover .fn-feat-visual img { transform: scale(1.04); }
+.fn-feat-visual-label {
+  position: absolute; bottom: 1.4rem; right: 1.4rem;
+  display: flex; align-items: center; gap: 0.8rem;
+}
+.fn-feat-visual-tag {
+  background: rgba(5,18,28,0.55);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  font-size: 0.68rem; font-weight: 600;
+  padding: 0.35rem 0.8rem; border-radius: 100px;
+  letter-spacing: 0.08em;
+}
+.fn-feat-visual-num {
+  font-size: 0.65rem; font-weight: 700;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.12em;
+}
+
+/* ── OTHER ARTICLES ───────────────────────── */
+.fn-articles {
+  background: #f7f8f9;
+  padding: 5rem 2rem;
+}
+.fn-articles-inner {
+  max-width: 1060px; margin: 0 auto;
+}
+.fn-articles-header {
+  display: flex; align-items: center; gap: 1.2rem;
+  margin-bottom: 2.8rem;
+}
+
+.fn-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6rem;
+}
+
+.fn-card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(10,42,53,0.07);
+  box-shadow: 0 2px 20px rgba(10,42,53,0.05);
+  transition: box-shadow .3s, transform .3s;
+  text-decoration: none;
+  display: flex; flex-direction: column;
+}
+.fn-card:hover {
+  box-shadow: 0 10px 40px rgba(10,42,53,0.12);
+  transform: translateY(-3px);
+}
+.fn-card-bar {
+  height: 4px;
+  width: 100%;
+}
+.fn-card-bar--teal { background: #81abb3; }
+.fn-card-bar--coral { background: #f3756e; }
+.fn-card-bar--slate { background: #5a7a87; }
+
+.fn-card-body {
+  padding: 1.8rem;
+  flex: 1;
+  display: flex; flex-direction: column;
+}
+.fn-card-cat {
+  font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: rgba(10,42,53,0.38);
+  margin-bottom: 0.8rem;
+}
+.fn-card-title {
+  font-size: 1rem; font-weight: 700;
+  color: #0a2a35; line-height: 1.35;
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.01em;
+}
+.fn-card-teaser {
+  font-size: 0.85rem; line-height: 1.65;
+  color: rgba(10,42,53,0.55);
+  margin: 0; flex: 1;
+}
+
+/* ── VISUAL BREAK ─────────────────────────── */
+.fn-break {
+  background: #0a2a35;
+  padding: 6rem 2rem;
+}
+.fn-break-inner {
+  max-width: 700px; margin: 0 auto;
+  text-align: center;
+}
+.fn-break-quote {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 300;
+  color: #fff;
+  line-height: 1.45;
+  margin: 0 0 1.2rem;
+  letter-spacing: -0.01em;
+}
+.fn-break-quote em {
+  font-style: normal;
+  font-weight: 700;
+  color: #81abb3;
+}
+.fn-break-sub {
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ── RESPONSIVE ───────────────────────────── */
+@media (max-width: 900px) {
+  .fn-feat-card { grid-template-columns: 1fr; }
+  .fn-feat-visual { min-height: 260px; order: -1; }
+  .fn-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .fn-grid { grid-template-columns: 1fr; }
+  .fn-feat-content { padding: 2rem 1.5rem; }
+}
+</style>
 </head>
 <body>
-<div class="parallax-coral"><div class="coral-shape"></div><div class="coral-shape"></div><div class="coral-shape"></div><div class="coral-shape"></div></div>
+
+<!-- NAV -->
+<div class="parallax-coral"></div>
 <nav class="navbar">
-    <div class="nav-container">
-        <div class="logo-container">
-            <a href="index.html"><img src="acropora-logo-transparent.png" alt="Acropora Data" class="logo"></a>
-        </div>
-        <ul class="nav-menu">
-            <li class="nav-item">
-                <a href="javascript:void(0)" class="nav-link" style="cursor: default;">Présentation</a>
-                <div class="mega-menu">
-                    <div class="mega-menu-inner mega-menu-4">
-                        <div class="mega-col"><div class="mega-col-title">L'entreprise</div><a href="presentation.html"><span class="link-text"><strong>Qui sommes-nous ?</strong><span>Notre histoire et vision</span></span></a></div>
-                        <div class="mega-col"><div class="mega-col-title">Méthode</div><a href="approche-donnees.html"><span class="link-text"><strong>Notre approche données</strong><span>Méthodologie & framework</span></span></a></div>
-                        <div class="mega-col"><div class="mega-col-title">Personnes</div><a href="equipe.html"><span class="link-text"><strong>Équipe</strong><span>Nos experts data</span></span></a></div>
-                        <div class="mega-col"><div class="mega-col-title">Engagement</div><a href="ethique.html"><span class="link-text"><strong>Éthique & valeurs</strong><span>Nos principes fondateurs</span></span></a></div>
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a href="javascript:void(0)" class="nav-link" style="cursor: default;">Solutions & Expertise</a>
-                <div class="mega-menu">
-                    <div class="mega-menu-inner mega-menu-4">
-                        <div class="mega-col"><div class="mega-col-title">MDM</div><a href="mdm.html"><span class="link-text"><strong>MDM & Intégration</strong><span>Référentiels & pipelines</span></span></a><a href="ai-foundations.html"><span class="link-text"><strong>Fondations IA</strong><span>Données prêtes pour l'IA</span></span></a></div>
-                        <div class="mega-col"><div class="mega-col-title">Assurance Qualité</div><a href="migration-mdm.html"><span class="link-text"><strong>Stratégie de Tests</strong><span>Transition sans interruption</span></span></a><a href="tests-validation.html"><span class="link-text"><strong>Automatisation de Tests</strong><span>Qualité & conformité</span></span></a></div>
-                        <div class="mega-col"><div class="mega-col-title">Analytics</div><a href="bi-analytique.html"><span class="link-text"><strong>BI & Analytique</strong><span>Insights et reporting</span></span></a></div>
-                        <div class="mega-col"><div class="mega-col-title">Audit</div><a href="cadrage-projet.html"><span class="link-text"><strong>Cadrage de projet</strong><span>Structurer vos initiatives</span></span></a></div>
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a href="javascript:void(0)" class="nav-link" style="cursor: default;">Partenaires</a>
-                <div class="mega-menu">
-                    <div class="mega-menu-inner mega-menu-5">
-                        <div class="mega-col">
-                            <div class="mega-col-title">Technologie</div>
-                            <a href="partenaires-technologiques.html"><span class="link-text"><strong>Partenaires technologiques</strong><span>Informatica, Snowflake, Azure…</span></span></a>
-                        </div>
-                        <div class="mega-col">
-                            <div class="mega-col-title">Business</div>
-                            <a href="partenaires-commerciaux.html"><span class="link-text"><strong>Partenaires commerciaux</strong><span>Alliances et synergies business</span></span></a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            
-                        <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-            <li class="nav-item">
-                <a href="javascript:void(0)" class="nav-link cta-nav" style="cursor: default;">Contact</a>
-                <div class="mega-menu">
-                    <div class="mega-menu-inner mega-menu-5">
-                        <div class="mega-col"><div class="mega-col-title">Rejoindre</div><a href="carrieres.html"><span class="link-text"><strong>Carrières</strong><span>Offres & candidatures</span></span></a></div>
-                        <div class="mega-col"><div class="mega-col-title">Partenariat</div><a href="devenir-partenaire.html"><span class="link-text"><strong>Devenir partenaire</strong><span>Rejoindre l'écosystème</span></span></a></div>
-                    </div>
-                </div>
-            </li>
-            
-        </ul>
-        <button class="menu-toggle" onclick="document.querySelector('.nav-menu').classList.toggle('active')"><span></span><span></span><span></span></button>
+  <div class="nav-container">
+    <div class="logo-container">
+      <a href="index.html"><img src="acropora-logo-transparent.png" alt="Acropora Data" class="logo"></a>
     </div>
+    <ul class="nav-menu">
+      <li class="nav-item">
+        <a href="javascript:void(0)" class="nav-link" style="cursor:default;">À propos</a>
+        <div class="mega-menu">
+          <div class="mega-menu-inner mega-menu-4">
+            <div class="mega-col"><div class="mega-col-title">La société</div><a href="presentation.html"><span class="link-text"><strong>Présentation</strong><span>Notre histoire et notre vision</span></span></a></div>
+            <div class="mega-col"><div class="mega-col-title">Méthode</div><a href="approche-donnees.html"><span class="link-text"><strong>Notre approche Data</strong><span>Méthodologie &amp; framework</span></span></a></div>
+            <div class="mega-col"><div class="mega-col-title">Équipe</div><a href="equipe.html"><span class="link-text"><strong>Équipe</strong><span>Nos experts data</span></span></a></div>
+            <div class="mega-col"><div class="mega-col-title">Engagement</div><a href="ethique.html"><span class="link-text"><strong>Éthique &amp; Valeurs</strong><span>Nos principes fondateurs</span></span></a></div>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="javascript:void(0)" class="nav-link" style="cursor:default;">Solutions &amp; Expertise</a>
+        <div class="mega-menu">
+          <div class="mega-menu-inner mega-menu-4">
+            <div class="mega-col"><div class="mega-col-title">MDM</div><a href="mdm.html"><span class="link-text"><strong>MDM &amp; Intégration</strong><span>Référentiels &amp; pipelines</span></span></a><a href="ai-foundations.html"><span class="link-text"><strong>AI Foundations</strong><span>Paysages data prêts pour l'IA</span></span></a></div>
+            <div class="mega-col"><div class="mega-col-title">Assurance qualité</div><a href="strategie-test.html"><span class="link-text"><strong>Stratégie de test</strong><span>Transition en douceur</span></span></a><a href="tests-validation.html"><span class="link-text"><strong>Tests automatisés</strong><span>Qualité &amp; conformité</span></span></a></div>
+            <div class="mega-col"><div class="mega-col-title">Analytics</div><a href="bi-analytique.html"><span class="link-text"><strong>BI &amp; Analytics</strong><span>Insights et reporting</span></span></a></div>
+            <div class="mega-col"><div class="mega-col-title">Audit</div><a href="cadrage-projet.html"><span class="link-text"><strong>Cadrage de projet</strong><span>Structurer vos initiatives</span></span></a></div>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="javascript:void(0)" class="nav-link" style="cursor:default;">Partenaires</a>
+        <div class="mega-menu">
+          <div class="mega-menu-inner mega-menu-2">
+            <div class="mega-col"><div class="mega-col-title">Technologie</div><a href="partenaires-technologiques.html"><span class="link-text"><strong>Partenaires technologiques</strong><span>Semarchy, OnEBX, Talend...</span></span></a></div>
+            <div class="mega-col"><div class="mega-col-title">Business</div><a href="partenaires-commerciaux.html"><span class="link-text"><strong>Partenaires commerciaux</strong><span>Alliances et synergies commerciales</span></span></a></div>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="javascript:void(0)" class="nav-link" style="cursor:default;">Ressources</a>
+        <div class="mega-menu">
+          <div class="mega-menu-inner mega-menu-2">
+            <div class="mega-col"><div class="mega-col-title">Insights</div><a href="blog.html"><span class="link-text"><strong>Blog &amp; Événements</strong><span>Articles, analyses &amp; événements</span></span></a></div>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="javascript:void(0)" class="nav-link cta-nav" style="cursor:default;">Contact</a>
+        <div class="mega-menu">
+          <div class="mega-menu-inner mega-menu-5">
+            <div class="mega-col"><div class="mega-col-title">Nous rejoindre</div><a href="carrieres.html"><span class="link-text"><strong>Carrières</strong><span>Emplois &amp; candidatures</span></span></a></div>
+            <div class="mega-col"><div class="mega-col-title">Partenariat</div><a href="devenir-partenaire.html"><span class="link-text"><strong>Devenir partenaire</strong><span>Rejoindre l'écosystème</span></span></a></div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <a href="blog_en.html" class="lang-switch">&#x1F1EC;&#x1F1E7; EN</a>
+        <button class="menu-toggle" onclick="this.classList.toggle('active'); document.querySelector('.nav-menu').classList.toggle('active')"><span></span><span></span><span></span></button>
+  </div>
 </nav>
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
 <section class="page-hero" data-hero-anim="blog">
-    <div class="page-logo-bg">
-    </div>
-    <div class="container">
-        <h1 class="page-title">Blog & Articles — Acropost</h1>
-        <p class="page-subtitle">Le média data d'Acropora Data</p>
-    </div>
-</section>
-<section class="page-section">
   <div class="container">
-    <div class="section-header fade-in"><h2>Derniers articles</h2><div class="section-line"></div></div>
-    <div class="resources-grid">
-      <a href="blog-tendances-mdm-2025.html" class="resource-card fade-in"><span class="resource-type">Tendances</span><h3>Les tendances MDM 2025</h3><p>IA générative, data mesh, MDM as a Service : ce qui transforme le marché en 2025</p></a>
-      <a href="blog-data-governance-2025.html" class="resource-card fade-in"><span class="resource-type">Best Practices</span><h3>Data Governance : le guide 2025</h3><p>De la théorie à la pratique : gouvernance efficace en 6 étapes concrètes</p></a>
-      <a href="blog-mdm-ia-fiable.html" class="resource-card fade-in"><span class="resource-type">Opinion</span><h3>MDM : la base de l'IA fiable</h3><p>Garbage in, garbage out : sans données propres, l'IA devient un risque</p></a>
+    <h1 class="page-title">Blog &amp; Événements</h1>
+    <p class="page-subtitle">Notes de terrain, événements sectoriels et perspectives data — sans filtre, sans conseils génériques.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FEATURED ARTICLE
+══════════════════════════════════════════ -->
+<section class="fn-featured">
+  <div class="fn-section-header reveal">
+    <span class="fn-section-label">Article à la une</span>
+    <div class="fn-section-line"></div>
+  </div>
+
+  <a class="fn-feat-card reveal" href="europe-trip.html">
+
+    <!-- LEFT: text content -->
+    <div class="fn-feat-content">
+
+      <div class="fn-feat-badge">
+        <div class="fn-feat-badge-dot"></div>
+        <span class="fn-feat-badge-text">À la une</span>
+      </div>
+
+      <div class="fn-feat-category">Rapport de terrain · Avril 2026</div>
+
+      <h2 class="fn-feat-title">Mission terrain Europe —&nbsp;Avril&nbsp;2026</h2>
+
+      <p class="fn-feat-teaser">De Prague à Londres, puis au cœur des systèmes industriels français — ce que nous avons observé dans des environnements radicalement différents, et pourquoi l'écart entre ambition data et réalité data reste plus grand que quiconque ne l'admet.</p>
+
+      <div class="fn-feat-tags">
+        <span class="fn-feat-tag">Prague</span>
+        <span class="fn-feat-tag">Londres</span>
+        <span class="fn-feat-tag">Saint-Denis</span>
+        <span class="fn-feat-tag">La Défense</span>
+      </div>
+
+      <span class="fn-feat-cta">
+        Lire l'article
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </span>
+
+      <div class="fn-feat-meta">
+        <span>Acropora Data</span>
+        <span class="fn-feat-meta-dot"></span>
+        <span>Avril 2026</span>
+        <span class="fn-feat-meta-dot"></span>
+        <span>8 min de lecture</span>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: visual panel -->
+    <div class="fn-feat-visual">
+      <img src="europe tour.png" alt="Mission terrain Europe — Maurice, Paris, Prague, Londres">
+      <div class="fn-feat-visual-label">
+        <span class="fn-feat-visual-tag">4 lieux · Europe</span>
+        <span class="fn-feat-visual-num">01</span>
+      </div>
+    </div>
+
+  </a>
+</section>
+
+<!-- ══════════════════════════════════════════
+     OTHER ARTICLES
+══════════════════════════════════════════ -->
+<section class="fn-articles">
+  <div class="fn-articles-inner">
+
+    <div class="fn-articles-header reveal">
+      <span class="fn-section-label">Plus d'articles</span>
+      <div class="fn-section-line"></div>
+    </div>
+
+    <div class="fn-grid">
+
+      <a href="blog-ai-dirty-data.html" class="fn-card reveal">
+        <div class="fn-card-bar fn-card-bar--teal"></div>
+        <div class="fn-card-body">
+          <div class="fn-card-cat">MDM &amp; AI</div>
+          <h3 class="fn-card-title">Quand l'IA rencontre des données sales : ce qui se passe vraiment</h3>
+          <p class="fn-card-teaser">Les modèles d'IA ne sont fiables qu'à hauteur de la qualité des données qu'ils consomment. Ce que nous avons observé dans les projets MDM en entreprise raconte une tout autre histoire que les présentations commerciales.</p>
+        </div>
+      </a>
+
+      <a href="blog-bad-master-record.html" class="fn-card reveal reveal-d1">
+        <div class="fn-card-bar fn-card-bar--coral"></div>
+        <div class="fn-card-body">
+          <div class="fn-card-cat">Qualité des données</div>
+          <h3 class="fn-card-title">Le coût caché d'un mauvais référentiel</h3>
+          <p class="fn-card-teaser">Un seul enregistrement fournisseur dupliqué peut se propager dans une dizaine de systèmes. Nous avons calculé ce que cela coûte — en heures, en décisions, et en confiance.</p>
+        </div>
+      </a>
+
+      <a href="blog-governance-stall.html" class="fn-card reveal reveal-d2">
+        <div class="fn-card-bar fn-card-bar--slate"></div>
+        <div class="fn-card-body">
+          <div class="fn-card-cat">Gouvernance</div>
+          <h3 class="fn-card-title">Pourquoi les projets de gouvernance s'enlisent au troisième mois</h3>
+          <p class="fn-card-teaser">Le premier sprint se passe toujours bien. Puis la réalité s'impose. Voici ce que nous avons observé — et ce qui distingue les programmes qui s'en sortent de ceux qui ne s'en remettent pas.</p>
+        </div>
+      </a>
+
     </div>
   </div>
 </section>
 
-<section class="page-section" style="background:#f5f9fa;">
-  <div class="container">
-    <div class="section-header fade-in"><h2>Événements 2026</h2><div class="section-line"></div><p style="color:#7a7a7a;font-size:.95rem;margin-top:.5rem">Les conférences et salons auxquels Acropora Data participe cette année</p></div>
-    <div class="resources-grid">
-      <a href="blog-event-dmm-2026.html" class="resource-card fade-in"><span class="resource-type" style="background:rgba(74,159,168,.12);color:#1a5d6a;">🌐 En ligne</span><h3>Data Management Marathon 9.0</h3><p>10–11 juin 2026 — L'événement virtuel mondial du MDM, Data Quality et Gouvernance par ThinkLinkers</p></a>
-      <a href="blog-event-jftl-2026.html" class="resource-card fade-in"><span class="resource-type" style="background:rgba(14,48,96,.1);color:#0e3060;">📍 Montrouge</span><h3>JFTL 2026</h3><p>9 juin 2026 — Les Journées Françaises des Tests Logiciels au Beffroi de Montrouge, 1 300 participants</p></a>
-      <a href="blog-event-data-ai-summit-2026.html" class="resource-card fade-in"><span class="resource-type" style="background:rgba(224,100,40,.1);color:#b04010;">🌉 San Francisco</span><h3>Data + AI Summit 2026</h3><p>15–18 juin 2026 — L'événement mondial Databricks, Moscone Center, 800+ sessions et 160 pays</p></a>
-      <a href="blog-event-cdao-ny-2026.html" class="resource-card fade-in"><span class="resource-type" style="background:rgba(15,31,61,.1);color:#0f1f3d;">🗽 New York</span><h3>CDAO New York 2026</h3><p>9 juin 2026 — Le sommet exclusif des CDO, CAO et CIO d'Amérique du Nord au W Hoboken</p></a>
+<!-- ══════════════════════════════════════════
+     VISUAL BREAK
+══════════════════════════════════════════ -->
+<section class="fn-ebook" style="display:none">
+<style>
+.fn-ebook {
+  background: #fff;
+  padding: 4rem 2rem;
+}
+.fn-ebook-inner {
+  max-width: 1060px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 48px rgba(10,42,53,0.1);
+}
+.fn-ebook-left {
+  background: linear-gradient(145deg, #0a2a35 0%, #0d3a4a 100%);
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+.fn-ebook-left::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 260px; height: 260px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(129,171,179,0.12) 0%, transparent 70%);
+}
+.fn-ebook-left::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; left: -40px;
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(243,117,110,0.07) 0%, transparent 70%);
+}
+.fn-ebook-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(129,171,179,0.15);
+  border: 1px solid rgba(129,171,179,0.25);
+  border-radius: 100px;
+  padding: 0.3rem 0.85rem;
+  width: fit-content;
+  margin-bottom: 1.8rem;
+}
+.fn-ebook-badge span {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #81abb3;
+}
+.fn-ebook-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.8rem;
+  position: relative;
+  z-index: 1;
+}
+.fn-ebook-sub {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.65;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+.fn-ebook-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #81abb3;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.85rem 1.8rem;
+  border-radius: 100px;
+  text-decoration: none;
+  width: fit-content;
+  letter-spacing: 0.02em;
+  transition: background 0.25s, transform 0.2s;
+  position: relative;
+  z-index: 1;
+}
+.fn-ebook-cta:hover { background: #6d99a1; transform: translateY(-2px); }
+.fn-ebook-right {
+  background: #f7f8f9;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+.fn-ebook-right-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(10,42,53,0.35);
+  margin-bottom: 0.4rem;
+}
+.fn-ebook-chapter {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(10,42,53,0.07);
+}
+.fn-ebook-chapter:last-child { border-bottom: none; }
+.fn-ebook-ch-num {
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #81abb3;
+  letter-spacing: 0.1em;
+  min-width: 22px;
+}
+.fn-ebook-ch-text {
+  font-size: 0.84rem;
+  color: rgba(10,42,53,0.65);
+  font-weight: 500;
+  line-height: 1.3;
+}
+@media (max-width: 700px) {
+  .fn-ebook-inner { grid-template-columns: 1fr; }
+}
+
+/* ── fn-ebook-cta button reset ──────────────────────── */
+.fn-ebook-cta { font-family: inherit; cursor: pointer; }
+
+/* ── EBOOK MODAL ─────────────────────────────────────── */
+.ebk-overlay {
+    position: fixed; inset: 0; z-index: 9999;
+    display: flex; align-items: center; justify-content: center;
+    padding: 1rem;
+    background: rgba(3,10,15,.8);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    opacity: 0; visibility: hidden;
+    transition: opacity .4s ease, visibility .4s ease;
+}
+.ebk-overlay.open { opacity: 1; visibility: visible; }
+.ebk-modal {
+    background: #07161e; border: 1px solid rgba(129,171,179,.18);
+    border-radius: 24px; width: 100%; max-width: 500px;
+    position: relative; overflow: hidden;
+    transform: scale(.92) translateY(24px);
+    transition: transform .45s cubic-bezier(.16,1,.3,1);
+    box-shadow: 0 40px 100px rgba(0,0,0,.6), 0 0 0 1px rgba(129,171,179,.06);
+}
+.ebk-overlay.open .ebk-modal { transform: scale(1) translateY(0); }
+.ebk-modal-top {
+    background: linear-gradient(145deg, #0d2f3e 0%, #07161e 100%);
+    padding: 2.5rem 2.5rem 1.8rem; position: relative; overflow: hidden;
+    border-bottom: 1px solid rgba(129,171,179,.1);
+}
+.ebk-modal-top::before { content:''; position:absolute; top:-80px; right:-80px; width:280px; height:280px; border-radius:50%; background:radial-gradient(circle,rgba(74,159,168,.12) 0%,transparent 70%); }
+.ebk-modal-top::after  { content:''; position:absolute; bottom:-40px; left:-40px; width:180px; height:180px; border-radius:50%; background:radial-gradient(circle,rgba(243,117,110,.06) 0%,transparent 70%); }
+.ebk-close {
+    position: absolute; top: 1.1rem; right: 1.1rem;
+    width: 30px; height: 30px; border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.05);
+    color: rgba(255,255,255,.45); font-size: 1.1rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all .2s; line-height: 1; padding: 0; z-index: 2;
+}
+.ebk-close:hover { background: rgba(255,255,255,.12); color: #fff; }
+.ebk-book { display:flex; align-items:flex-end; gap:0; margin-bottom:1.5rem; width:62px; height:80px; position:relative; z-index:1; }
+.ebk-spine { width:9px; height:80px; background:linear-gradient(180deg,#1a5d6a,#0d2030); border-radius:3px 0 0 3px; box-shadow:inset -2px 0 4px rgba(0,0,0,.4); }
+.ebk-cover { flex:1; height:80px; background:linear-gradient(145deg,#4a9fa8 0%,#7fc4c9 60%,#a8dde1 100%); border-radius:0 6px 6px 0; box-shadow:4px 4px 16px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.2); position:relative; overflow:hidden; }
+.ebk-cover::before { content:''; position:absolute; top:10px; left:8px; right:8px; height:2px; background:rgba(255,255,255,.3); border-radius:1px; }
+.ebk-cover::after  { content:''; position:absolute; top:17px; left:8px; right:16px; height:1px; background:rgba(255,255,255,.15); border-radius:1px; }
+.ebk-modal-badge { display:inline-flex; align-items:center; gap:.4rem; background:rgba(74,159,168,.12); border:1px solid rgba(74,159,168,.25); border-radius:100px; padding:.22rem .75rem; font-size:.62rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#81abb3; margin-bottom:1rem; position:relative; z-index:1; }
+.ebk-modal-title { font-size:1.35rem; font-weight:700; color:#fff; line-height:1.25; letter-spacing:-.02em; margin-bottom:.45rem; position:relative; z-index:1; }
+.ebk-modal-desc  { font-size:.84rem; color:rgba(255,255,255,.42); line-height:1.65; position:relative; z-index:1; }
+.ebk-modal-body  { padding:2rem 2.5rem 2.5rem; }
+.ebk-field-label { display:block; font-size:.75rem; font-weight:600; color:rgba(255,255,255,.5); margin-bottom:.55rem; letter-spacing:.04em; }
+.ebk-input { width:100%; padding:.88rem 1.2rem; border-radius:12px; border:1px solid rgba(129,171,179,.18); background:rgba(255,255,255,.04); color:#fff; font-size:.92rem; outline:none; transition:border-color .2s,background .2s,box-shadow .2s; font-family:inherit; margin-bottom:.9rem; }
+.ebk-input::placeholder { color:rgba(255,255,255,.22); }
+.ebk-input:focus { border-color:#81abb3; background:rgba(129,171,179,.07); box-shadow:0 0 0 3px rgba(129,171,179,.12); }
+.ebk-err { font-size:.75rem; color:#f3756e; margin:-.6rem 0 .7rem; display:none; }
+.ebk-submit { width:100%; padding:1rem; border-radius:12px; border:none; background:linear-gradient(135deg,#4a9fa8,#1a5d6a); color:#fff; font-size:.95rem; font-weight:700; cursor:pointer; font-family:inherit; position:relative; overflow:hidden; transition:opacity .2s,transform .2s,box-shadow .2s; letter-spacing:.01em; }
+.ebk-submit:hover:not(:disabled) { opacity:.92; transform:translateY(-1px); box-shadow:0 8px 24px rgba(74,159,168,.3); }
+.ebk-submit:disabled { opacity:.6; cursor:not-allowed; transform:none; }
+.ebk-submit::before { content:''; position:absolute; top:0; left:-100%; width:50%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent); animation:ebk-shimmer 2s ease-in-out infinite; }
+@keyframes ebk-shimmer { 0%{left:-100%} 100%{left:160%} }
+.ebk-privacy { font-size:.7rem; color:rgba(255,255,255,.22); text-align:center; margin-top:1rem; display:flex; align-items:center; justify-content:center; gap:.4rem; }
+.ebk-success-state { display:none; text-align:center; padding:.5rem 0; }
+.ebk-check-ring { width:68px; height:68px; border-radius:50%; background:linear-gradient(135deg,rgba(74,159,168,.15),rgba(127,196,201,.08)); border:2px solid rgba(74,159,168,.35); display:inline-flex; align-items:center; justify-content:center; margin-bottom:1.2rem; animation:ebk-pop .5s cubic-bezier(.16,1,.3,1) both; }
+@keyframes ebk-pop { from{transform:scale(0);opacity:0} to{transform:scale(1);opacity:1} }
+.ebk-check-icon { font-size:2rem; line-height:1; }
+.ebk-success-title { font-size:1.25rem; font-weight:700; color:#fff; margin-bottom:.45rem; }
+.ebk-success-sub { font-size:.85rem; color:rgba(255,255,255,.45); margin-bottom:1.8rem; line-height:1.65; }
+.ebk-access-link { display:inline-flex; align-items:center; gap:.6rem; padding:1rem 2.2rem; border-radius:12px; background:linear-gradient(135deg,#4a9fa8,#7fc4c9); color:#fff; font-size:.95rem; font-weight:700; text-decoration:none; transition:transform .25s,box-shadow .25s; }
+.ebk-access-link:hover { transform:translateY(-2px); box-shadow:0 10px 28px rgba(74,159,168,.38); }
+.ebk-spinner { display:inline-block; width:16px; height:16px; border:2px solid rgba(255,255,255,.3); border-top-color:#fff; border-radius:50%; animation:spin .7s linear infinite; vertical-align:middle; margin-right:.4rem; }
+@keyframes spin { to{transform:rotate(360deg)} }
+</style>
+  <div class="fn-ebook-inner reveal">
+    <div class="fn-ebook-left">
+      <div>
+        <div class="fn-ebook-badge">
+          <svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="#81abb3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v3h10v-3M8 2v8M5 7l3 3 3-3"/></svg>
+          <span>Ebook gratuit</span>
+        </div>
+        <h3 class="fn-ebook-title">Pourquoi les projets Data échouent</h3>
+        <p class="fn-ebook-sub">9 chapitres. De vrais schémas d'échec, ce qui fonctionne vraiment, et un cadre simple pour évaluer vos initiatives data.</p>
+      </div>
+      <button class="fn-ebook-cta" onclick="openEbkModal()">
+        Télécharger l'ebook
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="12" y1="9" x2="12" y2="15"/><polyline points="9 12 12 15 15 12"/></svg>
+      </button>
+    </div>
+    <div class="fn-ebook-right">
+      <div class="fn-ebook-right-label">Sommaire</div>
+      <div class="fn-ebook-chapter"><span class="fn-ebook-ch-num">01</span><span class="fn-ebook-ch-text">Introduction — Le paradoxe de la data</span></div>
+      <div class="fn-ebook-chapter"><span class="fn-ebook-ch-num">02</span><span class="fn-ebook-ch-text">La promesse et ses limites</span></div>
+      <div class="fn-ebook-chapter"><span class="fn-ebook-ch-num">03</span><span class="fn-ebook-ch-text">Réalité terrain</span></div>
+      <div class="fn-ebook-chapter"><span class="fn-ebook-ch-num">04</span><span class="fn-ebook-ch-text">Schémas d'échec récurrents</span></div>
+      <div class="fn-ebook-chapter"><span class="fn-ebook-ch-num">05</span><span class="fn-ebook-ch-text">Ce qui fonctionne vraiment</span></div>
+      <div class="fn-ebook-chapter"><span class="fn-ebook-ch-num">06</span><span class="fn-ebook-ch-text">Mythes courants — Interactif</span></div>
+      <div class="fn-ebook-chapter"><span class="fn-ebook-ch-num">07</span><span class="fn-ebook-ch-text">Un cadre d'évaluation simple</span></div>
+      <div class="fn-ebook-chapter"><span class="fn-ebook-ch-num">08</span><span class="fn-ebook-ch-text">Conclusion</span></div>
     </div>
   </div>
 </section>
-<section class="page-cta">
-    <div class="container">
-        <h2>Prât à aller plus loin ?</h2>
-        <p>Contactez-nous dès aujourd'hui</p>
-        <a href="contact.html" class="btn btn-primary">Nous contacter</a>
+
+<!-- ══════════════════════════════════════════
+     2026 EVENTS
+══════════════════════════════════════════ -->
+<section class="fn-events">
+<style>
+.fn-events {
+  background: #fff;
+  padding: 5rem 2rem;
+}
+.fn-events-inner {
+  max-width: 1060px;
+  margin: 0 auto;
+}
+.fn-events-header {
+  display: flex; align-items: center; gap: 1.2rem;
+  margin-bottom: 2.8rem;
+}
+.fn-evt-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.4rem;
+}
+.fn-evt-card {
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(10,42,53,0.08);
+  box-shadow: 0 2px 20px rgba(10,42,53,0.05);
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow .3s, transform .3s;
+  background: #fff;
+}
+.fn-evt-card:hover {
+  box-shadow: 0 10px 40px rgba(10,42,53,0.12);
+  transform: translateY(-4px);
+}
+.fn-evt-top {
+  padding: 1.6rem 1.6rem 1rem;
+  flex: 1;
+}
+.fn-evt-badge {
+  display: inline-block;
+  font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 0.22rem 0.7rem;
+  border-radius: 100px;
+  margin-bottom: 1rem;
+}
+.fn-evt-badge--teal { background: rgba(26,93,106,0.1); color: #1a5d6a; }
+.fn-evt-badge--blue { background: rgba(14,48,96,0.1); color: #0e3060; }
+.fn-evt-badge--orange { background: rgba(224,100,40,0.1); color: #b04010; }
+.fn-evt-badge--gold { background: rgba(200,160,48,0.1); color: #7a5a10; }
+.fn-evt-title {
+  font-size: 0.95rem; font-weight: 700;
+  color: #0a2a35; line-height: 1.3;
+  margin: 0 0 0.6rem;
+  letter-spacing: -0.01em;
+}
+.fn-evt-info {
+  font-size: 0.78rem;
+  color: rgba(10,42,53,0.5);
+  line-height: 1.55;
+  margin: 0;
+}
+.fn-evt-stripe {
+  height: 4px; width: 100%;
+}
+.fn-evt-stripe--teal { background: linear-gradient(90deg,#1a5d6a,#4a9fa8); }
+.fn-evt-stripe--blue { background: linear-gradient(90deg,#0e3060,#4a78c8); }
+.fn-evt-stripe--orange { background: linear-gradient(90deg,#e06428,#f08840); }
+.fn-evt-stripe--gold { background: linear-gradient(90deg,#c8a030,#e8c860); }
+@media (max-width: 900px) {
+  .fn-evt-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .fn-evt-grid { grid-template-columns: 1fr; }
+}
+</style>
+  <div class="fn-events-inner">
+    <div class="fn-events-header reveal">
+      <span class="fn-section-label">Événements 2026</span>
+      <div class="fn-section-line"></div>
     </div>
+    <div class="fn-evt-grid">
+
+      <a href="blog-event-dmm-2026.html" class="fn-evt-card reveal">
+        <div class="fn-evt-stripe fn-evt-stripe--teal"></div>
+        <div class="fn-evt-top">
+          <span class="fn-evt-badge fn-evt-badge--teal">En ligne · 10–11 juin</span>
+          <h3 class="fn-evt-title">Data Management Marathon 9.0</h3>
+          <p class="fn-evt-info">La référence mondiale pour les professionnels de la data. MDM, Qualité des données, Gouvernance et GenAI — 50+ intervenants, 2 jours en ligne.</p>
+        </div>
+      </a>
+
+      <a href="blog-event-jftl-2026.html" class="fn-evt-card reveal reveal-d1">
+        <div class="fn-evt-stripe fn-evt-stripe--blue"></div>
+        <div class="fn-evt-top">
+          <span class="fn-evt-badge fn-evt-badge--blue">Montrouge · 9 juin</span>
+          <h3 class="fn-evt-title">JFTL 2026</h3>
+          <p class="fn-evt-info">Les premières journées françaises des tests logiciels. 1 300 professionnels QA, 5 pistes parallèles, IA dans les tests et l'automatisation.</p>
+        </div>
+      </a>
+
+      <a href="blog-event-data-ai-summit-2026.html" class="fn-evt-card reveal reveal-d2">
+        <div class="fn-evt-stripe fn-evt-stripe--orange"></div>
+        <div class="fn-evt-top">
+          <span class="fn-evt-badge fn-evt-badge--orange">San Francisco · 15–18 juin</span>
+          <h3 class="fn-evt-title">Data + AI Summit 2026</h3>
+          <p class="fn-evt-info">L'événement mondial Databricks. 800+ sessions, 160 pays — AI Agents, Lakehouse, MLOps et Gouvernance des données.</p>
+        </div>
+      </a>
+
+      <a href="blog-event-cdao-ny-2026.html" class="fn-evt-card reveal reveal-d3">
+        <div class="fn-evt-stripe fn-evt-stripe--gold"></div>
+        <div class="fn-evt-top">
+          <span class="fn-evt-badge fn-evt-badge--gold">New York · 9 juin</span>
+          <h3 class="fn-evt-title">CDAO New York 2026</h3>
+          <p class="fn-evt-info">Le sommet data &amp; AI des C-suites d'Amérique du Nord. 150 dirigeants, 30 intervenants — priorités CDO, CAO et VP Analytics pour 2026.</p>
+        </div>
+      </a>
+
+    </div>
+  </div>
 </section>
+
+<section class="fn-break">
+  <div class="fn-break-inner reveal">
+    <p class="fn-break-quote">Insights de terrain, <em>pas de contenu générique.</em></p>
+    <p class="fn-break-sub">Chaque article est ancré dans une vraie mission, un vrai défi client, ou un vrai événement sectoriel. Pas de frameworks recyclés. Pas de conseils évidents.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer class="footer">
-    <div class="container">
-        <div class="footer-content" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 2rem;">
-            <div class="footer-section" style="flex: 1; min-width: 250px;">
-                <img src="acropora-logo-transparent.png" alt="Acropora Data" class="footer-logo" style="margin-bottom: 1rem; width: 180px; display: block;">
-                <p style="font-weight: 700; margin-bottom: 0.2rem; color: #fff;">Data Management Expert</p>
-                <p style="font-size: 0.85rem; opacity: 0.7; color: #fff;">Turn your data into strategic assets</p>
-                <div style="margin-top: 1.5rem; display: flex; justify-content: center; width: 180px;">
-                    <a href="https://www.linkedin.com/company/acropora-data" target="_blank" style="color: #81abb3; transition: color 0.3s;" onmouseover="this.style.color='#f3756e'" onmouseout="this.style.color='#81abb3'">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display: block !important;"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                    </a>
-                </div>
-            </div>
-            <div class="footer-section" style="flex: 1; min-width: 200px;">
-                <h4 style="color: #81abb3; margin-bottom: 1.5rem; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.05em;">À propos</h4>
-                <ul style="list-style: none; padding: 0;">
-                    <li style="margin-bottom: 0.7rem;"><a href="presentation.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Présentation</a></li>
-                    <li style="margin-bottom: 0.7rem;"><a href="approche-donnees.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Notre approche données</a></li>
-                    <li style="margin-bottom: 0.7rem;"><a href="equipe.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Équipe</a></li>
-                    <li style="margin-bottom: 0.7rem;"><a href="ethique.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Éthique &amp; valeurs</a></li>
-                </ul>
-            </div>
-            <div class="footer-section" style="flex: 1; min-width: 200px;">
-                <h4 style="color: #81abb3; margin-bottom: 1.5rem; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.05em;">Solutions &amp; Expertise</h4>
-                <ul style="list-style: none; padding: 0;">
-                    <li style="margin-bottom: 0.7rem;"><a href="mdm.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">MDM &amp; intégration</a></li>
-                    <li style="margin-bottom: 0.7rem;"><a href="ai-foundations.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Fondations IA</a></li>
-                    <li style="margin-bottom: 0.7rem;"><a href="migration-mdm.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Stratégie de Tests</a></li>
-                    <li style="margin-bottom: 0.7rem;"><a href="tests-validation.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Automatisation de Tests</a></li>
-                    <li style="margin-bottom: 0.7rem;"><a href="bi-analytique.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">BI &amp; Analytique</a></li>
-                    <li style="margin-bottom: 0.7rem;"><a href="cadrage-projet.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Cadrage de projet</a></li>
-                </ul>
-            </div>
-            <div class="footer-section" style="flex: 1; min-width: 200px;">
-                <h4 style="color: #81abb3; margin-bottom: 1.5rem; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.05em;">Partenaires &amp; Contact</h4>
-                <ul style="list-style: none; padding: 0;">
-                    <li style="margin-bottom: 0.7rem;"><a href="partenaires-technologiques.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Partenaires technologiques</a></li>
-                    <li style="margin-bottom: 0.7rem;"><a href="partenaires-commerciaux.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Partenaires commerciaux</a></li>
-                    <li style="margin-bottom: 0.7rem;"><a href="devenir-partenaire.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Devenir partenaire</a></li>
-                    <li style="margin-bottom: 0.7rem;"><a href="carrieres.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Carrières</a></li>
-                    <li style="margin-bottom: 0.7rem;"><a href="contact.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Contact</a></li>
-                </ul>
-            </div>
+  <div class="container">
+    <div class="footer-content" style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:2rem;">
+      <div class="footer-section" style="flex:1;min-width:250px;">
+        <img src="acropora-logo-transparent.png" alt="Acropora Data" class="footer-logo" style="margin-bottom:1rem;width:180px;display:block;">
+        <p style="font-weight:700;margin-bottom:0.2rem;color:#fff;">Expert en gestion de données</p>
+        <p style="font-size:0.85rem;opacity:0.7;color:#fff;">Transformez vos données en actifs stratégiques</p>
+        <div style="margin-top:1.5rem;display:flex;justify-content:center;width:180px;">
+          <a href="https://www.linkedin.com/company/acropora-data" target="_blank" style="color:#81abb3;transition:color 0.3s;" onmouseover="this.style.color='#f3756e'" onmouseout="this.style.color='#81abb3'">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Acropora Data. Tous droits réservés.</p>
-        </div>
+      </div>
+      <div class="footer-section" style="flex:1;min-width:200px;">
+        <h4 style="color:#81abb3;margin-bottom:1.5rem;font-size:1.1rem;text-transform:uppercase;letter-spacing:0.05em;">À propos</h4>
+        <ul style="list-style:none;padding:0;">
+          <li style="margin-bottom:0.7rem;"><a href="presentation.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Présentation</a></li>
+          <li style="margin-bottom:0.7rem;"><a href="approche-donnees.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Notre approche Data</a></li>
+          <li style="margin-bottom:0.7rem;"><a href="equipe.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Équipe</a></li>
+          <li style="margin-bottom:0.7rem;"><a href="ethique.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Éthique &amp; Valeurs</a></li>
+        </ul>
+      </div>
+      <div class="footer-section" style="flex:1;min-width:200px;">
+        <h4 style="color:#81abb3;margin-bottom:1.5rem;font-size:1.1rem;text-transform:uppercase;letter-spacing:0.05em;">Solutions &amp; Expertise</h4>
+        <ul style="list-style:none;padding:0;">
+          <li style="margin-bottom:0.7rem;"><a href="mdm.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">MDM &amp; Intégration</a></li>
+          <li style="margin-bottom:0.7rem;"><a href="ai-foundations.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">AI Foundations</a></li>
+          <li style="margin-bottom:0.7rem;"><a href="strategie-test.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Stratégie de test</a></li>
+          <li style="margin-bottom:0.7rem;"><a href="tests-validation.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Tests automatisés</a></li>
+          <li style="margin-bottom:0.7rem;"><a href="bi-analytique.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">BI &amp; Analytics</a></li>
+          <li style="margin-bottom:0.7rem;"><a href="cadrage-projet.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Cadrage de projet</a></li>
+        </ul>
+      </div>
+      <div class="footer-section" style="flex:1;min-width:200px;">
+        <h4 style="color:#81abb3;margin-bottom:1.5rem;font-size:1.1rem;text-transform:uppercase;letter-spacing:0.05em;">Partenaires &amp; Contact</h4>
+        <ul style="list-style:none;padding:0;">
+          <li style="margin-bottom:0.7rem;"><a href="partenaires-technologiques.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Partenaires technologiques</a></li>
+          <li style="margin-bottom:0.7rem;"><a href="partenaires-commerciaux.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Partenaires commerciaux</a></li>
+          <li style="margin-bottom:0.7rem;"><a href="devenir-partenaire.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Devenir partenaire</a></li>
+          <li style="margin-bottom:0.7rem;"><a href="carrieres.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Carrières</a></li>
+          <li style="margin-bottom:0.7rem;"><a href="contact.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Contact</a></li>
+        </ul>
+      </div>
     </div>
+    <div class="footer-bottom"><p>&copy; 2026 Acropora Data. Tous droits réservés.</p></div>
+  </div>
 </footer>
+
 <script src="script.js"></script>
-<script src="pages.js"></script>
-<script src="hero-animations.js"></script>
 <script>
-// Gestion du mega-menu sur mobile (tactile)
-document.querySelectorAll('.nav-item').forEach(function(item) {
-    var link = item.querySelector('.nav-link');
-    var mega = item.querySelector('.mega-menu');
-    if (!mega) return; // item sans sous-menu (ex: EN)
-
-    link.addEventListener('click', function(e) {
-        var isMobile = window.innerWidth <= 768;
-        if (!isMobile) return; // sur desktop, le hover CSS suffit
-
-        e.preventDefault(); // empêche la navigation (ces liens sont javascript:void)
-        
-        var isOpen = item.classList.contains('open');
-        
-        // Ferme tous les autres sous-menus ouverts
-        document.querySelectorAll('.nav-item.open').forEach(function(other) {
-            other.classList.remove('open');
-            other.querySelector('.mega-menu').style.display = '';
-        });
-
-        // Ouvre ou ferme celui-ci
-        if (!isOpen) {
-            item.classList.add('open');
-            mega.style.display = 'block';
-        }
+/* Scroll reveal */
+(function () {
+  var els = document.querySelectorAll('.reveal');
+  if (!els.length) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      }
     });
-});
+  }, { threshold: 0.12 });
+  els.forEach(function (el) { io.observe(el); });
+})();
 
-// Ferme le menu si on clique en dehors
-document.addEventListener('click', function(e) {
-    if (!e.target.closest('.navbar')) {
-        document.querySelectorAll('.nav-item.open').forEach(function(item) {
-            item.classList.remove('open');
-            item.querySelector('.mega-menu').style.display = '';
-        });
+/* Nav mega-menu mobile */
+document.querySelectorAll('.nav-item').forEach(function (item) {
+  var link = item.querySelector('.nav-link');
+  var mega = item.querySelector('.mega-menu');
+  if (!mega) return;
+  link.addEventListener('click', function (e) {
+    if (window.innerWidth > 768) return;
+    e.preventDefault();
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.nav-item.open').forEach(function (o) {
+      o.classList.remove('open');
+      o.querySelector('.mega-menu').style.removeProperty('display');
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      mega.style.setProperty('display', 'block', 'important');
     }
+  });
+});
+document.addEventListener('click', function (e) {
+  if (!e.target.closest('.navbar')) {
+    document.querySelectorAll('.nav-item.open').forEach(function (item) {
+      item.classList.remove('open');
+      item.querySelector('.mega-menu').style.removeProperty('display');
+    });
+  }
 });
 </script>
+
 </body>
 </html>

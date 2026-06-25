@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(\\(Get-Content \"C:\\\\Users\\\\ali.baungally\\\\OneDrive - Acropora Data Ltd\\\\Bureau\\\\files Website Acropora\\\\blog.html\" | Measure-Object -Line\\).Lines)"
+    ]
+  }
+}

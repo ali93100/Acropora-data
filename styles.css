@@ -184,6 +184,31 @@ body {
 .menu-toggle:hover span { background: #f3756e; }
 .menu-toggle:hover span:nth-child(2) { width: 26px; }
 
+/* ── LANGUAGE SWITCHER ── */
+.lang-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.28rem;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--primary-color);
+    text-decoration: none;
+    padding: 0.28rem 0.65rem;
+    border: 1.5px solid rgba(26, 93, 106, 0.22);
+    border-radius: 20px;
+    background: rgba(129, 171, 179, 0.1);
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    margin-right: 0.6rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+.lang-switch:hover {
+    background: var(--primary-color);
+    color: #fff;
+    border-color: var(--primary-color);
+}
+
 /* ======================
    Hero Section
    ====================== */

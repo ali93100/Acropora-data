@@ -7,7 +7,7 @@
 <link rel="icon" type="image/png" href="favicon-acropora.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Data Management Marathon 9.0 — Acropora Data | Juin 2026</title>
-<meta name="description" content="Acropora Data participe au Data Management Marathon 9.0 les 10-11 juin 2026. MDM, Data Quality, Gouvernance et IA : venez échanger avec nos experts.">
+<meta name="description" content="Acropora Data participe au Data Management Marathon 9.0 les 10 et 11 juin 2026. MDM, Qualité des données, Gouvernance et IA — venez rencontrer nos experts.">
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="pages.css">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -97,6 +97,109 @@
 .rc h4{font-size:1rem;font-weight:700;color:#1a5d6a;margin-bottom:.5rem}
 .rc p{font-size:.83rem;color:#7a7a7a;line-height:1.55}
 .rarr{font-size:.8rem;font-weight:700;color:#4a9fa8;margin-top:1rem}
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+
+  /* Hero */
+  .art-hero { padding: 6.5rem 0 2.5rem; }
+  .art-hero h1 { font-size: 1.65rem; line-height: 1.25; margin-bottom: 1rem; }
+  .art-hero .lead { font-size: .93rem; margin-bottom: 2rem; }
+  .art-bc { margin-bottom: 1.2rem; }
+  .art-tags { gap: .45rem; margin-bottom: 1.2rem; }
+  .a-tag { font-size: .65rem; padding: .22rem .75rem; }
+
+  /* KPIs : 3 petites cartes en ligne */
+  .hero-kpis { grid-template-columns: repeat(3,1fr); gap: .7rem; max-width: 100%; }
+  .kpi-c { padding: 1rem .5rem; border-radius: 12px; }
+  .kpi-num { font-size: 1.5rem; }
+  .kpi-lbl { font-size: .6rem; }
+
+  /* Corps de l'article */
+  .art-body { padding: 2.5rem 0; }
+  .art-wrap { padding: 0 1rem; }
+  .art-h2 { font-size: 1.3rem; }
+  .art-sub { font-size: .87rem; }
+
+  /* Bloc info */
+  .info-c { padding: 1rem 1.2rem; }
+  .info-c p { font-size: .9rem; }
+
+  /* Strip événement : 1 colonne */
+  .evt-strip { grid-template-columns: 1fr; gap: 1rem; margin: 2rem 0; }
+  .evt-card { padding: 1.4rem; border-radius: 14px; }
+  .evt-icon { font-size: 1.8rem; }
+
+  /* Graphique barres : layout vertical par ligne */
+  .chart-dark { padding: 1.6rem 1.2rem; border-radius: 16px; margin: 2.5rem 0; }
+  .chart-dark h3 { font-size: 1.05rem; }
+  .bchart { gap: 1.4rem; }
+  .brow {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    gap: .3rem .6rem;
+  }
+  .blbl {
+    grid-column: 1;
+    grid-row: 1;
+    text-align: left;
+    font-size: .75rem;
+  }
+  .bval {
+    grid-column: 2;
+    grid-row: 1;
+    font-size: .9rem;
+    text-align: right;
+    align-self: center;
+  }
+  .btrack {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    height: 26px;
+  }
+  .bill { font-size: .62rem; }
+
+  /* Grille "Pourquoi" : 1 colonne */
+  .why-grid { grid-template-columns: 1fr; gap: 1rem; margin: 2rem 0; }
+  .why-card { padding: 1.6rem; border-radius: 14px; }
+  .why-icon { font-size: 1.7rem; margin-bottom: .7rem; }
+  .why-card h4 { font-size: .97rem; }
+  .why-card p { font-size: .84rem; }
+
+  /* Programme : 1 colonne */
+  .prog-grid { grid-template-columns: 1fr; gap: 1.2rem; margin: 2rem 0; }
+  .prog-day { padding: 1.6rem 1.4rem; border-radius: 14px; }
+  .prog-day h3 { font-size: 1.05rem; margin-bottom: 1rem; }
+  .prog-text { font-size: .82rem; }
+  .prog-text strong { font-size: .85rem; }
+
+  /* CTA : boutons empilés */
+  .art-cta { padding: 2.2rem 1.4rem; border-radius: 16px; margin: 2.5rem 0; }
+  .art-cta h3 { font-size: 1.25rem; }
+  .art-cta p { font-size: .9rem; }
+  .btn-art,
+  .btn-art-outline {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-left: 0;
+    margin-top: .75rem;
+    padding: .85rem 1.4rem;
+    font-size: .88rem;
+  }
+
+  /* Articles liés : 1 colonne */
+  .rel-sec { padding: 2.5rem 0; }
+  .rel-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .rc { padding: 1.4rem; border-radius: 12px; }
+}
+
+@media (max-width: 420px) {
+  .hero-kpis { grid-template-columns: 1fr; gap: .7rem; }
+  .kpi-c { padding: .9rem 1rem; }
+  .kpi-num { font-size: 1.8rem; }
+  .kpi-lbl { font-size: .68rem; }
+}
 </style>
 </head>
 <body>
@@ -105,100 +208,93 @@
 <div class="nav-container">
 <div class="logo-container"><a href="index.html"><img src="acropora-logo-transparent.png" alt="Acropora Data" class="logo"></a></div>
 <ul class="nav-menu">
-<li class="nav-item"><a href="javascript:void(0)" class="nav-link" style="cursor:default">Présentation</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-4"><div class="mega-col"><div class="mega-col-title">L'entreprise</div><a href="presentation.html"><span class="link-text"><strong>Qui sommes-nous ?</strong><span>Notre histoire et vision</span></span></a></div><div class="mega-col"><div class="mega-col-title">Méthode</div><a href="approche-donnees.html"><span class="link-text"><strong>Notre approche données</strong><span>Méthodologie &amp; framework</span></span></a></div><div class="mega-col"><div class="mega-col-title">Personnes</div><a href="equipe.html"><span class="link-text"><strong>Équipe</strong><span>Nos experts data</span></span></a></div><div class="mega-col"><div class="mega-col-title">Engagement</div><a href="ethique.html"><span class="link-text"><strong>Éthique &amp; valeurs</strong><span>Nos principes fondateurs</span></span></a></div></div></div></li>
-<li class="nav-item"><a href="javascript:void(0)" class="nav-link" style="cursor:default">Solutions &amp; Expertise</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-4"><div class="mega-col"><div class="mega-col-title">MDM</div><a href="mdm.html"><span class="link-text"><strong>MDM &amp; Intégration</strong><span>Référentiels &amp; pipelines</span></span></a><a href="ai-foundations.html"><span class="link-text"><strong>Fondations IA</strong><span>Données prêtes pour l'IA</span></span></a></div><div class="mega-col"><div class="mega-col-title">Assurance Qualité</div><a href="migration-mdm.html"><span class="link-text"><strong>Stratégie de Tests</strong><span>Transition sans interruption</span></span></a><a href="tests-validation.html"><span class="link-text"><strong>Automatisation de Tests</strong><span>Qualité &amp; conformité</span></span></a></div><div class="mega-col"><div class="mega-col-title">Analytics</div><a href="bi-analytique.html"><span class="link-text"><strong>BI &amp; Analytique</strong><span>Insights et reporting</span></span></a></div><div class="mega-col"><div class="mega-col-title">Audit</div><a href="cadrage-projet.html"><span class="link-text"><strong>Cadrage de projet</strong><span>Structurer vos initiatives</span></span></a></div></div></div></li>
-<li class="nav-item"><a href="javascript:void(0)" class="nav-link" style="cursor:default">Partenaires</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-5"><div class="mega-col"><div class="mega-col-title">Technologie</div><a href="partenaires-technologiques.html"><span class="link-text"><strong>Partenaires technologiques</strong><span>Informatica, Snowflake, Azure…</span></span></a></div><div class="mega-col"><div class="mega-col-title">Business</div><a href="partenaires-commerciaux.html"><span class="link-text"><strong>Partenaires commerciaux</strong><span>Alliances et synergies business</span></span></a></div></div></div></li>
-<li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-<li class="nav-item"><a href="javascript:void(0)" class="nav-link cta-nav" style="cursor:default">Contact</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-5"><div class="mega-col"><div class="mega-col-title">Rejoindre</div><a href="carrieres.html"><span class="link-text"><strong>Carrières</strong><span>Offres &amp; candidatures</span></span></a></div><div class="mega-col"><div class="mega-col-title">Partenariat</div><a href="devenir-partenaire.html"><span class="link-text"><strong>Devenir partenaire</strong><span>Rejoindre l'écosystème</span></span></a></div></div></div></li>
-</ul><button class="menu-toggle" onclick="document.querySelector('.nav-menu').classList.toggle('active')"><span></span><span></span><span></span></button>
+<li class="nav-item"><a href="javascript:void(0)" class="nav-link" style="cursor:default">À propos</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-4"><div class="mega-col"><div class="mega-col-title">L'entreprise</div><a href="presentation.html"><span class="link-text"><strong>Présentation</strong><span>Notre histoire et vision</span></span></a></div><div class="mega-col"><div class="mega-col-title">Méthode</div><a href="approche-donnees.html"><span class="link-text"><strong>Notre approche Data</strong><span>Méthodologie &amp; cadre</span></span></a></div><div class="mega-col"><div class="mega-col-title">Équipe</div><a href="equipe.html"><span class="link-text"><strong>L'équipe</strong><span>Nos experts data</span></span></a></div><div class="mega-col"><div class="mega-col-title">Engagement</div><a href="ethique.html"><span class="link-text"><strong>Éthique &amp; Valeurs</strong><span>Nos principes fondateurs</span></span></a></div></div></div></li>
+<li class="nav-item"><a href="javascript:void(0)" class="nav-link" style="cursor:default">Solutions &amp; Expertise</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-4"><div class="mega-col"><div class="mega-col-title">MDM</div><a href="mdm.html"><span class="link-text"><strong>MDM &amp; Intégration</strong><span>Référentiels &amp; pipelines</span></span></a><a href="ai-foundations.html"><span class="link-text"><strong>AI Foundations</strong><span>Socles de données IA-ready</span></span></a></div><div class="mega-col"><div class="mega-col-title">Assurance Qualité</div><a href="strategie-test.html"><span class="link-text"><strong>Stratégie de test</strong><span>Transition en douceur</span></span></a><a href="tests-validation.html"><span class="link-text"><strong>Tests automatisés</strong><span>Qualité &amp; conformité</span></span></a></div><div class="mega-col"><div class="mega-col-title">Analytique</div><a href="bi-analytique.html"><span class="link-text"><strong>BI &amp; Analytique</strong><span>Insights et reporting</span></span></a></div><div class="mega-col"><div class="mega-col-title">Audit</div><a href="cadrage-projet.html"><span class="link-text"><strong>Cadrage de projet</strong><span>Structurer vos initiatives</span></span></a></div></div></div></li>
+<li class="nav-item"><a href="javascript:void(0)" class="nav-link" style="cursor:default">Partenaires</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-2"><div class="mega-col"><div class="mega-col-title">Technologie</div><a href="partenaires-technologiques.html"><span class="link-text"><strong>Partenaires technologiques</strong><span>Semarchy, OnEBX, Talend...</span></span></a></div><div class="mega-col"><div class="mega-col-title">Business</div><a href="partenaires-commerciaux.html"><span class="link-text"><strong>Partenaires commerciaux</strong><span>Alliances et synergies business</span></span></a></div></div></div></li>
+<li class="nav-item"><a href="javascript:void(0)" class="nav-link" style="cursor:default">Ressources</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-2"><div class="mega-col"><div class="mega-col-title">Contenus</div><a href="blog.html"><span class="link-text"><strong>Blog &amp; Événements</strong><span>Articles, insights &amp; événements</span></span></a></div></div></div></li>
+<li class="nav-item"><a href="javascript:void(0)" class="nav-link cta-nav" style="cursor:default">Contact</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-5"><div class="mega-col"><div class="mega-col-title">Nous rejoindre</div><a href="carrieres.html"><span class="link-text"><strong>Carrières</strong><span>Offres &amp; candidatures</span></span></a></div><div class="mega-col"><div class="mega-col-title">Partenariat</div><a href="devenir-partenaire.html"><span class="link-text"><strong>Devenir partenaire</strong><span>Rejoindre l'écosystème</span></span></a></div></div></div></li>
+</ul><a href="blog-event-dmm-2026_en.html" class="lang-switch">&#x1F1EC;&#x1F1E7; EN</a>
+        <button class="menu-toggle" onclick="this.classList.toggle('active');document.querySelector('.nav-menu').classList.toggle('active')"><span></span><span></span><span></span></button>
 </div>
 </nav>
 
 <section class="art-hero">
 <div class="container">
 <div class="art-bc"><a href="blog.html">Blog</a><span class="sep">›</span><span class="cur">Data Management Marathon 9.0</span></div>
-<div class="art-tags"><span class="a-tag primary">Événement</span><span class="a-tag">En ligne</span><span class="a-tag">10–11 Juin 2026</span><span class="a-tag">MDM &amp; Gouvernance</span></div>
+<div class="art-tags"><span class="a-tag primary">Événement</span><span class="a-tag">En ligne</span><span class="a-tag">10–11 juin 2026</span><span class="a-tag">MDM &amp; Gouvernance</span></div>
 <h1>Acropora Data au Data Management Marathon 9.0</h1>
-<p class="lead">Pour la 9ème fois, les meilleurs experts mondiaux du data management se retrouvent en ligne. Acropora Data y sera — venez échanger sur MDM, Data Quality et IA générative avec nos experts.</p>
+<p class="lead">Pour la 9e fois, les meilleurs experts mondiaux en gestion des données se retrouvent en ligne. Acropora Data sera présent — venez nous rencontrer et plonger au cœur du MDM, de la Qualité des données et de l'IA générative.</p>
 <div class="hero-kpis">
-<div class="kpi-c"><div class="kpi-num">9<span style="-webkit-text-fill-color:#a8dde1;font-size:1.2rem">ème</span></div><div class="kpi-lbl">Édition du marathon<br>virtuel mondial</div></div>
-<div class="kpi-c"><div class="kpi-num"><span data-counter="50" data-suffix="+">0</span></div><div class="kpi-lbl">Speakers de<br>renommée mondiale</div></div>
+<div class="kpi-c"><div class="kpi-num">9<span style="-webkit-text-fill-color:#a8dde1;font-size:1.2rem">e</span></div><div class="kpi-lbl">Édition du<br>marathon virtuel mondial</div></div>
+<div class="kpi-c"><div class="kpi-num"><span data-counter="50" data-suffix="+">0</span></div><div class="kpi-lbl">Intervenants<br>de renommée mondiale</div></div>
 <div class="kpi-c"><div class="kpi-num"><span data-counter="2" data-suffix=" j">0</span></div><div class="kpi-lbl">Jours de sessions<br>intensives en ligne</div></div>
 </div>
 </div>
 </section>
 
-<div class="page-bc"><div class="container"><a href="blog.html">Blog</a><span class="sep">›</span><span class="cur">Data Management Marathon 9.0</span></div></div>
 
 <section class="art-body">
 <div class="art-wrap">
 
-<h2 class="art-h2">L'Événement Mondial du Data Management</h2>
+<h2 class="art-h2">L'événement mondial de la gestion des données</h2>
 <div class="art-line"></div>
-<p class="art-sub">Le Data Management Marathon est devenu, en 9 éditions, la référence mondiale des professionnels qui font vivre la donnée en entreprise. Deux jours intenses, 50 speakers, 100 participants triés sur le volet — et Acropora Data dans la salle.</p>
+<p class="art-sub">En neuf éditions, le Data Management Marathon est devenu la référence mondiale pour les professionnels de la donnée qui font fonctionner les données d'entreprise. Deux jours intenses, 50 intervenants, 100 participants sélectionnés — et Acropora Data dans la salle.</p>
 
-<div class="info-c"><p>📅 <strong>10 et 11 juin 2026</strong> — Format 100% en ligne — Accès aux replays inclus — Certificat de participation délivré à chaque participant</p></div>
+<div class="info-c"><p>📅 <strong>10–11 juin 2026</strong> — Format 100% en ligne — Accès replay inclus — Certificat de participation remis</p></div>
 
 <div class="evt-strip">
-<div class="evt-card"><div class="evt-icon">🌐</div><div class="evt-label">Format</div><div class="evt-value">100% En Ligne</div><div class="evt-sub">Plateforme virtuelle ThinkLinkers<br>Accès depuis partout dans le monde</div></div>
-<div class="evt-card"><div class="evt-icon">📅</div><div class="evt-label">Dates</div><div class="evt-value">10–11 Juin 2026</div><div class="evt-sub">2 jours de sessions intensives<br>+ accès aux replays et certificat</div></div>
-<div class="evt-card"><div class="evt-icon">🎟️</div><div class="evt-label">Tarif</div><div class="evt-value">290 € + TVA</div><div class="evt-sub">Code promo <strong>MDM20</strong><br>pour réduction supplémentaire</div></div>
+<div class="evt-card"><div class="evt-icon">🌐</div><div class="evt-label">Format</div><div class="evt-value">100% En ligne</div><div class="evt-sub">Plateforme virtuelle ThinkLinkers<br>Accès mondial</div></div>
+<div class="evt-card"><div class="evt-icon">📅</div><div class="evt-label">Dates</div><div class="evt-value">10–11 juin 2026</div><div class="evt-sub">2 jours de sessions intensives<br>+ accès replay &amp; certificat</div></div>
+<div class="evt-card"><div class="evt-icon">🎟️</div><div class="evt-label">Tarif</div><div class="evt-value">290 € HT</div><div class="evt-sub">Code promo <strong>MDM20</strong><br>pour une remise supplémentaire</div></div>
 </div>
 
-<h2 class="art-h2">Les Thèmes au Cœur du Marathon</h2>
+<h2 class="art-h2">Les thématiques au cœur du DMM 9.0</h2>
 <div class="art-line"></div>
-<p class="art-sub">Le DMM 9.0 couvre l'intégralité de l'écosystème data management. Voici la répartition des sessions par domaine d'expertise pour cette édition.</p>
+<p class="art-sub">Le DMM 9.0 couvre l'ensemble de l'écosystème de la gestion des données. Voici la répartition des sessions par domaine pour cette édition.</p>
 
 <div class="chart-dark">
-<h3>Répartition des Thèmes — DMM 9.0</h3>
-<p class="csub">Proportion des sessions par domaine sur les 2 jours de conférence</p>
+<h3>Répartition des sessions par domaine — DMM 9.0</h3>
+<p class="csub">Part des sessions par domaine sur les deux journées de la conférence</p>
 <div class="bchart">
 <div class="brow"><span class="blbl">Master Data Management</span><div class="btrack"><div class="bfill" data-width="92%"><span class="bill">MDM &amp; Golden Records</span></div></div><span class="bval">92%</span></div>
-<div class="brow"><span class="blbl">Data Quality</span><div class="btrack"><div class="bfill" data-width="85%"><span class="bill">Qualité &amp; Certification</span></div></div><span class="bval">85%</span></div>
-<div class="brow"><span class="blbl">Data Governance</span><div class="btrack"><div class="bfill" data-width="78%"><span class="bill">Politiques &amp; Conformité</span></div></div><span class="bval">78%</span></div>
-<div class="brow"><span class="blbl">IA Générative &amp; Données</span><div class="btrack"><div class="bfill" data-width="70%"><span class="bill">GenAI Use Cases</span></div></div><span class="bval">70%</span></div>
-<div class="brow"><span class="blbl">Enterprise Info Mgmt</span><div class="btrack"><div class="bfill" data-width="60%"><span class="bill">EIM &amp; Architecture</span></div></div><span class="bval">60%</span></div>
+<div class="brow"><span class="blbl">Qualité des données</span><div class="btrack"><div class="bfill" data-width="85%"><span class="bill">Qualité &amp; Certification</span></div></div><span class="bval">85%</span></div>
+<div class="brow"><span class="blbl">Gouvernance des données</span><div class="btrack"><div class="bfill" data-width="78%"><span class="bill">Politiques &amp; Conformité</span></div></div><span class="bval">78%</span></div>
+<div class="brow"><span class="blbl">IA générative &amp; Data</span><div class="btrack"><div class="bfill" data-width="70%"><span class="bill">Cas d'usage GenAI</span></div></div><span class="bval">70%</span></div>
+<div class="brow"><span class="blbl">Gestion info entreprise</span><div class="btrack"><div class="bfill" data-width="60%"><span class="bill">EIM &amp; Architecture</span></div></div><span class="bval">60%</span></div>
 </div>
 </div>
 
-<h2 class="art-h2">Pourquoi Acropora Participe</h2>
+<h2 class="art-h2">Pourquoi Acropora participe</h2>
 <div class="art-line"></div>
 <div class="why-grid">
-<div class="why-card"><div class="why-icon">🏆</div><h4>Notre Cœur de Métier</h4><p>Le MDM et la Data Governance sont au centre de notre expertise depuis notre création. Le DMM est la scène mondiale où nous retrouvons nos pairs, échangeons nos retours terrain et affinons nos méthodes au contact des meilleurs praticiens.</p></div>
-<div class="why-card"><div class="why-icon">🤝</div><h4>Réseau &amp; Partenariats</h4><p>100 participants soigneusement sélectionnés, 50 speakers influents : c'est le rendez-vous des décideurs data à l'échelle mondiale. Nous y construisons des partenariats durables et identifions les meilleures pratiques à rapporter à nos clients.</p></div>
-<div class="why-card"><div class="why-icon">🔭</div><h4>Veille &amp; Innovation</h4><p>L'édition 2026 intègre une forte dimension IA générative appliquée au data management. Être présent, c'est anticiper les évolutions technologiques que nous déploierons dans les projets de nos clients dès demain.</p></div>
+<div class="why-card"><div class="why-icon">🏆</div><h4>Notre cœur de métier</h4><p>Le MDM et la gouvernance des données sont au cœur de notre expertise. Le DMM est la scène mondiale où nous retrouvons nos pairs, échangeons nos retours terrain et affinons nos méthodes aux côtés des meilleurs praticiens au monde.</p></div>
+<div class="why-card"><div class="why-icon">🤝</div><h4>Réseau &amp; Partenariats</h4><p>100 participants soigneusement sélectionnés, 50 intervenants influents — c'est le point de rendez-vous des décideurs data du monde entier. Nous y construisons des partenariats durables et rapportons à nos clients les meilleures pratiques mondiales.</p></div>
+<div class="why-card"><div class="why-icon">🔭</div><h4>Veille stratégique</h4><p>L'édition 2026 met fortement l'accent sur la GenAI appliquée à la gestion des données. Être présent, c'est anticiper les évolutions technologiques que nous déploierons dans les projets clients dès demain.</p></div>
 </div>
 
-<h2 class="art-h2">Programme des 2 Jours</h2>
+<h2 class="art-h2">Programme sur 2 jours</h2>
 <div class="art-line"></div>
 <div class="prog-grid">
 <div class="prog-day dark">
-<div class="prog-day-label">Jour 1 — 10 Juin 2026</div>
-<h3>Fondations &amp; Qualité Data</h3>
+<div class="prog-day-label">Jour 1 — 10 juin 2026</div>
+<h3>Fondamentaux &amp; Qualité des données</h3>
 <div class="prog-items">
-<div class="prog-item"><div class="prog-dot"></div><div class="prog-text"><strong>MDM Strategy 2026 <span class="prog-badge">Keynote</span></strong>État de l'art et tendances du Master Data Management en contexte cloud hybride — où en est le marché ?</div></div>
-<div class="prog-item"><div class="prog-dot"></div><div class="prog-text"><strong>Data Quality at Scale</strong>Mesurer, piloter et certifier la qualité des données à l'échelle enterprise. Outils et méthodes comparés.</div></div>
-<div class="prog-item"><div class="prog-dot"></div><div class="prog-text"><strong>Golden Records &amp; Deduplication</strong>Techniques avancées pour construire des référentiels fiables à partir de sources multiples et hétérogènes.</div></div>
-<div class="prog-item"><div class="prog-dot"></div><div class="prog-text"><strong>Industry Case Studies</strong>Retours d'expérience de déploiements MDM en Finance, Retail et Healthcare par des praticiens.</div></div>
+<div class="prog-item"><div class="prog-dot"></div><div class="prog-text"><strong>Stratégie MDM 2026 <span class="prog-badge">Keynote</span></strong>État de l'art et tendances du Master Data Management dans un contexte cloud hybride — où en est le marché ?</div></div>
+<div class="prog-item"><div class="prog-dot"></div><div class="prog-text"><strong>Qualité des données à l'échelle</strong>Mesurer, surveiller et certifier la qualité des données à l'échelle de l'entreprise. Outils et méthodes comparés.</div></div>
+<div class="prog-item"><div class="prog-dot"></div><div class="prog-text"><strong>Golden Records &amp; Dédoublonnage</strong>Techniques avancées pour construire des données de référence fiables à partir de sources multiples et hétérogènes.</div></div>
+<div class="prog-item"><div class="prog-dot"></div><div class="prog-text"><strong>Études de cas sectorielles</strong>Retours d'expérience de déploiements MDM en Finance, Retail et Santé par des praticiens de terrain.</div></div>
 </div>
 </div>
 <div class="prog-day light">
-<div class="prog-day-label">Jour 2 — 11 Juin 2026</div>
-<h3>IA, Gouvernance &amp; Futur</h3>
+<div class="prog-day-label">Jour 2 — 11 juin 2026</div>
+<h3>IA, Gouvernance &amp; Avenir</h3>
 <div class="prog-items">
-<div class="prog-item"><div class="prog-dot"></div><div class="prog-text"><strong>GenAI &amp; Data Management <span class="prog-badge">Keynote</span></strong>Comment l'IA générative transforme la création, l'enrichissement et la maintenance des référentiels de données.</div></div>
-<div class="prog-item"><div class="prog-dot"></div><div class="prog-text"><strong>Data Governance Moderne</strong>Frameworks pratiques pour une gouvernance efficace et adoptée par les équipes métier, pas seulement l'IT.</div></div>
-<div class="prog-item"><div class="prog-dot"></div><div class="prog-text"><strong>MDM as a Service</strong>Cloud-native MDM : architectures, compromis techniques et retours d'expérience sur des migrations réelles.</div></div>
-<div class="prog-item"><div class="prog-dot"></div><div class="prog-text"><strong>Table ronde : l'Avenir du MDM</strong>Débat entre experts : que sera le data management dans 5 ans ? IA, agents autonomes, data mesh…</div></div>
+<div class="prog-item"><div class="prog-dot"></div><div class="prog-text"><strong>GenAI &amp; Gestion des données <span class="prog-badge">Keynote</span></strong>Comment l'IA générative transforme la création, l'enrichissement et la maintenance des référentiels de données.</div></div>
+<div class="prog-item"><div class="prog-dot"></div><div class="prog-text"><strong>Gouvernance des données moderne</strong>Des cadres de gouvernance concrets qui sont réellement adoptés par les équipes métier, pas seulement par la DSI.</div></div>
+<div class="prog-item"><div class="prog-dot"></div><div class="prog-text"><strong>MDM as a Service</strong>MDM cloud-native : architectures, compromis et retours d'expérience réels de migration sur le terrain.</div></div>
+<div class="prog-item"><div class="prog-dot"></div><div class="prog-text"><strong>Table ronde : L'avenir du MDM</strong>Débat d'experts : à quoi ressemblera la gestion des données dans 5 ans ? Agents IA, data mesh…</div></div>
 </div>
 </div>
-</div>
-
-<div class="art-cta">
-<h3>Rejoignez-nous au DMM 9.0</h3>
-<p>Notre équipe sera connectée les 10 et 11 juin. Échangeons sur vos défis MDM, Data Quality et Gouvernance lors de cet événement unique.</p>
-<a href="contact.html" class="btn-art">Prendre rendez-vous →</a>
-<a href="https://thinklinkers.com/events/online/data_management_marathon_9" target="_blank" class="btn-art-outline">S'inscrire à l'événement</a>
 </div>
 
 </div>
@@ -206,16 +302,63 @@
 
 <section class="rel-sec">
 <div class="art-wrap">
-<h2 class="art-h2">Autres Événements &amp; Articles</h2><div class="art-line"></div>
+<h2 class="art-h2">Autres événements &amp; articles</h2><div class="art-line"></div>
 <div class="rel-grid">
-<a href="blog-event-jftl-2026.html" class="rc"><div class="rtag">Événement</div><h4>JFTL 2026</h4><p>La journée française des tests logiciels — Acropora aux côtés des experts QA à Montrouge</p><div class="rarr">Voir l'article →</div></a>
-<a href="blog-event-data-ai-summit-2026.html" class="rc"><div class="rtag">Événement</div><h4>Data + AI Summit 2026</h4><p>San Francisco, juin 2026 — L'événement mondial Databricks sur l'IA et la donnée</p><div class="rarr">Voir l'article →</div></a>
-<a href="blog-tendances-mdm-2025.html" class="rc"><div class="rtag">Tendances</div><h4>Les tendances MDM 2025</h4><p>IA générative, data mesh, MDM as a Service : ce qui transforme le marché en 2025</p><div class="rarr">Lire l'article →</div></a>
+<a href="blog-event-jftl-2026.html" class="rc"><div class="rtag">Événement</div><h4>JFTL 2026</h4><p>La journée phare du test logiciel en France — Acropora aux côtés des experts QA à Montrouge</p></a>
+<a href="blog-event-data-ai-summit-2026.html" class="rc"><div class="rtag">Événement</div><h4>Data + AI Summit 2026</h4><p>San Francisco, juin 2026 — L'événement Databricks de référence mondiale sur la data &amp; l'IA</p></a>
+<a href="blog-event-cdao-ny-2026.html" class="rc"><div class="rtag">Événement</div><h4>CDAO New York 2026</h4><p>9 juin, New York — Le sommet data &amp; IA pour les dirigeants nord-américains</p></a>
 </div>
 </div>
 </section>
 
-<footer class="footer"><div class="container"><div class="footer-content" style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:2rem"><div class="footer-section" style="flex:1;min-width:250px"><img src="acropora-logo-transparent.png" alt="Acropora Data" class="footer-logo" style="margin-bottom:1rem;width:180px;display:block"><p style="font-weight:700;margin-bottom:.2rem;color:#fff">Data Management Expert</p><p style="font-size:.85rem;opacity:.7;color:#fff">Turn your data into strategic assets</p><div style="margin-top:1.5rem;display:flex;justify-content:center;width:180px"><a href="https://www.linkedin.com/company/acropora-data" target="_blank" style="color:#81abb3;transition:color .3s" onmouseover="this.style.color='#f3756e'" onmouseout="this.style.color='#81abb3'"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a></div></div><div class="footer-section" style="flex:1;min-width:200px"><h4 style="color:#81abb3;margin-bottom:1.5rem;font-size:1.1rem;text-transform:uppercase;letter-spacing:.05em">Solutions</h4><ul style="list-style:none;padding:0"><li style="margin-bottom:.7rem"><a href="mdm.html" style="color:rgba(255,255,255,.8);text-decoration:none" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,.8)'">MDM &amp; intégration</a></li><li style="margin-bottom:.7rem"><a href="ai-foundations.html" style="color:rgba(255,255,255,.8);text-decoration:none" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,.8)'">Fondations IA</a></li><li style="margin-bottom:.7rem"><a href="bi-analytique.html" style="color:rgba(255,255,255,.8);text-decoration:none" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,.8)'">BI &amp; Analytique</a></li></ul></div><div class="footer-section" style="flex:1;min-width:200px"><h4 style="color:#81abb3;margin-bottom:1.5rem;font-size:1.1rem;text-transform:uppercase;letter-spacing:.05em">Contact</h4><ul style="list-style:none;padding:0"><li style="margin-bottom:.7rem"><a href="carrieres.html" style="color:rgba(255,255,255,.8);text-decoration:none" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,.8)'">Carrières</a></li><li style="margin-bottom:.7rem"><a href="contact.html" style="color:rgba(255,255,255,.8);text-decoration:none" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,.8)'">Contact</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 Acropora Data. Tous droits réservés.</p></div></div></footer>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content" style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:2rem;">
+      <div class="footer-section" style="flex:1;min-width:250px;">
+        <img src="acropora-logo-transparent.png" alt="Acropora Data" class="footer-logo" style="margin-bottom:1rem;width:180px;display:block;">
+        <p style="font-weight:700;margin-bottom:0.2rem;color:#fff;">Expert en gestion des données</p>
+        <p style="font-size:0.85rem;opacity:0.7;color:#fff;">Transformez vos données en actifs stratégiques</p>
+        <div style="margin-top:1.5rem;display:flex;justify-content:center;width:180px;">
+          <a href="https://www.linkedin.com/company/acropora-data" target="_blank" style="color:#81abb3;transition:color 0.3s;" onmouseover="this.style.color='#f3756e'" onmouseout="this.style.color='#81abb3'">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-section" style="flex:1;min-width:200px;">
+        <h4 style="color:#81abb3;margin-bottom:1.5rem;font-size:1.1rem;text-transform:uppercase;letter-spacing:0.05em;">À propos</h4>
+        <ul style="list-style:none;padding:0;">
+          <li style="margin-bottom:0.7rem;"><a href="presentation.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Présentation</a></li>
+          <li style="margin-bottom:0.7rem;"><a href="approche-donnees.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Notre approche Data</a></li>
+          <li style="margin-bottom:0.7rem;"><a href="equipe.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">L'équipe</a></li>
+          <li style="margin-bottom:0.7rem;"><a href="ethique.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Éthique &amp; Valeurs</a></li>
+        </ul>
+      </div>
+      <div class="footer-section" style="flex:1;min-width:200px;">
+        <h4 style="color:#81abb3;margin-bottom:1.5rem;font-size:1.1rem;text-transform:uppercase;letter-spacing:0.05em;">Solutions &amp; Expertise</h4>
+        <ul style="list-style:none;padding:0;">
+          <li style="margin-bottom:0.7rem;"><a href="mdm.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">MDM &amp; Intégration</a></li>
+          <li style="margin-bottom:0.7rem;"><a href="ai-foundations.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">AI Foundations</a></li>
+          <li style="margin-bottom:0.7rem;"><a href="strategie-test.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Stratégie de test</a></li>
+          <li style="margin-bottom:0.7rem;"><a href="tests-validation.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Tests automatisés</a></li>
+          <li style="margin-bottom:0.7rem;"><a href="bi-analytique.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">BI &amp; Analytique</a></li>
+          <li style="margin-bottom:0.7rem;"><a href="cadrage-projet.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Cadrage de projet</a></li>
+        </ul>
+      </div>
+      <div class="footer-section" style="flex:1;min-width:200px;">
+        <h4 style="color:#81abb3;margin-bottom:1.5rem;font-size:1.1rem;text-transform:uppercase;letter-spacing:0.05em;">Partenaires &amp; Contact</h4>
+        <ul style="list-style:none;padding:0;">
+          <li style="margin-bottom:0.7rem;"><a href="partenaires-technologiques.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Partenaires technologiques</a></li>
+          <li style="margin-bottom:0.7rem;"><a href="partenaires-commerciaux.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Partenaires commerciaux</a></li>
+          <li style="margin-bottom:0.7rem;"><a href="devenir-partenaire.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Devenir partenaire</a></li>
+          <li style="margin-bottom:0.7rem;"><a href="carrieres.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Carrières</a></li>
+          <li style="margin-bottom:0.7rem;"><a href="contact.html" style="color:rgba(255,255,255,0.8);text-decoration:none;" onmouseover="this.style.color='#81abb3'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2026 Acropora Data. Tous droits réservés.</p></div>
+  </div>
+</footer>
 <script src="script.js"></script><script src="pages.js"></script><script src="hero-animations.js"></script>
 <script>
 document.querySelectorAll('.nav-item').forEach(function(item){var link=item.querySelector('.nav-link');var mega=item.querySelector('.mega-menu');if(!mega)return;link.addEventListener('click',function(e){if(window.innerWidth>768)return;e.preventDefault();var isOpen=item.classList.contains('open');document.querySelectorAll('.nav-item.open').forEach(function(o){o.classList.remove('open');o.querySelector('.mega-menu').style.display='';});if(!isOpen){item.classList.add('open');mega.style.display='block';}});});
