@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <!-- Google tag (gtag.js) -->
@@ -7,7 +7,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-8FFCFJNNG2');
 </script>
     <meta charset="UTF-8">
@@ -20,7 +19,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
         .ai-intro-cinematic {
-            background: linear-gradient(180deg, #0d3d47 0%, #1a5d6a 100%);
+            background: #fff;
             padding: 10rem 0;
             text-align: center;
             perspective: 1200px;
@@ -35,7 +34,7 @@
             margin: 0 auto;
         }
         .ai-crawl-title {
-            color: #81abb3;
+            color: var(--primary-color);
             font-size: clamp(2.5rem, 6vw, 4.5rem);
             font-weight: 800;
             line-height: 1.1;
@@ -45,7 +44,7 @@
             animation: aiCrawlIn 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
         .ai-crawl-text {
-            color: #fff;
+            color: var(--text-medium);
             font-size: clamp(1.2rem, 2.5vw, 1.8rem);
             font-weight: 500;
             line-height: 1.6;
@@ -54,7 +53,7 @@
             animation: aiCrawlIn 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
         }
         .ai-crawl-text strong {
-            color: #81abb3;
+            color: #1a5d6a;
             font-weight: 800;
         }
         @keyframes aiCrawlIn {
@@ -64,7 +63,7 @@
             }
         }
         .ai-highlight {
-            text-shadow: 0 0 20px rgba(129, 171, 179, 0.5);
+            text-shadow: 0 0 20px rgba(26, 93, 106, 0.15);
         }
         .ai-crawl-actions {
             margin-top: 5rem;
@@ -94,74 +93,184 @@
             color: #1a5d6a !important;
             box-shadow: 0 15px 40px rgba(255, 255, 255, 0.4);
         }
-        .ai-problem-layout {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 5rem;
-            align-items: center;
-            margin-top: 4rem;
+        /* ── THE REAL PROBLEM — redesign ── */
+        .rp-section {
+            background: #020d12;
+            padding: 8rem 0;
+            position: relative;
+            overflow: hidden;
         }
-        .ai-scroll-container {
-            height: 480px;
-            overflow-y: auto;
-            padding: 2rem 1rem;
+        .rp-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(129,171,179,0.06) 1px, transparent 1px);
+            background-size: 32px 32px;
+            pointer-events: none;
+        }
+        .rp-label {
+            display: inline-block;
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: #f3756e;
+            margin-bottom: 1rem;
+        }
+        .rp-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 4rem;
+            line-height: 1.15;
+        }
+        .rp-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+        .rp-scroll-window {
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+        }
+        .rp-scroll-window::before,
+        .rp-scroll-window::after {
+            content: '';
+            position: absolute;
+            left: 0; right: 0;
+            height: 80px;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .rp-scroll-window::before { top: 0;    background: linear-gradient(to bottom, #020d12, transparent); }
+        .rp-scroll-window::after  { bottom: 0; background: linear-gradient(to top,   #020d12, transparent); }
+        .rp-scroll-track {
             display: flex;
             flex-direction: column;
-            gap: 2rem;
-            scrollbar-width: thin;
-            scrollbar-color: #81abb3 transparent;
-            mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
-            -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+            gap: 1rem;
+            animation: rpScroll 14s linear infinite;
         }
-        .ai-scroll-container::-webkit-scrollbar { width: 6px; }
-        .ai-scroll-container::-webkit-scrollbar-thumb { background: #81abb3; border-radius: 10px; }
-        
-        .ai-problem-card {
-            width: 300px;
-            height: 180px; /* Taille réduite */
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            border-left: 5px solid #81abb3; /* Accent sur le côté pour plus de modernité */
-            border-radius: 20px;
+        .rp-scroll-track:hover { animation-play-state: paused; }
+        @keyframes rpScroll {
+            0%   { transform: translateY(0); }
+            100% { transform: translateY(-50%); }
+        }
+        .rp-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(129,171,179,0.12);
+            border-left: 3px solid #81abb3;
+            border-radius: 12px;
+            padding: 1.3rem 1.6rem;
             display: flex;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 2rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            font-size: 1.05rem;
-            box-shadow: 0 15px 35px rgba(26, 93, 106, 0.08);
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            flex-shrink: 0;
-            margin: 0 auto;
-            animation: cardEntrance 0.8s ease-out both;
+            gap: 1.2rem;
+            transition: all .3s ease;
+            cursor: default;
         }
-        .ai-problem-card:hover {
+        .rp-card:hover {
+            background: rgba(129,171,179,0.08);
             border-left-color: #f3756e;
-            background: #fff;
-            transform: scale(1.05) translateX(10px);
-            box-shadow: 0 20px 40px rgba(26, 93, 106, 0.15);
+            transform: translateX(6px);
         }
-        .ai-problem-card:nth-child(1) { animation-delay: 0.1s; }
-        .ai-problem-card:nth-child(2) { animation-delay: 0.3s; }
-        .ai-problem-card:nth-child(3) { animation-delay: 0.5s; }
-        .ai-problem-card:nth-child(4) { animation-delay: 0.7s; }
-        .ai-problem-card:nth-child(5) { animation-delay: 0.9s; }
-
-        @keyframes cardEntrance {
-            from { opacity: 0; transform: translateX(-30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        .ai-impact-statement {
-            font-size: clamp(1.8rem, 3vw, 2.6rem);
+        .rp-card-num {
+            font-size: .6rem;
             font-weight: 800;
-            color: var(--primary-color);
-            line-height: 1.2;
-            border-left: 8px solid #f3756e;
-            padding-left: 2.5rem;
+            letter-spacing: .2em;
+            color: rgba(129,171,179,0.4);
+            flex-shrink: 0;
+        }
+        .rp-card-text {
+            font-size: .95rem;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.4;
+        }
+        .rp-right {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+        .rp-warning-block {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+        .rp-warning-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: .75rem;
+            background: rgba(243,117,110,0.1);
+            border: 1px solid rgba(243,117,110,0.35);
+            border-radius: 50px;
+            padding: .6rem 1.4rem;
+            width: fit-content;
+            animation: rpBadgePulse 2.8s ease-in-out infinite;
+        }
+        @keyframes rpBadgePulse {
+            0%,100% { box-shadow: 0 0 0 0 rgba(243,117,110,0.3); }
+            50%      { box-shadow: 0 0 0 10px rgba(243,117,110,0); }
+        }
+        .rp-warning-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #f3756e;
+            animation: rpDotBlink 1.4s ease-in-out infinite;
+            flex-shrink: 0;
+        }
+        @keyframes rpDotBlink {
+            0%,100% { opacity: 1; }
+            50%      { opacity: 0.2; }
+        }
+        .rp-warning-label {
+            font-size: .72rem;
+            font-weight: 800;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: #f3756e;
+        }
+        .rp-warning-headline {
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.15;
+        }
+        .rp-warning-headline em {
+            font-style: normal;
+            background: linear-gradient(120deg, #81abb3, #f3756e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .rp-impact {
+            font-size: clamp(1.2rem, 2vw, 1.6rem);
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.4;
+            border-left: 4px solid #f3756e;
+            padding-left: 1.5rem;
+        }
+        .rp-impact span { color: #f3756e; }
+        .rp-quote {
+            text-align: center;
+            margin-top: 5rem;
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            font-weight: 800;
+            color: rgba(255,255,255,0.55);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.4;
+            position: relative;
+            z-index: 1;
+        }
+        .rp-quote em { color: #81abb3; font-style: normal; }
+        @media (max-width: 768px) {
+            .rp-grid { grid-template-columns: 1fr; gap: 3rem; }
         }
         @media (max-width: 768px) {
             .ai-crawl-actions { flex-direction: column; align-items: center; gap: 1.5rem; }
@@ -187,7 +296,7 @@
             font-size: 1.1rem !important; color: var(--primary-color) !important; font-weight: 700 !important; transition: all 0.4s !important; margin: 0 !important; line-height: 1.3 !important;
         }
         .key-exp-item p {
-            font-size: 0.85rem !important; color: rgba(255, 255, 255, 0.9) !important; position: absolute !important; padding: 0 1.5rem !important;
+            font-size: 0.85rem !important; color: white !important; position: absolute !important; padding: 0 1.5rem !important;
             opacity: 0 !important; transform: translateY(20px) !important; transition: all 0.4s !important; margin: 0 !important;
         }
         .key-exp-item:hover h3 { opacity: 0 !important; transform: translateY(-20px) !important; }
@@ -273,7 +382,6 @@
             50%       { transform: translate(-40px, 30px) scale(1.1); }
         }
 
-        /* Header */
         .wwd-header {
             text-align: center;
             margin-bottom: 5rem;
@@ -307,7 +415,6 @@
             line-height: 1.15;
         }
 
-        /* Grid */
         .wwd-pillars-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -318,7 +425,6 @@
             z-index: 1;
         }
 
-        /* Pillar card */
         .wwd-pillar {
             position: relative;
             background: rgba(255, 255, 255, 0.04);
@@ -328,7 +434,6 @@
             overflow: hidden;
             cursor: default;
         }
-        /* Reveal base (override transitions after active for hover) */
         .wwd-pillar.active {
             transition:
                 opacity 0.8s var(--ease-out-expo),
@@ -337,7 +442,6 @@
                 border-color 0.4s ease,
                 box-shadow 0.4s ease !important;
         }
-        /* Left accent bar */
         .wwd-pillar::before {
             content: '';
             position: absolute;
@@ -359,7 +463,6 @@
             box-shadow: 0 28px 65px rgba(0, 0, 0, 0.35);
         }
 
-        /* Ghost number */
         .wwd-pillar-num {
             position: absolute;
             top: 1rem; right: 1.5rem;
@@ -373,7 +476,6 @@
         }
         .wwd-pillar:hover .wwd-pillar-num { color: rgba(129, 171, 179, 0.18); }
 
-        /* Title & description */
         .wwd-pillar-title {
             font-size: 1.2rem;
             font-weight: 800;
@@ -389,7 +491,6 @@
             margin: 0;
         }
 
-        /* Sub-list (pillar 4) */
         .wwd-sub-list {
             list-style: none;
             margin-top: 1.2rem;
@@ -413,7 +514,6 @@
             color: #f3756e;
             font-size: 0.82rem;
         }
-        /* Stagger sub-list on reveal */
         .wwd-pillar.active .wwd-sub-list li               { opacity: 1; transform: translateX(0); }
         .wwd-pillar.active .wwd-sub-list li:nth-child(1)  { transition-delay: 0.55s; }
         .wwd-pillar.active .wwd-sub-list li:nth-child(2)  { transition-delay: 0.7s;  }
@@ -421,7 +521,6 @@
         .wwd-pillar.active .wwd-sub-list li:nth-child(4)  { transition-delay: 1.0s;  }
         .wwd-pillar:hover .wwd-sub-list li { color: rgba(255, 255, 255, 0.85); }
 
-        /* Featured card (pillar 4) */
         .wwd-pillar--featured {
             border-color: rgba(243, 117, 110, 0.18);
             background: rgba(243, 117, 110, 0.03);
@@ -442,7 +541,7 @@
             .wwd-pillar       { padding: 2.2rem 1.8rem 2rem 2.2rem; }
         }
 
-        /* ===== SECTION 4 — OUR APPROACH ===== */
+        /* ===== SECTION 4 — NOTRE APPROCHE ===== */
         .approach-main-title {
             font-size: clamp(1.9rem, 4vw, 3rem);
             font-weight: 900;
@@ -562,7 +661,7 @@
         }
         .approach-badge-arrow { color: #f3756e; font-size: 1.15rem; font-weight: 900; }
 
-        /* ===== SECTION 5 — USE CASES ===== */
+        /* ===== SECTION 5 — CAS D'USAGE ===== */
         .usecases-section { background: var(--subtle-gray); }
         .usecases-grid {
             display: flex;
@@ -575,7 +674,7 @@
             background: #fff;
             border: 1px solid rgba(26, 93, 106, 0.08);
             border-radius: 16px;
-            padding: 2rem 2rem;
+            padding: 2rem;
             flex: 1 1 170px;
             max-width: 200px;
             text-align: center;
@@ -621,7 +720,7 @@
         }
         .usecase-tile:hover .usecase-label { color: #fff; }
 
-        /* ===== SECTION 6 — WHY ACROPORA ===== */
+        /* ===== SECTION 6 — POURQUOI ACROPORA ===== */
         .why-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -680,7 +779,7 @@
             line-height: 1.65; margin: 0;
         }
 
-        /* ===== SECTION 7 — FINAL CTA ===== */
+        /* ===== SECTION 7 — CTA FINAL ===== */
         .ai-cta-section {
             background: linear-gradient(160deg, #081e23 0%, #0d3d47 50%, #1a5d6a 100%);
             padding: 9rem 0 10rem;
@@ -749,6 +848,58 @@
         @media (max-width: 480px) {
             .approach-steps { grid-template-columns: 1fr; }
         }
+
+        /* ===== AI VISION ILLUSTRATION ===== */
+        .ai-vision-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 4rem;
+        }
+        .ai-vision-quote {
+            font-size: clamp(1.3rem, 2.5vw, 2rem);
+            font-weight: 700;
+            color: #1a5d6a;
+            line-height: 1.5;
+            border-left: 6px solid #f3756e;
+            padding-left: 2rem;
+        }
+        .ai-vis-wrap {
+            max-width: 480px;
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .ai-vis-svg {
+            width: 100%;
+            height: auto;
+            display: block;
+            animation: ai-float 5s ease-in-out infinite;
+            overflow: visible;
+        }
+        @keyframes ai-float {
+            0%,100% { transform: translateY(0); }
+            50%     { transform: translateY(-8px); }
+        }
+        .ai-layer-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            fill: rgba(129,171,179,0.55);
+        }
+        .ai-node-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8.5px;
+            font-weight: 700;
+            fill: #1a5d6a;
+        }
+        @media (max-width: 768px) {
+            .ai-vision-layout { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -763,19 +914,19 @@
                 <div class="mega-menu">
                     <div class="mega-menu-inner mega-menu-4">
                         <div class="mega-col"><div class="mega-col-title">L'entreprise</div><a href="presentation.html"><span class="link-text"><strong>Qui sommes-nous ?</strong><span>Notre histoire et vision</span></span></a></div>
-                        <div class="mega-col"><div class="mega-col-title">Méthode</div><a href="approche-donnees.html"><span class="link-text"><strong>Notre approche données</strong><span>Méthodologie & framework</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Méthode</div><a href="approche-donnees.html"><span class="link-text"><strong>Notre approche données</strong><span>Méthodologie &amp; framework</span></span></a></div>
                         <div class="mega-col"><div class="mega-col-title">Personnes</div><a href="equipe.html"><span class="link-text"><strong>Équipe</strong><span>Nos experts data</span></span></a></div>
-                        <div class="mega-col"><div class="mega-col-title">Engagement</div><a href="ethique.html"><span class="link-text"><strong>Éthique & valeurs</strong><span>Nos principes fondateurs</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Engagement</div><a href="ethique.html"><span class="link-text"><strong>Éthique &amp; valeurs</strong><span>Nos principes fondateurs</span></span></a></div>
                     </div>
                 </div>
             </li>
             <li class="nav-item">
-                <a href="javascript:void(0)" class="nav-link active" style="cursor: default;">Solutions & Expertise</a>
+                <a href="javascript:void(0)" class="nav-link active" style="cursor: default;">Solutions &amp; Expertise</a>
                 <div class="mega-menu">
                     <div class="mega-menu-inner mega-menu-4">
-                        <div class="mega-col"><div class="mega-col-title">MDM</div><a href="mdm.html"><span class="link-text"><strong>MDM & Intégration</strong><span>Référentiels & pipelines</span></span></a><a href="ai-foundations.html"><span class="link-text"><strong>Fondations IA</strong><span>Données prêtes pour l'IA</span></span></a></div>
-                        <div class="mega-col"><div class="mega-col-title">Assurance Qualité</div><a href="migration-mdm.html"><span class="link-text"><strong>Stratégie de Tests</strong><span>Transition sans interruption</span></span></a><a href="tests-validation.html"><span class="link-text"><strong>Automatisation de Tests</strong><span>Qualité & conformité</span></span></a></div>
-                        <div class="mega-col"><div class="mega-col-title">Analytics</div><a href="bi-analytique.html"><span class="link-text"><strong>BI & Analytique</strong><span>Insights et reporting</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">MDM</div><a href="mdm.html"><span class="link-text"><strong>MDM &amp; Intégration</strong><span>Référentiels &amp; pipelines</span></span></a><a href="ai-foundations.html"><span class="link-text"><strong>Fondations IA</strong><span>Données prêtes pour l'IA</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Assurance Qualité</div><a href="migration-mdm.html"><span class="link-text"><strong>Stratégie de Tests</strong><span>Transition sans interruption</span></span></a><a href="tests-validation.html"><span class="link-text"><strong>Automatisation de Tests</strong><span>Qualité &amp; conformité</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Analytics</div><a href="bi-analytique.html"><span class="link-text"><strong>BI &amp; Analytique</strong><span>Insights et reporting</span></span></a></div>
                         <div class="mega-col"><div class="mega-col-title">Audit</div><a href="cadrage-projet.html"><span class="link-text"><strong>Cadrage de projet</strong><span>Structurer vos initiatives</span></span></a></div>
                     </div>
                 </div>
@@ -783,7 +934,7 @@
             <li class="nav-item">
                 <a href="javascript:void(0)" class="nav-link" style="cursor: default;">Partenaires</a>
                 <div class="mega-menu">
-                    <div class="mega-menu-inner mega-menu-5">
+                    <div class="mega-menu-inner mega-menu-2">
                         <div class="mega-col">
                             <div class="mega-col-title">Technologie</div>
                             <a href="partenaires-technologiques.html"><span class="link-text"><strong>Partenaires technologiques</strong><span>Informatica, Snowflake, Azure…</span></span></a>
@@ -795,25 +946,30 @@
                     </div>
                 </div>
             </li>
-            
-                        <li class="nav-item"><a href="blog.html" class="nav-link">Ressources</a></li>
+            <li class="nav-item"><a href="javascript:void(0)" class="nav-link" style="cursor:default;">Ressources</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-2"><div class="mega-col"><div class="mega-col-title">Insights</div><a href="blog.html"><span class="link-text"><strong>Blog &amp; Événements</strong><span>Articles, insights &amp; événements</span></span></a></div></div></div></li>
             <li class="nav-item">
                 <a href="javascript:void(0)" class="nav-link cta-nav" style="cursor: default;">Contact</a>
                 <div class="mega-menu">
                     <div class="mega-menu-inner mega-menu-5">
-                        <div class="mega-col"><div class="mega-col-title">Rejoindre</div><a href="carrieres.html"><span class="link-text"><strong>Carrières</strong><span>Offres & candidatures</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Rejoindre</div><a href="carrieres.html"><span class="link-text"><strong>Carrières</strong><span>Offres &amp; candidatures</span></span></a></div>
                         <div class="mega-col"><div class="mega-col-title">Partenariat</div><a href="devenir-partenaire.html"><span class="link-text"><strong>Devenir partenaire</strong><span>Rejoindre l'écosystème</span></span></a></div>
                     </div>
                 </div>
             </li>
-            
         </ul>
         <a href="ai-foundations_en.html" class="lang-switch">&#x1F1EC;&#x1F1E7; EN</a>
-        <button class="menu-toggle" onclick="document.querySelector('.nav-menu').classList.toggle('active')"><span></span><span></span><span></span></button>
+        <button class="menu-toggle" onclick="this.classList.toggle('active'); document.querySelector('.nav-menu').classList.toggle('active')"><span></span><span></span><span></span></button>
     </div>
 </nav>
 
-<section class="ai-intro-cinematic page-hero" data-hero-anim="ai">
+<section class="page-hero" data-hero-anim="ai">
+    <div class="container">
+        <h1 class="page-title">Fondations IA</h1>
+        <p class="page-subtitle">Construire des fondations de données fiables pour les organisations prêtes pour l'IA</p>
+    </div>
+</section>
+
+<section class="ai-intro-cinematic">
     <div class="container">
         <div class="ai-crawl-container">
             <h1 class="ai-crawl-title ai-highlight">L'IA n'échoue pas à cause des algorithmes. <br>Elle échoue à cause des données.</h1>
@@ -830,29 +986,46 @@
     </div>
 </section>
 
-<!-- SECTION THE REAL PROBLEM -->
-<section class="page-section reveal reveal-up" style="padding-bottom: 2rem;">
-    <div class="container">
-        <div class="section-header">
-            <span class="challenge-tag">LE VÉRITABLE PROBLÈME</span>
-            <div class="home-divider"></div>
-            <h2 class="home-section-title">Pourquoi la plupart des projets d'IA échouent</h2>
+<!-- SECTION LE VÉRITABLE PROBLÈME -->
+<section class="rp-section">
+    <div class="container" style="position:relative;z-index:1">
+        <span class="rp-label">Le Véritable Problème</span>
+        <h2 class="rp-title">Pourquoi la plupart des projets d'IA échouent</h2>
+
+        <div class="rp-grid">
+            <!-- GAUCHE : cartes en défilement automatique -->
+            <div class="rp-scroll-window">
+                <div class="rp-scroll-track">
+                    <!-- Jeu A -->
+                    <div class="rp-card"><span class="rp-card-num">01</span><span class="rp-card-text">Données incohérentes entre les systèmes</span></div>
+                    <div class="rp-card"><span class="rp-card-num">02</span><span class="rp-card-text">Absence de responsabilité ou de gouvernance claire</span></div>
+                    <div class="rp-card"><span class="rp-card-num">03</span><span class="rp-card-text">Mauvaise qualité des données et valeurs manquantes</span></div>
+                    <div class="rp-card"><span class="rp-card-num">04</span><span class="rp-card-text">Jeux de données non structurés pour la réutilisation</span></div>
+                    <div class="rp-card"><span class="rp-card-num">05</span><span class="rp-card-text">Règles métier non formalisées</span></div>
+                    <!-- Jeu B (doublon pour boucle fluide) -->
+                    <div class="rp-card"><span class="rp-card-num">01</span><span class="rp-card-text">Données incohérentes entre les systèmes</span></div>
+                    <div class="rp-card"><span class="rp-card-num">02</span><span class="rp-card-text">Absence de responsabilité ou de gouvernance claire</span></div>
+                    <div class="rp-card"><span class="rp-card-num">03</span><span class="rp-card-text">Mauvaise qualité des données et valeurs manquantes</span></div>
+                    <div class="rp-card"><span class="rp-card-num">04</span><span class="rp-card-text">Jeux de données non structurés pour la réutilisation</span></div>
+                    <div class="rp-card"><span class="rp-card-num">05</span><span class="rp-card-text">Règles métier non formalisées</span></div>
+                </div>
+            </div>
+
+            <!-- DROITE : stat + impact -->
+            <div class="rp-right reveal reveal-up">
+                <div class="rp-warning-block">
+                    <div class="rp-warning-badge">
+                        <span class="rp-warning-dot"></span>
+                        <span class="rp-warning-label">Cause Racine Identifiée</span>
+                    </div>
+                    <p class="rp-warning-headline">Les données sont<br><em>défaillantes avant que<br>l'IA ne commence.</em></p>
+                </div>
+                <p class="rp-impact">Derrière chaque initiative d'IA qui échoue, la cause profonde est presque toujours la même : <span>les données ne sont pas prêtes.</span></p>
+            </div>
         </div>
 
-        <div class="ai-problem-layout">
-            <div class="ai-scroll-container">
-                <div class="ai-problem-card">Données incohérentes entre les systèmes</div>
-                <div class="ai-problem-card">Absence de responsabilité ou de gouvernance claire</div>
-                <div class="ai-problem-card">Mauvaise qualité des données et valeurs manquantes</div>
-                <div class="ai-problem-card">Jeux de données non structurés pour la réutilisation</div>
-                <div class="ai-problem-card">Règles métier non formalisées</div>
-            </div>
-            <div class="ai-sticky-text">
-                <p class="ai-impact-statement">Derrière chaque initiative d'IA qui échoue, la cause profonde est presque toujours la même : <span style="color:#f3756e">les données ne sont pas prêtes.</span></p>
-            </div>
-        </div>
-        <div class="reveal reveal-up" style="text-align: center; margin-top: 5rem; font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 800; color: #81abb3; max-width: 900px; margin-left: auto; margin-right: auto; line-height: 1.3;">
-            "L'IA n'est puissante qu'à travers les données sur lesquelles elle repose."
+        <div class="rp-quote reveal reveal-up">
+            "<em>L'IA n'est puissante qu'à travers les données sur lesquelles elle repose.</em>"
         </div>
     </div>
 </section>
@@ -863,19 +1036,67 @@
     </div>
 </section>
 
-<!-- SECTION OUR VISION -->
-<section class="page-section reveal reveal-up" style="padding-top: 2rem;">
+<!-- SECTION NOTRE VISION -->
+<section class="page-section" style="padding-top: 2rem; padding-bottom: 5rem;">
     <div class="container">
         <div class="section-header">
-            <span class="challenge-tag">NOTRE VISION</span>
-            <div class="home-divider"></div>
+            <span class="rp-label">Notre Vision</span>
             <h2 class="home-section-title">De la gestion des données à l'activation de l'IA</h2>
         </div>
 
-        <div class="reveal reveal-left" style="margin-top: 4rem; font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; color: #1a5d6a; line-height: 1.4; max-width: 900px; border-left: 6px solid #f3756e; padding-left: 2rem;">
-            "L'IA n'est pas une capacité autonome. C'est l'extension naturelle d'un socle de données mature."
-        </div>
-    </div>
+        <div class="ai-vision-layout">
+            <div class="ai-vision-quote">
+                "L'IA n'est pas une capacité autonome. C'est l'extension naturelle d'un socle de données mature."
+            </div>
+
+            <div class="ai-vis-wrap">
+                <svg viewBox="0 0 480 400" width="100%" height="400" xmlns="http://www.w3.org/2000/svg" style="display:block;animation:ai-float 5s ease-in-out infinite;">
+  <rect x="0" y="0" width="480" height="400" rx="20" fill="#f0f6f8"/>
+  <line x1="160" y1="30" x2="160" y2="370" stroke="#81abb3" stroke-width="1" stroke-dasharray="4 6" opacity="0.3"/>
+  <line x1="320" y1="30" x2="320" y2="370" stroke="#81abb3" stroke-width="1" stroke-dasharray="4 6" opacity="0.3"/>
+  <text x="80" y="22" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="8" font-weight="700" fill="#81abb3" letter-spacing="2">COUCHE DATA</text>
+  <text x="240" y="22" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="8" font-weight="700" fill="#81abb3" letter-spacing="2">IA CORE</text>
+  <text x="400" y="22" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="8" font-weight="700" fill="#f3756e" letter-spacing="2">RÉSULTATS</text>
+  <path d="M 108 110 C 170 110 180 200 225 200" fill="none" stroke="#81abb3" stroke-width="1.5" opacity="0.6"/>
+  <path d="M 108 200 C 170 200 180 200 225 200" fill="none" stroke="#81abb3" stroke-width="1.5" opacity="0.6"/>
+  <path d="M 108 290 C 170 290 180 200 225 200" fill="none" stroke="#81abb3" stroke-width="1.5" opacity="0.6"/>
+  <path d="M 255 200 C 295 200 310 140 372 140" fill="none" stroke="#f3756e" stroke-width="1.5" opacity="0.6"/>
+  <path d="M 255 200 C 295 200 310 200 372 200" fill="none" stroke="#f3756e" stroke-width="1.5" opacity="0.6"/>
+  <path d="M 255 200 C 295 200 310 265 372 265" fill="none" stroke="#f3756e" stroke-width="1.5" opacity="0.6"/>
+  <circle cx="240" cy="200" r="52" fill="none" stroke="#81abb3" stroke-width="1" opacity="0.15"><animate attributeName="r" values="52;70;52" dur="3s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.15;0;0.15" dur="3s" repeatCount="indefinite"/></circle>
+  <circle cx="240" cy="200" r="44" fill="#0d3d47"/>
+  <circle cx="240" cy="200" r="32" fill="none" stroke="#81abb3" stroke-width="1" stroke-dasharray="5 4" opacity="0.5"><animateTransform attributeName="transform" type="rotate" from="0 240 200" to="360 240 200" dur="12s" repeatCount="indefinite"/></circle>
+  <text x="240" y="196" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="11" font-weight="800" fill="#81abb3" letter-spacing="2">IA</text>
+  <text x="240" y="212" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="8" font-weight="600" fill="rgba(255,255,255,0.5)" letter-spacing="2">CORE</text>
+  <circle r="3" fill="#81abb3"><animateMotion dur="2.2s" repeatCount="indefinite" path="M 108 110 C 170 110 180 200 225 200"/></circle>
+  <circle r="3" fill="#81abb3"><animateMotion dur="2.8s" repeatCount="indefinite" begin="0.9s" path="M 108 200 C 170 200 180 200 225 200"/></circle>
+  <circle r="3" fill="#81abb3"><animateMotion dur="2.5s" repeatCount="indefinite" begin="1.6s" path="M 108 290 C 170 290 180 200 225 200"/></circle>
+  <circle r="3.5" fill="#f3756e"><animateMotion dur="1.9s" repeatCount="indefinite" begin="0.3s" path="M 255 200 C 295 200 310 140 372 140"/></circle>
+  <circle r="3.5" fill="#f3756e"><animateMotion dur="2.1s" repeatCount="indefinite" begin="1s" path="M 255 200 C 295 200 310 200 372 200"/></circle>
+  <circle r="3.5" fill="#f3756e"><animateMotion dur="2s" repeatCount="indefinite" begin="1.7s" path="M 255 200 C 295 200 310 265 372 265"/></circle>
+  <circle cx="80" cy="110" r="30" fill="white" stroke="#81abb3" stroke-width="1.5"/>
+  <text x="80" y="106" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="8" font-weight="700" fill="#1a5d6a">Gouvernance</text>
+  <text x="80" y="118" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="8" font-weight="700" fill="#1a5d6a">des données</text>
+  <circle cx="80" cy="200" r="30" fill="white" stroke="#81abb3" stroke-width="1.5"/>
+  <text x="80" y="196" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="8" font-weight="700" fill="#1a5d6a">Master</text>
+  <text x="80" y="208" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="8" font-weight="700" fill="#1a5d6a">Data</text>
+  <circle cx="80" cy="290" r="30" fill="white" stroke="#81abb3" stroke-width="1.5"/>
+  <text x="80" y="286" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="8" font-weight="700" fill="#1a5d6a">Qualité</text>
+  <text x="80" y="298" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="8" font-weight="700" fill="#1a5d6a">des données</text>
+  <circle cx="400" cy="140" r="28" fill="white" stroke="#f3756e" stroke-width="1.5"/>
+  <text x="400" y="136" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="8" font-weight="700" fill="#c45d56">Analytics</text>
+  <text x="400" y="148" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="8" font-weight="700" fill="#c45d56">Prédictive</text>
+  <circle cx="400" cy="200" r="28" fill="white" stroke="#f3756e" stroke-width="1.5"/>
+  <text x="400" y="196" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="8" font-weight="700" fill="#c45d56">Gen AI</text>
+  <text x="400" y="208" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="8" font-weight="700" fill="#c45d56">Prête</text>
+  <circle cx="400" cy="265" r="28" fill="white" stroke="#f3756e" stroke-width="1.5"/>
+  <text x="400" y="261" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="8" font-weight="700" fill="#c45d56">Automatisation</text>
+  <text x="400" y="273" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="8" font-weight="700" fill="#c45d56">Intelligente</text>
+  <text x="240" y="388" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="7.5" font-weight="600" fill="#81abb3" letter-spacing="2" opacity="0.7">FONDATIONS DE DONNÉES FIABLES → ACTIVATION IA</text>
+</svg>
+            </div><!-- end ai-vis-wrap -->
+        </div><!-- end ai-vision-layout -->
+    </div><!-- end container -->
 </section>
 
 <!-- SECTION BRIDGE THE GAP -->
@@ -911,7 +1132,7 @@
 <section class="wwd-section">
     <div class="container">
         <div class="wwd-header reveal reveal-up">
-            <span class="wwd-tag">WHAT WE DO</span>
+            <span class="wwd-tag">CE QUE NOUS FAISONS</span>
             <div class="wwd-divider"></div>
             <h2 class="wwd-title">Construire des fondations de données prêtes pour l'IA</h2>
         </div>
@@ -976,7 +1197,7 @@
                 <div class="approach-step reveal reveal-up" style="transition-delay:150ms">
                     <div class="approach-step-bubble">2</div>
                     <div class="approach-step-body">
-                        <h3>Structurer & Gouverner</h3>
+                        <h3>Structurer &amp; Gouverner</h3>
                         <p>Ces jeux de données</p>
                     </div>
                 </div>
@@ -1042,7 +1263,7 @@
         <div class="wwd-header reveal reveal-up">
             <span class="wwd-tag">POURQUOI ACROPORA</span>
             <div class="wwd-divider"></div>
-            <h2 class="approach-main-title">Un positionnement unique à l'intersection de la Data & de la Qualité</h2>
+            <h2 class="approach-main-title">Un positionnement unique à l'intersection de la Data &amp; de la Qualité</h2>
         </div>
         <div class="why-grid">
             <div class="why-card reveal reveal-up" style="transition-delay:0ms">
@@ -1097,7 +1318,7 @@
             <div class="footer-section" style="flex: 1; min-width: 250px;">
                 <img src="acropora-logo-transparent.png" alt="Acropora Data" class="footer-logo" style="margin-bottom: 1rem; width: 180px; display: block;">
                 <p style="font-weight: 700; margin-bottom: 0.2rem; color: #fff;">Data Management Expert</p>
-                <p style="font-size: 0.85rem; opacity: 0.7; color: #fff;">Turn your data into strategic assets</p>
+                <p style="font-size: 0.85rem; opacity: 0.7; color: #fff;">Transformez vos données en actifs stratégiques</p>
                 <div style="margin-top: 1.5rem; display: flex; justify-content: center; width: 180px;">
                     <a href="https://www.linkedin.com/company/acropora-data" target="_blank" style="color: #81abb3; transition: color 0.3s;" onmouseover="this.style.color='#f3756e'" onmouseout="this.style.color='#81abb3'">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display: block !important;"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
@@ -1145,40 +1366,35 @@
 <script src="pages.js"></script>
 <script src="hero-animations.js"></script>
 <script>
-// Gestion du mega-menu sur mobile (tactile)
 document.querySelectorAll('.nav-item').forEach(function(item) {
     var link = item.querySelector('.nav-link');
     var mega = item.querySelector('.mega-menu');
-    if (!mega) return; // item sans sous-menu (ex: EN)
+    if (!mega) return;
 
     link.addEventListener('click', function(e) {
         var isMobile = window.innerWidth <= 768;
-        if (!isMobile) return; // sur desktop, le hover CSS suffit
+        if (!isMobile) return;
 
-        e.preventDefault(); // empêche la navigation (ces liens sont javascript:void)
-        
+        e.preventDefault();
         var isOpen = item.classList.contains('open');
-        
-        // Ferme tous les autres sous-menus ouverts
+
         document.querySelectorAll('.nav-item.open').forEach(function(other) {
             other.classList.remove('open');
-            other.querySelector('.mega-menu').style.display = '';
+            other.querySelector('.mega-menu').style.removeProperty('display');
         });
 
-        // Ouvre ou ferme celui-ci
         if (!isOpen) {
             item.classList.add('open');
-            mega.style.display = 'block';
+            mega.style.setProperty('display', 'block', 'important');
         }
     });
 });
 
-// Ferme le menu si on clique en dehors
 document.addEventListener('click', function(e) {
     if (!e.target.closest('.navbar')) {
         document.querySelectorAll('.nav-item.open').forEach(function(item) {
             item.classList.remove('open');
-            item.querySelector('.mega-menu').style.display = '';
+            item.querySelector('.mega-menu').style.removeProperty('display');
         });
     }
 });

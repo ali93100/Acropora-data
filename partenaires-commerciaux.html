@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <!-- Google tag (gtag.js) -->
@@ -47,7 +47,7 @@
             justify-content: center;
         }
         .synergy-scene svg { display: block !important; }
-        
+
         .synergy-hub {
             position: relative;
             width: 180px;
@@ -98,43 +98,169 @@
         @keyframes float1 { 0%, 100% { margin-top: 0; } 50% { margin-top: -35px; } }
         @keyframes float2 { 0%, 100% { margin-top: 0; } 50% { margin-top: 30px; } }
 
-        .synergy-svg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
-        .synergy-svg path { stroke: rgba(129, 171, 179, 0.2); stroke-width: 1.5; fill: none; stroke-dasharray: 10 10; animation: flowDash 25s linear infinite; }
+        .synergy-svg {
+            position: absolute;
+            inset: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .synergy-svg path {
+            stroke: rgba(129, 171, 179, 0.2);
+            stroke-width: 1.5;
+            fill: none;
+            stroke-dasharray: 10 10;
+            animation: flowDash 25s linear infinite;
+        }
         @keyframes flowDash { to { stroke-dashoffset: -200; } }
 
         /* Belief Section */
-        .belief-color-block { background: #81abb3; padding: 6rem 0; text-align: center; color: white; }
-        .belief-text { font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight: 700; max-width: 1000px; margin: 0 auto; line-height: 1.4; }
-        .belief-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin-top: 3rem; list-style: none; }
-        .belief-list li { background: rgba(255,255,255,0.15); padding: 0.8rem 1.5rem; border-radius: 50px; font-weight: 600; font-size: 1rem; }
+        .belief-color-block {
+            background: #81abb3;
+            padding: 6rem 0;
+            text-align: center;
+            color: white;
+        }
+        .belief-text {
+            font-size: clamp(1.4rem, 3vw, 2.2rem);
+            font-weight: 700;
+            max-width: 1000px;
+            margin: 0 auto;
+            line-height: 1.4;
+        }
+        .belief-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            list-style: none;
+        }
+        .belief-list li {
+            background: rgba(255,255,255,0.15);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+        }
 
         /* Style Test Strategy */
-        .ts-why-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-        .ts-why-card { position: relative; background: #fff; border: 1px solid rgba(129,171,179,0.3); border-radius: 20px; padding: 2.5rem 2rem; overflow: hidden; transition: transform 0.35s cubic-bezier(.16,1,.3,1), box-shadow 0.35s, border-color 0.35s; }
-        .ts-why-card:hover { transform: translateY(-8px); border-color: rgba(129,171,179,0.7); box-shadow: 0 20px 50px rgba(129,171,179,0.18); }
-        .ts-why-card-num { font-size: 2.8rem; font-weight: 800; color: rgba(129,171,179,0.2); line-height: 1; margin-bottom: 1.2rem; }
+        .ts-why-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .ts-why-card {
+            position: relative;
+            background: #fff;
+            border: 1px solid rgba(129,171,179,0.3);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            overflow: hidden;
+            transition: transform 0.35s cubic-bezier(.16,1,.3,1), box-shadow 0.35s, border-color 0.35s;
+        }
+        .ts-why-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(129,171,179,0.7);
+            box-shadow: 0 20px 50px rgba(129,171,179,0.18);
+        }
+        .ts-why-card-num {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: rgba(129,171,179,0.2);
+            line-height: 1;
+            margin-bottom: 1.2rem;
+        }
 
         /* Collaboration Model - Fond Noir */
-        .collab-model-section { background: #06141a; padding: 8rem 0; color: white; }
-        .model-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 4rem; }
-        .model-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(129,171,179,0.2); border-radius: 20px; padding: 2.5rem 2rem; text-align: center; transition: all 0.4s ease; }
-        .model-card:hover { background: rgba(129,171,179,0.08); border-color: #81abb3; transform: translateY(-10px); }
+        .collab-model-section {
+            background: #06141a;
+            padding: 8rem 0;
+            color: white;
+        }
+        .model-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 4rem;
+        }
+        .model-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(129,171,179,0.2);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+        .model-card:hover {
+            background: rgba(129,171,179,0.08);
+            border-color: #81abb3;
+            transform: translateY(-10px);
+        }
         .model-icon { font-size: 2.5rem; margin-bottom: 1.5rem; display: block; }
         .model-card h3 { font-size: 1.1rem; font-weight: 800; color: #81abb3; margin-bottom: 1rem; }
 
         /* Partner Detailed Section */
-        .partners-detailed-grid { display: flex; flex-direction: column; gap: 4rem; margin-top: 5rem; }
-        .partner-detail-row { display: grid; grid-template-columns: 300px 1fr; gap: 4rem; background: white; border-radius: 30px; padding: 3rem; box-shadow: 0 15px 45px rgba(26,93,106,0.05); border: 1px solid rgba(26,93,106,0.05); transition: all 0.4s ease; }
-        .partner-detail-row:hover { transform: scale(1.02); box-shadow: 0 25px 60px rgba(26,93,106,0.1); }
-        .partner-brand { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; border-right: 1px solid #eee; padding-right: 4rem; }
-        .partner-logo-box { width: 120px; height: 120px; background: var(--subtle-gray); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 900; color: #1a5d6a; margin-bottom: 1.5rem; }
+        .partners-detailed-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+            margin-top: 5rem;
+        }
+        .partner-detail-row {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 4rem;
+            background: white;
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 15px 45px rgba(26,93,106,0.05);
+            border: 1px solid rgba(26,93,106,0.05);
+            transition: all 0.4s ease;
+        }
+        .partner-detail-row:hover {
+            transform: scale(1.02);
+            box-shadow: 0 25px 60px rgba(26,93,106,0.1);
+        }
+        .partner-brand {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-right: 1px solid #eee;
+            padding-right: 4rem;
+        }
+        .partner-logo-box {
+            width: 120px; height: 120px;
+            background: var(--subtle-gray);
+            border-radius: 20px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; font-weight: 900; color: #1a5d6a;
+            margin-bottom: 1.5rem;
+        }
         .partner-info h3 { font-size: 1.8rem; color: var(--primary-color); margin-bottom: 0.5rem; }
         .partner-info .subtitle { color: #f3756e; font-weight: 700; font-size: 1rem; margin-bottom: 1.5rem; display: block; }
         .partner-info p { color: var(--text-medium); line-height: 1.8; margin-bottom: 1.5rem; font-size: 1.05rem; }
-        .collab-focus { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-        .collab-focus li { padding-left: 1.5rem; position: relative; font-weight: 600; color: var(--primary-color); font-size: 0.95rem; }
-        .collab-focus li::before { content: '🔹'; position: absolute; left: 0; }
+        .collab-focus {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        .collab-focus li {
+            padding-left: 1.5rem;
+            position: relative;
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 0.95rem;
+        }
+        .collab-focus li::before {
+            content: '🔹';
+            position: absolute; left: 0;
+        }
 
+        /* Responsive */
         @media (max-width: 900px) {
             .bp-intro-grid { grid-template-columns: 1fr; text-align: center; }
             .bp-visual-col { height: 350px; order: -1; }
@@ -143,14 +269,323 @@
             .model-grid { grid-template-columns: 1fr 1fr; }
             .collab-focus { grid-template-columns: 1fr; }
         }
-        .forme-divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, rgba(129, 171, 179, 0.2), transparent); margin: 2rem 0; }
+
+        .forme-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(129, 171, 179, 0.2), transparent);
+            margin: 2rem 0;
+        }
+
+        /* ── COMMENT ÇA S'ARTICULE — redesign ── */
+        .hic-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.8rem;
+            margin-top: 4rem;
+            position: relative;
+        }
+        .hic-grid::before {
+            content: '';
+            position: absolute;
+            top: 54px;
+            left: 12%;
+            right: 12%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #81abb3, #f3756e, #81abb3, transparent);
+            background-size: 200% 100%;
+            animation: hicFlow 3s linear infinite;
+            z-index: 0;
+        }
+        @keyframes hicFlow {
+            0% { background-position: 200% center; }
+            100% { background-position: -200% center; }
+        }
+        .hic-card {
+            position: relative;
+            background: #fff;
+            border: 1px solid rgba(26,93,106,0.08);
+            border-radius: 20px;
+            padding: 2.2rem 1.8rem 2rem;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(.16,1,.3,1);
+            z-index: 1;
+            overflow: hidden;
+        }
+        .hic-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #1a5d6a, #81abb3);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s cubic-bezier(.16,1,.3,1);
+        }
+        .hic-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 24px 50px rgba(26,93,106,0.12);
+            border-color: rgba(129,171,179,0.35);
+        }
+        .hic-card:hover::before { transform: scaleX(1); }
+        .hic-num {
+            font-size: 3rem;
+            font-weight: 900;
+            color: rgba(129,171,179,0.18);
+            line-height: 1;
+            margin-bottom: 0.6rem;
+            font-variant-numeric: tabular-nums;
+        }
+        .hic-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(26,93,106,0.1), rgba(129,171,179,0.12));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.2rem;
+            font-size: 1.4rem;
+            transition: transform 0.35s ease;
+        }
+        .hic-card:hover .hic-icon { transform: scale(1.15) rotate(-5deg); }
+        .hic-card h3 {
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 0.7rem;
+        }
+        .hic-card p {
+            font-size: 0.83rem;
+            color: var(--text-medium);
+            line-height: 1.65;
+            margin: 0;
+        }
+        .hic-result {
+            margin-top: 4rem;
+            background: linear-gradient(135deg, #081e23 0%, #0d3d47 55%, #1a5d6a 100%);
+            border-radius: 24px;
+            padding: 3rem 3.5rem;
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .hic-result::before {
+            content: '';
+            position: absolute;
+            width: 300px; height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(129,171,179,0.1) 0%, transparent 70%);
+            top: -80px; right: -60px;
+        }
+        .hic-result-icon {
+            font-size: 2.8rem;
+            flex-shrink: 0;
+            position: relative; z-index: 1;
+        }
+        .hic-result-text {
+            position: relative; z-index: 1;
+        }
+        .hic-result-text strong {
+            display: block;
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 0.4rem;
+            line-height: 1.3;
+        }
+        .hic-result-text span {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+        }
+        @media(max-width:900px) {
+            .hic-grid { grid-template-columns: repeat(2,1fr); }
+            .hic-grid::before { display: none; }
+            .hic-result { flex-direction: column; text-align: center; padding: 2rem; }
+        }
+
+        .ts-label {
+            display: inline-block;
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: #f3756e;
+            margin-bottom: .8rem;
+        }
+        .ts-heading {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 1.2rem;
+            line-height: 1.15;
+        }
+
+        /* ── GRAND CTA FINALE ── */
+        .grand-cta-section {
+            position: relative;
+            background: #020d12;
+            padding: 10rem 0 8rem;
+            overflow: hidden;
+            text-align: center;
+        }
+        .grand-cta-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(129,171,179,0.1) 1px, transparent 1px);
+            background-size: 38px 38px;
+            pointer-events: none;
+        }
+        .grand-cta-orb {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .grand-cta-orb-1 {
+            width: 700px; height: 700px;
+            background: radial-gradient(circle, rgba(26,93,106,0.28) 0%, transparent 65%);
+            top: -250px; left: -150px;
+            animation: gcOrb1 9s ease-in-out infinite;
+        }
+        .grand-cta-orb-2 {
+            width: 550px; height: 550px;
+            background: radial-gradient(circle, rgba(243,117,110,0.14) 0%, transparent 65%);
+            bottom: -180px; right: -120px;
+            animation: gcOrb2 11s ease-in-out infinite;
+        }
+        .grand-cta-orb-3 {
+            width: 350px; height: 350px;
+            background: radial-gradient(circle, rgba(129,171,179,0.12) 0%, transparent 65%);
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            animation: gcOrb3 7s ease-in-out infinite;
+        }
+        @keyframes gcOrb1 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(40px,30px) scale(1.15)} }
+        @keyframes gcOrb2 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-30px,-35px) scale(1.1)} }
+        @keyframes gcOrb3 { 0%,100%{transform:translate(-50%,-50%) scale(1)} 50%{transform:translate(-50%,-50%) scale(1.5)} }
+
+        .grand-cta-pills {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+            position: relative; z-index: 1;
+        }
+        .grand-cta-pill {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(129,171,179,0.25);
+            border-radius: 50px;
+            padding: 0.45rem 1.2rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.65);
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+        .grand-cta-pill:hover {
+            background: rgba(129,171,179,0.12);
+            border-color: #81abb3;
+            color: #fff;
+            transform: translateY(-3px);
+        }
+        .grand-cta-headline {
+            font-size: clamp(3rem, 7vw, 6rem);
+            font-weight: 900;
+            line-height: 1.05;
+            margin-bottom: 2rem;
+            position: relative; z-index: 1;
+            background: linear-gradient(120deg, #fff 0%, #81abb3 35%, #f3756e 65%, #fff 100%);
+            background-size: 250% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gcShimmer 5s linear infinite;
+        }
+        @keyframes gcShimmer {
+            0% { background-position: 0% center; }
+            100% { background-position: 250% center; }
+        }
+        .grand-cta-desc {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.5);
+            max-width: 640px;
+            margin: 0 auto 3.5rem;
+            line-height: 1.85;
+            position: relative; z-index: 1;
+        }
+        .grand-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.9rem;
+            background: linear-gradient(135deg, #f3756e, #d94f48);
+            color: #fff !important;
+            text-decoration: none;
+            padding: 1.3rem 3.2rem;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1.05rem;
+            letter-spacing: 0.02em;
+            position: relative; z-index: 1;
+            animation: gcBtnPulse 2.8s ease-out infinite;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .grand-cta-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 25px 60px rgba(243,117,110,0.5);
+            animation: none;
+        }
+        @keyframes gcBtnPulse {
+            0%   { box-shadow: 0 0 0 0 rgba(243,117,110,0.55); }
+            70%  { box-shadow: 0 0 0 22px rgba(243,117,110,0); }
+            100% { box-shadow: 0 0 0 0 rgba(243,117,110,0); }
+        }
+        .grand-cta-btn-arrow {
+            font-size: 1.3rem;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+        .grand-cta-btn:hover .grand-cta-btn-arrow { transform: translateX(6px); }
+        .grand-cta-stats {
+            display: flex;
+            justify-content: center;
+            gap: 5rem;
+            margin-top: 6rem;
+            padding-top: 4rem;
+            border-top: 1px solid rgba(255,255,255,0.07);
+            position: relative; z-index: 1;
+            flex-wrap: wrap;
+        }
+        .grand-stat { text-align: center; }
+        .grand-stat-num {
+            font-size: 2.4rem;
+            font-weight: 900;
+            color: #81abb3;
+            display: block;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        .grand-stat-label {
+            font-size: 0.72rem;
+            color: rgba(255,255,255,0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+        @media(max-width:768px) {
+            .grand-cta-headline { font-size: clamp(2.5rem,10vw,4rem); }
+            .grand-cta-stats { gap: 2.5rem; }
+        }
     </style>
 </head>
 <body>
 <div class="parallax-coral"><div class="coral-shape"></div><div class="coral-shape"></div><div class="coral-shape"></div><div class="coral-shape"></div></div>
 <nav class="navbar">
     <div class="nav-container">
-        <div class="logo-container"><a href="index.html"><img src="acropora-logo-transparent.png" alt="Acropora Data" class="logo"></a></div>
+        <div class="logo-container">
+            <a href="index.html"><img src="acropora-logo-transparent.png" alt="Acropora Data" class="logo"></a>
+        </div>
         <ul class="nav-menu">
             <li class="nav-item">
                 <a href="javascript:void(0)" class="nav-link" style="cursor: default;">Présentation</a>
@@ -164,7 +599,7 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a href="javascript:void(0)" class="nav-link active" style="cursor: default;">Solutions & Expertise</a>
+                <a href="javascript:void(0)" class="nav-link" style="cursor: default;">Solutions & Expertise</a>
                 <div class="mega-menu">
                     <div class="mega-menu-inner mega-menu-4">
                         <div class="mega-col"><div class="mega-col-title">MDM</div><a href="mdm.html"><span class="link-text"><strong>MDM & Intégration</strong><span>Référentiels & pipelines</span></span></a><a href="ai-foundations.html"><span class="link-text"><strong>Fondations IA</strong><span>Données prêtes pour l'IA</span></span></a></div>
@@ -175,15 +610,21 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a href="javascript:void(0)" class="nav-link" style="cursor: default;">Partenaires</a>
+                <a href="javascript:void(0)" class="nav-link active" style="cursor: default;">Partenaires</a>
                 <div class="mega-menu">
-                    <div class="mega-menu-inner mega-menu-5">
-                        <div class="mega-col"><div class="mega-col-title">Technologie</div><a href="partenaires-technologiques.html"><span class="link-text"><strong>Partenaires technologiques</strong><span>Semarchy, OnEBX, Talend...</span></span></a></div>
-                        <div class="mega-col"><div class="mega-col-title">Business</div><a href="partenaires-commerciaux.html"><span class="link-text"><strong>Partenaires commerciaux</strong><span>Alliances et synergies business</span></span></a></div>
+                    <div class="mega-menu-inner mega-menu-2">
+                        <div class="mega-col">
+                            <div class="mega-col-title">Technologie</div>
+                            <a href="partenaires-technologiques.html"><span class="link-text"><strong>Partenaires technologiques</strong><span>Semarchy, OneBX, Talend…</span></span></a>
+                        </div>
+                        <div class="mega-col">
+                            <div class="mega-col-title">Business</div>
+                            <a href="partenaires-commerciaux.html"><span class="link-text"><strong>Partenaires commerciaux</strong><span>Alliances et synergies business</span></span></a>
+                        </div>
                     </div>
                 </div>
             </li>
-                        <li class="nav-item"><a href="blog.html" class="nav-link">Ressources</a></li>
+            <li class="nav-item"><a href="javascript:void(0)" class="nav-link" style="cursor:default;">Ressources</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-2"><div class="mega-col"><div class="mega-col-title">Insights</div><a href="blog.html"><span class="link-text"><strong>Blog &amp; Événements</strong><span>Articles, analyses &amp; événements</span></span></a></div></div></div></li>
             <li class="nav-item">
                 <a href="javascript:void(0)" class="nav-link cta-nav" style="cursor: default;">Contact</a>
                 <div class="mega-menu">
@@ -193,10 +634,9 @@
                     </div>
                 </div>
             </li>
-            
         </ul>
         <a href="partenaires-commerciaux_en.html" class="lang-switch">&#x1F1EC;&#x1F1E7; EN</a>
-        <button class="menu-toggle" onclick="document.querySelector('.nav-menu').classList.toggle('active')"><span></span><span></span><span></span></button>
+        <button class="menu-toggle" onclick="this.classList.toggle('active'); document.querySelector('.nav-menu').classList.toggle('active')"><span></span><span></span><span></span></button>
     </div>
 </nav>
 
@@ -207,7 +647,8 @@
     </div>
 </section>
 
-<section class="page-section" style="background: #fff;">
+<!-- SECTION 1 : COLLABORATION & LIVRAISON -->
+<section class="page-section" style="background: #fff; padding-top: 3rem;">
     <div class="container">
         <div class="bp-intro-grid">
             <div class="bp-visual-col reveal reveal-left">
@@ -218,65 +659,78 @@
                         <path d="M50,150 L80,380" opacity="0.1" />
                         <path d="M450,120 L420,350" opacity="0.1" />
                     </svg>
-                    <div class="synergy-hub"><span>Acropora</span><strong>SYNERGIE</strong></div>
+
+                    <div class="synergy-hub">
+                        <span>Acropora</span>
+                        <strong>SYNERGIE</strong>
+                    </div>
+
                     <div class="synergy-card sc-1">
-                        <span class="icon">🧠</span><span class="label">Cabinets de<br>Conseil</span>
+                        <span class="label">Cabinets de<br>Conseil</span>
                         <p style="font-size: 0.6rem; color: var(--text-medium); margin-top: 8px; line-height: 1.4; font-weight: 400;">Alignement stratégique et transformation métier</p>
                     </div>
                     <div class="synergy-card sc-2">
-                        <span class="icon">🏗️</span><span class="label">Intégrateurs<br>Système</span>
+                        <span class="label">Intégrateurs<br>Système</span>
                         <p style="font-size: 0.6rem; color: var(--text-medium); margin-top: 8px; line-height: 1.4; font-weight: 400;">Déploiements techniques et industrialisation à l'échelle</p>
                     </div>
                     <div class="synergy-card sc-3">
-                        <span class="icon">📦</span><span class="label">Spécialistes<br>Data</span>
+                        <span class="label">Spécialistes<br>Data</span>
                         <p style="font-size: 0.6rem; color: var(--text-medium); margin-top: 8px; line-height: 1.4; font-weight: 400;">Expertise sur modèles complexes et cas d'usages innovants</p>
                     </div>
                     <div class="synergy-card sc-4">
-                        <span class="icon">⚡</span><span class="label">ESN<br>Agiles</span>
+                        <span class="label">ESN<br>Agiles</span>
                         <p style="font-size: 0.6rem; color: var(--text-medium); margin-top: 8px; line-height: 1.4; font-weight: 400;">Exécution rapide et flexibilité de montée en charge</p>
                     </div>
                 </div>
             </div>
             <div class="bp-text-col reveal reveal-right">
-                <span class="wwd-tag">COLLABORATION & LIVRAISON</span>
-                <h2 class="wwd-title" style="color: var(--primary-color); margin-top: 1rem;">Un écosystème de partenaires ciblés</h2>
+                <span class="ts-label">COLLABORATION & LIVRAISON</span>
+                <h2 class="ts-heading" style="color: var(--primary-color);">Un écosystème de partenaires ciblés</h2>
                 <div class="home-divider" style="margin: 1.5rem 0;"></div>
                 <p style="font-size: 1.15rem; color: var(--text-medium); line-height: 1.8;">
                     Les initiatives data reposent autant sur l'exécution que sur la technologie. Elles impliquent des défis business, organisationnels et opérationnels qui nécessitent une collaboration étroite entre plusieurs acteurs spécialisés.
                     <br><br>
-                    Acropora développe des collaborations basées sur des expertises complémentaires, des rôles clairs et un alignement avec la valeur client. Nous agissons en tant que spécialistes de la gouvernance, en coordination avec des partenaires qui répondent aux enjeux stratégiques.
+                    Acropora développe des collaborations basées sur des expertises complémentaires, des rôles clairs et un alignement avec la valeur client. Nous agissons en tant que spécialistes de la gouvernance des données, en coordination avec des partenaires qui répondent aux enjeux business et organisationnels.
                 </p>
             </div>
         </div>
     </div>
 </section>
 
+<!-- SECTION 2 : BELIEF BLOCK -->
 <section class="belief-color-block">
     <div class="container">
-        <div class="belief-text reveal reveal-up">Chez ACROPORA DATA, nous croyons que des <strong>partenariats solides créent des résultats plus forts</strong>.</div>
-        <p class="reveal reveal-up" style="margin-top: 2rem; font-size: 1.2rem; opacity: 0.9;">Nous collaborons avec des cabinets de conseil, des ESN et des spécialistes data pour :</p>
+        <div class="belief-text reveal reveal-up">
+            Chez ACROPORA DATA, nous croyons que des <strong>partenariats solides créent des résultats plus forts</strong>.
+        </div>
+        <p class="reveal reveal-up" style="margin-top: 2rem; font-size: 1.2rem; opacity: 0.9;">
+            Nous collaborons avec des cabinets de conseil, des ESN et des spécialistes data pour :
+        </p>
         <ul class="belief-list reveal reveal-up">
             <li>Livrer des projets complexes</li>
             <li>Augmenter les capacités de livraison</li>
             <li>Apporter des expertises complémentaires</li>
             <li>Accéder à de nouveaux marchés</li>
         </ul>
-        <div class="reveal reveal-up" style="margin-top: 3rem; font-weight: 700; font-size: 1.1rem; font-style: italic;">Nos partenariats sont bâtis sur la confiance, l'expertise et une ambition partagée.</div>
+        <div class="reveal reveal-up" style="margin-top: 3rem; font-weight: 700; font-size: 1.1rem; font-style: italic;">
+            Nos partenariats sont bâtis sur la confiance, l'expertise et une ambition partagée.
+        </div>
     </div>
 </section>
 
+<!-- SECTION 3 : POURQUOI NOUS REJOINDRE -->
 <section class="page-section">
     <div class="container">
         <div class="section-header reveal reveal-up">
             <span class="ts-label">Pourquoi devenir partenaire ?</span>
-            <h2 class="ts-heading" style="color: var(--primary-color);">Nous apportons une valeur unique à l'écosystème</h2>
+            <h2 class="ts-heading" style="color: var(--primary-color); text-align: center;">Nous apportons une valeur unique à l'écosystème</h2>
             <div class="section-line"></div>
         </div>
         <div class="ts-why-cards" style="margin-top: 4rem;">
             <div class="ts-why-card reveal reveal-up">
                 <div class="ts-why-card-num">01</div>
                 <h3 style="color: var(--primary-color); font-weight: 800; margin-bottom: 1rem;">Expertise MDM Approfondie</h3>
-                <p style="color: var(--text-medium); font-size: 0.95rem;">Une connaissance inégalée du Master Data Management et des frameworks de gouvernance de haut niveau.</p>
+                <p style="color: var(--text-medium); font-size: 0.95rem;">Une connaissance inégalée du Master Data Management et des frameworks de gouvernance de données de haut niveau.</p>
             </div>
             <div class="ts-why-card reveal reveal-up" style="transition-delay: 150ms;">
                 <div class="ts-why-card-num">02</div>
@@ -289,10 +743,13 @@
                 <p style="color: var(--text-medium); font-size: 0.95rem;">Un modèle de livraison performant et qualitatif basé dans notre Centre d'Excellence à l'île Maurice.</p>
             </div>
         </div>
-        <div class="reveal reveal-up" style="text-align: center; margin-top: 4rem; font-size: 1.4rem; font-weight: 700; color: #f3756e;">👉 Nous sommes un partenaire de livraison fiable pour vos projets data.</div>
+        <div class="reveal reveal-up" style="text-align: center; margin-top: 4rem; font-size: 1.4rem; font-weight: 700; color: #f3756e;">
+            Nous sommes un partenaire de livraison fiable pour vos projets data.
+        </div>
     </div>
 </section>
 
+<!-- SECTION 4 : NOS PARTENAIRES COMMERCIAUX -->
 <section class="page-section alt-bg">
     <div class="container">
         <div class="section-header reveal reveal-up">
@@ -301,6 +758,8 @@
         </div>
 
         <div class="partners-detailed-grid">
+
+            <!-- Partenaire 1 : RS2i -->
             <div class="partner-detail-row reveal reveal-up">
                 <div class="partner-brand">
                     <div class="partner-logo-box" style="background: #005596; color: white;">RS2i</div>
@@ -308,7 +767,7 @@
                 </div>
                 <div class="partner-info">
                     <span class="subtitle">Partenaire MDM stratégique</span>
-                    <p>RS2i est un partenaire clé dans la livraison de programmes MDM à grande échelle, particulièrement autour d'EBX. Notre synergie permet de relever les défis techniques les plus complexes.</p>
+                    <p>RS2i est un partenaire clé dans la livraison de programmes MDM à grande échelle, particulièrement autour d'EBX. Notre synergie permet de relever les défis techniques les plus complexes tout en garantissant une livraison industrielle de qualité.</p>
                     <ul class="collab-focus">
                         <li>Livraison de projets conjoints</li>
                         <li>Renforcement de l'expertise MDM</li>
@@ -317,6 +776,7 @@
                 </div>
             </div>
 
+            <!-- Partenaire 2 : Génération Conseil -->
             <div class="partner-detail-row reveal reveal-up">
                 <div class="partner-brand">
                     <div class="partner-logo-box" style="background: #f3756e; color: white;">GC</div>
@@ -324,7 +784,7 @@
                 </div>
                 <div class="partner-info">
                     <span class="subtitle">Conseil en business & transformation</span>
-                    <p>Nous collaborons avec Génération Conseil pour combler le fossé entre la stratégie business et l'implémentation data, garantissant que la technologie serve la transformation.</p>
+                    <p>Nous collaborons avec Génération Conseil pour combler le fossé entre la stratégie business et l'implémentation data, garantissant que la technologie serve la transformation de l'entreprise.</p>
                     <ul class="collab-focus">
                         <li>Initiatives de transformation business</li>
                         <li>Frameworks de décision pilotés par la donnée</li>
@@ -333,6 +793,7 @@
                 </div>
             </div>
 
+            <!-- Partenaire 3 : FNG Consulting -->
             <div class="partner-detail-row reveal reveal-up">
                 <div class="partner-brand">
                     <div class="partner-logo-box">FNG</div>
@@ -348,48 +809,136 @@
                     </ul>
                 </div>
             </div>
+
+            <!-- Partenaire 4 : Data Empire -->
+            <div class="partner-detail-row reveal reveal-up">
+                <div class="partner-brand">
+                    <div class="partner-logo-box" style="background: #0a2a35; color: #81abb3;">DE</div>
+                    <h3>Data Empire</h3>
+                </div>
+                <div class="partner-info">
+                    <span class="subtitle">Innovation data & cas d'usages avancés</span>
+                    <p>Avec Data Empire, nous explorons les frontières de l'analytique moderne et des cas d'usages data innovants pour créer de nouvelles sources de valeur.</p>
+                    <ul class="collab-focus">
+                        <li>Exploration de cas d'usages innovants</li>
+                        <li>Perspectives analytiques avancées</li>
+                        <li>Création de valeur data nouvelle</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Partenaire 5 : Forward Data Services -->
+            <div class="partner-detail-row reveal reveal-up">
+                <div class="partner-brand">
+                    <div class="partner-logo-box" style="background: #81abb3; color: white;">FDS</div>
+                    <h3>Forward Data Services</h3>
+                </div>
+                <div class="partner-info">
+                    <span class="subtitle">Partenaire de livraison agile</span>
+                    <p>Forward Data apporte de solides capacités de livraison et un état d'esprit agile, en phase avec notre engagement pour une exécution rapide et de haute qualité.</p>
+                    <ul class="collab-focus">
+                        <li>Solides capacités de livraison</li>
+                        <li>Exécution agile des projets</li>
+                        <li>Expertise complémentaire sur les plateformes data</li>
+                    </ul>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
 
+<!-- SECTION 5 : MODÈLE DE COLLABORATION (Fond Noir) -->
 <section class="collab-model-section">
     <div class="container">
-        <div class="wwd-header reveal reveal-up">
-            <span class="wwd-tag">ENGAGEMENT</span>
-            <h2 class="wwd-title">Notre Modèle de Collaboration</h2>
-            <div class="wwd-divider"></div>
-            <p style="color: rgba(255,255,255,0.6); max-width: 700px; margin: 0 auto;">Nous nous adaptons à différents modèles de partenariat pour répondre à vos besoins.</p>
+        <div class="section-header reveal reveal-up">
+            <span class="ts-label">ENGAGEMENT</span>
+            <h2 class="ts-heading" style="color: #fff;">Notre Modèle de Collaboration</h2>
+            <div class="section-line" style="background: rgba(255,255,255,0.3);"></div>
+            <p style="color: rgba(255,255,255,0.6); max-width: 700px; margin: 0 auto;">Nous nous adaptons à différents modèles de partenariat pour répondre aux besoins de votre organisation.</p>
         </div>
         <div class="model-grid">
-            <div class="model-card reveal reveal-up"><span class="model-icon">📈</span><h3>Collaboration par projet</h3></div>
-            <div class="model-card reveal reveal-up" style="transition-delay: 100ms;"><span class="model-icon">👥</span><h3>Renforcement d'équipe</h3></div>
-            <div class="model-card reveal reveal-up" style="transition-delay: 200ms;"><span class="model-icon">📢</span><h3>Approche marché conjointe</h3></div>
-            <div class="model-card reveal reveal-up" style="transition-delay: 300ms;"><span class="model-icon">🤝</span><h3>Partenariats stratégiques</h3></div>
+            <div class="model-card reveal reveal-up" style="transition-delay: 0ms;">
+                <span class="model-icon">📈</span>
+                <h3>Collaboration par projet</h3>
+            </div>
+            <div class="model-card reveal reveal-up" style="transition-delay: 100ms;">
+                <span class="model-icon">👥</span>
+                <h3>Renforcement d'équipe</h3>
+            </div>
+            <div class="model-card reveal reveal-up" style="transition-delay: 200ms;">
+                <span class="model-icon">📢</span>
+                <h3>Approche marché conjointe</h3>
+            </div>
+            <div class="model-card reveal reveal-up" style="transition-delay: 300ms;">
+                <span class="model-icon">🤝</span>
+                <h3>Partenariats stratégiques long terme</h3>
+            </div>
         </div>
     </div>
 </section>
 
-<section class="page-section">
+<!-- SECTION 6 : LIEN AVEC NOTRE EXPERTISE -->
+<section class="page-section" style="background: #fff;">
     <div class="container">
         <div class="section-header reveal reveal-up">
-            <h2 class="home-section-title">Le lien avec notre expertise</h2>
-            <div class="home-divider"></div>
+            <span class="ts-label">Notre Expertise</span>
+            <h2 class="ts-heading" style="color: var(--primary-color);">Le lien avec notre expertise</h2>
+            <div class="section-line"></div>
         </div>
-        <div class="key-expertise-grid">
-            <div class="key-exp-item reveal reveal-up"><h3>Implémentation MDM</h3><p>Déploiement à l'échelle dans des environnements internationaux.</p></div>
-            <div class="key-exp-item reveal reveal-up"><h3>Intégration de données</h3><p>Connexion fluide de plateformes de données hétérogènes.</p></div>
-            <div class="key-exp-item reveal reveal-up"><h3>Tests & QA</h3><p>Sécurisation des systèmes complexes avec précision automatisée.</p></div>
-            <div class="key-exp-item reveal reveal-up"><h3>Gouvernance</h3><p>Établissement de frameworks durables de propriété des données.</p></div>
+        <div class="hic-grid">
+            <div class="hic-card reveal reveal-up" style="transition-delay:0ms">
+                <div class="hic-num">01</div>
+                <div class="hic-icon">🗄️</div>
+                <h3>Implémentation MDM</h3>
+                <p>Déploiement à l'échelle dans des environnements internationaux.</p>
+            </div>
+            <div class="hic-card reveal reveal-up" style="transition-delay:100ms">
+                <div class="hic-num">02</div>
+                <div class="hic-icon">🔗</div>
+                <h3>Intégration de données</h3>
+                <p>Connexion fluide de plateformes de données hétérogènes.</p>
+            </div>
+            <div class="hic-card reveal reveal-up" style="transition-delay:200ms">
+                <div class="hic-num">03</div>
+                <div class="hic-icon">🛡️</div>
+                <h3>Tests & QA</h3>
+                <p>Sécurisation des systèmes complexes avec précision automatisée.</p>
+            </div>
+            <div class="hic-card reveal reveal-up" style="transition-delay:300ms">
+                <div class="hic-num">04</div>
+                <div class="hic-icon">📐</div>
+                <h3>Gouvernance</h3>
+                <p>Mise en place de frameworks durables de propriété des données.</p>
+            </div>
         </div>
-        <div class="reveal reveal-up" style="text-align: center; margin-top: 5rem; font-size: 1.8rem; font-weight: 800; color: #1a5d6a;">Résultat : <strong>plus d'impact, plus de fiabilité, plus de valeur</strong> pour les clients.</div>
+        <div class="hic-result reveal reveal-up">
+            <div class="hic-result-icon">🚀</div>
+            <div class="hic-result-text">
+                <strong>Plus d'impact, plus de fiabilité, plus de valeur pour les clients.</strong>
+                <span>Une expertise combinée qui transforme chaque projet data en avantage stratégique.</span>
+            </div>
+        </div>
     </div>
 </section>
 
-<section class="home-contact-cta">
+<!-- SECTION 7 : CTA FINAL -->
+<section class="grand-cta-section">
+    <div class="grand-cta-orb grand-cta-orb-1"></div>
+    <div class="grand-cta-orb grand-cta-orb-2"></div>
+    <div class="grand-cta-orb grand-cta-orb-3"></div>
     <div class="container">
-        <h2 class="reveal reveal-up">Nous grandissons plus forts ensemble.</h2>
-        <p class="reveal reveal-up" style="margin-bottom: 3rem;">Que vous soyez un cabinet de conseil, un intégrateur système ou un fournisseur de technologie...</p>
-        <div class="home-cta-actions reveal reveal-up"><a href="contact.html" class="btn-hero-primary" style="background: #f3756e; color: white;">Explorons notre collaboration →</a></div>
+        <div class="grand-cta-pills reveal reveal-up">
+            <span class="grand-cta-pill">Cabinets de Conseil</span>
+            <span class="grand-cta-pill">Intégrateurs Système</span>
+            <span class="grand-cta-pill">Fournisseurs Technologiques</span>
+        </div>
+        <h2 class="grand-cta-headline reveal reveal-up">Nous grandissons<br>plus forts ensemble.</h2>
+        <p class="grand-cta-desc reveal reveal-up">Que vous soyez un cabinet de conseil, un intégrateur système ou un fournisseur de technologie — il y a une place pour vous dans l'écosystème Acropora.</p>
+        <a href="contact.html" class="grand-cta-btn reveal reveal-up">
+            Explorons notre collaboration
+            <span class="grand-cta-btn-arrow">→</span>
+        </a>
     </div>
 </section>
 
@@ -399,7 +948,7 @@
             <div class="footer-section" style="flex: 1; min-width: 250px;">
                 <img src="acropora-logo-transparent.png" alt="Acropora Data" class="footer-logo" style="margin-bottom: 1rem; width: 180px; display: block;">
                 <p style="font-weight: 700; margin-bottom: 0.2rem; color: #fff;">Data Management Expert</p>
-                <p style="font-size: 0.85rem; opacity: 0.7; color: #fff;">Turn your data into strategic assets</p>
+                <p style="font-size: 0.85rem; opacity: 0.7; color: #fff;">Transformez vos données en actifs stratégiques</p>
                 <div style="margin-top: 1.5rem; display: flex; justify-content: center; width: 180px;">
                     <a href="https://www.linkedin.com/company/acropora-data" target="_blank" style="color: #81abb3; transition: color 0.3s;" onmouseover="this.style.color='#f3756e'" onmouseout="this.style.color='#81abb3'">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display: block !important;"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
@@ -451,39 +1000,36 @@
 document.querySelectorAll('.nav-item').forEach(function(item) {
     var link = item.querySelector('.nav-link');
     var mega = item.querySelector('.mega-menu');
-    if (!mega) return; // item sans sous-menu (ex: EN)
+    if (!mega) return;
 
     link.addEventListener('click', function(e) {
         var isMobile = window.innerWidth <= 768;
-        if (!isMobile) return; // sur desktop, le hover CSS suffit
+        if (!isMobile) return;
 
-        e.preventDefault(); // empêche la navigation (ces liens sont javascript:void)
-        
+        e.preventDefault();
+
         var isOpen = item.classList.contains('open');
-        
-        // Ferme tous les autres sous-menus ouverts
+
         document.querySelectorAll('.nav-item.open').forEach(function(other) {
             other.classList.remove('open');
-            other.querySelector('.mega-menu').style.display = '';
+            other.querySelector('.mega-menu').style.removeProperty('display');
         });
 
-        // Ouvre ou ferme celui-ci
         if (!isOpen) {
             item.classList.add('open');
-            mega.style.display = 'block';
+            mega.style.setProperty('display', 'block', 'important');
         }
     });
 });
 
-// Ferme le menu si on clique en dehors
 document.addEventListener('click', function(e) {
     if (!e.target.closest('.navbar')) {
         document.querySelectorAll('.nav-item.open').forEach(function(item) {
             item.classList.remove('open');
-            item.querySelector('.mega-menu').style.display = '';
+            item.querySelector('.mega-menu').style.removeProperty('display');
         });
     }
 });
-</script>q
+</script>
 </body>
 </html>

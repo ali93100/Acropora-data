@@ -196,6 +196,160 @@
             background: var(--primary-color);
         }
 
+        /* ── BI SCHEMA DIAGRAM ANIMÉ ── */
+        .bi-schema-wrap {
+            background: #f0f5f6;
+            border-radius: 14px;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            font-family: inherit;
+        }
+        .bi-layer {
+            border-radius: 10px;
+            padding: 0.75rem 0.9rem;
+        }
+        .bi-layer-tag {
+            display: block;
+            font-size: 0.55rem;
+            font-weight: 800;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            opacity: 0.75;
+        }
+        /* HUB */
+        .bi-layer-hub { background: linear-gradient(120deg, #f3756e, #e85d56); color: #fff; }
+        .bi-hub-row { display: flex; align-items: center; gap: 0.5rem; }
+        .bi-hub-center {
+            flex-shrink: 0;
+            background: rgba(255,255,255,0.22);
+            border: 2px solid rgba(255,255,255,0.55);
+            border-radius: 9px;
+            padding: 0.45rem 0.7rem;
+            text-align: center;
+            font-size: 0.6rem;
+            font-weight: 900;
+            line-height: 1.3;
+            animation: biHubPulse 2.5s ease-in-out infinite;
+        }
+        @keyframes biHubPulse {
+            0%,100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.45); }
+            50%      { box-shadow: 0 0 0 7px rgba(255,255,255,0); }
+        }
+        .bi-hub-beam {
+            flex: 0 0 24px;
+            height: 2px;
+            background: rgba(255,255,255,0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        .bi-hub-beam::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, #fff, transparent);
+            animation: biBeamFlow 1.8s linear infinite;
+        }
+        @keyframes biBeamFlow { 0%{left:-100%} 100%{left:100%} }
+        .bi-hub-outputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.28rem;
+            flex: 1;
+        }
+        .bi-output {
+            background: rgba(255,255,255,0.18);
+            border: 1px solid rgba(255,255,255,0.38);
+            border-radius: 6px;
+            padding: 0.28rem 0.4rem;
+            font-size: 0.55rem;
+            font-weight: 700;
+            text-align: center;
+            line-height: 1.3;
+            animation: biFadeIn 0.5s ease both;
+        }
+        .bi-output:nth-child(1){animation-delay:.1s}
+        .bi-output:nth-child(2){animation-delay:.2s}
+        .bi-output:nth-child(3){animation-delay:.3s}
+        .bi-output:nth-child(4){animation-delay:.4s}
+        /* V-CONNECTOR */
+        .bi-v-connector { display:flex; justify-content:center; padding: 0.18rem 0; }
+        .bi-v-flow-line {
+            width: 2px; height: 22px;
+            background: linear-gradient(180deg, #1a5d6a, #81abb3);
+            position: relative; overflow: hidden;
+        }
+        .bi-v-flow-line::after {
+            content:''; position:absolute; top:-100%; left:0;
+            width:100%; height:100%;
+            background: linear-gradient(180deg, transparent, rgba(255,255,255,0.9), transparent);
+            animation: biVFlow 1.4s linear infinite;
+        }
+        @keyframes biVFlow { 0%{top:-100%} 100%{top:100%} }
+        /* PROCESSING */
+        .bi-layer-proc { background: linear-gradient(120deg, #0d3d47, #1a5d6a); color: #fff; }
+        .bi-proc-row { display:flex; align-items:center; gap:0.2rem; }
+        .bi-proc-node {
+            flex-shrink: 0;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(129,171,179,0.3);
+            border-radius: 7px;
+            padding: 0.32rem 0.42rem;
+            font-size: 0.54rem;
+            font-weight: 700;
+            text-align: center;
+            line-height: 1.3;
+            animation: biFadeIn 0.5s ease both;
+        }
+        .bi-proc-node.bi-proc-key {
+            background: rgba(129,171,179,0.25);
+            border-color: #81abb3;
+            color: #d4eef2;
+            font-weight: 900;
+        }
+        .bi-proc-node:nth-child(1){animation-delay:.05s}
+        .bi-proc-node:nth-child(3){animation-delay:.15s}
+        .bi-proc-node:nth-child(5){animation-delay:.25s}
+        .bi-proc-node:nth-child(7){animation-delay:.35s}
+        .bi-proc-node:nth-child(9){animation-delay:.45s}
+        .bi-h-flow {
+            flex-shrink: 0; width: 12px; height: 2px;
+            background: rgba(129,171,179,0.4);
+            position: relative; overflow: hidden;
+        }
+        .bi-h-flow::after {
+            content:''; position:absolute; top:0; left:-100%;
+            width:100%; height:100%;
+            background: linear-gradient(90deg, transparent, #81abb3, transparent);
+            animation: biBeamFlow 1.5s linear infinite;
+        }
+        /* FOUNDATION */
+        .bi-layer-found { background: linear-gradient(120deg, #020d12, #081e23); color: #fff; }
+        .bi-found-row { display:flex; gap:0.35rem; }
+        .bi-source {
+            flex: 1;
+            background: rgba(129,171,179,0.1);
+            border: 1px solid rgba(129,171,179,0.22);
+            border-radius: 7px;
+            padding: 0.38rem 0.3rem;
+            font-size: 0.55rem;
+            font-weight: 700;
+            text-align: center;
+            line-height: 1.35;
+            animation: biFadeIn 0.5s ease both;
+        }
+        .bi-source:nth-child(1){animation-delay:.05s}
+        .bi-source:nth-child(2){animation-delay:.15s}
+        .bi-source:nth-child(3){animation-delay:.25s}
+        .bi-source:nth-child(4){animation-delay:.35s}
+        @keyframes biFadeIn {
+            from { opacity:0; transform:translateY(6px); }
+            to   { opacity:1; transform:translateY(0); }
+        }
+
         @media (max-width: 768px) {
             .why-acropora-content { flex-direction: column; gap: 3rem; }
             .why-acropora-img-wrapper { width: 100%; }
@@ -277,7 +431,7 @@
                 </div>
             </li>
             
-                        <li class="nav-item"><a href="blog.html" class="nav-link">Ressources</a></li>
+                        <li class="nav-item"><a href="javascript:void(0)" class="nav-link" style="cursor:default;">Ressources</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-2"><div class="mega-col"><div class="mega-col-title">Insights</div><a href="blog.html"><span class="link-text"><strong>Blog &amp; Événements</strong><span>Articles, insights &amp; événements</span></span></a></div></div></div></li>
             <li class="nav-item">
                 <a href="javascript:void(0)" class="nav-link cta-nav" style="cursor: default;">Contact</a>
                 <div class="mega-menu">
@@ -290,7 +444,7 @@
             
         </ul>
         <a href="bi-analytique_en.html" class="lang-switch">&#x1F1EC;&#x1F1E7; EN</a>
-        <button class="menu-toggle" onclick="document.querySelector('.nav-menu').classList.toggle('active')"><span></span><span></span><span></span></button>
+        <button class="menu-toggle" onclick="this.classList.toggle('active'); document.querySelector('.nav-menu').classList.toggle('active')"><span></span><span></span><span></span></button>
     </div>
 </nav>
 <section class="page-hero" data-hero-anim="bi">
@@ -313,10 +467,10 @@
 </section>
 
 <!-- SECTION TRUSTED ANALYTICS INTRO -->
-<section class="page-section reveal reveal-up" style="padding-top: 0.5rem; padding-bottom: 2rem;">
+<section class="page-section reveal reveal-up" style="padding-top: 0.5rem; padding-bottom: 2rem; background: #020d12;">
     <div class="container">
         <div class="section-header">
-            <h2 class="home-section-title">Des analyses fiables commencent par les bonnes fondations</h2>
+            <h2 class="home-section-title" style="color: #fff;">Des analyses fiables commencent par les bonnes fondations</h2>
             <div class="home-divider"></div>
             <p class="home-section-subtitle" style="color: #81abb3; font-weight: 600;">De nombreuses organisations investissent dans Power BI mais peinent à en tirer toute la valeur à cause de :</p>
         </div>
@@ -339,7 +493,7 @@
             </div>
         </div>
 
-        <div class="bi-conclusion-text reveal reveal-up" style="transition-delay: 1200ms;">
+        <div class="bi-conclusion-text reveal reveal-up" style="transition-delay: 1200ms; color: #fff;">
             "Sans une approche structurée, Power BI devient un simple outil de reporting — plutôt qu'un actif stratégique."
         </div>
     </div>
@@ -354,7 +508,49 @@
         </div>
         <div class="why-acropora-content">
             <div class="why-acropora-img-wrapper reveal reveal-left">
-                <img src="infographie-BI-fr.png" alt="Infographie Power BI Acropora">
+                <div class="bi-schema-wrap">
+                    <!-- LAYER 1: POWER BI HUB -->
+                    <div class="bi-layer bi-layer-hub">
+                        <span class="bi-layer-tag">Power BI Hub · Résultats Métier</span>
+                        <div class="bi-hub-row">
+                            <div class="bi-hub-center">Power BI<br>Solutions</div>
+                            <div class="bi-hub-beam"></div>
+                            <div class="bi-hub-outputs">
+                                <div class="bi-output">Décisions Data-Driven</div>
+                                <div class="bi-output">Analytique Prédictive</div>
+                                <div class="bi-output">Reporting Opérationnel</div>
+                                <div class="bi-output">Apps Mobile / Interne</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bi-v-connector"><div class="bi-v-flow-line"></div></div>
+                    <!-- LAYER 2: DATA ENGINEERING -->
+                    <div class="bi-layer bi-layer-proc">
+                        <span class="bi-layer-tag">Ingénierie & Traitement des Données</span>
+                        <div class="bi-proc-row">
+                            <div class="bi-proc-node">Architecture<br>des données</div>
+                            <div class="bi-h-flow"></div>
+                            <div class="bi-proc-node">Gouvernance</div>
+                            <div class="bi-h-flow"></div>
+                            <div class="bi-proc-node bi-proc-key">Fondation de<br>données fiable</div>
+                            <div class="bi-h-flow"></div>
+                            <div class="bi-proc-node">Scalabilité</div>
+                            <div class="bi-h-flow"></div>
+                            <div class="bi-proc-node">Alignement<br>métier</div>
+                        </div>
+                    </div>
+                    <div class="bi-v-connector"><div class="bi-v-flow-line"></div></div>
+                    <!-- LAYER 3: FOUNDATION -->
+                    <div class="bi-layer bi-layer-found">
+                        <span class="bi-layer-tag">Fondation Robuste & Évolutive</span>
+                        <div class="bi-found-row">
+                            <div class="bi-source">Systèmes<br>Legacy</div>
+                            <div class="bi-source">Data Lakes<br>Cloud</div>
+                            <div class="bi-source">ERP /<br>CRM</div>
+                            <div class="bi-source">IoT /<br>Streaming</div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="why-acropora-text-content reveal reveal-right">
                 <p style="color: #81abb3; font-size: 1.25rem; font-weight: 600; line-height: 1.8;">Nous livrons des solutions Power BI de bout en bout basées sur l'architecture des données, la gouvernance et l'alignement métier.<br><br>Notre méthodologie garantit que chaque tableau de bord est construit sur une fondation de données robuste, évolutive et fiable, permettant une valeur à long terme — et pas seulement une visualisation à court terme.</p>
@@ -592,7 +788,6 @@
             d'entreprise fiable, qui favorise de meilleures décisions à tous les niveaux.</p>
             <div class="star-wars-cta reveal">
                 <a href="contact.html" class="btn-star-wars">Demander une consultation</a>
-                <a href="contact.html" class="btn-star-wars">Parler à un expert Power BI</a>
             </div>
         </div>
     </div>
@@ -604,7 +799,7 @@
             <div class="footer-section" style="flex: 1; min-width: 250px;">
                 <img src="acropora-logo-transparent.png" alt="Acropora Data" class="footer-logo" style="margin-bottom: 1rem; width: 180px; display: block;">
                 <p style="font-weight: 700; margin-bottom: 0.2rem; color: #fff;">Data Management Expert</p>
-                <p style="font-size: 0.85rem; opacity: 0.7; color: #fff;">Turn your data into strategic assets</p>
+                <p style="font-size: 0.85rem; opacity: 0.7; color: #fff;">Transformez vos données en actifs stratégiques</p>
                 <div style="margin-top: 1.5rem; display: flex; justify-content: center; width: 180px;">
                     <a href="https://www.linkedin.com/company/acropora-data" target="_blank" style="color: #81abb3; transition: color 0.3s;" onmouseover="this.style.color='#f3756e'" onmouseout="this.style.color='#81abb3'">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display: block !important;"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
@@ -722,13 +917,13 @@ document.querySelectorAll('.nav-item').forEach(function(item) {
         // Ferme tous les autres sous-menus ouverts
         document.querySelectorAll('.nav-item.open').forEach(function(other) {
             other.classList.remove('open');
-            other.querySelector('.mega-menu').style.display = '';
+            other.querySelector('.mega-menu').style.removeProperty('display');
         });
 
         // Ouvre ou ferme celui-ci
         if (!isOpen) {
             item.classList.add('open');
-            mega.style.display = 'block';
+            mega.style.setProperty('display', 'block', 'important');
         }
     });
 });
@@ -738,7 +933,7 @@ document.addEventListener('click', function(e) {
     if (!e.target.closest('.navbar')) {
         document.querySelectorAll('.nav-item.open').forEach(function(item) {
             item.classList.remove('open');
-            item.querySelector('.mega-menu').style.display = '';
+            item.querySelector('.mega-menu').style.removeProperty('display');
         });
     }
 });

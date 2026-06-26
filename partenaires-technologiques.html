@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <!-- Google tag (gtag.js) -->
@@ -19,164 +19,826 @@
     <link rel="stylesheet" href="animations.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        .intro-dark{background:linear-gradient(160deg,#081e23 0%,#0d3d47 45%,#1a5d6a 100%);padding:7rem 0 8rem;position:relative;overflow:hidden}
-        .intro-dark::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(129,171,179,.08) 0%,transparent 70%);top:-150px;right:-100px;animation:orbFloat 14s ease-in-out infinite}
-        @keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-30px,25px) scale(1.1)}}
-        .intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;position:relative;z-index:1}
-        .intro-label{display:inline-block;color:#81abb3;font-size:.78rem;font-weight:800;letter-spacing:.25em;text-transform:uppercase;border:1px solid rgba(129,171,179,.3);border-radius:50px;padding:.4rem 1.2rem;margin-bottom:1.5rem}
-        .intro-title{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;color:#fff;line-height:1.15;margin-bottom:1.5rem}
-        .intro-title span{color:#f3756e}
-        .intro-text{color:rgba(255,255,255,.7);font-size:1rem;line-height:1.85;margin-bottom:1rem}
-        .stat-cards{display:flex;flex-direction:column;gap:1.4rem}
-        .stat-card{background:rgba(255,255,255,.05);border:1px solid rgba(129,171,179,.15);border-radius:16px;padding:1.6rem 2rem;display:flex;align-items:center;gap:1.4rem;transition:all .4s ease}
-        .stat-card:hover{background:rgba(255,255,255,.09);transform:translateX(8px)}
-        .stat-icon{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,rgba(26,93,106,.3),rgba(129,171,179,.2));display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
-        .stat-body strong{display:block;color:#fff;font-size:1.4rem;font-weight:900;line-height:1;margin-bottom:.25rem}
-        .stat-body span{color:rgba(255,255,255,.55);font-size:.82rem}
-        .section-tag{display:inline-block;color:var(--primary-color);font-size:.78rem;font-weight:800;letter-spacing:.25em;text-transform:uppercase;border:1px solid rgba(26,93,106,.2);border-radius:50px;padding:.4rem 1.2rem;background:rgba(26,93,106,.05);margin-bottom:1.2rem}
-        .partners-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;margin-top:3.5rem}
-        .partner-card{background:#fff;border:1px solid rgba(26,93,106,.08);border-radius:18px;padding:2rem 1.6rem;transition:all .4s cubic-bezier(.16,1,.3,1);cursor:default;position:relative;overflow:hidden}
-        .partner-card::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,#1a5d6a,#f3756e);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.16,1,.3,1)}
-        .partner-card:hover::after{transform:scaleX(1)}
-        .partner-card:hover{transform:translateY(-6px);box-shadow:0 20px 45px rgba(26,93,106,.12)}
-        .p-logo{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:.9rem;font-weight:900;color:#fff;margin-bottom:1.2rem;background:linear-gradient(135deg,#1a5d6a,#4a9fa8)}
-        .p-cat{display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:#f3756e;background:rgba(243,117,110,.08);padding:.2rem .7rem;border-radius:20px;margin-bottom:.6rem}
-        .p-name{font-size:1rem;font-weight:800;color:var(--primary-color);margin-bottom:.5rem}
-        .p-text{font-size:.8rem;color:var(--text-medium);line-height:1.65}
-        .dark-green{background:linear-gradient(160deg,#0d3d47 0%,#1a5d6a 60%,#1e6d7e 100%)}
-        .dark-green .section-tag{color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.07)}
-        .dark-green h2{color:#fff}
-        .dark-green .section-line{background:linear-gradient(90deg,rgba(255,255,255,.4),transparent)}
-        .tiers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;margin-top:3.5rem}
-        .tier-card{border-radius:20px;padding:2.2rem 2rem;backdrop-filter:blur(8px);transition:all .4s ease;position:relative;overflow:hidden}
-        .tier-card.partner{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)}
-        .tier-card.expert{background:rgba(129,171,179,.1);border:1px solid rgba(129,171,179,.25)}
-        .tier-card.strategic{background:rgba(243,117,110,.1);border:2px solid rgba(243,117,110,.3)}
-        .tier-card:hover{transform:translateY(-5px)}
-        .tier-badge{display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;padding:.3rem 1rem;border-radius:20px;margin-bottom:1rem}
-        .partner .tier-badge{background:rgba(255,255,255,.1);color:rgba(255,255,255,.6)}
-        .expert .tier-badge{background:rgba(129,171,179,.2);color:#81abb3}
-        .strategic .tier-badge{background:rgba(243,117,110,.2);color:#f3a49f}
-        .tier-title{font-size:1.2rem;font-weight:900;color:#fff;margin-bottom:1rem}
-        .tier-list{list-style:none;padding:0;margin:0}
-        .tier-list li{font-size:.83rem;color:rgba(255,255,255,.7);padding:.35rem 0;display:flex;gap:.6rem;align-items:flex-start}
-        .teaser-section{background:var(--subtle-gray);text-align:center;padding:5rem 0}
-        .teaser-section h3{font-size:1.6rem;font-weight:900;color:var(--primary-color);margin-bottom:1rem}
-        .teaser-section p{color:var(--text-medium);max-width:600px;margin:0 auto 2rem;line-height:1.8}
-        .final-cta{background:linear-gradient(160deg,#081e23 0%,#0d3d47 50%,#1a5d6a 100%);padding:7rem 0;text-align:center;position:relative;overflow:hidden}
-        .final-cta h2{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;color:#f3756e;margin-bottom:1rem;position:relative;z-index:1}
-        .final-cta p{color:rgba(255,255,255,.7);margin-bottom:2.5rem;position:relative;z-index:1}
-        .cta-btns{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
-        .btn-cta-primary{background:#f3756e;color:#fff !important;padding:1rem 2.4rem;border-radius:50px;text-decoration:none;font-weight:700;transition:all .35s ease;box-shadow:0 10px 28px rgba(243,117,110,.35)}
-        .btn-cta-primary:hover{transform:translateY(-3px) scale(1.04)}
-        .btn-cta-ghost{background:transparent;color:rgba(255,255,255,.85) !important;padding:1rem 2.4rem;border-radius:50px;text-decoration:none;font-weight:700;border:1.5px solid rgba(255,255,255,.3);transition:all .35s ease}
-        .btn-cta-ghost:hover{background:rgba(255,255,255,.1);transform:translateY(-3px)}
-        @media(max-width:1100px){.partners-grid{grid-template-columns:repeat(2,1fr)}}
-        @media(max-width:900px){.intro-grid{grid-template-columns:1fr;gap:3rem}.tiers-grid{grid-template-columns:1fr}}
+/* ═══════════════════════════════════════════════════
+   PAGE PARTENAIRES TECHNOLOGIQUES — Styles spécifiques
+═══════════════════════════════════════════════════ */
+
+/* ── INTRO WOW ── */
+.tp-intro {
+    background: #fff;
+    padding: 6rem 0 5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.tp-intro::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(26,93,106,.06) 0%, transparent 70%);
+    pointer-events: none;
+}
+.tp-intro-label {
+    display: inline-block;
+    font-size: .72rem; font-weight: 800; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--primary-color);
+    border: 1px solid rgba(26,93,106,.2);
+    border-radius: 50px; padding: .4rem 1.4rem;
+    margin-bottom: 2rem;
+    background: rgba(26,93,106,.04);
+}
+.tp-intro-title {
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    font-weight: 900;
+    color: var(--primary-color);
+    line-height: 1.1;
+    margin-bottom: 1.4rem;
+    letter-spacing: -.02em;
+}
+.tp-intro-title .highlight {
+    background: linear-gradient(135deg, #1a5d6a, #4a9fa8, #f3756e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.tp-intro-sub {
+    font-size: clamp(1.05rem, 2vw, 1.3rem);
+    color: var(--text-medium);
+    max-width: 680px;
+    margin: 0 auto 3rem;
+    line-height: 1.7;
+}
+.tp-intro-dividers {
+    display: flex; align-items: center; justify-content: center; gap: 1rem;
+    margin-bottom: 3.5rem;
+}
+.tp-intro-dividers span {
+    display: block;
+    height: 3px; border-radius: 3px;
+    background: linear-gradient(90deg, var(--primary-color), #4a9fa8);
+}
+.tp-intro-dividers span:nth-child(1) { width: 60px; }
+.tp-intro-dividers span:nth-child(2) { width: 12px; background: #f3756e; }
+.tp-intro-dividers span:nth-child(3) { width: 40px; }
+
+.tp-intro-counters {
+    display: flex; justify-content: center; gap: 4rem; flex-wrap: wrap;
+}
+.tp-intro-counter { text-align: center; }
+.tp-intro-counter-num {
+    font-size: 2.8rem; font-weight: 900;
+    color: var(--primary-color); line-height: 1;
+    display: block; margin-bottom: .3rem;
+}
+.tp-intro-counter-lbl {
+    font-size: .78rem; font-weight: 600; color: var(--text-light);
+    letter-spacing: .08em; text-transform: uppercase;
+}
+
+/* ── SECTION ARCHITECTE ── */
+.tp-arch-section {
+    background: #81abb3;
+    padding: 7rem 0;
+    position: relative;
+    overflow: hidden;
+}
+.tp-arch-section::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), #4a9fa8, #f3756e, transparent);
+}
+.tp-arch-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+}
+.tp-arch-tag {
+    display: inline-block;
+    font-size: .7rem; font-weight: 800; letter-spacing: .22em; text-transform: uppercase;
+    color: #f3756e;
+    border: 1px solid rgba(243,117,110,.3);
+    border-radius: 50px; padding: .35rem 1.2rem;
+    margin-bottom: 1.6rem;
+    background: rgba(243,117,110,.06);
+}
+.tp-arch-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 900; color: var(--primary-color);
+    line-height: 1.15; margin-bottom: 1.8rem;
+    letter-spacing: -.02em;
+}
+.tp-arch-text {
+    font-size: .97rem; color: var(--text-medium);
+    line-height: 1.85;
+}
+.tp-arch-text strong { color: var(--primary-color); }
+.tp-arch-cards { display: flex; flex-direction: column; gap: 1.2rem; }
+
+.tp-arch-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.6rem 2rem;
+    border-left: 4px solid var(--primary-color);
+    box-shadow: 0 4px 20px rgba(26,93,106,.07);
+    transition: transform .3s ease, box-shadow .3s ease;
+    position: relative;
+    overflow: hidden;
+}
+.tp-arch-card::after {
+    content: '';
+    position: absolute; bottom: 0; right: 0;
+    width: 60px; height: 60px;
+    background: radial-gradient(circle, rgba(26,93,106,.06) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(20px,20px);
+}
+.tp-arch-card:nth-child(2) { border-left-color: #4a9fa8; }
+.tp-arch-card:nth-child(3) { border-left-color: #f3756e; }
+.tp-arch-card:hover { transform: translateX(6px); box-shadow: 0 8px 32px rgba(26,93,106,.12); }
+.tp-arch-card h4 {
+    font-size: .8rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--primary-color); margin-bottom: .5rem;
+}
+.tp-arch-card p {
+    font-size: .88rem; color: var(--text-medium); line-height: 1.6; margin: 0;
+}
+
+/* ── ALIGNEMENT D'EXPERTISE ── */
+.tp-expertise-section {
+    background: #fff;
+    padding: 6rem 0;
+}
+.tp-expertise-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+}
+.tp-expertise-title {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 900; color: var(--primary-color);
+    margin-bottom: .8rem;
+}
+.tp-expertise-sub {
+    font-size: 1rem; color: var(--text-medium); max-width: 540px; margin: 0 auto;
+}
+.tp-expertise-pills {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;
+}
+.tp-expertise-pill {
+    display: flex; align-items: center; gap: .7rem;
+    padding: .8rem 1.6rem;
+    background: var(--subtle-gray);
+    border: 1.5px solid rgba(26,93,106,.1);
+    border-radius: 50px;
+    font-size: .88rem; font-weight: 600; color: var(--primary-color);
+    transition: all .3s ease;
+    cursor: default;
+}
+.tp-expertise-pill:hover {
+    background: var(--primary-color); color: #fff;
+    border-color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(26,93,106,.2);
+}
+.tp-expertise-pill-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #f3756e; flex-shrink: 0;
+    transition: background .3s;
+}
+.tp-expertise-pill:hover .tp-expertise-pill-dot { background: rgba(255,255,255,.7); }
+
+/* ── SECTION PARTENAIRES ── */
+.tp-partners-section {
+    background: var(--subtle-gray);
+    padding: 7rem 0;
+}
+.tp-partners-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+.tp-partners-label {
+    display: inline-block;
+    font-size: .7rem; font-weight: 800; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--primary-color); border: 1px solid rgba(26,93,106,.2);
+    border-radius: 50px; padding: .4rem 1.4rem; margin-bottom: 1.2rem;
+    background: rgba(26,93,106,.04);
+}
+.tp-partners-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 900; color: var(--primary-color);
+    letter-spacing: -.02em;
+}
+
+.tp-partner-card {
+    background: #fff;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(26,93,106,.07);
+    margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    min-height: 220px;
+    transition: transform .3s ease, box-shadow .3s ease;
+    border: 1.5px solid rgba(26,93,106,.08);
+}
+.tp-partner-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(26,93,106,.13);
+    border-color: rgba(26,93,106,.2);
+}
+.tp-partner-card-left {
+    background: linear-gradient(160deg, #0d3d47 0%, #1a5d6a 100%);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 2.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+}
+.tp-partner-card-left::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(74,159,168,.3) 0%, transparent 60%);
+}
+.tp-partner-badge {
+    font-size: 2.2rem; margin-bottom: .8rem; position: relative; z-index: 1;
+}
+.tp-partner-name {
+    font-size: 1.2rem; font-weight: 900; color: #fff;
+    position: relative; z-index: 1; text-align: center;
+}
+.tp-partner-tagline {
+    font-size: .75rem; color: rgba(255,255,255,.6);
+    margin-top: .3rem; position: relative; z-index: 1;
+    text-align: center; font-weight: 500;
+}
+
+.tp-partner-card-right {
+    padding: 2.5rem 3rem;
+    display: flex; flex-direction: column; justify-content: center;
+}
+.tp-partner-subtitle {
+    font-size: .72rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase;
+    color: #f3756e; margin-bottom: .8rem;
+}
+.tp-partner-desc {
+    font-size: .92rem; color: var(--text-medium); line-height: 1.7;
+    margin-bottom: 1.2rem;
+}
+.tp-partner-list {
+    list-style: none; display: flex; flex-direction: column; gap: .45rem;
+}
+.tp-partner-list li {
+    display: flex; align-items: flex-start; gap: .6rem;
+    font-size: .87rem; color: var(--text-dark); line-height: 1.5;
+}
+.tp-partner-list li::before {
+    content: '';
+    display: block; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--primary-color); flex-shrink: 0; margin-top: .45em;
+}
+.tp-partner-highlight {
+    margin-top: 1.2rem;
+    padding: .8rem 1.2rem;
+    background: rgba(26,93,106,.05);
+    border-left: 3px solid var(--accent-color);
+    border-radius: 0 8px 8px 0;
+    font-size: .85rem; color: var(--primary-color); font-weight: 600;
+    line-height: 1.5;
+}
+
+/* ── SECTION APPROCHE — FOND SOMBRE ── */
+.tp-approach-section {
+    background: #040f12;
+    padding: 8rem 0;
+    position: relative;
+    overflow: hidden;
+}
+.tp-approach-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+        radial-gradient(ellipse 60% 50% at 20% 50%, rgba(26,93,106,.25) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 60% at 80% 30%, rgba(74,159,168,.12) 0%, transparent 60%);
+    pointer-events: none;
+}
+.tp-approach-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    position: relative; z-index: 1;
+}
+.tp-approach-label {
+    display: inline-block;
+    font-size: .7rem; font-weight: 800; letter-spacing: .22em; text-transform: uppercase;
+    color: rgba(129,171,179,.8);
+    border: 1px solid rgba(129,171,179,.2);
+    border-radius: 50px; padding: .4rem 1.4rem;
+    margin-bottom: 1.6rem;
+    background: rgba(129,171,179,.06);
+}
+.tp-approach-title {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 900; color: #fff;
+    line-height: 1.15; margin-bottom: 2rem;
+    letter-spacing: -.02em;
+}
+.tp-approach-title em {
+    font-style: normal;
+    background: linear-gradient(135deg, #81abb3, #4a9fa8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.tp-approach-intro {
+    font-size: 1.1rem; color: rgba(255,255,255,.5);
+    line-height: 1.8; margin-bottom: 2.5rem;
+}
+.tp-approach-steps { display: flex; flex-direction: column; gap: 1rem; }
+.tp-approach-step {
+    display: flex; align-items: flex-start; gap: 1.2rem;
+    padding: 1.2rem 1.6rem;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 14px;
+    transition: background .3s, border-color .3s;
+}
+.tp-approach-step:hover {
+    background: rgba(255,255,255,.07);
+    border-color: rgba(129,171,179,.25);
+}
+.tp-approach-step-icon {
+    width: 42px; height: 42px; border-radius: 12px;
+    background: linear-gradient(135deg, rgba(26,93,106,.6), rgba(74,159,168,.4));
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    color: #81abb3;
+}
+.tp-approach-step h4 {
+    font-size: .92rem; font-weight: 700; color: #fff; margin-bottom: .25rem;
+}
+.tp-approach-step p {
+    font-size: .82rem; color: rgba(255,255,255,.5); line-height: 1.5; margin: 0;
+}
+
+/* orbe côté droit */
+.tp-approach-orb-wrap {
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+}
+.tp-approach-orb {
+    width: 340px; height: 340px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 35%, rgba(74,159,168,.22) 0%, rgba(26,93,106,.15) 40%, transparent 70%);
+    border: 1px solid rgba(129,171,179,.15);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    animation: tp-orb-pulse 6s ease-in-out infinite;
+}
+@keyframes tp-orb-pulse {
+    0%,100% { transform: scale(1); box-shadow: 0 0 60px rgba(26,93,106,.2); }
+    50%      { transform: scale(1.04); box-shadow: 0 0 100px rgba(74,159,168,.3); }
+}
+.tp-approach-orb-ring {
+    position: absolute; border-radius: 50%;
+    border: 1px solid rgba(129,171,179,.1);
+    animation: tp-ring-spin linear infinite;
+}
+.tp-approach-orb-ring:nth-child(1) { width: 420px; height: 420px; animation-duration: 18s; }
+.tp-approach-orb-ring:nth-child(2) { width: 510px; height: 510px; animation-duration: 28s; animation-direction: reverse; }
+@keyframes tp-ring-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.tp-approach-orb-inner {
+    text-align: center; position: relative; z-index: 1; padding: 2rem;
+}
+.tp-approach-orb-inner .big-text {
+    font-size: 1rem; font-weight: 800; color: rgba(255,255,255,.9);
+    line-height: 1.6;
+}
+.tp-approach-orb-inner .big-text span { display: block; margin-bottom: .5rem; }
+.tp-approach-orb-inner .big-text span::before {
+    content: '→ '; color: #f3756e;
+}
+
+/* ── CTA ── */
+.tp-cta-section {
+    background: linear-gradient(160deg, #0d3d47 0%, #1a5d6a 60%, #1e6d7e 100%);
+    padding: 7rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.tp-cta-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 80% at 50% 50%, rgba(74,159,168,.15) 0%, transparent 60%);
+    pointer-events: none;
+}
+.tp-cta-section .container { position: relative; z-index: 1; }
+.tp-cta-tag {
+    display: inline-block;
+    font-size: .7rem; font-weight: 800; letter-spacing: .22em; text-transform: uppercase;
+    color: rgba(255,255,255,.7);
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 50px; padding: .4rem 1.4rem;
+    margin-bottom: 1.6rem;
+    background: rgba(255,255,255,.07);
+}
+.tp-cta-title {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 900; color: #fff; line-height: 1.2;
+    margin-bottom: 1.2rem; letter-spacing: -.02em;
+}
+.tp-cta-title em { font-style: normal; color: #81abb3; }
+.tp-cta-sub {
+    font-size: 1rem; color: rgba(255,255,255,.65);
+    max-width: 560px; margin: 0 auto 2.5rem;
+    line-height: 1.7;
+}
+.tp-cta-arrows {
+    display: flex; flex-direction: column; align-items: center; gap: .6rem;
+    margin-bottom: 3rem;
+}
+.tp-cta-arrows p {
+    font-size: .92rem; color: rgba(255,255,255,.8); font-weight: 600;
+}
+.tp-cta-arrows p::before { content: '→ '; color: #f3756e; }
+.tp-cta-btn {
+    display: inline-flex; align-items: center; gap: .7rem;
+    background: #f3756e; color: #fff !important;
+    padding: 1.1rem 2.8rem; border-radius: 50px;
+    font-weight: 800; font-size: .95rem; text-decoration: none;
+    transition: all .35s cubic-bezier(.16,1,.3,1);
+    box-shadow: 0 12px 40px rgba(243,117,110,.4);
+}
+.tp-cta-btn:hover { transform: translateY(-3px) scale(1.04); box-shadow: 0 18px 50px rgba(243,117,110,.55); }
+
+/* Responsive */
+@media (max-width: 900px) {
+    .tp-arch-grid, .tp-approach-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .tp-partner-card { grid-template-columns: 1fr; }
+    .tp-partner-card-left { min-height: 140px; }
+    .tp-approach-orb-wrap { display: none; }
+}
+@media (max-width: 600px) {
+    .tp-intro-counters { gap: 2rem; }
+    .tp-partner-card-right { padding: 2rem 1.5rem; }
+}
     </style>
 </head>
 <body>
 <div class="parallax-coral"><div class="coral-shape"></div><div class="coral-shape"></div><div class="coral-shape"></div><div class="coral-shape"></div></div>
 <nav class="navbar">
     <div class="nav-container">
-        <div class="logo-container"><a href="index.html"><img src="acropora-logo-transparent.png" alt="Acropora Data" class="logo"></a></div>
+        <div class="logo-container">
+            <a href="index.html"><img src="acropora-logo-transparent.png" alt="Acropora Data" class="logo"></a>
+        </div>
         <ul class="nav-menu">
-            <li class="nav-item"><a href="javascript:void(0)" class="nav-link" style="cursor:default;">Présentation</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-4"><div class="mega-col"><div class="mega-col-title">L'entreprise</div><a href="presentation.html"><span class="link-text"><strong>Qui sommes-nous ?</strong><span>Notre histoire et vision</span></span></a></div><div class="mega-col"><div class="mega-col-title">Méthode</div><a href="approche-donnees.html"><span class="link-text"><strong>Notre approche données</strong><span>Méthodologie & framework</span></span></a></div><div class="mega-col"><div class="mega-col-title">Personnes</div><a href="equipe.html"><span class="link-text"><strong>Équipe</strong><span>Nos experts data</span></span></a></div><div class="mega-col"><div class="mega-col-title">Engagement</div><a href="ethique.html"><span class="link-text"><strong>Éthique & valeurs</strong><span>Nos principes fondateurs</span></span></a></div></div></div></li>
-            <li class="nav-item"><a href="javascript:void(0)" class="nav-link" style="cursor:default;">Solutions & Expertise</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-4"><div class="mega-col"><div class="mega-col-title">MDM</div><a href="mdm.html"><span class="link-text"><strong>MDM & Intégration</strong><span>Référentiels & pipelines</span></span></a><a href="ai-foundations.html"><span class="link-text"><strong>Fondations IA</strong><span>Données prêtes pour l'IA</span></span></a></div><div class="mega-col"><div class="mega-col-title">Assurance Qualité</div><a href="migration-mdm.html"><span class="link-text"><strong>Stratégie de Tests</strong><span>Transition sans interruption</span></span></a><a href="tests-validation.html"><span class="link-text"><strong>Automatisation de Tests</strong><span>Qualité & conformité</span></span></a></div><div class="mega-col"><div class="mega-col-title">Analytics</div><a href="bi-analytique.html"><span class="link-text"><strong>BI & Analytique</strong><span>Insights et reporting</span></span></a></div><div class="mega-col"><div class="mega-col-title">Audit</div><a href="cadrage-projet.html"><span class="link-text"><strong>Cadrage de projet</strong><span>Structurer vos initiatives</span></span></a></div></div></div></li>
-            <li class="nav-item"><a href="javascript:void(0)" class="nav-link active" style="cursor:default;">Partenaires</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-5"><div class="mega-col"><div class="mega-col-title">Technologie</div><a href="partenaires-technologiques.html"><span class="link-text"><strong>Partenaires technologiques</strong><span>Informatica, Snowflake, Azure…</span></span></a></div><div class="mega-col"><div class="mega-col-title">Business</div><a href="partenaires-commerciaux.html"><span class="link-text"><strong>Partenaires commerciaux</strong><span>Alliances et synergies business</span></span></a></div></div></div></li>
-            
-                        <li class="nav-item"><a href="blog.html" class="nav-link">Ressources</a></li>
-            <li class="nav-item"><a href="javascript:void(0)" class="nav-link cta-nav" style="cursor:default;">Contact</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-5"><div class="mega-col"><div class="mega-col-title">Rejoindre</div><a href="carrieres.html"><span class="link-text"><strong>Carrières</strong><span>Offres & candidatures</span></span></a></div><div class="mega-col"><div class="mega-col-title">Partenariat</div><a href="devenir-partenaire.html"><span class="link-text"><strong>Devenir partenaire</strong><span>Rejoindre l'écosystème</span></span></a></div></div></div></li>
-            
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link" style="cursor: default;">Présentation</a>
+                <div class="mega-menu">
+                    <div class="mega-menu-inner mega-menu-4">
+                        <div class="mega-col"><div class="mega-col-title">L'entreprise</div><a href="presentation.html"><span class="link-text"><strong>Qui sommes-nous ?</strong><span>Notre histoire et vision</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Méthode</div><a href="approche-donnees.html"><span class="link-text"><strong>Notre approche données</strong><span>Méthodologie & framework</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Personnes</div><a href="equipe.html"><span class="link-text"><strong>Équipe</strong><span>Nos experts data</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Engagement</div><a href="ethique.html"><span class="link-text"><strong>Éthique & valeurs</strong><span>Nos principes fondateurs</span></span></a></div>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link" style="cursor: default;">Solutions & Expertise</a>
+                <div class="mega-menu">
+                    <div class="mega-menu-inner mega-menu-4">
+                        <div class="mega-col"><div class="mega-col-title">MDM</div><a href="mdm.html"><span class="link-text"><strong>MDM & Intégration</strong><span>Référentiels & pipelines</span></span></a><a href="ai-foundations.html"><span class="link-text"><strong>Fondations IA</strong><span>Données prêtes pour l'IA</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Assurance Qualité</div><a href="migration-mdm.html"><span class="link-text"><strong>Stratégie de Tests</strong><span>Transition sans interruption</span></span></a><a href="tests-validation.html"><span class="link-text"><strong>Automatisation de Tests</strong><span>Qualité & conformité</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Analytics</div><a href="bi-analytique.html"><span class="link-text"><strong>BI & Analytique</strong><span>Insights et reporting</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Audit</div><a href="cadrage-projet.html"><span class="link-text"><strong>Cadrage de projet</strong><span>Structurer vos initiatives</span></span></a></div>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link active" style="cursor: default;">Partenaires</a>
+                <div class="mega-menu">
+                    <div class="mega-menu-inner mega-menu-2">
+                        <div class="mega-col">
+                            <div class="mega-col-title">Technologie</div>
+                            <a href="partenaires-technologiques.html"><span class="link-text"><strong>Partenaires technologiques</strong><span>Semarchy, OneBX, Talend…</span></span></a>
+                        </div>
+                        <div class="mega-col">
+                            <div class="mega-col-title">Business</div>
+                            <a href="partenaires-commerciaux.html"><span class="link-text"><strong>Partenaires commerciaux</strong><span>Alliances et synergies business</span></span></a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item"><a href="javascript:void(0)" class="nav-link" style="cursor:default;">Ressources</a><div class="mega-menu"><div class="mega-menu-inner mega-menu-2"><div class="mega-col"><div class="mega-col-title">Insights</div><a href="blog.html"><span class="link-text"><strong>Blog &amp; Événements</strong><span>Articles, analyses &amp; événements</span></span></a></div></div></div></li>
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link cta-nav" style="cursor: default;">Contact</a>
+                <div class="mega-menu">
+                    <div class="mega-menu-inner mega-menu-5">
+                        <div class="mega-col"><div class="mega-col-title">Rejoindre</div><a href="carrieres.html"><span class="link-text"><strong>Carrières</strong><span>Offres & candidatures</span></span></a></div>
+                        <div class="mega-col"><div class="mega-col-title">Partenariat</div><a href="devenir-partenaire.html"><span class="link-text"><strong>Devenir partenaire</strong><span>Rejoindre l'écosystème</span></span></a></div>
+                    </div>
+                </div>
+            </li>
         </ul>
         <a href="partenaires-technologiques_en.html" class="lang-switch">&#x1F1EC;&#x1F1E7; EN</a>
-        <button class="menu-toggle" onclick="document.querySelector('.nav-menu').classList.toggle('active')"><span></span><span></span><span></span></button>
+        <button class="menu-toggle" onclick="this.classList.toggle('active'); document.querySelector('.nav-menu').classList.toggle('active')"><span></span><span></span><span></span></button>
     </div>
 </nav>
-<section class="page-hero" data-hero-anim="tech-partners"><div class="container"><h1 class="page-title">Partenaires Technologiques</h1><p class="page-subtitle">Des alliances au service de votre excellence data</p></div></section>
 
-<section class="intro-dark"><div class="container"><div class="intro-grid">
-    <div class="reveal reveal-left">
-        <span class="intro-label">ÉCOSYSTÈME TECHNOLOGIQUE</span>
-        <h2 class="intro-title">Un écosystème<br><span>de référence</span></h2>
-        <p class="intro-text">Acropora Data a soigneusement sélectionné ses partenaires technologiques pour offrir à ses clients les meilleures solutions du marché, intégrées avec expertise et supportées dans la durée.</p>
-        <p class="intro-text">Chaque partenariat est le fruit d'une certification approfondie, d'une expérience terrain et d'une conviction partagée : la technologie ne vaut que par l'expertise qui l'accompagne.</p>
-    </div>
-    <div class="stat-cards reveal reveal-right">
-        <div class="stat-card"><div class="stat-icon">🤝</div><div class="stat-body"><strong>8+</strong><span>Partenaires certifiés</span></div></div>
-        <div class="stat-card"><div class="stat-icon">🏅</div><div class="stat-body"><strong>15+</strong><span>Certifications actives</span></div></div>
-        <div class="stat-card"><div class="stat-icon">📈</div><div class="stat-body"><strong>200+</strong><span>Projets réalisés avec nos partenaires</span></div></div>
-    </div>
-</div></div></section>
-
-<section class="page-section" style="background: #81abb3;"><div class="container">
-    <div class="section-header reveal reveal-up"><span class="section-tag">NOS PARTENAIRES</span><div class="section-line"></div><h2>Des solutions de classe mondiale</h2></div>
-    <div class="partners-grid">
-        <div class="partner-card reveal reveal-up" style="transition-delay:0ms"><div class="p-logo">EBX</div><span class="p-cat">MDM Platform</span><div class="p-name">TIBCO EBX</div><p class="p-text">Solution MDM leader pour la gestion de référentiels de données complexes — produit, client, fournisseur, localisation.</p></div>
-        <div class="partner-card reveal reveal-up" style="transition-delay:80ms"><div class="p-logo" style="background:linear-gradient(135deg,#e06f3a,#f0963b)">INF</div><span class="p-cat">Data Integration</span><div class="p-name">Informatica</div><p class="p-text">Plateforme de gouvernance et d'intégration de données de classe mondiale — référence du marché MDM.</p></div>
-        <div class="partner-card reveal reveal-up" style="transition-delay:160ms"><div class="p-logo" style="background:linear-gradient(135deg,#29b5e8,#16829a)">❄️</div><span class="p-cat">Cloud Data</span><div class="p-name">Snowflake</div><p class="p-text">Entrepôt de données cloud pour l'analyse à grande échelle — performance et élasticité sans compromis.</p></div>
-        <div class="partner-card reveal reveal-up" style="transition-delay:240ms"><div class="p-logo" style="background:linear-gradient(135deg,#0078d4,#004e8c)">Az</div><span class="p-cat">Cloud Platform</span><div class="p-name">Microsoft Azure</div><p class="p-text">Plateforme cloud hybride pour l'infrastructure et les services data — intégration native avec les outils Microsoft.</p></div>
-        <div class="partner-card reveal reveal-up" style="transition-delay:320ms"><div class="p-logo" style="background:linear-gradient(135deg,#6d4c9e,#9b59b6)">SEM</div><span class="p-cat">MDM/DQ</span><div class="p-name">Semarchy</div><p class="p-text">Solution MDM agile et orientée qualité — déploiement rapide pour PME et grandes entreprises.</p></div>
-        <div class="partner-card reveal reveal-up" style="transition-delay:400ms"><div class="p-logo" style="background:linear-gradient(135deg,#2d9cdb,#1a7bbf)">REL</div><span class="p-cat">MDM Cloud</span><div class="p-name">Reltio</div><p class="p-text">Plateforme MDM cloud-native pour la gestion des données maîtres en temps réel avec graph data.</p></div>
-        <div class="partner-card reveal reveal-up" style="transition-delay:480ms"><div class="p-logo" style="background:linear-gradient(135deg,#0faaff,#006ea6)">SAP</div><span class="p-cat">ERP/MDM</span><div class="p-name">SAP</div><p class="p-text">Intégration SAP et gestion des données maîtres dans les environnements ERP complexes — S/4HANA inclus.</p></div>
-        <div class="partner-card reveal reveal-up" style="transition-delay:560ms"><div class="p-logo" style="background:linear-gradient(135deg,#ff6d00,#e65100)">TAL</div><span class="p-cat">ETL/Integration</span><div class="p-name">Talend</div><p class="p-text">Solution open source pour l'intégration et la transformation de données — connecteurs universels et orchestration.</p></div>
-    </div>
-</div></section>
-
-<section class="page-section dark-green"><div class="container">
-    <div class="section-header reveal reveal-up"><span class="section-tag">NIVEAUX DE PARTENARIAT</span><div class="section-line"></div><h2>Notre engagement par niveau</h2></div>
-    <div class="tiers-grid">
-        <div class="tier-card partner reveal reveal-up" style="transition-delay:0ms">
-            <span class="tier-badge">Partner</span>
-            <div class="tier-title">Partenaire</div>
-            <ul class="tier-list">
-                <li>✅ Certification de base obtenue</li>
-                <li>✅ Intégration standard maîtrisée</li>
-                <li>✅ Support technique disponible</li>
-                <li>✅ Formation équipe validée</li>
-            </ul>
-        </div>
-        <div class="tier-card expert reveal reveal-up" style="transition-delay:150ms">
-            <span class="tier-badge">Expert Partner</span>
-            <div class="tier-title">Partenaire Expert</div>
-            <ul class="tier-list">
-                <li>✅ Certification avancée multi-modules</li>
-                <li>✅ 10+ projets livrés ensemble</li>
-                <li>✅ Accès aux roadmaps produit</li>
-                <li>✅ Support prioritaire éditeur</li>
-                <li>✅ Co-développement de solutions</li>
-            </ul>
-        </div>
-        <div class="tier-card strategic reveal reveal-up" style="transition-delay:300ms">
-            <span class="tier-badge">Strategic Partner ★</span>
-            <div class="tier-title">Partenaire Stratégique</div>
-            <ul class="tier-list">
-                <li>✅ Alliance commerciale formalisée</li>
-                <li>✅ Go-to-market conjoint</li>
-                <li>✅ Accès beta produit</li>
-                <li>✅ Co-marketing et co-vente</li>
-                <li>✅ Engagement long terme contractualisé</li>
-            </ul>
-        </div>
-    </div>
-</div></section>
-
-<section class="teaser-section reveal reveal-up">
+<!-- HERO -->
+<section class="page-hero" data-hero-anim="tech-partners">
     <div class="container">
-        <h3>Vous souhaitez rejoindre notre écosystème ?</h3>
-        <p>Acropora Data est ouvert aux nouvelles alliances technologiques. Si votre solution est complémentaire à notre expertise MDM, parlons-en.</p>
-        <a href="devenir-partenaire.html" class="btn-cta-primary" style="background:#f3756e;color:#fff !important;padding:1rem 2.4rem;border-radius:50px;text-decoration:none;font-weight:700;display:inline-block;transition:all .35s ease;box-shadow:0 10px 28px rgba(243,117,110,.35)">Devenir partenaire</a>
+        <h1 class="page-title">Partenaires Technologiques</h1>
+        <p class="page-subtitle">Les meilleures plateformes, intégrées avec expertise</p>
     </div>
 </section>
 
-<section class="final-cta"><div class="container">
-    <h2>La bonne technologie, entre les bonnes mains</h2>
-    <p>Contactez-nous pour discuter de la meilleure combinaison technologique pour votre projet</p>
-    <div class="cta-btns">
-        <a href="contact.html" class="btn-cta-primary">Parler à un expert</a>
-        <a href="mdm.html" class="btn-cta-ghost">Explorer nos solutions MDM</a>
+<!-- ═══ INTRO WOW ═══════════════════════════════════════ -->
+<section class="tp-intro">
+    <div class="container">
+        <span class="tp-intro-label reveal reveal-up">Notre Écosystème Technologique</span>
+        <h2 class="tp-intro-title reveal reveal-up">
+            Les meilleures plateformes pour délivrer des solutions data<br>
+            <span class="highlight">fiables, scalables et orientées métier.</span>
+        </h2>
+        <div class="tp-intro-dividers reveal reveal-up">
+            <span></span><span></span><span></span>
+        </div>
+        <p class="tp-intro-sub reveal reveal-up">
+            Nous ne nous contentons pas de nouer des partenariats technologiques — nous maîtrisons leurs plateformes pour délivrer des résultats concrets.
+        </p>
     </div>
-</div></section>
+</section>
+
+<!-- ═══ ARCHITECTE & INTÉGRATEUR ══════════════════════════ -->
+<section class="tp-arch-section">
+    <div class="container">
+        <div class="tp-arch-grid">
+            <div class="reveal reveal-left">
+                <span class="tp-arch-tag">Architecte &amp; Intégrateur</span>
+                <h2 class="tp-arch-title">Orchestrer un écosystème data de nouvelle génération</h2>
+                <p class="tp-arch-text">
+                    <span style="color:#fff;">Les organisations font face à une explosion d'outils hétérogènes. Cette fragmentation complique la gouvernance et nuit à la confiance dans vos actifs data.</span><br><br>
+                    <strong>Acropora agit en tant qu'architecte et intégrateur de plateformes data.</strong> <span style="color:#fff;">Nous ne sommes ni éditeur ni revendeur — notre rôle est de sélectionner, intégrer et faire coexister les meilleures technologies au service de vos enjeux métier.</span>
+                </p>
+            </div>
+            <div class="tp-arch-cards reveal reveal-right">
+                <div class="tp-arch-card">
+                    <h4>🔒 Gouvernance</h4>
+                    <p>Maîtrise complète du cycle de vie de la donnée — de l'ingestion et la transformation jusqu'à la qualité et la mise à disposition métier.</p>
+                </div>
+                <div class="tp-arch-card">
+                    <h4>⚖️ Indépendance</h4>
+                    <p>Aucun conflit d'intérêt éditeur. Nous recommandons la plateforme adaptée à votre contexte, pas celle que nous sommes incités à vendre.</p>
+                </div>
+                <div class="tp-arch-card">
+                    <h4>🔗 Excellence d'Intégration</h4>
+                    <p>Expertise de bout en bout reliant MDM, qualité des données, couches d'intégration et fondations IA dans une stratégie unifiée.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ ALIGNEMENT D'EXPERTISE ════════════════════════ -->
+<section class="tp-expertise-section">
+    <div class="container">
+        <div class="tp-expertise-header reveal reveal-up">
+            <h2 class="tp-expertise-title">Nos Domaines d'Expertise</h2>
+            <p class="tp-expertise-sub">Nos partenariats sont alignés avec nos compétences clés :</p>
+        </div>
+        <div class="tp-expertise-pills reveal reveal-up">
+            <div class="tp-expertise-pill"><span class="tp-expertise-pill-dot"></span>Master Data Management (MDM)</div>
+            <div class="tp-expertise-pill"><span class="tp-expertise-pill-dot"></span>Intégration &amp; Qualité des Données</div>
+            <div class="tp-expertise-pill"><span class="tp-expertise-pill-dot"></span>Gouvernance des Données</div>
+            <div class="tp-expertise-pill"><span class="tp-expertise-pill-dot"></span>Tests &amp; Assurance Qualité</div>
+            <div class="tp-expertise-pill"><span class="tp-expertise-pill-dot"></span>Fondations Data pour l'IA</div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ PARTENAIRES TECHNOLOGIQUES ════════════════════ -->
+<section class="tp-partners-section">
+    <div class="container">
+        <div class="tp-partners-header reveal reveal-up">
+            <span class="tp-partners-label">À la une</span>
+            <h2 class="tp-partners-title">Partenaires Technologiques</h2>
+        </div>
+
+        <!-- ON EBX -->
+        <div class="tp-partner-card reveal reveal-up">
+            <div class="tp-partner-card-left">
+                <div class="tp-partner-badge">🔹</div>
+                <div class="tp-partner-name">ON EBX</div>
+                <div class="tp-partner-tagline">Écosystème TIBCO EBX</div>
+            </div>
+            <div class="tp-partner-card-right">
+                <div class="tp-partner-subtitle">Notre expertise MDM phare</div>
+                <p class="tp-partner-desc">Nous utilisons TIBCO EBX comme plateforme centrale pour construire des systèmes de données de référence centralisés, gouvernés et scalables. Avec l'émergence de ON EBX, nous accompagnons les organisations dans :</p>
+                <ul class="tp-partner-list">
+                    <li>La modernisation de leur paysage MDM</li>
+                    <li>L'accélération des implémentations EBX</li>
+                    <li>La structuration de la gouvernance et des workflows</li>
+                </ul>
+                <div class="tp-partner-highlight">Notre force réside dans la combinaison de l'expertise fonctionnelle, de la livraison technique et de l'excellence en testing autour d'EBX.</div>
+            </div>
+        </div>
+
+        <!-- Semarchy -->
+        <div class="tp-partner-card reveal reveal-up" style="transition-delay:100ms">
+            <div class="tp-partner-card-left" style="background:linear-gradient(160deg,#1a3d5c 0%,#2e6090 100%);">
+                <div class="tp-partner-badge">🔷</div>
+                <div class="tp-partner-name">Semarchy</div>
+                <div class="tp-partner-tagline">Plateforme Data Nouvelle Génération</div>
+            </div>
+            <div class="tp-partner-card-right">
+                <div class="tp-partner-subtitle">MDM agile et orienté métier</div>
+                <p class="tp-partner-desc">Nous travaillons avec la Semarchy Data Platform (SDP) pour délivrer des implémentations MDM flexibles et rapides, alignées avec notre culture de la livraison :</p>
+                <ul class="tp-partner-list">
+                    <li>Implémentations MDM flexibles et rapides</li>
+                    <li>Applications data-driven</li>
+                    <li>Environnements data prêts pour l'IA</li>
+                </ul>
+                <div class="tp-partner-highlight">Semarchy permet une approche plus agile et orientée métier de la gestion des données.</div>
+            </div>
+        </div>
+
+        <!-- SAP -->
+        <div class="tp-partner-card reveal reveal-up" style="transition-delay:200ms">
+            <div class="tp-partner-card-left" style="background:linear-gradient(160deg,#1a4a2e 0%,#2e7a4a 100%);">
+                <div class="tp-partner-badge">🟢</div>
+                <div class="tp-partner-name">SAP</div>
+                <div class="tp-partner-tagline">Colonne Vertébrale Enterprise</div>
+            </div>
+            <div class="tp-partner-card-right">
+                <div class="tp-partner-subtitle">Intégration avec l'écosystème SAP</div>
+                <p class="tp-partner-desc">Nous accompagnons l'intégration des écosystèmes SAP, en garantissant que les données de référence restent cohérentes, fiables et alignées avec les opérations métier :</p>
+                <ul class="tp-partner-list">
+                    <li>Migrations S/4HANA</li>
+                    <li>Cohérence des données sur les paysages ERP</li>
+                    <li>Alignement des processus métier de bout en bout</li>
+                </ul>
+                <div class="tp-partner-highlight">Notre expertise garantit que les données de référence restent cohérentes, fiables et alignées avec les opérations métier.</div>
+            </div>
+        </div>
+
+        <!-- TIBCO -->
+        <div class="tp-partner-card reveal reveal-up" style="transition-delay:300ms">
+            <div class="tp-partner-card-left" style="background:linear-gradient(160deg,#3d1a0d 0%,#7a3a2e 100%);">
+                <div class="tp-partner-badge">🔶</div>
+                <div class="tp-partner-name">TIBCO</div>
+                <div class="tp-partner-tagline">Intégration &amp; Écosystème</div>
+            </div>
+            <div class="tp-partner-card-right">
+                <div class="tp-partner-subtitle">Intégration de données avancée &amp; écosystème</div>
+                <p class="tp-partner-desc">Au-delà d'EBX, nous exploitons l'écosystème TIBCO dans sa globalité pour une stratégie data complète :</p>
+                <ul class="tp-partner-list">
+                    <li>Intégration de données</li>
+                    <li>Gestion des API</li>
+                    <li>Architectures événementielles</li>
+                </ul>
+                <div class="tp-partner-highlight">Notre positionnement : relier MDM et intégration pour une stratégie data unifiée.</div>
+            </div>
+        </div>
+
+        <!-- Talend -->
+        <div class="tp-partner-card reveal reveal-up" style="transition-delay:400ms">
+            <div class="tp-partner-card-left" style="background:linear-gradient(160deg,#1a2e5c 0%,#2e4a90 100%);">
+                <div class="tp-partner-badge">🔵</div>
+                <div class="tp-partner-name">Talend</div>
+                <div class="tp-partner-tagline">Intégration &amp; Qualité des Données</div>
+            </div>
+            <div class="tp-partner-card-right">
+                <div class="tp-partner-subtitle">Intégration &amp; qualité des données à l'échelle</div>
+                <p class="tp-partner-desc">Nous utilisons Talend pour construire des pipelines de données robustes et garantir des flux fiables à travers tous les systèmes :</p>
+                <ul class="tp-partner-list">
+                    <li>Construction de pipelines ETL/ELT robustes</li>
+                    <li>Amélioration de la qualité des données</li>
+                    <li>Flux de données fiables entre systèmes</li>
+                </ul>
+                <div class="tp-partner-highlight">Combiné à notre expertise MDM, Talend nous permet de délivrer une fiabilité des données de bout en bout.</div>
+            </div>
+        </div>
+
+        <!-- TRICENTIS Tosca -->
+        <div class="tp-partner-card reveal reveal-up" style="transition-delay:500ms">
+            <div class="tp-partner-card-left" style="background:linear-gradient(160deg,#3d1a5c 0%,#5e2e90 100%);">
+                <div class="tp-partner-badge">🧪</div>
+                <div class="tp-partner-name">TRICENTIS Tosca</div>
+                <div class="tp-partner-tagline">Automatisation de Tests Enterprise</div>
+            </div>
+            <div class="tp-partner-card-right">
+                <div class="tp-partner-subtitle">Tests automatisés basés sur les modèles</div>
+                <p class="tp-partner-desc">Nous utilisons Tricentis Tosca pour accélérer les cycles de tests et garantir une qualité continue sur les applications enterprise complexes et les plateformes data :</p>
+                <ul class="tp-partner-list">
+                    <li>Automatisation sans code, propulsée par l'IA</li>
+                    <li>Optimisation des tests par le risque</li>
+                    <li>Intégration transparente dans les pipelines CI/CD</li>
+                </ul>
+                <div class="tp-partner-highlight">En tant que partenaire officiel, nous combinons la puissance de Tosca avec notre expertise approfondie en testing pour délivrer des plateformes data zéro défaut.</div>
+            </div>
+        </div>
+
+        <!-- Data Galaxy -->
+        <div class="tp-partner-card reveal reveal-up" style="transition-delay:600ms">
+            <div class="tp-partner-card-left" style="background:linear-gradient(160deg,#0d3d47 0%,#4a9fa8 100%);">
+                <div class="tp-partner-badge">🌌</div>
+                <div class="tp-partner-name">Data Galaxy</div>
+                <div class="tp-partner-tagline">Catalogue de Données &amp; Gouvernance</div>
+            </div>
+            <div class="tp-partner-card-right">
+                <div class="tp-partner-subtitle">Cartographie collaborative de la connaissance data</div>
+                <p class="tp-partner-desc">Nous exploitons Data Galaxy pour offrir aux organisations une vue unifiée et orientée métier de leurs actifs data, favorisant la collaboration et l'appropriation :</p>
+                <ul class="tp-partner-list">
+                    <li>Catalogage agile des données</li>
+                    <li>Lignage automatisé et analyse d'impact</li>
+                    <li>Glossaire métier et gestion des métadonnées</li>
+                </ul>
+                <div class="tp-partner-highlight">Data Galaxy nous permet de transformer des paysages data complexes en cartes de connaissance claires et partagées par toutes les parties prenantes.</div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ═══ NOTRE APPROCHE TECHNOLOGIQUE — FOND SOMBRE ═══════════════ -->
+<section class="tp-approach-section">
+    <div class="container">
+        <div class="tp-approach-grid">
+            <div>
+                <span class="tp-approach-label">Notre Philosophie</span>
+                <h2 class="tp-approach-title">Notre Approche de la <em>Technologie</em></h2>
+                <p class="tp-approach-intro">Nous n'implémentons pas seulement des outils. Nous construisons les bonnes fondations pour que vos données fonctionnent — à chaque étape.</p>
+                <div class="tp-approach-steps">
+                    <div class="tp-approach-step">
+                        <div class="tp-approach-step-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 2"/></svg>
+                        </div>
+                        <div>
+                            <h4>Choisir la bonne plateforme pour votre contexte</h4>
+                            <p>Pas de solution universelle. Nous évaluons votre maturité, vos contraintes et vos objectifs avant de recommander une technologie.</p>
+                        </div>
+                    </div>
+                    <div class="tp-approach-step">
+                        <div class="tp-approach-step-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 17.5h7M17.5 14v7"/></svg>
+                        </div>
+                        <div>
+                            <h4>Concevoir des architectures scalables</h4>
+                            <p>Nous architecturons des solutions qui évoluent avec votre organisation et restent maintenables dans le temps.</p>
+                        </div>
+                    </div>
+                    <div class="tp-approach-step">
+                        <div class="tp-approach-step-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                        <div>
+                            <h4>Assurer l'adoption métier</h4>
+                            <p>La technologie ne crée de la valeur que lorsque les équipes l'utilisent avec confiance. Nous intégrons la conduite du changement dès le premier jour.</p>
+                        </div>
+                    </div>
+                    <div class="tp-approach-step">
+                        <div class="tp-approach-step-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+                        </div>
+                        <div>
+                            <h4>Intégrer les tests et la qualité à chaque étape</h4>
+                            <p>La qualité n'est pas une réflexion après coup. Notre expertise QA est tissée dans chaque livraison, de la conception au démarrage.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tp-approach-orb-wrap">
+                <div class="tp-approach-orb">
+                    <div class="tp-approach-orb-ring"></div>
+                    <div class="tp-approach-orb-ring"></div>
+                    <div class="tp-approach-orb-inner">
+                        <div class="big-text">
+                            <span>Les bons outils</span>
+                            <span>La bonne expertise</span>
+                            <span>Le bon état d'esprit</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ CTA ══════════════════════════════════════════════ -->
+<section class="tp-cta-section">
+    <div class="container">
+        <span class="tp-cta-tag">Prêt à construire ?</span>
+        <h2 class="tp-cta-title">La technologie n'est puissante que<br>lorsqu'elle est <em>bien implémentée.</em></h2>
+        <p class="tp-cta-sub">Chez ACROPORA DATA, nous combinons technologie, expertise et état d'esprit pour bâtir vos fondations data pour l'IA et la performance métier.</p>
+        <div class="tp-cta-arrows reveal reveal-up">
+            <p>Les bons outils</p>
+            <p>La bonne expertise</p>
+            <p>Le bon état d'esprit</p>
+        </div>
+        <a href="contact.html" class="tp-cta-btn">Construisons vos fondations data →</a>
+    </div>
+</section>
 
 <footer class="footer">
     <div class="container">
@@ -184,7 +846,7 @@
             <div class="footer-section" style="flex: 1; min-width: 250px;">
                 <img src="acropora-logo-transparent.png" alt="Acropora Data" class="footer-logo" style="margin-bottom: 1rem; width: 180px; display: block;">
                 <p style="font-weight: 700; margin-bottom: 0.2rem; color: #fff;">Data Management Expert</p>
-                <p style="font-size: 0.85rem; opacity: 0.7; color: #fff;">Turn your data into strategic assets</p>
+                <p style="font-size: 0.85rem; opacity: 0.7; color: #fff;">Transformez vos données en actifs stratégiques</p>
                 <div style="margin-top: 1.5rem; display: flex; justify-content: center; width: 180px;">
                     <a href="https://www.linkedin.com/company/acropora-data" target="_blank" style="color: #81abb3; transition: color 0.3s;" onmouseover="this.style.color='#f3756e'" onmouseout="this.style.color='#81abb3'">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display: block !important;"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
@@ -227,43 +889,43 @@
         </div>
     </div>
 </footer>
-<script src="script.js"></script><script src="scroll-animations.js"></script><script src="pages.js"></script>
+
+<script src="script.js"></script>
+<script src="scroll-animations.js"></script>
+<script src="pages.js"></script>
 <script src="hero-animations.js"></script>
 <script>
 // Gestion du mega-menu sur mobile (tactile)
 document.querySelectorAll('.nav-item').forEach(function(item) {
     var link = item.querySelector('.nav-link');
     var mega = item.querySelector('.mega-menu');
-    if (!mega) return; // item sans sous-menu (ex: EN)
+    if (!mega) return;
 
     link.addEventListener('click', function(e) {
         var isMobile = window.innerWidth <= 768;
-        if (!isMobile) return; // sur desktop, le hover CSS suffit
+        if (!isMobile) return;
 
-        e.preventDefault(); // empêche la navigation (ces liens sont javascript:void)
-        
+        e.preventDefault();
+
         var isOpen = item.classList.contains('open');
-        
-        // Ferme tous les autres sous-menus ouverts
+
         document.querySelectorAll('.nav-item.open').forEach(function(other) {
             other.classList.remove('open');
-            other.querySelector('.mega-menu').style.display = '';
+            other.querySelector('.mega-menu').style.removeProperty('display');
         });
 
-        // Ouvre ou ferme celui-ci
         if (!isOpen) {
             item.classList.add('open');
-            mega.style.display = 'block';
+            mega.style.setProperty('display', 'block', 'important');
         }
     });
 });
 
-// Ferme le menu si on clique en dehors
 document.addEventListener('click', function(e) {
     if (!e.target.closest('.navbar')) {
         document.querySelectorAll('.nav-item.open').forEach(function(item) {
             item.classList.remove('open');
-            item.querySelector('.mega-menu').style.display = '';
+            item.querySelector('.mega-menu').style.removeProperty('display');
         });
     }
 });
