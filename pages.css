@@ -501,7 +501,12 @@
 .benefit-item:hover {
     background: var(--primary-color);
     color: var(--white);
-    transform: translateX(10px);
+}
+
+@media (hover: hover) {
+    .benefit-item:hover {
+        transform: translateX(10px);
+    }
 }
 
 .benefit-icon {
@@ -1575,12 +1580,20 @@
         padding: 4rem 0;
     }
     .bi-intro-animated h2 {
+        font-size: clamp(1.4rem, 5.5vw, 2rem);
+        word-break: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
         margin-bottom: 1rem;
     }
     .bi-intro-animated h3 {
+        font-size: clamp(1.2rem, 5vw, 1.7rem);
+        word-break: break-word;
+        overflow-wrap: break-word;
         margin-bottom: 1rem;
     }
     .bi-intro-animated p {
+        font-size: clamp(1rem, 4vw, 1.3rem);
         margin-bottom: 1rem;
     }
 }
