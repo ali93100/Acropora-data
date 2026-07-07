@@ -396,7 +396,7 @@ body { background: #f7f8f9; color: #0a2a35; font-family: 'Inter', sans-serif; ma
     <h2>How AI Learns Noise as Signal</h2>
     <p>Machine learning models have no concept of "correct." They observe patterns in data and build a compressed representation of that structure. If 25% of your customer records have corrupt address fields, the model doesn't identify corruption — it learns to associate that corrupt pattern with the outcomes that occurred alongside it. Corruption becomes a feature.</p>
     <p>This produces what we call the <strong>confidence gap</strong>: a model that outputs high-confidence predictions precisely because it found a pattern — but the pattern it found is a reflection of your data quality failures. It's not random noise. It's structured noise. Learned, compressed, and silently amplified every time the model runs.</p>
-    <p>The insidious part is that standard model metrics — accuracy, precision, F1 — look acceptable during evaluation because the test set carries the same corruption as the training set. The model performs well on dirty data because it was trained on dirty data. The validation confirms the problem rather than catching it.</p>
+    <p>The insidious part is that standard model metrics — accuracy, precision — look acceptable during evaluation because the test set carries the same corruption as the training set. The model performs well on dirty data because it was trained on dirty data. The validation confirms the problem rather than catching it.</p>
   </section>
 
   <blockquote class="art-pullquote reveal">

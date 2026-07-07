@@ -74,10 +74,14 @@ const navMenu = document.querySelector('.nav-menu');
         l2Panel.querySelector('.mdd-l2-title').textContent = title;
         var linksEl = l2Panel.querySelector('.mdd-l2-links');
         linksEl.innerHTML = '';
+        var currentPage = window.location.pathname.split('/').pop() || 'index.html';
         links.forEach(function (link) {
             var a = document.createElement('a');
             a.href = link.href;
             a.textContent = link.text;
+            if (link.href.split('/').pop() === currentPage) {
+                a.classList.add('mdd-current');
+            }
             linksEl.appendChild(a);
         });
         l1Panel.classList.add('slide-out');
@@ -390,6 +394,19 @@ if ('IntersectionObserver' in window) {
         imageObserver.observe(img);
     });
 }
+
+// ======================
+// Highlight current page in dropdown
+// ======================
+document.addEventListener('DOMContentLoaded', function () {
+    var currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.mega-col a').forEach(function (a) {
+        var href = (a.getAttribute('href') || '').split('/').pop();
+        if (href && href === currentPage) {
+            a.classList.add('nav-current');
+        }
+    });
+});
 
 // ======================
 // Console Message
