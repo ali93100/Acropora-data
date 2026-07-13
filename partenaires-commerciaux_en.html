@@ -414,6 +414,9 @@
             .hic-grid::before { display: none; }
             .hic-result { flex-direction: column; text-align: center; padding: 2rem; }
         }
+        @media(max-width:560px) {
+            .hic-grid { grid-template-columns: 1fr; }
+        }
 
         .ts-label {
             display: inline-block;
