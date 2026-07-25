@@ -434,111 +434,61 @@ body { background: #f7f8f9; color: #0a2a35; font-family: 'Inter', sans-serif; ma
     </div>
   </section>
 
-  <!-- ═══════ INFOGRAPHIC ═══════ -->
+  <!-- ═══════ EXTERNAL DATA ═══════ -->
   <section class="art-infographic reveal">
     <div class="art-infographic-card">
       <div class="art-infographic-header">
         <div class="art-infographic-label">
           <svg width="9" height="9" viewBox="0 0 10 10" fill="#81abb3"><circle cx="5" cy="5" r="5"/></svg>
-          Original Research
+          Reference Data · Dataversity / Gartner
         </div>
-        <h3 class="art-infographic-title">The Quality Multiplier Curve</h3>
-        <p class="art-infographic-desc">Data quality is not linearly related to AI output reliability. The relationship is non-linear and accelerating — meaning the gap between 85% quality and 95% quality is vastly more consequential than the gap between 55% and 65%.</p>
+        <h3 class="art-infographic-title">What Bad Data Actually Costs</h3>
+        <p class="art-infographic-desc">These figures come from independent research and publicly documented incidents. They put a number on what business intuition has long felt but struggled to quantify with precision.</p>
       </div>
 
-      <div class="qm-svg-wrap">
-        <svg viewBox="0 0 620 290" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="fillGrad" x1="0" x2="0" y1="0" y2="1">
-              <stop offset="0%" stop-color="rgba(74,159,168,0.35)"/>
-              <stop offset="100%" stop-color="rgba(74,159,168,0.0)"/>
-            </linearGradient>
-            <filter id="glow-dot">
-              <feGaussianBlur stdDeviation="2.5" result="blur"/>
-              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-          </defs>
-
-          <!-- Zone fills -->
-          <rect x="60" y="20" width="280" height="225" fill="rgba(243,117,110,0.06)" rx="0"/>
-          <rect x="340" y="20" width="120" height="225" fill="rgba(255,185,50,0.06)" rx="0"/>
-          <rect x="460" y="20" width="100" height="225" fill="rgba(74,199,128,0.07)" rx="0"/>
-
-          <!-- Horizontal grid -->
-          <line x1="60" y1="245" x2="560" y2="245" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-          <line x1="60" y1="188" x2="560" y2="188" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-          <line x1="60" y1="132" x2="560" y2="132" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-          <line x1="60" y1="75" x2="560" y2="75" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-          <line x1="60" y1="20" x2="560" y2="20" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-
-          <!-- Axes -->
-          <line x1="60" y1="20" x2="60" y2="248" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
-          <line x1="60" y1="245" x2="562" y2="245" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
-
-          <!-- Area fill (animated) -->
-          <path class="qm-area"
-            d="M 60,236 C 125,228 168,200 210,186 C 265,170 308,160 340,150 C 375,138 415,112 440,94 C 460,80 476,66 490,58 C 510,48 525,41 560,28 L 560,245 L 60,245 Z"
-            fill="url(#fillGrad)"/>
-
-          <!-- Main curve (animated) -->
-          <path class="qm-curve"
-            d="M 60,236 C 125,228 168,200 210,186 C 265,170 308,160 340,150 C 375,138 415,112 440,94 C 460,80 476,66 490,58 C 510,48 525,41 560,28"
-            fill="none" stroke="#4a9fa8" stroke-width="2.8"
-            stroke-linecap="round" stroke-linejoin="round"/>
-
-          <!-- 90% threshold vertical line -->
-          <line class="qm-thresh" x1="460" y1="20" x2="460" y2="245" stroke="#4ac780" stroke-width="1.5"/>
-          <text x="464" y="34" fill="rgba(74,199,128,0.65)" font-size="9" font-family="Inter,sans-serif" font-weight="700">Enterprise threshold</text>
-
-          <!-- Zone labels -->
-          <text x="200" y="13" text-anchor="middle" fill="rgba(243,117,110,0.6)" font-size="8.5" font-family="Inter,sans-serif" font-weight="700" letter-spacing="1.5">UNRELIABLE</text>
-          <text x="400" y="13" text-anchor="middle" fill="rgba(255,185,50,0.6)" font-size="8.5" font-family="Inter,sans-serif" font-weight="700" letter-spacing="1.5">INCONSISTENT</text>
-          <text x="510" y="13" text-anchor="middle" fill="rgba(74,199,128,0.65)" font-size="8.5" font-family="Inter,sans-serif" font-weight="700" letter-spacing="1.5">TRUSTWORTHY</text>
-
-          <!-- Data points -->
-          <circle class="qm-dot qm-dot-1" cx="60"  cy="236" r="5" fill="#4a9fa8" filter="url(#glow-dot)"/>
-          <circle class="qm-dot qm-dot-2" cx="210" cy="186" r="5" fill="#4a9fa8" filter="url(#glow-dot)"/>
-          <circle class="qm-dot qm-dot-3" cx="340" cy="150" r="5" fill="#ffb932" filter="url(#glow-dot)"/>
-          <circle class="qm-dot qm-dot-4" cx="440" cy="94"  r="5" fill="#ffb932" filter="url(#glow-dot)"/>
-          <circle class="qm-dot qm-dot-5" cx="490" cy="58"  r="5" fill="#4ac780" filter="url(#glow-dot)"/>
-          <circle class="qm-dot qm-dot-6" cx="560" cy="28"  r="5" fill="#4ac780" filter="url(#glow-dot)"/>
-
-          <!-- Point labels -->
-          <text class="qm-dot qm-dot-1" x="60"  y="256" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="8.5" font-family="Inter,sans-serif">50%</text>
-          <text class="qm-dot qm-dot-2" x="210" y="256" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="8.5" font-family="Inter,sans-serif">65%</text>
-          <text class="qm-dot qm-dot-3" x="340" y="256" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="8.5" font-family="Inter,sans-serif">78%</text>
-          <text class="qm-dot qm-dot-4" x="440" y="256" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="8.5" font-family="Inter,sans-serif">88%</text>
-          <text class="qm-dot qm-dot-5" x="490" y="256" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="8.5" font-family="Inter,sans-serif">93%</text>
-          <text class="qm-dot qm-dot-6" x="560" y="256" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="8.5" font-family="Inter,sans-serif">98%</text>
-
-          <!-- Y axis labels -->
-          <text x="52" y="249" text-anchor="end" fill="rgba(255,255,255,0.25)" font-size="8.5" font-family="Inter,sans-serif">50</text>
-          <text x="52" y="136" text-anchor="end" fill="rgba(255,255,255,0.25)" font-size="8.5" font-family="Inter,sans-serif">75</text>
-          <text x="52" y="24" text-anchor="end" fill="rgba(255,255,255,0.25)" font-size="8.5" font-family="Inter,sans-serif">100</text>
-
-          <!-- Axis titles -->
-          <text x="310" y="276" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="10" font-family="Inter,sans-serif">Data Quality Score (%)</text>
-          <text transform="rotate(-90,14,132)" x="14" y="132" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="10" font-family="Inter,sans-serif">AI Output Reliability (%)</text>
-
-          <!-- Zone separator lines -->
-          <line x1="340" y1="20" x2="340" y2="245" stroke="rgba(255,255,255,0.07)" stroke-width="1" stroke-dasharray="3,3"/>
-          <line x1="460" y1="20" x2="460" y2="245" stroke="rgba(255,255,255,0.07)" stroke-width="1" stroke-dasharray="3,3"/>
-        </svg>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;margin:1.8rem 0;">
+        <div style="background:rgba(10,42,53,0.65);padding:1.8rem 1.2rem;text-align:center;">
+          <div style="font-size:2rem;font-weight:800;color:#4a9fa8;letter-spacing:-0.04em;line-height:1;margin-bottom:0.55rem;">$12.9M</div>
+          <div style="font-size:0.75rem;color:rgba(255,255,255,0.45);line-height:1.55;">average annual cost of poor data quality per organisation</div>
+          <div style="font-size:0.65rem;color:rgba(255,255,255,0.22);margin-top:0.5rem;font-style:italic;">Source: Gartner</div>
+        </div>
+        <div style="background:rgba(10,42,53,0.65);padding:1.8rem 1.2rem;text-align:center;">
+          <div style="font-size:2rem;font-weight:800;color:#f3756e;letter-spacing:-0.04em;line-height:1;margin-bottom:0.55rem;">100×</div>
+          <div style="font-size:0.75rem;color:rgba(255,255,255,0.45);line-height:1.55;">the cost of a problem caught at end-of-chain versus at source (the 1×10×100 rule)</div>
+          <div style="font-size:0.65rem;color:rgba(255,255,255,0.22);margin-top:0.5rem;font-style:italic;">Source: Dataversity</div>
+        </div>
+        <div style="background:rgba(10,42,53,0.65);padding:1.8rem 1.2rem;text-align:center;">
+          <div style="font-size:2rem;font-weight:800;color:#ffb932;letter-spacing:-0.04em;line-height:1;margin-bottom:0.55rem;">80%</div>
+          <div style="font-size:0.75rem;color:rgba(255,255,255,0.45);line-height:1.55;">of data scientists' time spent on data preparation and cleaning</div>
+          <div style="font-size:0.65rem;color:rgba(255,255,255,0.22);margin-top:0.5rem;font-style:italic;">Source: Forbes / Dataversity</div>
+        </div>
       </div>
 
-      <div class="qm-zones">
-        <div class="qm-zone-chip qm-zone-chip--red"><span class="dot"></span>Below 78% — AI outputs unreliable, high error amplification</div>
-        <div class="qm-zone-chip qm-zone-chip--amber"><span class="dot"></span>78–90% — Inconsistent, use-case dependent</div>
-        <div class="qm-zone-chip qm-zone-chip--green"><span class="dot"></span>Above 90% — Enterprise-grade AI reliability achieved</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.9rem;margin-bottom:1.6rem;">
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:1.3rem;">
+          <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#f3756e;margin-bottom:0.5rem;">Documented incident</div>
+          <div style="font-size:0.88rem;font-weight:700;color:#fff;margin-bottom:0.4rem;">Unity Software — 2022</div>
+          <div style="font-size:0.8rem;color:rgba(255,255,255,0.45);line-height:1.55;">Ingestion of corrupted data from a major customer: <strong style="color:rgba(255,255,255,0.72);">$110M in lost revenue</strong> and <strong style="color:rgba(255,255,255,0.72);">$4.2B in market capitalisation</strong> erased within days.</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:1.3rem;">
+          <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#f3756e;margin-bottom:0.5rem;">Documented incident</div>
+          <div style="font-size:0.88rem;font-weight:700;color:#fff;margin-bottom:0.4rem;">UK / Ireland Air Traffic Control</div>
+          <div style="font-size:0.8rem;color:rgba(255,255,255,0.45);line-height:1.55;">A data error in the air traffic control system: <strong style="color:rgba(255,255,255,0.72);">over 2,000 flights cancelled</strong>, cumulative airline losses estimated at <strong style="color:rgba(255,255,255,0.72);">$126.5M</strong>.</div>
+        </div>
+      </div>
+
+      <div style="padding-top:1.4rem;border-top:1px solid rgba(255,255,255,0.07);">
+        <p style="font-size:0.8rem;color:rgba(255,255,255,0.38);line-height:1.7;margin:0;">The 1×10×100 rule hits AI pipelines especially hard: a quality issue caught before ingestion costs 1× to fix. If it reaches the trained model, remediation climbs to 10×. If it propagates into operational decisions based on model outputs — as in the Unity case — the effective cost exceeds 100× the original investment. <em style="color:rgba(255,255,255,0.25);">Source: Salma Bakouk, CEO Sifflet — Dataversity.</em></p>
       </div>
     </div>
   </section>
 
   <section class="art-section reveal">
-    <h2>The MDM Prerequisite</h2>
-    <p>What the Quality Multiplier Curve reveals is that the conversation about AI readiness is really a conversation about Master Data Management. An MDM system — properly implemented — is the mechanism that moves data quality from the 65–75% range into the 90%+ enterprise-grade zone where AI outputs become trustworthy.</p>
-    <p>MDM does this by consolidating duplicate records (eliminating phantom entities), enforcing lifecycle governance (preventing temporal drift), and maintaining authoritative hierarchy structures (blocking cascade contamination). None of these are AI features. They're data infrastructure decisions. But they determine whether AI projects succeed or fail before a single model is trained.</p>
-    <p>The organizations we see deploying AI successfully aren't the ones with the most sophisticated algorithms. They're the ones that treated their master data as the foundation — not the afterthought — of their AI strategy. The return on MDM investment, in this context, is the return on every AI project it enables.</p>
+    <h2>Organisations That Succeed at AI Invest Differently</h2>
+    <p>The question isn't whether bad data is expensive — the figures above settle that. The real question is: <em>why do some organisations keep failing on this, while others deploy AI successfully?</em></p>
+    <p>Gartner has documented an answer that cuts against dominant intuition. <strong>Organisations with successful AI initiatives invest up to four times more in data and analytics foundations</strong> than those with less successful outcomes. Not in the models themselves. Not in GPU infrastructure. In data governance, master data management, and quality at source.</p>
+    <p>This isn't a technology investment. It's an investment in the reliability of what the technology consumes. MDM — properly implemented — is precisely that mechanism: it consolidates duplicate records, enforces lifecycle governance, and maintains authoritative hierarchy structures. None of these are AI features. They're data infrastructure decisions. But they determine whether AI projects will be profitable before a single model is trained.</p>
+    <p>The organisations we work with on the ground don't lack algorithmic ambition. What they consistently under-invest in is the foundation those algorithms must operate on. The return on MDM investment, in this context, isn't just the return of a data project. It's the compounding return on every AI initiative it makes possible.</p>
   </section>
 
   <div class="art-takeaways reveal">
@@ -554,7 +504,7 @@ body { background: #f7f8f9; color: #0a2a35; font-family: 'Inter', sans-serif; ma
       </div>
       <div class="art-takeaway">
         <span class="art-takeaway-num">03</span>
-        <span class="art-takeaway-text">Data quality gains above 90% unlock non-linear improvements in AI reliability — the curve is steep here.</span>
+        <span class="art-takeaway-text">According to Gartner, organisations that succeed at AI invest up to 4× more in data foundations — not in models, in quality at source.</span>
       </div>
       <div class="art-takeaway">
         <span class="art-takeaway-num">04</span>

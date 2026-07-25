@@ -272,8 +272,9 @@
             overflow: visible;
         }
         .team-net-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 2rem;
             position: relative; z-index: 1;
         }
@@ -283,6 +284,8 @@
             perspective: 1200px;
             height: 400px;
             cursor: pointer;
+            width: calc((100% - 4rem) / 3);
+            flex-shrink: 0;
         }
         .team-flip-inner {
             width: 100%; height: 100%;
@@ -410,11 +413,10 @@
         @media (max-width: 900px) {
             .leadership-row { flex-direction: column; align-items: center; gap: 3.5rem; }
             .lead-connector { display: none; }
-            .team-net-grid { grid-template-columns: repeat(2, 1fr); }
+            .team-flip-card { width: calc(50% - 1rem); }
         }
         @media (max-width: 580px) {
-            .team-net-grid { grid-template-columns: 1fr; }
-            .team-flip-card { height: 380px; }
+            .team-flip-card { width: 100%; height: 380px; }
             .leader-card-wrap { width: 250px; height: 480px; }
             .linkedin-card { padding: 2rem 1.5rem; }
             .leadership-header h2 { font-size: 1.8rem; }
@@ -713,31 +715,7 @@
                     </div>
                 </div>
 
-                <!-- [3] Reema -->
-                <div class="team-flip-card" onclick="flipTeam(this)">
-                    <div class="team-flip-inner">
-                        <div class="team-card-front">
-                            <img src="Reema Boodhram.JPG" alt="Reema Boodhram">
-                            <div class="team-card-front-overlay">
-                                <div class="tcf-name">Reema Boodhram</div>
-                                <div class="tcf-role">Tester</div>
-                            </div>
-                            <div class="tcf-hint">↻</div>
-                        </div>
-                        <div class="team-card-back">
-                            <div class="tcb-avatar">RB</div>
-                            <div class="tcb-name">Reema Boodhram</div>
-                            <div class="tcb-role">Tester</div>
-                            <div class="tcb-years">7+ years experience</div>
-                            <div class="tcb-divider"></div>
-                            <div class="tcb-label">Technologies</div>
-                            <div class="tcb-value">TIBCO EBX · SQL · MDM Testing · UAT</div>
-                            <div class="tcb-bio">Rigorous and proactive testing professional focused on quality and reliability. Testing is a trust lever that guarantees reliable solutions aligned to business needs.</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- [4] Andy -->
+                <!-- [3] Andy -->
                 <div class="team-flip-card" onclick="flipTeam(this)">
                     <div class="team-flip-inner">
                         <div class="team-card-front">

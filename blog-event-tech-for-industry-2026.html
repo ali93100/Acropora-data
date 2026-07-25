@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8FFCFJNNG2"></script>
@@ -10,8 +10,8 @@
 <meta charset="UTF-8">
 <link rel="icon" type="image/png" href="favicon-acropora.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Quand l'IA rencontre des données sales — ce qui se passe réellement dans les projets d'IA en entreprise lorsque la qualité des données est négligée. Par Acropora Data.">
-<title>Quand l'IA Rencontre des Données Sales — Acropora Data</title>
+<meta name="description" content="Acropora Data était au Tech for Industry Show 2026 à Paris Expo — deux jours de conférences, d'échanges avec les exposants et d'observations sur l'état réel de l'industrie 4.0.">
+<title>Tech for Industry Show 2026 — Rapport terrain Acropora Data</title>
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="pages.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -30,7 +30,7 @@ body { background: #f7f8f9; color: #0a2a35; font-family: 'Inter', sans-serif; ma
 /* ── HERO ── */
 .art-hero {
   position: relative; overflow: hidden;
-  background: linear-gradient(135deg, #0a0218 0%, #18083a 30%, #0d2040 60%, #050e1c 100%);
+  background: linear-gradient(135deg, #030d12 0%, #061c2a 30%, #0a2a18 60%, #030d12 100%);
   padding: 7rem 2rem 5rem; min-height: 480px;
   display: flex; align-items: center;
 }
@@ -48,9 +48,9 @@ body { background: #f7f8f9; color: #0a2a35; font-family: 'Inter', sans-serif; ma
   filter: blur(90px); pointer-events: none;
   animation: orb-float 9s ease-in-out infinite;
 }
-.orb-a { width: 500px; height: 500px; background: rgba(80,20,160,.22); top: -120px; right: -80px; animation-delay: 0s; }
-.orb-b { width: 350px; height: 350px; background: rgba(26,93,106,.18); bottom: -60px; left: 5%; animation-delay: 3s; }
-.orb-c { width: 250px; height: 250px; background: rgba(100,30,180,.2); top: 40%; left: 38%; animation-delay: 6s; }
+.orb-a { width: 500px; height: 500px; background: rgba(26,93,106,.28); top: -120px; right: -80px; animation-delay: 0s; }
+.orb-b { width: 350px; height: 350px; background: rgba(74,159,168,.15); bottom: -60px; left: 5%; animation-delay: 3s; }
+.orb-c { width: 250px; height: 250px; background: rgba(20,90,50,.22); top: 40%; left: 38%; animation-delay: 6s; }
 @keyframes orb-float {
   0%,100% { transform: translate(0,0) scale(1); }
   33%      { transform: translate(18px,-28px) scale(1.06); }
@@ -88,6 +88,23 @@ body { background: #f7f8f9; color: #0a2a35; font-family: 'Inter', sans-serif; ma
 }
 .art-meta-dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,.25); }
 
+/* ── FEATURED IMAGE ── */
+.art-feat-img {
+  width: 100%; max-height: 500px; overflow: hidden;
+  position: relative; background: #0a2a35;
+}
+.art-feat-img img {
+  width: 100%; height: 500px; object-fit: cover; object-position: center;
+  display: block;
+}
+.art-feat-img-caption {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(5,18,22,.85) 0%, transparent 100%);
+  padding: 2rem 2rem 1rem;
+  font-size: .72rem; color: rgba(255,255,255,.45);
+  font-style: italic;
+}
+
 /* ── KPI STRIP ── */
 .art-kpis { background: #fff; padding: 3rem 2rem; border-bottom: 1px solid rgba(10,42,53,.07); }
 .art-kpi-grid {
@@ -122,6 +139,57 @@ body { background: #f7f8f9; color: #0a2a35; font-family: 'Inter', sans-serif; ma
 }
 .art-section p:last-child { margin-bottom: 0; }
 
+/* ── EVENT DETAIL BANNER ── */
+.art-event-banner {
+  background: linear-gradient(135deg, #0a2a35 0%, #0d3a4a 100%);
+  border-radius: 16px; padding: 1.6rem 2rem;
+  display: flex; flex-wrap: wrap; gap: 1.5rem;
+  align-items: center; margin-bottom: 2.5rem;
+}
+.art-event-detail {
+  display: flex; align-items: center; gap: .65rem;
+}
+.art-event-detail-icon {
+  width: 32px; height: 32px; border-radius: 8px;
+  background: rgba(74,159,168,.15);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .9rem; flex-shrink: 0;
+}
+.art-event-detail-text { font-size: .82rem; color: rgba(255,255,255,.75); line-height: 1.4; }
+.art-event-detail-label { font-size: .62rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(129,171,179,.6); }
+
+/* ── OBSERVATION CARDS ── */
+.art-obs-grid {
+  display: grid; grid-template-columns: 1fr;
+  gap: 1rem; margin-top: 1.4rem;
+}
+.art-obs-card {
+  background: #fff; border-radius: 14px;
+  border: 1px solid rgba(10,42,53,.07);
+  box-shadow: 0 2px 16px rgba(10,42,53,.05);
+  padding: 1.4rem 1.6rem; display: flex; gap: 1.2rem; align-items: flex-start;
+}
+.art-obs-icon {
+  width: 36px; height: 36px; border-radius: 10px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+}
+.art-obs-icon--teal  { background: rgba(74,159,168,.1); }
+.art-obs-icon--green { background: rgba(74,180,100,.1); }
+.art-obs-icon--amber { background: rgba(255,180,50,.1); }
+.art-obs-icon--slate { background: rgba(100,130,160,.1); }
+.art-obs-tag {
+  font-size: .62rem; font-weight: 700; letter-spacing: .14em;
+  text-transform: uppercase; color: rgba(10,42,53,.35);
+  margin-bottom: .3rem;
+}
+.art-obs-name {
+  font-size: .92rem; font-weight: 700; color: #0a2a35; margin-bottom: .35rem;
+}
+.art-obs-desc {
+  font-size: .84rem; line-height: 1.6; color: rgba(10,42,53,.58);
+}
+
 /* ── PULL QUOTE ── */
 .art-pullquote {
   margin: 2.5rem 0; padding: 1.8rem 2rem;
@@ -139,101 +207,6 @@ body { background: #f7f8f9; color: #0a2a35; font-family: 'Inter', sans-serif; ma
   font-size: 1.12rem; font-weight: 600; font-style: italic;
   color: #0a2a35; line-height: 1.6; margin: 0;
 }
-
-/* ── FAILURE CARDS ── */
-.art-failure-grid {
-  display: grid; grid-template-columns: 1fr;
-  gap: 1rem; margin-top: 1.4rem;
-}
-.art-failure-card {
-  background: #fff; border-radius: 14px;
-  border: 1px solid rgba(10,42,53,.07);
-  box-shadow: 0 2px 16px rgba(10,42,53,.05);
-  padding: 1.4rem 1.6rem; display: flex; gap: 1.2rem; align-items: flex-start;
-}
-.art-failure-icon {
-  width: 36px; height: 36px; border-radius: 10px; flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.1rem;
-}
-.art-failure-icon--red  { background: rgba(243,117,110,.1); }
-.art-failure-icon--amber{ background: rgba(255,180,50,.1); }
-.art-failure-icon--blue { background: rgba(74,120,200,.1); }
-.art-failure-tag {
-  font-size: .62rem; font-weight: 700; letter-spacing: .14em;
-  text-transform: uppercase; color: rgba(10,42,53,.35);
-  margin-bottom: .3rem;
-}
-.art-failure-name {
-  font-size: .92rem; font-weight: 700; color: #0a2a35; margin-bottom: .35rem;
-}
-.art-failure-desc {
-  font-size: .84rem; line-height: 1.6; color: rgba(10,42,53,.58);
-}
-
-/* ── INFOGRAPHIC ── */
-.art-infographic { margin: 3rem 0; }
-.art-infographic-card {
-  background: linear-gradient(145deg, #07101a 0%, #0a1e2c 100%);
-  border: 1px solid rgba(74,159,168,.15);
-  border-radius: 20px; overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0,0,0,.25), 0 0 0 1px rgba(74,159,168,.06);
-}
-.art-infographic-header {
-  padding: 2rem 2rem 0; text-align: center;
-}
-.art-infographic-label {
-  display: inline-flex; align-items: center; gap: .4rem;
-  background: rgba(74,159,168,.1); border: 1px solid rgba(74,159,168,.2);
-  border-radius: 100px; padding: .22rem .75rem;
-  font-size: .62rem; font-weight: 700; letter-spacing: .14em;
-  text-transform: uppercase; color: #81abb3; margin-bottom: 1rem;
-}
-.art-infographic-title {
-  font-size: 1.15rem; font-weight: 700; color: #fff;
-  letter-spacing: -.02em; margin: 0 0 .5rem;
-}
-.art-infographic-desc {
-  font-size: .82rem; color: rgba(255,255,255,.38);
-  line-height: 1.6; margin: 0 0 1.5rem;
-}
-
-/* ── SVG CHART ── */
-.qm-svg-wrap { padding: .5rem 1.5rem 1.5rem; }
-.qm-svg-wrap svg { width: 100%; height: auto; overflow: visible; }
-
-.qm-area   { opacity: 0; transition: opacity 1.2s ease .9s; }
-.qm-curve  { stroke-dasharray: 1400; stroke-dashoffset: 1400; transition: stroke-dashoffset 2s cubic-bezier(.4,0,.2,1) .2s; }
-.qm-dot    { opacity: 0; transition: opacity .4s ease; }
-.qm-thresh { stroke-dasharray: 6,4; opacity: 0; transition: opacity .6s ease 1.8s; }
-
-.qm-svg-wrap.anim-in .qm-area   { opacity: 1; }
-.qm-svg-wrap.anim-in .qm-curve  { stroke-dashoffset: 0; }
-.qm-svg-wrap.anim-in .qm-thresh { opacity: 1; }
-.qm-svg-wrap.anim-in .qm-dot-1  { opacity: 1; transition-delay: .5s; }
-.qm-svg-wrap.anim-in .qm-dot-2  { opacity: 1; transition-delay: .72s; }
-.qm-svg-wrap.anim-in .qm-dot-3  { opacity: 1; transition-delay: .94s; }
-.qm-svg-wrap.anim-in .qm-dot-4  { opacity: 1; transition-delay: 1.16s; }
-.qm-svg-wrap.anim-in .qm-dot-5  { opacity: 1; transition-delay: 1.38s; }
-.qm-svg-wrap.anim-in .qm-dot-6  { opacity: 1; transition-delay: 1.6s; }
-
-/* ── ZONE CHIPS ── */
-.qm-zones {
-  display: flex; gap: .8rem; flex-wrap: wrap;
-  padding: 0 2rem 2rem; justify-content: center;
-}
-.qm-zone-chip {
-  display: flex; align-items: center; gap: .5rem;
-  padding: .4rem .9rem; border-radius: 100px;
-  font-size: .7rem; font-weight: 600;
-}
-.qm-zone-chip--red   { background: rgba(243,117,110,.12); color: #f3756e; border: 1px solid rgba(243,117,110,.2); }
-.qm-zone-chip--amber { background: rgba(255,185,50,.1); color: #ffb932; border: 1px solid rgba(255,185,50,.2); }
-.qm-zone-chip--green { background: rgba(74,199,128,.1); color: #4ac780; border: 1px solid rgba(74,199,128,.2); }
-.qm-zone-chip span.dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
-.qm-zone-chip--red span.dot   { background: #f3756e; }
-.qm-zone-chip--amber span.dot { background: #ffb932; }
-.qm-zone-chip--green span.dot { background: #4ac780; }
 
 /* ── TAKEAWAYS ── */
 .art-takeaways {
@@ -338,8 +311,8 @@ body { background: #f7f8f9; color: #0a2a35; font-family: 'Inter', sans-serif; ma
         </div></div>
       </li>
     </ul>
-    <a href="blog-ai-dirty-data_en.html" class="lang-switch">EN</a>
-        <button class="menu-toggle" onclick="this.classList.toggle('active');document.querySelector('.nav-menu').classList.toggle('active')"><span></span><span></span><span></span></button>
+    <a href="blog-event-tech-for-industry-2026_en.html" class="lang-switch">EN</a>
+    <button class="menu-toggle" onclick="this.classList.toggle('active');document.querySelector('.nav-menu').classList.toggle('active')"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
@@ -349,34 +322,41 @@ body { background: #f7f8f9; color: #0a2a35; font-family: 'Inter', sans-serif; ma
   <div class="art-hero-orb orb-b"></div>
   <div class="art-hero-orb orb-c"></div>
   <div class="container">
-    <div class="art-breadcrumb"><a href="blog.html">Blog &amp; Événements</a> &nbsp;/&nbsp; MDM &amp; IA</div>
-    <div class="art-cat-badge"><span class="art-cat-dot"></span>MDM &amp; IA</div>
-    <h1 class="art-hero-title">Quand l'IA Rencontre des <em>Données Sales</em> :<br>Ce Qui Se Passe Vraiment</h1>
-    <p class="art-hero-sub">Les modèles d'IA n'échouent pas bruyamment. Ils échouent avec assurance — en absorbant vos problèmes de qualité de données comme des caractéristiques apprises, et non comme des erreurs à ignorer.</p>
+    <div class="art-breadcrumb"><a href="blog.html">Blog &amp; Événements</a> &nbsp;/&nbsp; Événement · Rapport terrain</div>
+    <div class="art-cat-badge"><span class="art-cat-dot"></span>Événement · Rapport terrain</div>
+    <h1 class="art-hero-title">Tech for Industry Show 2026 —<br><em>Ce que nous avons observé à Paris</em></h1>
+    <p class="art-hero-sub">Deux jours à Paris Expo pour écouter l'industrie parler de sa transformation. Des conférences ancrées dans le réel, des exposants aux discours variés, et des questions qui révèlent un secteur en train de mûrir — pas toujours de la façon dont les brochures le racontent.</p>
     <div class="art-hero-meta">
       <span>Acropora Data</span>
       <span class="art-meta-dot"></span>
-      <span>Mai 2026</span>
+      <span>Juin 2026</span>
       <span class="art-meta-dot"></span>
-      <span>7 min de lecture</span>
+      <span>6 min de lecture</span>
     </div>
   </div>
 </section>
+
+<!-- ═══════════════════════ FEATURED IMAGE ═══════════════════════ -->
+<div class="art-feat-img">
+  <img src="https://www.robot-magazine.fr/wp-content/uploads/2026/06/Tech-For-Industry-lindustrie-4.0-sinvite-a-Paris-les-23-et-24-juin-780x470.jpeg"
+       alt="Tech for Industry Show 2026 — Paris Expo Porte de Versailles, Hall 5.2">
+  <div class="art-feat-img-caption">Tech for Industry Show 2026 · Paris Expo Porte de Versailles · 23–24 juin 2026 · © Robot Magazine</div>
+</div>
 
 <!-- ═══════════════════════ KPIs ═══════════════════════ -->
 <section class="art-kpis">
   <div class="art-kpi-grid">
     <div class="art-kpi reveal">
-      <span class="art-kpi-num" data-counter="73" data-suffix="%">0%</span>
-      <span class="art-kpi-label">des projets d'IA en entreprise sous-performent en raison de problèmes de qualité de données non résolus</span>
+      <span class="art-kpi-num" data-counter="100" data-suffix="+">0+</span>
+      <span class="art-kpi-label">exposants et startups réunis dans un seul hall dédié à l'industrie 4.0</span>
     </div>
     <div class="art-kpi reveal reveal-d1">
-      <span class="art-kpi-num" data-counter-float="4.2" data-suffix="x">0x</span>
-      <span class="art-kpi-label">facteur d'amplification — les erreurs de données systématiques s'amplifient, plutôt que de se réduire, dans les pipelines IA</span>
+      <span class="art-kpi-num" data-counter="4000" data-suffix="+">0+</span>
+      <span class="art-kpi-label">visiteurs professionnels — décideurs industriels, DSI, responsables opérations</span>
     </div>
     <div class="art-kpi reveal reveal-d2">
-      <span class="art-kpi-num">#1</span>
-      <span class="art-kpi-label">point de blocage cité par les data scientists — la qualité des données, avant le choix d'algorithme ou la puissance de calcul</span>
+      <span class="art-kpi-num" data-counter="55" data-suffix="+">0+</span>
+      <span class="art-kpi-label">conférences sur 2 jours — IA, digital twin, cybersécurité OT, supply chain 4.0</span>
     </div>
   </div>
 </section>
@@ -386,109 +366,101 @@ body { background: #f7f8f9; color: #0a2a35; font-family: 'Inter', sans-serif; ma
 <div class="art-inner">
 
   <section class="art-section reveal">
-    <h2>Le Problème n'est pas l'Algorithme</h2>
-    <p>La plupart des projets d'IA qui sous-performent n'échouent pas avec des messages d'erreur ou des traces d'exécution. Ils échouent silencieusement — en produisant des résultats confiants, fluides et systématiquement erronés. Les équipes qui les pilotent passent des mois à affiner les hyperparamètres, à changer d'architectures et à comparer des modèles. Le véritable goulot d'étranglement se situe en amont, invisible, dans les données sur lesquelles les modèles ont appris.</p>
-    <p>Nous avons travaillé au cœur de suffisamment d'initiatives d'IA en entreprise pour percevoir clairement le schéma. L'algorithme est rarement le maillon faible. Ce qui cède, c'est l'hypothèse selon laquelle la qualité des données est le problème de quelqu'un d'autre — une étape de pré-traitement qui peut être gérée plus tard, une fois que le modèle « a fait ses preuves ».</p>
-    <p>Il n'y a pas de « plus tard ». Au moment où un modèle est déployé, sa compréhension de la réalité est déjà figée. Alimentez-le avec des données sales pendant l'entraînement, et il produira une logique biaisée à l'inférence — à grande échelle, avec une haute confiance, et sans avertissement.</p>
+    <h2>Paris Expo, 23 &amp; 24 juin — Première édition, premier bilan</h2>
+
+    <div class="art-event-banner reveal">
+      <div class="art-event-detail">
+        <div class="art-event-detail-icon">📍</div>
+        <div>
+          <div class="art-event-detail-label">Lieu</div>
+          <div class="art-event-detail-text">Paris Expo Porte de Versailles · Hall 5.2</div>
+        </div>
+      </div>
+      <div class="art-event-detail">
+        <div class="art-event-detail-icon">📅</div>
+        <div>
+          <div class="art-event-detail-label">Dates</div>
+          <div class="art-event-detail-text">23 &amp; 24 juin 2026</div>
+        </div>
+      </div>
+      <div class="art-event-detail">
+        <div class="art-event-detail-icon">🏭</div>
+        <div>
+          <div class="art-event-detail-label">Focus</div>
+          <div class="art-event-detail-text">100 % Industrie 4.0</div>
+        </div>
+      </div>
+      <div class="art-event-detail">
+        <div class="art-event-detail-icon">🤝</div>
+        <div>
+          <div class="art-event-detail-label">Partenaires</div>
+          <div class="art-event-detail-text">SAP, Renault, Michelin, Accenture, BoostAerospace</div>
+        </div>
+      </div>
+    </div>
+
+    <p>La Tech for Industry Show n'était pas un salon de plus. Première édition d'un format pensé pour concentrer l'innovation industrielle en deux jours, le TFIS 2026 a fait le pari d'une proposition simple : 100 % Industrie 4.0, rien d'autre. Pas de dilution dans des thèmes généraux, pas de stands cosmétiques. Un hall entier dédié aux transformations concrètes de la factory connectée, de la supply chain intelligente et de la donnée industrielle.</p>
+    <p>Nous y étions en tant que visiteurs — pas pour présenter nos solutions, mais pour écouter. Écouter les exposants articuler leur offre, les conférenciers partager leurs retours d'expérience, et les décideurs poser des questions que leurs équipes n'osent pas toujours formuler ouvertement en interne. Deux jours d'observations, de conversations de couloir et d'échanges directs sur les stands.</p>
+    <p>Ce que nous en avons retiré confirme certaines intuitions acquises au fil de nos missions — et en remet d'autres en perspective.</p>
   </section>
 
   <section class="art-section reveal">
-    <h2>Comment l'IA Apprend le Bruit comme Signal</h2>
-    <p>Les modèles de machine learning n'ont aucune notion de « correct ». Ils observent des patterns dans les données et construisent une représentation compressée de cette structure. Si 25 % de vos enregistrements clients comportent des champs d'adresse corrompus, le modèle n'identifie pas la corruption — il apprend à associer ce pattern corrompu aux résultats qui se sont produits en parallèle. La corruption devient une feature.</p>
-    <p>Cela produit ce que nous appelons le <strong>fossé de confiance</strong> : un modèle qui génère des prédictions à haute confiance précisément parce qu'il a trouvé un pattern — mais le pattern qu'il a trouvé est le reflet de vos défaillances en qualité de données. Ce n'est pas du bruit aléatoire. C'est du bruit structuré. Appris, compressé, et silencieusement amplifié à chaque exécution du modèle.</p>
-    <p>La partie insidieuse est que les métriques standards des modèles — précision, exactitude — semblent acceptables lors de l'évaluation, car le jeu de test porte la même corruption que le jeu d'entraînement. Le modèle performe bien sur des données sales parce qu'il a été entraîné sur des données sales. La validation confirme le problème plutôt que de le détecter.</p>
+    <h2>Les conférences : là où le discours rencontre la réalité opérationnelle</h2>
+    <p>Avec plus de 55 sessions réparties sur deux jours, le programme du TFIS 2026 était dense. Nous avons assisté à une sélection de conférences couvrant l'IA en milieu industriel, la gouvernance de la donnée, le jumeau numérique et la cybersécurité OT. Quelques thèmes revenaient avec une régularité qui trahissait leur importance réelle sur le terrain.</p>
+    <div class="art-obs-grid">
+      <div class="art-obs-card reveal">
+        <div class="art-obs-icon art-obs-icon--teal">🤖</div>
+        <div>
+          <div class="art-obs-tag">Thème dominant</div>
+          <div class="art-obs-name">IA industrielle — promesses mesurées, implémentations prudentes</div>
+          <div class="art-obs-desc">Plusieurs conférenciers ont pris soin de distinguer les POC réussis des déploiements réellement opérationnels. La nuance était bienvenue. L'enthousiasme pour l'IA est réel, mais les orateurs les plus crédibles reconnaissaient tous la même contrainte : la qualité des données sources.</div>
+        </div>
+      </div>
+      <div class="art-obs-card reveal reveal-d1">
+        <div class="art-obs-icon art-obs-icon--green">🪞</div>
+        <div>
+          <div class="art-obs-tag">Tendance émergente</div>
+          <div class="art-obs-name">Le digital twin passe du prototype au déploiement réel</div>
+          <div class="art-obs-desc">Plusieurs acteurs — notamment dans l'aéronautique et l'énergie — présentaient des jumeaux numériques en production, pas en démo. La question qui revenait systématiquement depuis la salle : comment gouverner la donnée qui alimente le jumeau ? Une question que nous connaissons bien.</div>
+        </div>
+      </div>
+      <div class="art-obs-card reveal reveal-d2">
+        <div class="art-obs-icon art-obs-icon--amber">🔐</div>
+        <div>
+          <div class="art-obs-tag">Urgence croissante</div>
+          <div class="art-obs-name">Cybersécurité OT — l'angle mort qui s'éclaire enfin</div>
+          <div class="art-obs-desc">La convergence IT/OT crée des surfaces d'attaque que l'industrie commence seulement à prendre au sérieux. Les sessions cybersécurité affichaient complet. Le ton n'était plus celui de la sensibilisation théorique, mais du retour d'expérience post-incident — un signal clair de maturité du sujet.</div>
+        </div>
+      </div>
+      <div class="art-obs-card reveal reveal-d3">
+        <div class="art-obs-icon art-obs-icon--slate">🚚</div>
+        <div>
+          <div class="art-obs-tag">Résilience vs optimisation</div>
+          <div class="art-obs-name">Supply chain 4.0 — résilience en tête des priorités</div>
+          <div class="art-obs-desc">Les post-crises (pandémie, tensions géopolitiques) ont reconfiguré le débat. L'optimisation pure cède la place à la recherche d'une supply chain capable d'absorber les chocs. Les outils data et IA sont positionnés comme leviers de visibilité et d'anticipation — pas uniquement d'efficience.</div>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:1.4rem;">Ce qui frappait dans les échanges depuis la salle, c'est la qualité des questions. Les professionnels présents n'étaient pas venus pour être convaincus — ils étaient déjà engagés dans leurs transformations et cherchaient des réponses précises. "Qui est propriétaire de la donnée dans un contexte multi-sites ?" "Comment valide-t-on la fiabilité d'un modèle prédictif avant de lui confier des décisions opérationnelles ?" Ces interrogations révèlent un secteur en train de passer du questionnement stratégique à l'exécution concrète.</p>
+  </section>
+
+  <section class="art-section reveal">
+    <h2>Sur le floor : conversations directes avec les exposants</h2>
+    <p>Nous avons passé une large partie de nos deux jours à circuler entre les stands — des grandes plateformes industrielles (ERP, MES, SCADA) aux startups les plus audacieuses. Ces échanges directs, souvent plus révélateurs que les conférences, ont fait ressortir plusieurs constantes.</p>
+    <p>La donnée est au cœur de tous les discours. Quelle que soit la solution proposée — maintenance prédictive, optimisation énergétique, contrôle qualité par vision artificielle, gestion des stocks — chaque pitch repose sur une hypothèse implicite : les données sources sont propres, accessibles et structurées. Nous avons posé systématiquement la même question aux exposants : <em>"Que se passe-t-il lorsque la donnée client n'est pas fiable ?"</em> Les réponses ont été révélatrices.</p>
+    <p>Certains exposants avaient clairement intégré la gouvernance de la donnée dans leur approche. Ils parlaient de cycles de vie des données, de référentiels maîtres, de contrôles de cohérence en entrée de pipeline. Ces entreprises-là avaient une proposition de valeur crédible, ancrée dans la réalité opérationnelle de leurs clients.</p>
+    <p>D'autres proposaient des interfaces analytiques avancées, des tableaux de bord temps réel impressionnants visuellement — mais sur des fondations qui restaient floues dès que la conversation devenait technique. C'est précisément là que notre perspective MDM a pris de la valeur dans les échanges : poser les bonnes questions sur la chaîne de valeur de la donnée permet de distinguer rapidement ce qui tient la route de ce qui reste du marketing.</p>
   </section>
 
   <blockquote class="art-pullquote reveal">
-    <p>« Le modèle ne sait pas que vos données sont erronées. Il apprend simplement que l'erreur est normale — et construit toute une vision du monde autour d'elle. »</p>
+    <p>« Le salon a mis en lumière une tension que nous observons en mission : l'ambition technologique de l'industrie dépasse souvent la maturité de ses fondations data. La technologie avance. La donnée, elle, attend qu'on s'en occupe. »</p>
   </blockquote>
 
   <section class="art-section reveal">
-    <h2>Trois Modes de Défaillance Observés</h2>
-    <p>Au fil des missions client, trois patterns apparaissent avec une régularité suffisante pour être considérés comme systémiques plutôt qu'accidentels.</p>
-    <div class="art-failure-grid">
-      <div class="art-failure-card reveal">
-        <div class="art-failure-icon art-failure-icon--red">🔀</div>
-        <div>
-          <div class="art-failure-tag">Mode de Défaillance 01</div>
-          <div class="art-failure-name">Prolifération d'Entités Fantômes</div>
-          <div class="art-failure-desc">Les enregistrements fournisseurs ou clients en doublon amènent le modèle à apprendre que deux « entités » sont distinctes alors qu'elles sont identiques. Les évaluations de risque sont divisées. Les recommandations sont doublées. Les seuils calibrés par entité manquent l'exposition consolidée. Le modèle n'est pas erroné par hasard — il est précisément correct vis-à-vis d'une réalité qui n'existe pas.</div>
-        </div>
-      </div>
-      <div class="art-failure-card reveal reveal-d1">
-        <div class="art-failure-icon art-failure-icon--amber">🕐</div>
-        <div>
-          <div class="art-failure-tag">Mode de Défaillance 02</div>
-          <div class="art-failure-name">Cécité à la Dérive Temporelle</div>
-          <div class="art-failure-desc">Une IA entraînée sur des données maîtres obsolètes ne détecte pas que la classification d'une entité a changé. Elle génère des prédictions contre un profil qui n'existe plus — un fournisseur reclassé comme à haut risque reçoit toujours des recommandations à faible risque parce que la version du fournisseur dans le modèle est figée dans le temps. Le référentiel MDM n'a jamais été mis à jour. Le modèle ne l'a jamais su.</div>
-        </div>
-      </div>
-      <div class="art-failure-card reveal reveal-d2">
-        <div class="art-failure-icon art-failure-icon--blue">🔗</div>
-        <div>
-          <div class="art-failure-tag">Mode de Défaillance 03</div>
-          <div class="art-failure-name">Contamination en Cascade</div>
-          <div class="art-failure-desc">Un seul enregistrement de hiérarchie parent-enfant incorrect contamine chaque jointure en aval dans le pipeline de données. Les rapports, tableaux de bord et modèles qui touchent cette hiérarchie héritent de l'erreur structurelle. Dans les grands environnements d'entreprise, une seule relation erronée dans les données maîtres peut corrompre silencieusement des dizaines de surfaces analytiques dépendantes — y compris les modèles d'IA entraînés sur ces données.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════ EXTERNAL DATA ═══════ -->
-  <section class="art-infographic reveal">
-    <div class="art-infographic-card">
-      <div class="art-infographic-header">
-        <div class="art-infographic-label">
-          <svg width="9" height="9" viewBox="0 0 10 10" fill="#81abb3"><circle cx="5" cy="5" r="5"/></svg>
-          Données de Référence · Dataversity / Gartner
-        </div>
-        <h3 class="art-infographic-title">Ce que les données de mauvaise qualité coûtent réellement</h3>
-        <p class="art-infographic-desc">Ces chiffres sont issus de recherches indépendantes et d'incidents documentés publiquement. Ils quantifient ce que l'intuition métier ressent depuis longtemps mais que les directions peinent encore à chiffrer avec précision.</p>
-      </div>
-
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;margin:1.8rem 0;">
-        <div style="background:rgba(10,42,53,0.65);padding:1.8rem 1.2rem;text-align:center;">
-          <div style="font-size:2rem;font-weight:800;color:#4a9fa8;letter-spacing:-0.04em;line-height:1;margin-bottom:0.55rem;">12,9 M$</div>
-          <div style="font-size:0.75rem;color:rgba(255,255,255,0.45);line-height:1.55;">coût annuel moyen de la mauvaise qualité des données par organisation</div>
-          <div style="font-size:0.65rem;color:rgba(255,255,255,0.22);margin-top:0.5rem;font-style:italic;">Source : Gartner</div>
-        </div>
-        <div style="background:rgba(10,42,53,0.65);padding:1.8rem 1.2rem;text-align:center;">
-          <div style="font-size:2rem;font-weight:800;color:#f3756e;letter-spacing:-0.04em;line-height:1;margin-bottom:0.55rem;">100×</div>
-          <div style="font-size:0.75rem;color:rgba(255,255,255,0.45);line-height:1.55;">le coût d'un problème détecté en bout de chaîne versus à la source (règle 1×10×100)</div>
-          <div style="font-size:0.65rem;color:rgba(255,255,255,0.22);margin-top:0.5rem;font-style:italic;">Source : Dataversity</div>
-        </div>
-        <div style="background:rgba(10,42,53,0.65);padding:1.8rem 1.2rem;text-align:center;">
-          <div style="font-size:2rem;font-weight:800;color:#ffb932;letter-spacing:-0.04em;line-height:1;margin-bottom:0.55rem;">80 %</div>
-          <div style="font-size:0.75rem;color:rgba(255,255,255,0.45);line-height:1.55;">du temps des data scientists consacré à la préparation et au nettoyage des données</div>
-          <div style="font-size:0.65rem;color:rgba(255,255,255,0.22);margin-top:0.5rem;font-style:italic;">Source : Forbes / Dataversity</div>
-        </div>
-      </div>
-
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.9rem;margin-bottom:1.6rem;">
-        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:1.3rem;">
-          <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#f3756e;margin-bottom:0.5rem;">Incident documenté</div>
-          <div style="font-size:0.88rem;font-weight:700;color:#fff;margin-bottom:0.4rem;">Unity Software — 2022</div>
-          <div style="font-size:0.8rem;color:rgba(255,255,255,0.45);line-height:1.55;">Ingestion de données corrompues d'un client majeur : <strong style="color:rgba(255,255,255,0.72);">110 M$ de revenus perdus</strong> et <strong style="color:rgba(255,255,255,0.72);">4,2 Mds$ de capitalisation boursière</strong> effacés en quelques jours.</div>
-        </div>
-        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:1.3rem;">
-          <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#f3756e;margin-bottom:0.5rem;">Incident documenté</div>
-          <div style="font-size:0.88rem;font-weight:700;color:#fff;margin-bottom:0.4rem;">Contrôle aérien UK / Irlande</div>
-          <div style="font-size:0.8rem;color:rgba(255,255,255,0.45);line-height:1.55;">Erreur dans le système de contrôle aérien : <strong style="color:rgba(255,255,255,0.72);">plus de 2 000 vols annulés</strong>, pertes cumulées estimées à <strong style="color:rgba(255,255,255,0.72);">126,5 M$</strong> pour les compagnies aériennes.</div>
-        </div>
-      </div>
-
-      <div style="padding-top:1.4rem;border-top:1px solid rgba(255,255,255,0.07);">
-        <p style="font-size:0.8rem;color:rgba(255,255,255,0.38);line-height:1.7;margin:0;">La règle 1×10×100 est particulièrement brutale dans les pipelines IA : un problème détecté avant l'ingestion coûte 1× à corriger. S'il atteint le modèle entraîné, le coût monte à 10×. S'il se propage jusqu'aux décisions opérationnelles — comme dans le cas Unity — le coût effectif dépasse 100× l'investissement initial. <em style="color:rgba(255,255,255,0.25);">Source : Salma Bakouk, CEO Sifflet — Dataversity.</em></p>
-      </div>
-    </div>
-  </section>
-
-  <section class="art-section reveal">
-    <h2>Les Organisations qui Réussissent en IA Investissent Autrement</h2>
-    <p>La question n'est pas de savoir si les données de mauvaise qualité coûtent cher — les chiffres ci-dessus le démontrent sans ambiguïté. La vraie question est : <em>pourquoi certaines organisations continuent-elles à échouer sur ce point, quand d'autres déploient l'IA avec succès ?</em></p>
-    <p>Gartner a documenté une réponse qui va à l'encontre de l'intuition dominante. <strong>Les organisations dont les initiatives IA sont couronnées de succès investissent jusqu'à quatre fois plus dans leurs fondations data et analytics</strong> que celles dont les initiatives sont moins concluantes. Non pas dans les modèles. Non pas dans l'infrastructure GPU. Dans la gouvernance des données, les référentiels maîtres, et la qualité à la source.</p>
-    <p>Ce n'est pas un investissement technologique. C'est un investissement dans la fiabilité de ce que la technologie consomme. Le MDM — correctement implémenté — est précisément ce mécanisme : il consolide les enregistrements dupliqués, applique une gouvernance du cycle de vie, et maintient des structures hiérarchiques faisant autorité. Aucune de ces actions n'est une fonctionnalité IA. Ce sont des décisions d'infrastructure data. Mais elles déterminent si les projets IA seront rentables avant même qu'un seul modèle soit entraîné.</p>
-    <p>Les organisations que nous accompagnons en mission ne manquent pas d'ambition algorithmique. Ce qu'elles sous-investissent systématiquement, c'est le socle sur lequel ces algorithmes doivent opérer. Le retour sur investissement MDM, dans ce contexte, n'est pas seulement le retour d'un projet data. C'est le retour multiplicateur sur chaque initiative IA qu'il rend possible.</p>
+    <h2>Ce que ce salon révèle sur l'état réel de la transformation</h2>
+    <p>Le TFIS 2026 confirme que l'industrie manufacturière française et européenne est sérieusement engagée dans sa transformation numérique. Ce n'est plus une question de principe — c'est une exécution en cours chez un nombre croissant d'acteurs, à des stades très différents selon la taille et la maturité des organisations.</p>
+    <p>Mais cette transformation met aussi en évidence des fractures persistantes. La conversation la plus marquante de ces deux jours s'est tenue hors conférence, debout, avec un responsable digital d'un équipementier automobile de taille intermédiaire. Il ne parlait pas de la technologie — il parlait de la résistance au changement dans ses équipes métier, de la difficulté à définir qui est "propriétaire" d'une donnée partagée entre trois systèmes hérités, et du fait que son POC IA était bloqué non pas par un problème algorithmique, mais par l'impossibilité de réconcilier deux référentiels fournisseurs contradictoires.</p>
+    <p>C'est une conversation que nous avons eue en mission des dizaines de fois. La technologie n'est pas le frein. Le frein, c'est la gouvernance de la donnée — et l'organisation autour d'elle. Le TFIS 2026 a eu le mérite de créer l'espace pour que ces conversations émergent. C'est déjà beaucoup.</p>
   </section>
 
   <div class="art-takeaways reveal">
@@ -496,19 +468,19 @@ body { background: #f7f8f9; color: #0a2a35; font-family: 'Inter', sans-serif; ma
     <div class="art-takeaway-grid">
       <div class="art-takeaway">
         <span class="art-takeaway-num">01</span>
-        <span class="art-takeaway-text">Les modèles d'IA apprennent les défauts de qualité des données comme des features, pas des bugs — produisant des sorties erronées à haute confiance.</span>
+        <span class="art-takeaway-text">L'IA industrielle progresse — mais sa fiabilité opérationnelle bute encore systématiquement sur la qualité des données sources.</span>
       </div>
       <div class="art-takeaway">
         <span class="art-takeaway-num">02</span>
-        <span class="art-takeaway-text">Les métriques de précision standard ne détectent pas le problème lorsque les données de test portent la même corruption que les données d'entraînement.</span>
+        <span class="art-takeaway-text">Le digital twin passe du prototype au déploiement réel : la gouvernance de ses données devient le prochain défi à résoudre.</span>
       </div>
       <div class="art-takeaway">
         <span class="art-takeaway-num">03</span>
-        <span class="art-takeaway-text">Selon Gartner, les organisations qui réussissent en IA investissent jusqu'à 4× plus dans leurs fondations data — pas dans les modèles, dans la qualité à la source.</span>
+        <span class="art-takeaway-text">La cybersécurité OT est devenue une urgence opérationnelle — la convergence IT/OT élargit la surface d'attaque plus vite que les budgets ne s'adaptent.</span>
       </div>
       <div class="art-takeaway">
         <span class="art-takeaway-num">04</span>
-        <span class="art-takeaway-text">Le MDM n'est pas une étape de pré-traitement. C'est l'infrastructure prérequise qui détermine si l'investissement IA est rentable.</span>
+        <span class="art-takeaway-text">Le vrai frein à la transformation industrielle n'est pas technologique : c'est la gouvernance de la donnée et l'organisation humaine autour d'elle.</span>
       </div>
     </div>
   </div>
@@ -524,13 +496,15 @@ body { background: #f7f8f9; color: #0a2a35; font-family: 'Inter', sans-serif; ma
       <div class="art-related-line"></div>
     </div>
     <div class="art-related-grid reveal">
-      <a href="blog-bad-master-record.html" class="art-rel-card">
-        <div class="art-rel-cat">Qualité des Données</div>
-        <div class="art-rel-title">Le Coût Caché d'un Mauvais Enregistrement Maître</div>
+      <a href="blog-ai-dirty-data.html" class="art-rel-card">
+        <div class="art-rel-cat">MDM &amp; IA</div>
+        <div class="art-rel-title">Quand l'IA Rencontre des Données Sales : Ce Qui Se Passe Vraiment</div>
+        <div class="art-rel-arrow">Lire →</div>
       </a>
-      <a href="blog-governance-stall.html" class="art-rel-card">
-        <div class="art-rel-cat">Gouvernance</div>
-        <div class="art-rel-title">Pourquoi les Projets de Gouvernance Calent au Troisième Mois</div>
+      <a href="europe-trip-fr.html" class="art-rel-card">
+        <div class="art-rel-cat">Rapport de Terrain · Avril 2026</div>
+        <div class="art-rel-title">Mission Terrain Europe — De Prague à Londres, puis en France</div>
+        <div class="art-rel-arrow">Lire →</div>
       </a>
     </div>
   </div>
@@ -602,16 +576,14 @@ body { background: #f7f8f9; color: #0a2a35; font-family: 'Inter', sans-serif; ma
 
 /* ── Counter animation ── */
 function animateCounter(el){
-  var isFloat = el.hasAttribute('data-counter-float');
-  var target  = isFloat ? parseFloat(el.getAttribute('data-counter-float')) : parseInt(el.getAttribute('data-counter'),10);
+  var target  = parseInt(el.getAttribute('data-counter'),10);
   var suffix  = el.getAttribute('data-suffix')||'';
   var duration = 1400, start = null;
   function step(ts){
     if(!start) start = ts;
     var p = Math.min((ts-start)/duration, 1);
     var ease = p<.5 ? 2*p*p : -1+(4-2*p)*p;
-    var val = isFloat ? (ease*target).toFixed(1) : Math.round(ease*target);
-    el.textContent = val+suffix;
+    el.textContent = Math.round(ease*target)+suffix;
     if(p<1) requestAnimationFrame(step);
   }
   requestAnimationFrame(step);
@@ -621,41 +593,13 @@ function animateCounter(el){
     entries.forEach(function(e){
       if(e.isIntersecting){
         var el = e.target;
-        if(el.hasAttribute('data-counter')||el.hasAttribute('data-counter-float')) animateCounter(el);
+        if(el.hasAttribute('data-counter')) animateCounter(el);
         io2.unobserve(el);
       }
     });
   },{threshold:.5});
-  document.querySelectorAll('[data-counter],[data-counter-float]').forEach(function(el){ io2.observe(el); });
+  document.querySelectorAll('[data-counter]').forEach(function(el){ io2.observe(el); });
 })();
-
-/* ── SVG chart animation ── */
-(function(){
-  var wrap = document.querySelector('.qm-svg-wrap');
-  if(!wrap) return;
-  var io3 = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){ e.target.classList.add('anim-in'); io3.unobserve(e.target); }
-    });
-  },{threshold:.35});
-  io3.observe(wrap);
-})();
-
-/* ── Nav mobile ── */
-document.querySelectorAll('.nav-item').forEach(function(item){
-  var link=item.querySelector('.nav-link'), mega=item.querySelector('.mega-menu');
-  if(!mega) return;
-  link.addEventListener('click',function(e){
-    if(window.innerWidth>768) return;
-    e.preventDefault();
-    var open=item.classList.contains('open');
-    document.querySelectorAll('.nav-item.open').forEach(function(o){ o.classList.remove('open'); o.querySelector('.mega-menu').style.removeProperty('display'); });
-    if(!open){ item.classList.add('open'); mega.style.setProperty('display','block','important'); }
-  });
-});
-document.addEventListener('click',function(e){
-  if(!e.target.closest('.navbar')) document.querySelectorAll('.nav-item.open').forEach(function(i){ i.classList.remove('open'); i.querySelector('.mega-menu').style.removeProperty('display'); });
-});
 </script>
 </body>
 </html>

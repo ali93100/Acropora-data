@@ -376,108 +376,6 @@ body {
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-     FEATURED ARTICLE
-══════════════════════════════════════════ -->
-<section class="fn-featured">
-  <div class="fn-section-header reveal">
-    <span class="fn-section-label">Featured article</span>
-    <div class="fn-section-line"></div>
-  </div>
-
-  <a class="fn-feat-card reveal" href="europe-trip.html">
-
-    <!-- LEFT: text content -->
-    <div class="fn-feat-content">
-
-      <div class="fn-feat-badge">
-        <div class="fn-feat-badge-dot"></div>
-        <span class="fn-feat-badge-text">Featured</span>
-      </div>
-
-      <div class="fn-feat-category">Field Report · April 2026</div>
-
-      <h2 class="fn-feat-title">European Field Mission —&nbsp;April&nbsp;2026</h2>
-
-      <p class="fn-feat-teaser">From Prague to London, then into French industrial systems — what we observed across radically different environments, and why the gap between data ambition and data reality is still wider than anyone admits.</p>
-
-      <div class="fn-feat-tags">
-        <span class="fn-feat-tag">Prague</span>
-        <span class="fn-feat-tag">London</span>
-        <span class="fn-feat-tag">Saint-Denis</span>
-        <span class="fn-feat-tag">La Défense</span>
-      </div>
-
-      <span class="fn-feat-cta">
-        Read article
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-      </span>
-
-      <div class="fn-feat-meta">
-        <span>Acropora Data</span>
-        <span class="fn-feat-meta-dot"></span>
-        <span>April 2026</span>
-        <span class="fn-feat-meta-dot"></span>
-        <span>8 min read</span>
-      </div>
-
-    </div>
-
-    <!-- RIGHT: visual panel -->
-    <div class="fn-feat-visual">
-      <img src="europe tour.png" alt="European Field Mission — Mauritius, Paris, Prague, London">
-      <div class="fn-feat-visual-label">
-        <span class="fn-feat-visual-tag">4 locations · Europe</span>
-        <span class="fn-feat-visual-num">01</span>
-      </div>
-    </div>
-
-  </a>
-</section>
-
-<!-- ══════════════════════════════════════════
-     OTHER ARTICLES
-══════════════════════════════════════════ -->
-<section class="fn-articles">
-  <div class="fn-articles-inner">
-
-    <div class="fn-articles-header reveal">
-      <span class="fn-section-label">More articles</span>
-      <div class="fn-section-line"></div>
-    </div>
-
-    <div class="fn-grid">
-
-      <a href="blog-ai-dirty-data_en.html" class="fn-card reveal">
-        <div class="fn-card-bar fn-card-bar--teal"></div>
-        <div class="fn-card-body">
-          <div class="fn-card-cat">MDM &amp; AI</div>
-          <h3 class="fn-card-title">When AI Meets Dirty Data: What Actually Happens</h3>
-          <p class="fn-card-teaser">AI models are only as reliable as the data they consume. What we've seen inside enterprise MDM projects tells a different story than the vendor pitch decks.</p>
-        </div>
-      </a>
-
-      <a href="blog-bad-master-record_en.html" class="fn-card reveal reveal-d1">
-        <div class="fn-card-bar fn-card-bar--coral"></div>
-        <div class="fn-card-body">
-          <div class="fn-card-cat">Data Quality</div>
-          <h3 class="fn-card-title">The Hidden Cost of a Bad Master Record</h3>
-          <p class="fn-card-teaser">A single duplicated supplier record can cascade across a dozen systems. We calculated what this costs — in hours, in decisions, and in trust.</p>
-        </div>
-      </a>
-
-      <a href="blog-governance-stall_en.html" class="fn-card reveal reveal-d2">
-        <div class="fn-card-bar fn-card-bar--slate"></div>
-        <div class="fn-card-body">
-          <div class="fn-card-cat">Governance</div>
-          <h3 class="fn-card-title">Why Governance Projects Stall at Month Three</h3>
-          <p class="fn-card-teaser">The first sprint is always smooth. Then reality arrives. Here is what we've observed — and what separates the programs that recover from the ones that don't.</p>
-        </div>
-      </a>
-
-    </div>
-  </div>
-</section>
 
 <!-- ══════════════════════════════════════════
      VISUAL BREAK
@@ -717,17 +615,47 @@ body {
 </section>
 
 <!-- ══════════════════════════════════════════
-     2026 EVENTS
+     MAIN SPLIT: EVENTS + FEATURED (left) / ARTICLES (right)
 ══════════════════════════════════════════ -->
+<section class="fn-main-split">
+<style>
+.fn-main-split { background: #fff; }
+.fn-main-split-inner {
+  max-width: 1280px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  align-items: start;
+}
+.fn-main-left { border-right: 1px solid rgba(10,42,53,0.06); }
+.fn-main-right {
+  padding: 3.5rem 2rem 3.5rem 2.5rem;
+  background: #f7f8f9;
+  position: sticky;
+  top: 5rem;
+}
+.fn-main-right-cards { display: flex; flex-direction: column; gap: 1rem; }
+.fn-main-right .fn-section-label { display: block; margin-bottom: 0.6rem; }
+.fn-main-right .fn-section-line { margin-bottom: 1.8rem; }
+@media (max-width: 960px) {
+  .fn-main-split-inner { grid-template-columns: 1fr; }
+  .fn-main-left { border-right: none; border-bottom: 1px solid rgba(10,42,53,0.06); }
+  .fn-main-right { position: static; }
+}
+</style>
+  <div class="fn-main-split-inner">
+
+    <!-- ── Left column: events + featured ── -->
+    <div class="fn-main-left">
+
 <section class="fn-events">
 <style>
 .fn-events {
-  background: #fff;
-  padding: 5rem 2rem;
+  background: transparent;
+  padding: 4rem 2rem;
 }
 .fn-events-inner {
-  max-width: 1060px;
-  margin: 0 auto;
+  max-width: none;
+  margin: 0;
 }
 .fn-events-header {
   display: flex; align-items: center; gap: 1.2rem;
@@ -801,9 +729,56 @@ body {
       <span class="fn-section-label">2026 Events</span>
       <div class="fn-section-line"></div>
     </div>
+
+    <!-- TFIS — featured card -->
+    <a class="fn-feat-card reveal" href="blog-event-tech-for-industry-2026.html" style="margin-bottom:2.5rem;">
+      <div class="fn-feat-content">
+        <div class="fn-feat-badge">
+          <div class="fn-feat-badge-dot"></div>
+          <span class="fn-feat-badge-text">Field Report</span>
+        </div>
+        <div class="fn-feat-category">Event · June 2026</div>
+        <h2 class="fn-feat-title">Tech for Industry Show 2026 —&nbsp;what we observed in Paris</h2>
+        <p class="fn-feat-teaser">First 100% Industry 4.0 edition at Paris Expo. Two days of conferences, exhibitor conversations and first-hand observations on the real state of industrial data.</p>
+        <div class="fn-feat-tags">
+          <span class="fn-feat-tag">Paris</span>
+          <span class="fn-feat-tag">Industry 4.0</span>
+          <span class="fn-feat-tag">100+ exhibitors</span>
+          <span class="fn-feat-tag">55 conferences</span>
+        </div>
+        <span class="fn-feat-cta">
+          Read the report
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </span>
+        <div class="fn-feat-meta">
+          <span>Acropora Data</span>
+          <span class="fn-feat-meta-dot"></span>
+          <span>June 2026</span>
+          <span class="fn-feat-meta-dot"></span>
+          <span>6 min read</span>
+        </div>
+      </div>
+      <div class="fn-feat-visual">
+        <img src="https://www.robot-magazine.fr/wp-content/uploads/2026/06/Tech-For-Industry-lindustrie-4.0-sinvite-a-Paris-les-23-et-24-juin-780x470.jpeg" alt="Tech for Industry Show 2026 — Paris Expo Porte de Versailles">
+        <div class="fn-feat-visual-label">
+          <span class="fn-feat-visual-tag">100+ exhibitors · Paris</span>
+          <span class="fn-feat-visual-num">01</span>
+        </div>
+      </div>
+    </a>
+
     <div class="fn-evt-grid">
 
-      <a href="blog-event-dmm-2026_en.html" class="fn-evt-card reveal">
+      <a href="blog-event-data-ai-summit-2026_en.html" class="fn-evt-card reveal">
+        <div class="fn-evt-stripe fn-evt-stripe--orange"></div>
+        <div class="fn-evt-top">
+          <span class="fn-evt-badge fn-evt-badge--orange">San Francisco · June 15–18</span>
+          <h3 class="fn-evt-title">Data + AI Summit 2026</h3>
+          <p class="fn-evt-info">The Databricks world event. 800+ sessions, 160 countries — AI Agents, Lakehouse, MLOps and Data Governance.</p>
+        </div>
+      </a>
+
+      <a href="blog-event-dmm-2026_en.html" class="fn-evt-card reveal reveal-d1">
         <div class="fn-evt-stripe fn-evt-stripe--teal"></div>
         <div class="fn-evt-top">
           <span class="fn-evt-badge fn-evt-badge--teal">Online · June 10–11</span>
@@ -812,21 +787,12 @@ body {
         </div>
       </a>
 
-      <a href="blog-event-jftl-2026_en.html" class="fn-evt-card reveal reveal-d1">
+      <a href="blog-event-jftl-2026_en.html" class="fn-evt-card reveal reveal-d2">
         <div class="fn-evt-stripe fn-evt-stripe--blue"></div>
         <div class="fn-evt-top">
           <span class="fn-evt-badge fn-evt-badge--blue">Montrouge · June 9</span>
           <h3 class="fn-evt-title">JFTL 2026</h3>
           <p class="fn-evt-info">France's leading software testing days. 1,300 QA professionals, 5 parallel tracks, AI in testing and automation.</p>
-        </div>
-      </a>
-
-      <a href="blog-event-data-ai-summit-2026_en.html" class="fn-evt-card reveal reveal-d2">
-        <div class="fn-evt-stripe fn-evt-stripe--orange"></div>
-        <div class="fn-evt-top">
-          <span class="fn-evt-badge fn-evt-badge--orange">San Francisco · June 15–18</span>
-          <h3 class="fn-evt-title">Data + AI Summit 2026</h3>
-          <p class="fn-evt-info">The Databricks world event. 800+ sessions, 160 countries — AI Agents, Lakehouse, MLOps and Data Governance.</p>
         </div>
       </a>
 
@@ -842,6 +808,99 @@ body {
     </div>
   </div>
 </section>
+
+<section class="fn-featured" style="border-top: 1px solid rgba(10,42,53,0.06);">
+  <div class="fn-section-header reveal">
+    <span class="fn-section-label">Featured article</span>
+    <div class="fn-section-line"></div>
+  </div>
+
+  <a class="fn-feat-card reveal" href="europe-trip.html">
+
+    <!-- LEFT: text content -->
+    <div class="fn-feat-content">
+
+      <div class="fn-feat-badge">
+        <div class="fn-feat-badge-dot"></div>
+        <span class="fn-feat-badge-text">Featured</span>
+      </div>
+
+      <div class="fn-feat-category">Field Report · April 2026</div>
+
+      <h2 class="fn-feat-title">European Field Mission —&nbsp;April&nbsp;2026</h2>
+
+      <p class="fn-feat-teaser">From Prague to London, then into French industrial systems — what we observed across radically different environments, and why the gap between data ambition and data reality is still wider than anyone admits.</p>
+
+      <div class="fn-feat-tags">
+        <span class="fn-feat-tag">Prague</span>
+        <span class="fn-feat-tag">London</span>
+        <span class="fn-feat-tag">Saint-Denis</span>
+        <span class="fn-feat-tag">La Défense</span>
+      </div>
+
+      <span class="fn-feat-cta">
+        Read article
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </span>
+
+      <div class="fn-feat-meta">
+        <span>Acropora Data</span>
+        <span class="fn-feat-meta-dot"></span>
+        <span>April 2026</span>
+        <span class="fn-feat-meta-dot"></span>
+        <span>8 min read</span>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: visual panel -->
+    <div class="fn-feat-visual">
+      <img src="europe tour.png" alt="European Field Mission — Mauritius, Paris, Prague, London">
+      <div class="fn-feat-visual-label">
+        <span class="fn-feat-visual-tag">4 locations · Europe</span>
+        <span class="fn-feat-visual-num">01</span>
+      </div>
+    </div>
+
+  </a>
+</section>
+
+    </div><!-- /.fn-main-left -->
+
+    <!-- ── Right column: articles ── -->
+    <aside class="fn-main-right">
+      <span class="fn-section-label">Latest articles</span>
+      <div class="fn-section-line"></div>
+      <div class="fn-main-right-cards">
+        <a href="blog-ai-dirty-data_en.html" class="fn-card reveal">
+          <div class="fn-card-bar fn-card-bar--teal"></div>
+          <div class="fn-card-body">
+            <div class="fn-card-cat">MDM &amp; AI</div>
+            <h3 class="fn-card-title">When AI Meets Dirty Data: What Actually Happens</h3>
+            <p class="fn-card-teaser">AI models are only as reliable as the data they consume. What we've seen inside enterprise MDM projects tells a different story than the vendor pitch decks.</p>
+          </div>
+        </a>
+        <a href="blog-bad-master-record_en.html" class="fn-card reveal">
+          <div class="fn-card-bar fn-card-bar--coral"></div>
+          <div class="fn-card-body">
+            <div class="fn-card-cat">Data Quality</div>
+            <h3 class="fn-card-title">The Hidden Cost of a Bad Master Record</h3>
+            <p class="fn-card-teaser">A single duplicated supplier record can cascade across a dozen systems. We calculated what this costs — in hours, in decisions, and in trust.</p>
+          </div>
+        </a>
+        <a href="blog-event-tech-for-industry-2026.html" class="fn-card reveal">
+          <div class="fn-card-bar" style="height:4px;background:linear-gradient(90deg,#1a5d6a,#4a9fa8);"></div>
+          <div class="fn-card-body">
+            <div class="fn-card-cat">Event · Field Report</div>
+            <h3 class="fn-card-title">Tech for Industry Show 2026 — what we observed in Paris</h3>
+            <p class="fn-card-teaser">Two days at Paris Expo: conferences, exhibitor conversations and observations on the real state of Industry 4.0.</p>
+          </div>
+        </a>
+      </div>
+    </aside>
+
+  </div><!-- /.fn-main-split-inner -->
+</section><!-- /.fn-main-split -->
 
 <section class="fn-break">
   <div class="fn-break-inner reveal">
